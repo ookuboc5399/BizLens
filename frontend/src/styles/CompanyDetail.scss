@@ -1,0 +1,35 @@
+.company-detail {
+  padding: 24px;
+
+  .header {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .tags {
+      display: flex;
+      gap: 8px;
+    }
+  }
+
+  .metric-card {
+    text-align: center;
+    
+    &.price {
+      background-color: #f0f5ff;
+    }
+
+    .ant-typography {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.financial-charts {
+  margin-top: 24px;
+  
+  .google-visualization-chart-container {
+    margin-bottom: 24px;
+  }
+} 

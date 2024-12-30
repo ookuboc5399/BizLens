@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "build": {
+    "env": {
+      "VITE_API_URL": "https://app-expyoyej.fly.dev",
+      "VITE_TABLEAU_URL": "https://public.tableau.com/views/buffett-code-clone"
+    }
+  }
+}
