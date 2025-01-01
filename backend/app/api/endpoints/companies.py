@@ -144,7 +144,8 @@ async def get_company_detail(ticker: str):
             net_margin,
             dividend_per_share,
             payout_ratio,
-            beta
+            beta,
+            description
         FROM `{project_id}.{dataset}.{table}`
         WHERE ticker = @ticker
         """
@@ -182,7 +183,8 @@ async def get_company_detail(ticker: str):
                 "net_margin": row.net_margin,
                 "dividend_per_share": row.dividend_per_share,
                 "payout_ratio": row.payout_ratio,
-                "beta": row.beta
+                "beta": row.beta,
+                "description": row.description
             }
             
         raise HTTPException(status_code=404, detail="Company not found")
@@ -200,17 +202,16 @@ async def get_financial_history(ticker: str):
         client = get_bigquery_client()
         query = f"""
         SELECT
-            fiscal_year as year,
+            2023 as year,  # 現在は単年度データのみ
             revenue,
-            operating_profit,
+            operating_income as operating_profit,
             net_income,
-            gross_profit_margin,
+            gross_margin as gross_profit_margin,
             operating_margin,
-            net_profit_margin,
+            net_margin as net_profit_margin,
             roe
-        FROM `{os.getenv('BIGQUERY_DATASET')}.financial_history`
+        FROM `{os.getenv('GOOGLE_CLOUD_PROJECT')}.{os.getenv('BIGQUERY_DATASET')}.{os.getenv('BIGQUERY_TABLE')}`
         WHERE ticker = @ticker
-        ORDER BY fiscal_year ASC
         """
         
         job_config = bigquery.QueryJobConfig(

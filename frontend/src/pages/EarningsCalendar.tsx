@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Progress } from '../components/ui/progress';
@@ -14,9 +15,18 @@ interface CompanyEarnings {
   market: string;
   fiscal_year: string;
   quarter: string;
+  description?: string;
+  sector?: string;
+  industry?: string;
+  market_segment?: string;
+  market_cap?: number;
+  per?: number;
+  pbr?: number;
+  dividend_yield?: number;
 }
 
 function EarningsCalendar() {
+  const navigate = useNavigate();
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
   const [monthlyData, setMonthlyData] = useState<{ [key: string]: EarningsData }>({});
@@ -138,7 +148,7 @@ function EarningsCalendar() {
             isSelected
               ? 'bg-blue-500 text-white'
               : dayData
-              ? 'bg-blue-100 hover:bg-blue-200'
+              ? 'bg-blue-500 text-white hover:bg-blue-600'
               : 'hover:bg-gray-100'
           }`}
         >
@@ -187,7 +197,11 @@ function EarningsCalendar() {
               <h3 className="text-lg font-semibold mb-4">{selectedDate} の決算発表企業</h3>
               <div className="space-y-2">
                 {companies.map((company) => (
-                  <Card key={company.code}>
+                  <Card
+                    key={company.code}
+                    className="cursor-pointer hover:bg-gray-50 transition-colors"
+                    onClick={() => navigate(`/company/${company.code}`)}
+                  >
                     <CardContent className="p-4">
                       <div className="flex justify-between items-center">
                         <div>
@@ -197,6 +211,11 @@ function EarningsCalendar() {
                           <p className="text-sm text-gray-500">
                             {company.market} - {company.fiscal_year}年度{company.quarter}
                           </p>
+                          {company.sector && (
+                            <p className="text-sm text-gray-500">
+                              {company.sector} / {company.industry}
+                            </p>
+                          )}
                         </div>
                       </div>
                     </CardContent>

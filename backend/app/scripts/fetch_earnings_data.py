@@ -235,7 +235,7 @@ async def save_to_bigquery(earnings_data):
     rows_to_insert = []
     for data in earnings_data:
         row = {
-            "code": data["code"],
+            "ticker": data["code"],
             "company_name": data["company_name"],
             "announcement_date": data["date"],
             "fiscal_year": data["fiscal_year"],

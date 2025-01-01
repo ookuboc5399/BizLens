@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from .api.endpoints import companies, earnings, financial_reports, admin
+from .api.endpoints import companies, earnings_calendar, financial_reports, admin
 
 app = FastAPI()
 
@@ -27,7 +27,7 @@ async def add_dev_user(request: Request, call_next):
 
 # ルーターの追加
 app.include_router(companies.router, prefix="/api/companies", tags=["companies"])
-app.include_router(earnings.router, prefix="/api/earnings", tags=["earnings"])
+app.include_router(earnings_calendar.router, prefix="/api/earnings", tags=["earnings-calendar"])
 app.include_router(financial_reports.router, prefix="/api/financial-reports", tags=["financial-reports"])
 app.include_router(admin.router, prefix="/api/admin", tags=["admin"])
 

@@ -37,7 +37,7 @@ interface FinancialHistory {
 }
 
 export default function CompanyDetail() {
-  const { id } = useParams<{ id: string }>();
+  const { companyId } = useParams<{ companyId: string }>();
   const { isAdmin } = useAuth();
   const [company, setCompany] = useState<CompanyData | null>(null);
   const [financialHistory, setFinancialHistory] = useState<FinancialHistory[]>([]);
@@ -47,8 +47,8 @@ export default function CompanyDetail() {
     const fetchCompanyData = async () => {
       try {
         setLoading(true);
-        console.log('Fetching company data for ticker:', id);
-        const response = await fetch(`/api/companies/${id}`);
+        console.log('Fetching company data for ticker:', companyId);
+        const response = await fetch(`/api/companies/${companyId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch company data');
         }
@@ -57,7 +57,7 @@ export default function CompanyDetail() {
         setCompany(data);
 
         // 財務データの取得
-        const historyResponse = await fetch(`/api/companies/${id}/financial-history`);
+        const historyResponse = await fetch(`/api/companies/${companyId}/financial-history`);
         if (!historyResponse.ok) {
           throw new Error('Failed to fetch financial history');
         }
@@ -71,10 +71,10 @@ export default function CompanyDetail() {
       }
     };
 
-    if (id) {
+    if (companyId) {
       fetchCompanyData();
     }
-  }, [id]);
+  }, [companyId]);
 
   if (loading) {
     return <div className="p-4">
@@ -145,7 +145,7 @@ export default function CompanyDetail() {
             <CardTitle>株価チャート</CardTitle>
           </CardHeader>
           <CardContent>
-            <TradingViewChart symbol={`${id}.T`} />
+            <TradingViewChart symbol={`${companyId}.T`} />
           </CardContent>
         </Card>
       </div>
@@ -160,34 +160,50 @@ export default function CompanyDetail() {
         <TabsContent value="financial">
           <Card>
             <CardHeader>
-              <CardTitle>財務情報</CardTitle>
+              <CardTitle>財務情報（{financialHistory[0]?.year}年度）</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr>
-                      <th className="text-left p-2">年度</th>
-                      <th className="text-right p-2">売上高</th>
-                      <th className="text-right p-2">営業利益</th>
-                      <th className="text-right p-2">純利益</th>
-                      <th className="text-right p-2">営業利益率</th>
-                      <th className="text-right p-2">ROE</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {financialHistory.map((history) => (
-                      <tr key={history.year}>
-                        <td className="p-2">{history.year}</td>
-                        <td className="text-right p-2">{formatNumber(history.revenue / 1000000)}M</td>
-                        <td className="text-right p-2">{formatNumber(history.operating_profit / 1000000)}M</td>
-                        <td className="text-right p-2">{formatNumber(history.net_income / 1000000)}M</td>
-                        <td className="text-right p-2">{(history.operating_margin * 100).toFixed(2)}%</td>
-                        <td className="text-right p-2">{(history.roe * 100).toFixed(2)}%</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                {financialHistory.length > 0 && (
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <div className="text-sm text-gray-600">売上高</div>
+                      <div className="text-xl font-bold">
+                        ¥{financialHistory[0].revenue ? formatNumber(financialHistory[0].revenue / 1000000) + 'M' : '-'}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-sm text-gray-600">営業利益</div>
+                      <div className="text-xl font-bold">
+                        ¥{financialHistory[0].operating_profit ? formatNumber(financialHistory[0].operating_profit / 1000000) + 'M' : '-'}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-sm text-gray-600">純利益</div>
+                      <div className="text-xl font-bold">
+                        ¥{financialHistory[0].net_income ? formatNumber(financialHistory[0].net_income / 1000000) + 'M' : '-'}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-sm text-gray-600">売上総利益率</div>
+                      <div className="text-xl font-bold">
+                        {financialHistory[0].gross_profit_margin ? (financialHistory[0].gross_profit_margin * 100).toFixed(2) + '%' : '-'}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-sm text-gray-600">営業利益率</div>
+                      <div className="text-xl font-bold">
+                        {financialHistory[0].operating_margin ? (financialHistory[0].operating_margin * 100).toFixed(2) + '%' : '-'}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-sm text-gray-600">純利益率</div>
+                      <div className="text-xl font-bold">
+                        {financialHistory[0].net_profit_margin ? (financialHistory[0].net_profit_margin * 100).toFixed(2) + '%' : '-'}
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>
