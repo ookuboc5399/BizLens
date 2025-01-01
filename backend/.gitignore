@@ -1,9 +1,2 @@
-# Python virtual environment
-venv/
-__pycache__/
-*.pyc
-.env
-
-# Credentials
-credentials/
-*.json
+# ChromeDriver
+app/drivers/

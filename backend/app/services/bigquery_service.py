@@ -184,6 +184,15 @@ class BigQueryService:
             print(f"Failed to initialize database: {str(e)}")
             raise
 
+    def query(self, query_string: str) -> List[Dict]:
+        """汎用クエリ実行メソッド"""
+        try:
+            results = self.client.query(query_string).result()
+            return [dict(row) for row in results]
+        except Exception as e:
+            print(f"Error executing query: {str(e)}")
+            raise
+
     async def get_earnings_calendar(self, start_date: str, end_date: str) -> List[Dict]:
         """指定期間の決算予定を取得"""
         print(f"Querying earnings calendar from {start_date} to {end_date}")

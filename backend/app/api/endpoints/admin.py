@@ -6,7 +6,6 @@ import asyncio
 import logging
 from ...services.financial_data_collector import FinancialDataCollector
 from ...models.admin import CompanyUpdate
-from ...auth.dependencies import get_current_admin_user
 from ...scripts.fetch_financial_reports import FinancialReportCollector
 
 logger = logging.getLogger(__name__)
@@ -14,9 +13,7 @@ logger = logging.getLogger(__name__)
 router = APIRouter()
 
 @router.get("/companies")
-async def list_companies(
-    current_user: dict = Depends(get_current_admin_user)
-):
+async def list_companies():
     try:
         collector = FinancialDataCollector()
         companies = collector.bq_client.query("""
@@ -30,8 +27,7 @@ async def list_companies(
 
 @router.post("/companies/update")
 async def update_company(
-    company: CompanyUpdate,
-    current_user: dict = Depends(get_current_admin_user)
+    company: CompanyUpdate
 ):
     try:
         collector = FinancialDataCollector()
@@ -42,8 +38,7 @@ async def update_company(
 
 @router.post("/data/collect")
 async def collect_data(
-    symbols: List[str],
-    current_user: dict = Depends(get_current_admin_user)
+    symbols: List[str]
 ):
     collector = FinancialDataCollector()
     results = []
@@ -65,9 +60,7 @@ async def collect_data(
     return results
 
 @router.post("/financial-reports/fetch")
-async def fetch_financial_reports(
-    current_user: dict = Depends(get_current_admin_user)
-):
+async def fetch_financial_reports():
     """決算資料の取得を開始"""
     async def event_generator():
         collector = None
@@ -75,49 +68,84 @@ async def fetch_financial_reports(
             # 進捗状況の初期値を送信
             yield f"data: {json.dumps({'progress': 0, 'message': '処理を開始します'})}\n\n"
             
-            # 企業一覧を取得
-            financial_data_collector = FinancialDataCollector()
-            companies_query = """
-                SELECT DISTINCT symbol as ticker, company_name, sector, website
-                FROM `BuffetCodeClone.companies`
-                ORDER BY company_name
-            """
-            companies_result = financial_data_collector.bq_client.query(companies_query).result()
-            companies = [dict(row) for row in companies_result]
-            total = len(companies)
+            try:
+                # コレクターの初期化
+                collector = FinancialReportCollector()
+                await collector.initialize()
+                yield f"data: {json.dumps({'progress': 5, 'message': 'コレクターの初期化が完了しました'})}\n\n"
+            except Exception as e:
+                logger.error(f"Error initializing collector: {str(e)}")
+                yield f"data: {json.dumps({'error': f'初期化エラー: {str(e)}'})}\n\n"
+                return
             
-            # コレクターの初期化
-            collector = FinancialReportCollector()
-            await collector.initialize()
+            try:
+                # 企業一覧を取得
+                companies = await collector.fetch_all_companies()
+                total = len(companies)
+                if total == 0:
+                    yield f"data: {json.dumps({'error': '企業データが見つかりません'})}\n\n"
+                    return
+                yield f"data: {json.dumps({'progress': 10, 'message': f'企業一覧の取得が完了しました（{total}社）'})}\n\n"
+            except Exception as e:
+                logger.error(f"Error fetching companies: {str(e)}")
+                yield f"data: {json.dumps({'error': f'企業一覧の取得に失敗しました: {str(e)}'})}\n\n"
+                return
             
             # 企業ごとに決算資料を取得
-            for i, company in enumerate(companies):
+            for i, company in enumerate(companies, 1):
                 try:
-                    current = i + 1
-                    progress = round((current / total) * 100, 1)
+                    progress = round(10 + ((i / total) * 90), 1)  # 10%から100%まで
                     
                     # 進捗状況を送信
                     yield f"data: {json.dumps({
                         'progress': progress,
-                        'current': current,
+                        'current': i,
                         'total': total,
-                        'message': f'{company['company_name']}の決算資料を取得中...'
+                        'message': f'{company["company_name"]} ({company["ticker"]}) の決算資料を取得中...'
                     })}\n\n"
                     
-                    # 各ソースから決算資料を取得
+                    # EDINETから取得
+                    yield f"data: {json.dumps({
+                        'progress': progress,
+                        'current': i,
+                        'total': total,
+                        'message': f'{company["company_name"]} - EDINETから取得中...'
+                    })}\n\n"
                     await collector.fetch_edinet_reports(company['ticker'], company['ticker'])
                     await asyncio.sleep(1)  # APIレート制限を考慮
                     
+                    # TDnetから取得
+                    yield f"data: {json.dumps({
+                        'progress': progress,
+                        'current': i,
+                        'total': total,
+                        'message': f'{company["company_name"]} - TDnetから取得中...'
+                    })}\n\n"
                     await collector.fetch_tdnet_reports(company['ticker'], company['ticker'])
                     await asyncio.sleep(1)
                     
+                    # 企業サイトから取得
                     if company.get('website'):
+                        yield f"data: {json.dumps({
+                            'progress': progress,
+                            'current': i,
+                            'total': total,
+                            'message': f'{company["company_name"]} - 企業サイトから取得中...'
+                        })}\n\n"
                         await collector.fetch_company_website_reports(
                             company['ticker'],
                             company['ticker'],
                             company['website']
                         )
                         await asyncio.sleep(1)
+                    
+                    # 企業の処理完了を通知
+                    yield f"data: {json.dumps({
+                        'progress': progress,
+                        'current': i,
+                        'total': total,
+                        'message': f'{company["company_name"]} の処理が完了しました ({i}/{total}社)'
+                    })}\n\n"
                     
                 except Exception as e:
                     logger.error(f"Error processing company {company['ticker']}: {str(e)}")
@@ -128,7 +156,7 @@ async def fetch_financial_reports(
             # 完了通知
             yield f"data: {json.dumps({
                 'progress': 100,
-                'message': '全ての企業の決算資料取得が完了しました'
+                'message': f'全ての企業（{total}社）の決算資料取得が完了しました'
             })}\n\n"
             
         except Exception as e:

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { TradingViewChart } from '@/components/TradingViewChart';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Skeleton } from '@/components/ui/skeleton';
+import { useParams, Link } from 'react-router-dom';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import { TradingViewChart } from '../components/TradingViewChart';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { Skeleton } from '../components/ui/skeleton';
+import { useAuth } from '../hooks/useAuth';
 
 interface CompanyData {
   ticker: string;
@@ -37,6 +38,7 @@ interface FinancialHistory {
 
 export default function CompanyDetail() {
   const { id } = useParams<{ id: string }>();
+  const { isAdmin } = useAuth();
   const [company, setCompany] = useState<CompanyData | null>(null);
   const [financialHistory, setFinancialHistory] = useState<FinancialHistory[]>([]);
   const [loading, setLoading] = useState(true);
@@ -152,6 +154,7 @@ export default function CompanyDetail() {
         <TabsList>
           <TabsTrigger value="financial">財務情報</TabsTrigger>
           <TabsTrigger value="company">企業情報</TabsTrigger>
+          <TabsTrigger value="reports">決算資料</TabsTrigger>
         </TabsList>
         
         <TabsContent value="financial">
@@ -197,6 +200,26 @@ export default function CompanyDetail() {
             </CardHeader>
             <CardContent>
               <p className="whitespace-pre-wrap">{company.description}</p>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="reports">
+          <Card>
+            <CardHeader>
+              <CardTitle>決算資料</CardTitle>
+            </CardHeader>
+            <CardContent>
+              {isAdmin ? (
+                <Link 
+                  to={`/financial-reports/${company.ticker}`}
+                  className="text-blue-500 hover:text-blue-700"
+                >
+                  決算資料を閲覧する →
+                </Link>
+              ) : (
+                <p className="text-gray-500">この機能を利用するには管理者権限が必要です</p>
+              )}
             </CardContent>
           </Card>
         </TabsContent>

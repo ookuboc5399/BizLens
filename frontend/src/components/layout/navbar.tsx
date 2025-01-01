@@ -1,9 +1,9 @@
-import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu"
+import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "../ui/navigation-menu"
 import { Search } from "lucide-react"
 import { Link } from "react-router-dom"
 import { useState } from "react"
-import { Input } from "@/components/ui/input"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Input } from "../ui/input"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog"
 
 export function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
@@ -20,7 +20,7 @@ export function Navbar() {
     <header className="border-b">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <Link to="/" className="text-xl font-bold">
-        Horizons_code
+          Horizons_code
         </Link>
         <NavigationMenu>
           <NavigationMenuList>
@@ -30,8 +30,18 @@ export function Navbar() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link to="/comparison" className="px-4 py-2">
+              <Link to="/company-comparison" className="px-4 py-2">
                 企業比較
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link to="/financial-reports" className="px-4 py-2">
+                決算資料
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link to="/earnings-calendar" className="px-4 py-2">
+                決算カレンダー
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>

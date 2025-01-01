@@ -1,26 +1,31 @@
 import React, { useState } from 'react'
-import { Button } from './ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import { Progress } from './ui/progress'
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
+import { Button } from '../components/ui/button'
+import { Progress } from '../components/ui/progress'
+
+const API_BASE_URL = '/api';
+
+interface ProgressData {
+  progress: number
+  current?: number
+  total?: number
+  message?: string
+  error?: string
+}
 
 export default function FinancialReportManager() {
   const [isLoading, setIsLoading] = useState(false)
-  const [progress, setProgress] = useState(0)
-  const [message, setMessage] = useState('')
-  const [error, setError] = useState<string | null>(null)
+  const [progress, setProgress] = useState<ProgressData>({
+    progress: 0
+  })
 
   const handleFetchReports = async () => {
     setIsLoading(true)
-    setProgress(0)
-    setMessage('')
-    setError(null)
+    setProgress({ progress: 0 })
 
     try {
-      const response = await fetch('/api/admin/financial-reports/fetch', {
+      const response = await fetch(`${API_BASE_URL}/admin/financial-reports/fetch`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
       })
 
       if (!response.ok) {
@@ -44,18 +49,11 @@ export default function FinancialReportManager() {
         for (const line of lines) {
           if (line.startsWith('data: ')) {
             try {
-              const data = JSON.parse(line.slice(6))
-
-              if (data.error) {
-                setError(prev => prev ? `${prev}\n${data.error}` : data.error)
-              } else {
-                if (data.progress !== undefined) {
-                  setProgress(data.progress)
-                }
-                if (data.message) {
-                  setMessage(data.message)
-                }
-              }
+              const data = JSON.parse(line.slice(6)) as ProgressData
+              setProgress(prev => ({
+                ...prev,
+                ...data
+              }))
             } catch (e) {
               console.error('Failed to parse SSE message:', e)
             }
@@ -63,7 +61,10 @@ export default function FinancialReportManager() {
         }
       }
     } catch (error) {
-      setError(error instanceof Error ? error.message : '予期せぬエラーが発生しました')
+      setProgress(prev => ({
+        ...prev,
+        error: error instanceof Error ? error.message : '予期せぬエラーが発生しました'
+      }))
     } finally {
       setIsLoading(false)
     }
@@ -84,15 +85,20 @@ export default function FinancialReportManager() {
           </Button>
           {isLoading && (
             <div className="flex-1">
-              <Progress value={progress} className="h-2" />
-              <p className="text-sm text-gray-500 mt-1">{message}</p>
+              <Progress value={progress.progress} className="h-2" />
+              <div className="flex justify-between text-sm text-gray-500 mt-1">
+                <span>{progress.message}</span>
+                {progress.current !== undefined && progress.total !== undefined && (
+                  <span>{progress.current} / {progress.total}</span>
+                )}
+              </div>
             </div>
           )}
         </div>
         
-        {error && (
+        {progress.error && (
           <div className="text-red-500 text-sm whitespace-pre-line">
-            {error}
+            {progress.error}
           </div>
         )}
       </CardContent>

@@ -1,24 +1,38 @@
 from fastapi import APIRouter, HTTPException
 from google.cloud import bigquery
-from datetime import datetime, date
+from google.oauth2 import service_account
+import os
+from dotenv import load_dotenv
 
 router = APIRouter()
 
+def get_bigquery_client():
+    load_dotenv()
+    try:
+        credentials = service_account.Credentials.from_service_account_file(
+            os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+        )
+        return bigquery.Client(credentials=credentials, project=os.getenv('GOOGLE_CLOUD_PROJECT'))
+    except Exception as e:
+        print(f"Error initializing BigQuery client: {str(e)}")
+        raise HTTPException(status_code=500, detail="データベース接続エラー")
+
 @router.get("/monthly/{year}/{month}")
 async def get_monthly_earnings(year: int, month: int):
-    client = bigquery.Client()
-    
-    query = f"""
-    SELECT 
-        DATE(date) as date,
-        company_count
-    FROM `BuffetCodeClone.earnings_calendar`
-    WHERE EXTRACT(YEAR FROM date) = {year}
-    AND EXTRACT(MONTH FROM date) = {month}
-    ORDER BY date
-    """
-    
     try:
+        client = get_bigquery_client()
+        
+        query = f"""
+        SELECT 
+            DATE(announcement_date) as date,
+            COUNT(*) as company_count
+        FROM `{os.getenv('GOOGLE_CLOUD_PROJECT')}.{os.getenv('BIGQUERY_DATASET')}.earnings_calendar`
+        WHERE EXTRACT(YEAR FROM announcement_date) = {year}
+        AND EXTRACT(MONTH FROM announcement_date) = {month}
+        GROUP BY date
+        ORDER BY date
+        """
+        
         query_job = client.query(query)
         results = query_job.result()
         
@@ -31,25 +45,26 @@ async def get_monthly_earnings(year: int, month: int):
         
         return calendar_data
     except Exception as e:
+        print(f"Error in get_monthly_earnings: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.get("/daily/{date}")
 async def get_daily_earnings(date: str):
-    client = bigquery.Client()
-    
-    query = f"""
-    SELECT 
-        company_code,
-        company_name,
-        market,
-        fiscal_year,
-        quarter
-    FROM `BuffetCodeClone.earnings_companies`
-    WHERE date = '{date}'
-    ORDER BY company_code
-    """
-    
     try:
+        client = get_bigquery_client()
+        
+        query = f"""
+        SELECT 
+            code as company_code,
+            company_name,
+            market,
+            fiscal_year,
+            fiscal_quarter as quarter
+        FROM `{os.getenv('GOOGLE_CLOUD_PROJECT')}.{os.getenv('BIGQUERY_DATASET')}.earnings_calendar`
+        WHERE DATE(announcement_date) = '{date}'
+        ORDER BY company_code
+        """
+        
         query_job = client.query(query)
         results = query_job.result()
         
@@ -60,9 +75,10 @@ async def get_daily_earnings(date: str):
                 "name": row.company_name,
                 "market": row.market,
                 "fiscal_year": row.fiscal_year,
-                "quarter": row.quarter
+                "quarter": f"Q{row.quarter}"
             })
         
         return companies
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e)) 
+        print(f"Error in get_daily_earnings: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))

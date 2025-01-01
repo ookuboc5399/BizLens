@@ -11,7 +11,7 @@ import {
   TableRow,
 } from './ui/table'
 import { getFinancialData, collectData } from '../api/admin'
-import { useToast } from '@/hooks/use-toast'
+import { useToast } from '../hooks/use-toast'
 import FinancialReportManager from './FinancialReportManager'
 
 interface Company {
@@ -19,6 +19,10 @@ interface Company {
   company_name: string;
   sector: string;
   industry: string;
+}
+
+interface FinancialDataResponse {
+  companies: Company[];
 }
 
 export default function AdminDashboard() {
@@ -34,7 +38,7 @@ export default function AdminDashboard() {
   const fetchCompanies = async () => {
     setLoading(true);
     try {
-      const data = await getFinancialData();
+      const data = await getFinancialData() as FinancialDataResponse;
       setCompanies(data.companies);
     } catch (error) {
       toast({
@@ -49,7 +53,7 @@ export default function AdminDashboard() {
   const handleCollectData = async () => {
     if (!symbol) {
       toast({
-        variant: "warning",
+        variant: "destructive",
         title: "警告",
         description: "証券コードを入力してください"
       })

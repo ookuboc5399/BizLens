@@ -1,297 +1,118 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import { Input } from '../components/ui/input';
 import { Button } from '../components/ui/button';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
-
-const API_BASE_URL = '/api';
+import { Progress } from '../components/ui/progress';
 
 interface Company {
-  company_name: string;
   ticker: string;
+  company_name: string;
   sector: string;
   industry: string;
-  country: string;
-  website: string;
-  description: string;
-  market_cap: number;
-  employees: number;
-}
-
-interface SearchResponse {
-  companies: Company[];
-  total: number;
-  page: number;
-  page_size: number;
-  total_pages: number;
 }
 
 function CompanySearch() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
-  const [results, setResults] = useState<SearchResponse | null>(null);
-  const [suggestions, setSuggestions] = useState<Company[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [companies, setCompanies] = useState<Company[]>([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(-1);
-  const searchRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
-        setShowSuggestions(false);
-      }
-    };
+  const handleSearch = async () => {
+    if (!searchTerm.trim()) return;
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  useEffect(() => {
-    const fetchSuggestions = async () => {
-      if (searchTerm.length < 2) {
-        setSuggestions([]);
-        setShowSuggestions(false);
-        return;
-      }
-
-      try {
-        const response = await fetch(
-          `${API_BASE_URL}/companies/search?query=${encodeURIComponent(searchTerm)}&page_size=5`
-        );
-        
-        if (!response.ok) {
-          throw new Error('検索に失敗しました');
-        }
-        
-        const data: SearchResponse = await response.json();
-        setSuggestions(data.companies);
-        setShowSuggestions(true);
-        setSelectedIndex(-1);
-      } catch (error) {
-        console.error('Suggestion fetch failed:', error);
-      }
-    };
-
-    const debounceTimer = setTimeout(fetchSuggestions, 300);
-    return () => clearTimeout(debounceTimer);
-  }, [searchTerm]);
-
-  const handleSearch = async (e?: React.FormEvent) => {
-    if (e) {
-      e.preventDefault();
-    }
-    if (!searchTerm) return;
-    
-    setIsLoading(true);
-    setError(null);
-    setShowSuggestions(false);
-    
     try {
-      const response = await fetch(
-        `${API_BASE_URL}/companies/search?query=${encodeURIComponent(searchTerm)}`
-      );
-      
+      setLoading(true);
+      setError(null);
+
+      const response = await fetch(`/api/companies/search?query=${encodeURIComponent(searchTerm)}`);
       if (!response.ok) {
-        throw new Error('検索に失敗しました');
+        const errorData = await response.json();
+        throw new Error(errorData.detail || '検索に失敗しました');
       }
-      
-      const data: SearchResponse = await response.json();
-      setResults(data);
+
+      const data = await response.json();
+      setCompanies(data.companies || []);
+
     } catch (error) {
-      console.error('Search failed:', error);
       setError(error instanceof Error ? error.message : '検索中にエラーが発生しました');
+      setCompanies([]);
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (!showSuggestions || suggestions.length === 0) {
-      if (e.key === 'Enter') {
-        handleSearch();
-      }
-      return;
-    }
-
-    switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault();
-        setSelectedIndex(prev => 
-          prev < suggestions.length - 1 ? prev + 1 : prev
-        );
-        break;
-      case 'ArrowUp':
-        e.preventDefault();
-        setSelectedIndex(prev => prev > 0 ? prev - 1 : -1);
-        break;
-      case 'Enter':
-        e.preventDefault();
-        if (selectedIndex >= 0) {
-          handleSuggestionClick(suggestions[selectedIndex]);
-        } else {
-          handleSearch();
-        }
-        break;
-      case 'Escape':
-        setShowSuggestions(false);
-        setSelectedIndex(-1);
-        break;
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSearch();
     }
   };
 
-  const handleSuggestionClick = (company: Company) => {
-    setSearchTerm(company.company_name);
-    setShowSuggestions(false);
-    setSelectedIndex(-1);
-    navigate(`/company/${company.ticker}`);
+  const handleCompanyClick = (ticker: string) => {
+    navigate(`/company/${ticker}`);
   };
 
   return (
-    <div className="space-y-8">
-      <h1 className="text-2xl font-bold text-white">企業検索</h1>
-
+    <div className="max-w-6xl mx-auto p-4 space-y-8">
       <Card>
         <CardHeader>
-          <CardTitle>企業名または証券コードで検索</CardTitle>
+          <CardTitle>企業検索</CardTitle>
         </CardHeader>
-        <CardContent>
-          <div className="relative" ref={searchRef}>
-            <form 
-              onSubmit={handleSearch} 
-              autoComplete="off" 
-              role="search" 
-              data-search-form="true"
-              data-lpignore="true"
-              noValidate
-            >
-              <div className="flex gap-4">
-                <div className="flex-1 max-w-md">
-                  <input
-                    type="text"
-                    name="search"
-                    placeholder="企業名または証券コードを入力"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    className="w-full h-10 px-3 py-2 bg-background text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border border-input rounded-md"
-                    autoComplete="off"
-                    autoCorrect="false"
-                    autoCapitalize="off"
-                    spellCheck="false"
-                    inputMode="text"
-                    results={0}
-                    data-form-type="other"
-                    data-lpignore="true"
-                    role="combobox"
-                    aria-autocomplete="list"
-                    aria-expanded={showSuggestions}
-                    aria-controls="company-search-suggestions"
-                    aria-activedescendant={selectedIndex >= 0 ? `suggestion-${selectedIndex}` : undefined}
-                  />
-                  {showSuggestions && suggestions.length > 0 && (
-                    <div 
-                      id="company-search-suggestions"
-                      role="listbox"
-                      className="absolute z-10 w-full mt-1 bg-gray-900 border border-gray-700 rounded-md shadow-lg overflow-hidden"
-                    >
-                      {suggestions.map((company, index) => (
-                        <div
-                          key={company.ticker}
-                          id={`suggestion-${index}`}
-                          role="option"
-                          aria-selected={index === selectedIndex}
-                          className={`p-3 cursor-pointer border-b border-gray-800 last:border-b-0 ${
-                            index === selectedIndex ? 'bg-blue-900/30' : 'hover:bg-gray-800'
-                          }`}
-                          onClick={() => handleSuggestionClick(company)}
-                          onMouseEnter={() => setSelectedIndex(index)}
-                        >
-                          <div className="flex items-center gap-2">
-                            <span className="bg-gray-800 px-2 py-1 rounded text-sm text-gray-300 min-w-[4rem] text-center">
-                              {company.ticker}
-                            </span>
-                            <span className="text-gray-100 font-medium flex-1 truncate">
-                              {company.company_name}
-                            </span>
-                          </div>
-                          <div className="mt-1 text-sm text-gray-500 pl-[4.5rem]">
-                            {company.sector}
-                          </div>
-                        </div>
-                      ))}
-                      <div className="p-2 bg-gray-800 border-t border-gray-700 text-sm text-gray-400 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <span className="flex items-center gap-1">
-                            <kbd className="px-1.5 py-0.5 text-xs bg-gray-700 rounded">↑↓</kbd>
-                            <span>選択</span>
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <kbd className="px-1.5 py-0.5 text-xs bg-gray-700 rounded">Enter</kbd>
-                            <span>決定</span>
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <kbd className="px-1.5 py-0.5 text-xs bg-gray-700 rounded">Esc</kbd>
-                            <span>閉じる</span>
-                          </span>
-                        </div>
-                        <div className="text-xs text-gray-500">
-                          {suggestions.length}件の候補
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                <Button type="submit" disabled={isLoading}>
-                  {isLoading ? '検索中...' : '検索'}
-                </Button>
-              </div>
-            </form>
+        <CardContent className="space-y-4">
+          <div className="flex gap-2">
+            <Input
+              type="text"
+              placeholder="企業名、証券コードで検索"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyPress={handleKeyPress}
+              className="flex-1"
+            />
+            <Button onClick={handleSearch} disabled={loading}>
+              検索
+            </Button>
           </div>
+
+          {loading && (
+            <div className="space-y-2">
+              <Progress value={undefined} className="w-full" />
+              <p className="text-sm text-muted-foreground">検索中...</p>
+            </div>
+          )}
+
           {error && (
-            <p className="text-red-500 mt-2">{error}</p>
+            <p className="text-red-500">{error}</p>
+          )}
+
+          {companies.length > 0 && (
+            <div className="space-y-4">
+              {companies.map((company) => (
+                <Card
+                  key={company.ticker}
+                  className="cursor-pointer hover:bg-gray-50"
+                  onClick={() => handleCompanyClick(company.ticker)}
+                >
+                  <CardContent className="pt-6">
+                    <div>
+                      <h3 className="font-semibold">
+                        {company.company_name} ({company.ticker})
+                      </h3>
+                      <p className="text-sm text-gray-500">
+                        {company.sector} - {company.industry}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
+
+          {!loading && !error && companies.length === 0 && searchTerm && (
+            <p className="text-gray-500">検索結果が見つかりませんでした</p>
           )}
         </CardContent>
       </Card>
-
-      {results && results.companies.length > 0 && (
-        <Card>
-          <CardHeader>
-            <CardTitle>
-              検索結果 ({results.total}件中 {results.companies.length}件表示)
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>証券コード</TableHead>
-                  <TableHead>企業名</TableHead>
-                  <TableHead>業種</TableHead>
-                  <TableHead>時価総額</TableHead>
-                  <TableHead>従業員数</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {results.companies.map((company) => (
-                  <TableRow
-                    key={company.ticker}
-                    className="cursor-pointer hover:bg-gray-700"
-                    onClick={() => navigate(`/company/${company.ticker}`)}
-                  >
-                    <TableCell>{company.ticker}</TableCell>
-                    <TableCell>{company.company_name}</TableCell>
-                    <TableCell>{company.sector}</TableCell>
-                    <TableCell>{(company.market_cap / 1000000000).toFixed(1)}B円</TableCell>
-                    <TableCell>{company.employees?.toLocaleString() ?? '-'}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
-      )}
     </div>
   );
 }

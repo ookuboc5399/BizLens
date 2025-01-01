@@ -1,18 +1,14 @@
-import { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
-import { format, addMonths, startOfMonth, endOfMonth, eachDayOfInterval } from "date-fns";
-import { ja } from "date-fns/locale";
+import React, { useState, useEffect } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import { Button } from '../components/ui/button';
+import { Progress } from '../components/ui/progress';
 
-interface DailyCount {
+interface EarningsData {
   date: string;
   count: number;
 }
 
-interface MonthlyData {
-  [date: string]: DailyCount;
-}
-
-interface Company {
+interface CompanyEarnings {
   code: string;
   name: string;
   market: string;
@@ -20,177 +16,199 @@ interface Company {
   quarter: string;
 }
 
-export default function EarningsCalendar() {
-  const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [monthlyData, setMonthlyData] = useState<{ [key: string]: { [date: string]: DailyCount } }>({});
-  const [selectedCompanies, setSelectedCompanies] = useState<Company[]>([]);
+function EarningsCalendar() {
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
+  const [monthlyData, setMonthlyData] = useState<{ [key: string]: EarningsData }>({});
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [companies, setCompanies] = useState<CompanyEarnings[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchMonthlyData = async () => {
-      const months = [currentMonth, addMonths(currentMonth, 1)];
-      const newData: { [key: string]: { [date: string]: DailyCount } } = {};
+  const fetchMonthlyData = async (year: number, month: number) => {
+    try {
+      setLoading(true);
+      setError(null);
 
-      for (const month of months) {
-        const year = month.getFullYear();
-        const monthNum = month.getMonth() + 1;
-        try {
-          console.log(`Fetching data for ${year}-${monthNum}`);
-          const response = await fetch(`http://localhost:8000/api/companies/earnings/monthly/${year}/${monthNum}`);
-          const data = await response.json();
-          console.log(`Received data for ${year}-${monthNum}:`, data);
-          newData[`${year}-${monthNum}`] = data as MonthlyData;
-        } catch (error) {
-          console.error(`Failed to fetch data for ${year}-${monthNum}:`, error);
-        }
+      const response = await fetch(`/api/earnings/monthly/${year}/${month}`);
+      if (!response.ok) {
+        throw new Error('決算データの取得に失敗しました');
       }
 
-      setMonthlyData(newData);
-    };
-
-    fetchMonthlyData();
-  }, [currentMonth]);
-
-  const handleDateClick = async (date: string) => {
-    setSelectedDate(date);
-    try {
-      console.log(`Fetching companies for date: ${date}`);
-      const response = await fetch(`http://localhost:8000/api/companies/earnings/daily/${date}`);
-      const companies = await response.json();
-      console.log(`Received companies:`, companies);
-      setSelectedCompanies(companies);
+      const data = await response.json();
+      setMonthlyData(data);
     } catch (error) {
-      console.error('Failed to fetch companies:', error);
+      setError(error instanceof Error ? error.message : '予期せぬエラーが発生しました');
+      setMonthlyData({});
+    } finally {
+      setLoading(false);
     }
   };
 
-  const renderCalendarGrid = (month: Date) => {
-    const start = startOfMonth(month);
-    const end = endOfMonth(month);
-    const days = eachDayOfInterval({ start, end });
-    const year = month.getFullYear();
-    const monthNum = month.getMonth() + 1;
-    const monthKey = `${year}-${monthNum}`;
-    const monthData = monthlyData[monthKey] || {};
+  const fetchDailyData = async (date: string) => {
+    try {
+      setLoading(true);
+      setError(null);
 
-    // 週の行を作成
-    const weeks: (Date | null)[][] = [];
-    let currentWeek: (Date | null)[] = [];
-
-    // 月の最初の日の前に空白を追加
-    const firstDayOfWeek = start.getDay();
-    for (let i = 0; i < firstDayOfWeek; i++) {
-      currentWeek.push(null);
-    }
-
-    days.forEach(day => {
-      if (currentWeek.length === 7) {
-        weeks.push(currentWeek);
-        currentWeek = [];
+      const response = await fetch(`/api/earnings/daily/${date}`);
+      if (!response.ok) {
+        throw new Error('企業データの取得に失敗しました');
       }
-      currentWeek.push(day);
-    });
 
-    // 最後の週の残りを空白で埋める
-    while (currentWeek.length < 7) {
-      currentWeek.push(null);
+      const data = await response.json();
+      setCompanies(data);
+    } catch (error) {
+      setError(error instanceof Error ? error.message : '予期せぬエラーが発生しました');
+      setCompanies([]);
+    } finally {
+      setLoading(false);
     }
-    weeks.push(currentWeek);
+  };
 
-    return (
-      <div className="grid grid-cols-7 gap-1">
-        {/* 曜日のヘッダー */}
-        {['日', '月', '火', '水', '木', '金', '土'].map((day, i) => (
+  useEffect(() => {
+    fetchMonthlyData(currentYear, currentMonth);
+  }, [currentYear, currentMonth]);
+
+  const handleDateClick = (date: string) => {
+    setSelectedDate(date);
+    fetchDailyData(date);
+  };
+
+  const handleMonthChange = (increment: number) => {
+    let newMonth = currentMonth + increment;
+    let newYear = currentYear;
+
+    if (newMonth > 12) {
+      newMonth = 1;
+      newYear += 1;
+    } else if (newMonth < 1) {
+      newMonth = 12;
+      newYear -= 1;
+    }
+
+    setCurrentMonth(newMonth);
+    setCurrentYear(newYear);
+  };
+
+  const renderCalendar = () => {
+    const firstDay = new Date(currentYear, currentMonth - 1, 1);
+    const lastDay = new Date(currentYear, currentMonth, 0);
+    const days = [];
+    const dayOfWeek = ['日', '月', '火', '水', '木', '金', '土'];
+
+    // 曜日ヘッダー
+    days.push(
+      <div key="header" className="grid grid-cols-7 gap-1 mb-2">
+        {dayOfWeek.map((day, index) => (
           <div
             key={day}
-            className={`text-center p-2 font-bold ${
-              i === 0 ? 'text-red-500' : i === 6 ? 'text-blue-500' : ''
+            className={`text-center py-2 ${
+              index === 0 ? 'text-red-500' : index === 6 ? 'text-blue-500' : ''
             }`}
           >
             {day}
           </div>
         ))}
-
-        {/* 日付のグリッド */}
-        {weeks.map((week, weekIndex) =>
-          week.map((day, dayIndex) => {
-            if (!day) return <div key={`empty-${weekIndex}-${dayIndex}`} className="p-2" />;
-
-            const dateStr = format(day, 'yyyy-MM-dd');
-            const dayData = monthData[dateStr];
-            const hasEarnings = dayData && dayData.count > 0;
-            const isSelected = dateStr === selectedDate;
-
-            return (
-              <div
-                key={dateStr}
-                onClick={() => hasEarnings && handleDateClick(dateStr)}
-                className={`
-                  p-2 text-center border rounded relative
-                  ${hasEarnings ? 'cursor-pointer hover:bg-gray-100' : 'bg-gray-50'}
-                  ${isSelected ? 'ring-2 ring-blue-500' : ''}
-                  ${dayIndex === 0 ? 'text-red-500' : dayIndex === 6 ? 'text-blue-500' : ''}
-                `}
-              >
-                <div className="font-medium">{format(day, 'd')}</div>
-                {hasEarnings && (
-                  <div className={`
-                    text-xs font-semibold rounded-full px-2 py-1 mt-1
-                    ${dayData.count > 10 ? 'bg-blue-500 text-white' : 'bg-blue-100 text-blue-700'}
-                  `}>
-                    {dayData.count}社
-                  </div>
-                )}
-              </div>
-            );
-          })
-        )}
       </div>
     );
+
+    // 前月の日付を埋める
+    const firstDayOfWeek = firstDay.getDay();
+    for (let i = 0; i < firstDayOfWeek; i++) {
+      days.push(
+        <div key={`prev-${i}`} className="text-gray-400 p-2 text-center">
+          {new Date(currentYear, currentMonth - 1, -firstDayOfWeek + i + 1).getDate()}
+        </div>
+      );
+    }
+
+    // 当月の日付
+    for (let date = 1; date <= lastDay.getDate(); date++) {
+      const dateStr = `${currentYear}-${String(currentMonth).padStart(2, '0')}-${String(
+        date
+      ).padStart(2, '0')}`;
+      const dayData = monthlyData[dateStr];
+      const isSelected = dateStr === selectedDate;
+
+      days.push(
+        <div
+          key={date}
+          onClick={() => handleDateClick(dateStr)}
+          className={`p-2 text-center cursor-pointer transition-colors ${
+            isSelected
+              ? 'bg-blue-500 text-white'
+              : dayData
+              ? 'bg-blue-100 hover:bg-blue-200'
+              : 'hover:bg-gray-100'
+          }`}
+        >
+          <div>{date}</div>
+          {dayData && <div className="text-xs">{dayData.count}社</div>}
+        </div>
+      );
+    }
+
+    return <div className="grid grid-cols-7 gap-1">{days}</div>;
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <div className="grid grid-cols-2 gap-4">
-        {[currentMonth, addMonths(currentMonth, 1)].map((month) => (
-          <Card key={month.toISOString()}>
-            <CardHeader>
-              <CardTitle>{format(month, 'yyyy年M月', { locale: ja })}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {renderCalendarGrid(month)}
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      {selectedDate && selectedCompanies.length > 0 && (
-        <Card className="mt-4">
-          <CardHeader>
-            <CardTitle>{selectedDate} の決算発表企業</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid gap-2">
-              {selectedCompanies.map((company, index) => (
-                <div key={index} className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <span className="font-bold text-lg">{company.name}</span>
-                      <span className="ml-2 text-sm text-gray-500">({company.code})</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <span className="px-2 py-1 bg-gray-100 rounded text-sm">{company.market}</span>
-                      <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">
-                        {company.fiscal_year}年度 {company.quarter}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
+    <div className="max-w-6xl mx-auto p-4 space-y-8">
+      <Card>
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <CardTitle>決算カレンダー</CardTitle>
+            <div className="flex items-center gap-4">
+              <Button onClick={() => handleMonthChange(-1)} variant="outline">
+                前月
+              </Button>
+              <div className="text-lg font-semibold">
+                {currentYear}年{currentMonth}月
+              </div>
+              <Button onClick={() => handleMonthChange(1)} variant="outline">
+                翌月
+              </Button>
             </div>
-          </CardContent>
-        </Card>
-      )}
+          </div>
+        </CardHeader>
+        <CardContent>
+          {loading && (
+            <div className="space-y-2">
+              <Progress value={undefined} className="w-full" />
+              <p className="text-sm text-muted-foreground">データを読み込み中...</p>
+            </div>
+          )}
+
+          {error && <p className="text-red-500 mb-4">{error}</p>}
+
+          {renderCalendar()}
+
+          {selectedDate && companies.length > 0 && (
+            <div className="mt-8">
+              <h3 className="text-lg font-semibold mb-4">{selectedDate} の決算発表企業</h3>
+              <div className="space-y-2">
+                {companies.map((company) => (
+                  <Card key={company.code}>
+                    <CardContent className="p-4">
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <h4 className="font-semibold">
+                            {company.name} ({company.code})
+                          </h4>
+                          <p className="text-sm text-gray-500">
+                            {company.market} - {company.fiscal_year}年度{company.quarter}
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
     </div>
   );
 }
+
+export default EarningsCalendar;

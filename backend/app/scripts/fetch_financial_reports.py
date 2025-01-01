@@ -1,237 +1,164 @@
 import os
+import sys
 import asyncio
-from datetime import datetime, timedelta
+from datetime import datetime, timezone
 import aiohttp
 import logging
 from bs4 import BeautifulSoup
-from ..services.financial_report_service import FinancialReportService
-from ..models.financial_report import FinancialReportCreate
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+import re
+
+# backendディレクトリをPythonパスに追加
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+from app.services.bigquery_service import BigQueryService
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class FinancialReportCollector:
     def __init__(self):
-        self.financial_report_service = FinancialReportService()
+        self.bigquery_service = BigQueryService()
         self.session = None
-        self.driver = None
 
     async def initialize(self):
-        self.session = aiohttp.ClientSession()
-        chrome_options = Options()
-        chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--no-sandbox')
-        chrome_options.add_argument('--disable-dev-shm-usage')
-        self.driver = webdriver.Chrome(options=chrome_options)
-
+        """HTTPセッションの初期化"""
+        self.session = aiohttp.ClientSession(headers={
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36'
+        })
+        
     async def close(self):
+        """セッションのクローズ"""
         if self.session:
             await self.session.close()
-        if self.driver:
-            self.driver.quit()
 
-    async def fetch_edinet_reports(self, company_id: str, ticker: str):
-        """EDINETから決算資料を取得"""
-        try:
-            # EDINETのAPIエンドポイント
-            base_url = "https://disclosure.edinet-fsa.go.jp/api/v1"
-            
-            # 直近1年分の書類を取得
-            end_date = datetime.now()
-            start_date = end_date - timedelta(days=365)
-            
-            # 書類一覧APIを呼び出し
-            params = {
-                "date": end_date.strftime("%Y-%m-%d"),
-                "type": 2,  # 通期・四半期報告書等
-                "from": start_date.strftime("%Y-%m-%d"),
-                "to": end_date.strftime("%Y-%m-%d")
-            }
-            
-            async with self.session.get(f"{base_url}/documents.json", params=params) as response:
-                if response.status != 200:
-                    logger.error(f"EDINET API error: {response.status}")
-                    return
-                
-                data = await response.json()
-                
-                for doc in data.get("results", []):
-                    if doc.get("secCode") == ticker:
-                        # 書類の詳細情報を取得
-                        doc_id = doc["docID"]
-                        
-                        # PDFのURLを生成
-                        pdf_url = f"{base_url}/documents/{doc_id}/pdf"
-                        
-                        # 決算期を解析
-                        fiscal_info = self._parse_fiscal_info(doc["docDescription"])
-                        
-                        if fiscal_info:
-                            report = FinancialReportCreate(
-                                company_id=company_id,
-                                fiscal_year=fiscal_info["year"],
-                                quarter=fiscal_info["quarter"],
-                                report_type="有価証券報告書",
-                                file_url=pdf_url,
-                                source="EDINET",
-                                report_date=datetime.strptime(doc["submitDateTime"], "%Y-%m-%d %H:%M")
-                            )
-                            
-                            await self.financial_report_service.create_report(report)
-                            logger.info(f"Created EDINET report for {ticker}: {fiscal_info}")
-
-        except Exception as e:
-            logger.error(f"Error fetching EDINET reports for {ticker}: {str(e)}")
-
-    async def fetch_tdnet_reports(self, company_id: str, ticker: str):
+    async def fetch_tdnet_reports(self):
         """TDnetから決算資料を取得"""
         try:
-            # TDnetのURLを構築
-            url = f"https://www.release.tdnet.info/inbs/I_list_{ticker}.html"
+            # TDnetのベースURL
+            base_url = "https://www.release.tdnet.info"
             
-            # Seleniumを使用してページを取得
-            self.driver.get(url)
+            # 検索URLの構築
+            search_url = f"{base_url}/index.html"
+            params = {
+                'date1': '20241202',  # 2024年12月2日
+                'date2': '20250101',  # 2025年1月1日
+                'keyword': '決算説明資料',
+                'searchMode': '1',  # 全文検索モード
+                'output': 'html',  # HTML形式で出力
+                'maxCount': '100'  # 最大表示件数
+            }
+            logger.info(f"Accessing TDnet search page with params: {params}")
             
-            # 決算短信のリンクを探す
-            wait = WebDriverWait(self.driver, 10)
-            links = wait.until(EC.presence_of_all_elements_located((By.TAG_NAME, "a")))
-            
-            for link in links:
-                text = link.text
-                if "決算短信" in text:
-                    href = link.get_attribute("href")
-                    fiscal_info = self._parse_tdnet_title(text)
+            try:
+                async with self.session.get(search_url, params=params, timeout=30) as response:
+                    if response.status != 200:
+                        logger.error(f"TDnet error: {response.status}")
+                        return
                     
+                    html = await response.text(encoding='utf-8')
+                    logger.debug(f"Response HTML: {html[:1000]}")  # デバッグ用に最初の1000文字を出力
+                    
+            except asyncio.TimeoutError:
+                logger.error("Timeout while accessing TDnet")
+                return
+            except aiohttp.ClientError as e:
+                logger.error(f"Network error while accessing TDnet: {str(e)}")
+                return
+            
+            soup = BeautifulSoup(html, 'html.parser')
+            
+            # 検索結果のテーブルを探す
+            found_reports = 0
+            main_table = soup.find('table', class_='list-table')
+            if not main_table:
+                logger.info(f"No results table found")
+                return
+                
+            for row in main_table.find_all('tr')[1:]:  # ヘッダー行をスキップ
+                try:
+                    cells = row.find_all('td')
+                    if len(cells) < 5:  # 日付、時間、コード、会社名、タイトルの5列が必要
+                        continue
+                        
+                    # 証券コード、会社名、日付、時間を取得
+                    code = cells[2].text.strip()
+                    company_name = cells[3].text.strip()
+                    date_str = cells[0].text.strip()
+                    time_str = cells[1].text.strip()
+                    
+                    logger.info(f"Processing: {company_name} ({code})")
+                    
+                    # タイトルとPDFリンクを取得
+                    title_cell = cells[4]
+                    title_link = title_cell.find('a')
+                    if not title_link:
+                        continue
+                    
+                    text = title_link.text.strip()
+                    href = title_link.get('href')
+                    if not href:
+                        continue
+                    
+                    # PDFのURLを構築
+                    if not href.startswith('http'):
+                        href = f"{base_url}/inbs/{href.lstrip('/')}"
+                    
+                    logger.info(f"Found PDF for {company_name} ({code}): {text}")
+                    
+                    # タイトルから決算期情報を抽出
+                    fiscal_info = self._parse_tdnet_title(text)
                     if fiscal_info:
-                        report = FinancialReportCreate(
-                            company_id=company_id,
+                        # 日付と時間を組み合わせて datetime オブジェクトを作成
+                        report_datetime = datetime.strptime(f"{date_str} {time_str}", "%Y/%m/%d %H:%M")
+                        
+                        await self._save_report(
+                            company_id=code,  # 証券コードをcompany_idとして使用
+                            company_name=company_name,  # 会社名を追加
                             fiscal_year=fiscal_info["year"],
                             quarter=fiscal_info["quarter"],
-                            report_type="決算短信",
+                            report_type="決算説明資料",
                             file_url=href,
                             source="TDnet",
-                            report_date=datetime.now()
+                            report_date=report_datetime
                         )
-                        
-                        await self.financial_report_service.create_report(report)
-                        logger.info(f"Created TDnet report for {ticker}: {fiscal_info}")
-
-        except Exception as e:
-            logger.error(f"Error fetching TDnet reports for {ticker}: {str(e)}")
-
-    async def fetch_company_website_reports(self, company_id: str, ticker: str, website: str):
-        """企業の公式ウェブサイトから決算資料を取得"""
-        try:
-            if not website:
-                return
-
-            # Seleniumを使用してページを取得
-            self.driver.get(website)
-            
-            # IR情報や決算情報へのリンクを探す
-            wait = WebDriverWait(self.driver, 10)
-            links = wait.until(EC.presence_of_all_elements_located((By.TAG_NAME, "a")))
-            
-            ir_keywords = ["IR情報", "投資家情報", "決算情報", "財務情報"]
-            ir_link = None
-            
-            for link in links:
-                text = link.text
-                if any(keyword in text for keyword in ir_keywords):
-                    ir_link = link
-                    break
-            
-            if ir_link:
-                ir_link.click()
+                        found_reports += 1
+                        logger.info(f"Saved 決算説明資料 for {company_name} ({code}): {fiscal_info}")
                 
-                # 決算資料へのリンクを探す
-                wait = WebDriverWait(self.driver, 10)
-                doc_links = wait.until(EC.presence_of_all_elements_located((By.TAG_NAME, "a")))
-                
-                for link in doc_links:
-                    text = link.text
-                    if "決算" in text and ("資料" in text or "説明" in text):
-                        href = link.get_attribute("href")
-                        fiscal_info = self._parse_company_website_title(text)
-                        
-                        if fiscal_info:
-                            report = FinancialReportCreate(
-                                company_id=company_id,
-                                fiscal_year=fiscal_info["year"],
-                                quarter=fiscal_info["quarter"],
-                                report_type="決算説明資料",
-                                file_url=href,
-                                source="企業ウェブサイト",
-                                report_date=datetime.now()
-                            )
-                            
-                            await self.financial_report_service.create_report(report)
-                            logger.info(f"Created company website report for {ticker}: {fiscal_info}")
-
+                except Exception as e:
+                    logger.error(f"Error processing row: {str(e)}")
+                    continue
+            
+            logger.info(f"Successfully processed {found_reports} reports")
+            
         except Exception as e:
-            logger.error(f"Error fetching company website reports for {ticker}: {str(e)}")
+            logger.error(f"Error fetching TDnet reports: {str(e)}")
 
-    def _parse_fiscal_info(self, description: str) -> dict:
-        """有価証券報告書の説明から決算期情報を抽出"""
-        try:
-            import re
-            
-            # 通期の場合
-            annual_match = re.search(r"第(\d+)期\s*有価証券報告書", description)
-            if annual_match:
-                return {
-                    "year": str(datetime.now().year),
-                    "quarter": "4"
-                }
-            
-            # 四半期の場合
-            quarter_match = re.search(r"第(\d+)期第(\d)四半期", description)
-            if quarter_match:
-                return {
-                    "year": str(datetime.now().year),
-                    "quarter": quarter_match.group(2)
-                }
-            
-            return None
-        except Exception:
-            return None
+    async def _save_report(self, company_id: str, company_name: str, fiscal_year: str, quarter: str,
+                          report_type: str, file_url: str, source: str, report_date: datetime):
+        """決算資料をBigQueryに保存"""
+        report_data = {
+            "company_id": company_id,
+            "company_name": company_name,
+            "fiscal_year": fiscal_year,
+            "quarter": quarter,
+            "report_type": report_type,
+            "file_url": file_url,
+            "source": source,
+            "report_date": report_date.isoformat(),
+            "created_at": datetime.now(timezone.utc).isoformat(),
+            "updated_at": datetime.now(timezone.utc).isoformat()
+        }
+        
+        table_id = f"{self.bigquery_service.project_id}.{self.bigquery_service.dataset}.financial_reports"
+        errors = self.bigquery_service.client.insert_rows_json(table_id, [report_data])
+        if errors:
+            logger.error(f"Error inserting rows: {errors}")
+            raise Exception(f"Failed to insert rows: {errors}")
+        logger.info(f"Created {source} report for {company_name} ({company_id}): {fiscal_year}Q{quarter}")
 
     def _parse_tdnet_title(self, title: str) -> dict:
         """TDnetのタイトルから決算期情報を抽出"""
         try:
-            import re
-            
-            # 例: "2024年3月期 第2四半期決算短信"
-            match = re.search(r"(\d{4})年.*?第(\d)四半期", title)
-            if match:
-                return {
-                    "year": match.group(1),
-                    "quarter": match.group(2)
-                }
-            
-            # 通期の場合
-            annual_match = re.search(r"(\d{4})年.*?決算短信", title)
-            if annual_match:
-                return {
-                    "year": annual_match.group(1),
-                    "quarter": "4"
-                }
-            
-            return None
-        except Exception:
-            return None
-
-    def _parse_company_website_title(self, title: str) -> dict:
-        """企業ウェブサイトのタイトルから決算期情報を抽出"""
-        try:
-            import re
-            
-            # 四半期の場合
+            # 四半期の場合（決算短信、決算説明資料など）
             quarter_match = re.search(r"(\d{4})年.*?第(\d)四半期", title)
             if quarter_match:
                 return {
@@ -239,8 +166,8 @@ class FinancialReportCollector:
                     "quarter": quarter_match.group(2)
                 }
             
-            # 通期の場合
-            annual_match = re.search(r"(\d{4})年.*?期末|通期", title)
+            # 通期の場合（決算短信、決算説明資料など）
+            annual_match = re.search(r"(\d{4})年.*?期.*?(決算|通期)", title)
             if annual_match:
                 return {
                     "year": annual_match.group(1),
@@ -252,36 +179,22 @@ class FinancialReportCollector:
             return None
 
 async def main():
-    collector = FinancialReportCollector()
-    await collector.initialize()
-    
+    collector = None
     try:
-        # テスト用の企業コード
-        test_companies = [
-            {"id": "test1", "ticker": "7203", "website": "https://global.toyota/jp/"},
-            {"id": "test2", "ticker": "6758", "website": "https://www.sony.co.jp/"},
-            {"id": "test3", "ticker": "9984", "website": "https://group.softbank/"}
-        ]
+        collector = FinancialReportCollector()
+        await collector.initialize()
         
-        for company in test_companies:
-            logger.info(f"Fetching reports for {company['ticker']}")
+        # TDnetから決算説明資料を取得
+        logger.info("Fetching financial reports from TDnet")
+        await collector.fetch_tdnet_reports()
             
-            # 各ソースから決算資料を取得
-            await collector.fetch_edinet_reports(company["id"], company["ticker"])
-            await asyncio.sleep(1)  # APIレート制限を考慮
-            
-            await collector.fetch_tdnet_reports(company["id"], company["ticker"])
-            await asyncio.sleep(1)
-            
-            await collector.fetch_company_website_reports(
-                company["id"], 
-                company["ticker"], 
-                company["website"]
-            )
-            await asyncio.sleep(1)
-            
+    except Exception as e:
+        logger.error(f"Fatal error: {str(e)}")
+        raise
+        
     finally:
-        await collector.close()
+        if collector:
+            await collector.close()
 
 if __name__ == "__main__":
     asyncio.run(main())

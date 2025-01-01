@@ -1,175 +1,159 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
 import { Button } from '../components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
-
-const API_BASE_URL = '/api';
+import { Progress } from '../components/ui/progress';
+import PDFViewer from '../components/PDFViewer';
+import { useAuth } from '../hooks/useAuth';
 
 interface FinancialReport {
-  id: string;
+  company_id: string;
   fiscal_year: string;
   quarter: string;
   report_type: string;
-  file_url: string;
   source: string;
+  original_url: string;
+  gcs_path: string;
   report_date: string;
+  created_at: string;
+  signed_url: string;
 }
 
-interface Company {
-  company_name: string;
-  ticker: string;
-  sector: string;
-}
-
-export default function FinancialReportDetail() {
-  const { ticker } = useParams<{ ticker: string }>();
-  const [company, setCompany] = useState<Company | null>(null);
+function FinancialReportDetail() {
+  const { companyId } = useParams();
+  const { isAdmin } = useAuth();
   const [reports, setReports] = useState<FinancialReport[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [selectedReport, setSelectedReport] = useState<FinancialReport | null>(null);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [companyInfo, setCompanyInfo] = useState<{
+    company_name: string;
+    ticker: string;
+  } | null>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      setError(null);
+    const fetchCompanyInfo = async () => {
+      try {
+        const response = await fetch(`/api/companies/${companyId}`);
+        if (!response.ok) {
+          throw new Error('企業情報の取得に失敗しました');
+        }
+        const data = await response.json();
+        setCompanyInfo({
+          company_name: data.company_name,
+          ticker: data.ticker,
+        });
+      } catch (error) {
+        setError(error instanceof Error ? error.message : '予期せぬエラーが発生しました');
+      }
+    };
+
+    const fetchReports = async () => {
+      if (!isAdmin) {
+        setError('この機能を利用するには管理者権限が必要です');
+        return;
+      }
 
       try {
-        const [companyResponse, reportsResponse] = await Promise.all([
-          fetch(`${API_BASE_URL}/companies/${ticker}`),
-          fetch(`${API_BASE_URL}/financial-reports/${ticker}`)
-        ]);
+        setLoading(true);
+        setError(null);
 
-        if (!companyResponse.ok || !reportsResponse.ok) {
-          throw new Error('データの取得に失敗しました');
+        const response = await fetch(`/api/financial-reports/${companyId}`);
+        if (!response.ok) {
+          throw new Error('決算資料の取得に失敗しました');
         }
 
-        const [companyData, reportsData] = await Promise.all([
-          companyResponse.json(),
-          reportsResponse.json()
-        ]);
-
-        setCompany(companyData);
-        setReports(reportsData);
+        const data = await response.json();
+        setReports(data || []);
+        if (data && data.length > 0) {
+          setSelectedReport(data[0]);
+        }
       } catch (error) {
-        console.error('Error fetching data:', error);
-        setError(error instanceof Error ? error.message : 'データの取得中にエラーが発生しました');
+        setError(error instanceof Error ? error.message : '予期せぬエラーが発生しました');
       } finally {
         setLoading(false);
       }
     };
 
-    if (ticker) {
-      fetchData();
+    if (companyId) {
+      fetchCompanyInfo();
+      fetchReports();
     }
-  }, [ticker]);
+  }, [companyId, isAdmin]);
 
-  if (loading) {
+  const handleReportSelect = (report: FinancialReport) => {
+    setSelectedReport(report);
+  };
+
+  if (!isAdmin) {
     return (
-      <div className="container mx-auto py-6">
-        <div className="text-center">読み込み中...</div>
+      <div className="max-w-7xl mx-auto p-4">
+        <Card>
+          <CardContent className="p-6">
+            <p className="text-center text-red-500">この機能を利用するには管理者権限が必要です</p>
+          </CardContent>
+        </Card>
       </div>
     );
   }
-
-  if (error || !company) {
-    return (
-      <div className="container mx-auto py-6">
-        <div className="text-red-500">{error || 'データが見つかりませんでした'}</div>
-      </div>
-    );
-  }
-
-  const groupedReports = reports.reduce<Record<string, FinancialReport[]>>((acc, report) => {
-    const year = report.fiscal_year;
-    if (!acc[year]) {
-      acc[year] = [];
-    }
-    acc[year].push(report);
-    return acc;
-  }, {});
-
-  const years = Object.keys(groupedReports).sort((a, b) => Number(b) - Number(a));
 
   return (
-    <div className="container mx-auto py-6 space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-white">
-          {company.company_name} ({company.ticker}) の決算資料
-        </h1>
-      </div>
-
+    <div className="max-w-7xl mx-auto p-4 space-y-8">
       <Card>
         <CardHeader>
-          <CardTitle>企業情報</CardTitle>
+          <CardTitle>
+            {companyInfo ? `${companyInfo.company_name} (${companyInfo.ticker}) の決算資料` : '決算資料'}
+          </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <div className="text-sm text-gray-500">証券コード</div>
-              <div>{company.ticker}</div>
+          {loading && (
+            <div className="space-y-2">
+              <Progress value={undefined} className="w-full" />
+              <p className="text-sm text-muted-foreground">データを読み込み中...</p>
             </div>
-            <div>
-              <div className="text-sm text-gray-500">業種</div>
-              <div>{company.sector}</div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+          )}
 
-      <Card>
-        <CardHeader>
-          <CardTitle>決算資料一覧</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Tabs defaultValue={years[0]} className="w-full">
-            <TabsList>
-              {years.map((year) => (
-                <TabsTrigger key={year} value={year}>
-                  {year}年度
-                </TabsTrigger>
-              ))}
-            </TabsList>
-            {years.map((year) => (
-              <TabsContent key={year} value={year}>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>期間</TableHead>
-                      <TableHead>種類</TableHead>
-                      <TableHead>取得元</TableHead>
-                      <TableHead>公開日</TableHead>
-                      <TableHead>資料</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {groupedReports[year]
-                      .sort((a, b) => b.quarter.localeCompare(a.quarter))
-                      .map((report) => (
-                        <TableRow key={report.id}>
-                          <TableCell>{report.quarter}四半期</TableCell>
-                          <TableCell>{report.report_type}</TableCell>
-                          <TableCell>{report.source}</TableCell>
-                          <TableCell>{new Date(report.report_date).toLocaleDateString()}</TableCell>
-                          <TableCell>
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={() => window.open(report.file_url, '_blank')}
-                            >
-                              閲覧
-                            </Button>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                  </TableBody>
-                </Table>
-              </TabsContent>
-            ))}
-          </Tabs>
+          {error && (
+            <p className="text-red-500 mb-4">{error}</p>
+          )}
+
+          {reports.length > 0 && (
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+              <div className="lg:col-span-1 space-y-4">
+                <div className="space-y-2">
+                  {reports.map((report) => (
+                    <Button
+                      key={report.gcs_path}
+                      variant={selectedReport?.gcs_path === report.gcs_path ? "default" : "outline"}
+                      className="w-full justify-start"
+                      onClick={() => handleReportSelect(report)}
+                    >
+                      <div className="text-left">
+                        <div>{report.fiscal_year}年度 Q{report.quarter}</div>
+                        <div className="text-sm text-gray-500">{report.report_type}</div>
+                        <div className="text-xs text-gray-400">{new Date(report.report_date).toLocaleDateString()}</div>
+                      </div>
+                    </Button>
+                  ))}
+                </div>
+              </div>
+              <div className="lg:col-span-3">
+                {selectedReport && (
+                  <div className="h-[800px]">
+                    <PDFViewer url={selectedReport.signed_url} />
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {!loading && !error && reports.length === 0 && (
+            <p className="text-gray-500">決算資料が見つかりませんでした</p>
+          )}
         </CardContent>
       </Card>
     </div>
   );
 }
+
+export default FinancialReportDetail;

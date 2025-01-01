@@ -1,17 +1,21 @@
-import { Outlet } from "react-router-dom";
+import React from "react";
 import Navigation from '../Navigation';
 import AIAssistant from '../AIAssistant';
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from '../../hooks/useAuth';
 import { Link } from "react-router-dom";
 
-export function Layout() {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+export function Layout({ children }: LayoutProps) {
   const { isAdmin } = useAuth();
 
   return (
     <div className="min-h-screen bg-gray-900 dark">
       <Navigation />
       <main className="container mx-auto px-4 py-8 text-gray-100">
-        <Outlet />
+        {children}
       </main>
       <AIAssistant />
       {isAdmin && (

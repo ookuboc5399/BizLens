@@ -1,4 +1,4 @@
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, HTTPException, status, Request
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from datetime import datetime, timedelta
@@ -7,9 +7,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token", auto_error=False)
 
-def get_current_admin_user(token: str = Depends(oauth2_scheme)):
+def get_current_admin_user(request: Request, token: str = Depends(oauth2_scheme)):
+    # 開発環境では認証をスキップ
+    if os.getenv("ENV") == "development":
+        return request.state.user
+
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -28,4 +32,4 @@ def get_current_admin_user(token: str = Depends(oauth2_scheme)):
 
 def is_admin(username: str) -> bool:
     # 実際の実装ではデータベースでの確認が必要
-    return username in os.getenv("ADMIN_USERS", "").split(",") 
+    return username in os.getenv("ADMIN_USERS", "").split(",")
