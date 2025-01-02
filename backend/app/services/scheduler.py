@@ -1,6 +1,6 @@
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from datetime import datetime
-from .data_collector import DataCollector
+from .companies.data_collector import DataCollector
 from .bigquery_service import BigQueryService
 
 class DataUpdateScheduler:

@@ -1,0 +1,56 @@
+2025-01-02 11:17:19,110 - INFO - ====== WebDriver manager ======
+2025-01-02 11:17:19,302 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-02 11:17:19,308 - DEBUG - Starting new HTTPS connection (1): googlechromelabs.github.io:443
+2025-01-02 11:17:19,431 - DEBUG - https://googlechromelabs.github.io:443 "GET /chrome-for-testing/latest-patch-versions-per-build.json HTTP/1.1" 200 8974
+2025-01-02 11:17:19,433 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-02 11:17:19,434 - DEBUG - Starting new HTTPS connection (1): googlechromelabs.github.io:443
+2025-01-02 11:17:19,468 - DEBUG - https://googlechromelabs.github.io:443 "GET /chrome-for-testing/latest-patch-versions-per-build.json HTTP/1.1" 200 8974
+2025-01-02 11:17:19,469 - INFO - Driver [/Users/ookubo/.wdm/drivers/chromedriver/mac64/131.0.6778.204/chromedriver-mac-arm64/chromedriver] found in cache
+2025-01-02 11:17:19,470 - DEBUG - Skipping Selenium Manager; path to chrome driver specified in Service class: /Users/ookubo/.wdm/drivers/chromedriver/mac64/131.0.6778.204/chromedriver-mac-arm64/chromedriver
+2025-01-02 11:17:19,473 - DEBUG - Started executable: `/Users/ookubo/.wdm/drivers/chromedriver/mac64/131.0.6778.204/chromedriver-mac-arm64/chromedriver` in a child process with pid: 52699 using 0 to output -3
+2025-01-02 11:17:19,826 - DEBUG - POST http://localhost:61320/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'goog:loggingPrefs': {'browser': 'ALL'}, 'goog:chromeOptions': {'extensions': [], 'args': ['--no-sandbox', '--disable-dev-shm-usage', '--window-size=1920,1080', '--lang=ja']}}}}
+2025-01-02 11:17:19,826 - DEBUG - Starting new HTTP connection (1): localhost:61320
+2025-01-02 11:17:20,484 - DEBUG - http://localhost:61320 "POST /session HTTP/1.1" 200 0
+2025-01-02 11:17:20,487 - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"131.0.6778.205","chrome":{"chromedriverVersion":"131.0.6778.204 (52183f9e99a61056f9b78535f53d256f1516f2a0-refs/branch-heads/6778_155@{#7})","userDataDir":"/var/folders/2h/_zxvmj6d6djg0s16cqgpy6nm0000gn/T/.org.chromium.Chromium.w15A8w"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:61335"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"mac","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"ba7321dfc7144a180d9e375936a0c9f5"}} | headers=HTTPHeaderDict({'Content-Length': '893', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:17:20,496 - DEBUG - Finished Request
+2025-01-02 11:17:20,496 - INFO - === リストページアクセス ===
+2025-01-02 11:17:20,496 - DEBUG - POST http://localhost:61320/session/ba7321dfc7144a180d9e375936a0c9f5/url {'url': 'https://www.release.tdnet.info/inbs/I_list_001_20240102.html'}
+2025-01-02 11:17:20,586 - DEBUG - http://localhost:61320 "POST /session/ba7321dfc7144a180d9e375936a0c9f5/url HTTP/1.1" 200 0
+2025-01-02 11:17:20,591 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:17:20,592 - DEBUG - Finished Request
+2025-01-02 11:17:22,592 - INFO - Initial wait completed
+2025-01-02 11:17:22,593 - INFO - 
+=== ページの準備状態を確認 ===
+2025-01-02 11:17:22,594 - DEBUG - POST http://localhost:61320/session/ba7321dfc7144a180d9e375936a0c9f5/execute/sync {'script': 'return document.readyState', 'args': []}
+2025-01-02 11:17:22,596 - DEBUG - http://localhost:61320 "POST /session/ba7321dfc7144a180d9e375936a0c9f5/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:17:22,598 - DEBUG - Remote response: status=200 | data={"value":"complete"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:17:22,599 - DEBUG - Finished Request
+2025-01-02 11:17:22,599 - INFO - Document ready state: complete
+2025-01-02 11:17:22,599 - DEBUG - GET http://localhost:61320/session/ba7321dfc7144a180d9e375936a0c9f5/title {}
+2025-01-02 11:17:22,605 - DEBUG - http://localhost:61320 "GET /session/ba7321dfc7144a180d9e375936a0c9f5/title HTTP/1.1" 200 0
+2025-01-02 11:17:22,607 - DEBUG - Remote response: status=200 | data={"value":"404 Not Found"} | headers=HTTPHeaderDict({'Content-Length': '25', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:17:22,607 - DEBUG - Finished Request
+2025-01-02 11:17:22,612 - INFO - Page title: 404 Not Found
+2025-01-02 11:17:22,613 - DEBUG - POST http://localhost:61320/session/ba7321dfc7144a180d9e375936a0c9f5/elements {'using': 'tag name', 'value': 'body'}
+2025-01-02 11:17:22,618 - DEBUG - http://localhost:61320 "POST /session/ba7321dfc7144a180d9e375936a0c9f5/elements HTTP/1.1" 200 0
+2025-01-02 11:17:22,621 - DEBUG - Remote response: status=200 | data={"value":[{"element-6066-11e4-a52e-4f735466cecf":"f.C244C4CFA19E2F3E200C6C7C9A1BC5D6.d.8F6428607CD7FBC927A89DAA1C860DB3.e.2"}]} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:17:22,621 - DEBUG - Finished Request
+2025-01-02 11:17:22,621 - INFO - Body elements found: 1
+2025-01-02 11:17:22,621 - DEBUG - POST http://localhost:61320/session/ba7321dfc7144a180d9e375936a0c9f5/elements {'using': 'tag name', 'value': 'iframe'}
+2025-01-02 11:17:22,625 - DEBUG - http://localhost:61320 "POST /session/ba7321dfc7144a180d9e375936a0c9f5/elements HTTP/1.1" 200 0
+2025-01-02 11:17:22,629 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:17:22,629 - DEBUG - Finished Request
+2025-01-02 11:17:22,629 - INFO - Iframes found: 0
+2025-01-02 11:17:22,629 - DEBUG - POST http://localhost:61320/session/ba7321dfc7144a180d9e375936a0c9f5/se/log {'type': 'browser'}
+2025-01-02 11:17:22,629 - DEBUG - http://localhost:61320 "POST /session/ba7321dfc7144a180d9e375936a0c9f5/se/log HTTP/1.1" 200 0
+2025-01-02 11:17:22,633 - DEBUG - Remote response: status=200 | data={"value":[{"level":"SEVERE","message":"https://www.release.tdnet.info/inbs/I_list_001_20240102.html - Failed to load resource: the server responded with a status of 404 (Not Found)","source":"network","timestamp":1735784240570},{"level":"SEVERE","message":"https://www.release.tdnet.info/favicon.ico - Failed to load resource: the server responded with a status of 404 (Not Found)","source":"network","timestamp":1735784240758}]} | headers=HTTPHeaderDict({'Content-Length': '429', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:17:22,633 - DEBUG - Finished Request
+2025-01-02 11:17:22,633 - INFO - 
+--- JavaScript Console Logs ---
+2025-01-02 11:17:22,633 - INFO - {"level": "SEVERE", "message": "https://www.release.tdnet.info/inbs/I_list_001_20240102.html - Failed to load resource: the server responded with a status of 404 (Not Found)", "source": "network", "timestamp": 1735784240570}
+2025-01-02 11:17:22,633 - INFO - {"level": "SEVERE", "message": "https://www.release.tdnet.info/favicon.ico - Failed to load resource: the server responded with a status of 404 (Not Found)", "source": "network", "timestamp": 1735784240758}
+2025-01-02 11:17:22,633 - INFO - ページソースとスクリーンショットを保存
+2025-01-02 11:17:22,633 - DEBUG - DELETE http://localhost:61320/session/ba7321dfc7144a180d9e375936a0c9f5 {}
+2025-01-02 11:17:22,692 - DEBUG - http://localhost:61320 "DELETE /session/ba7321dfc7144a180d9e375936a0c9f5 HTTP/1.1" 200 0
+2025-01-02 11:17:22,692 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:17:22,692 - DEBUG - Finished Request

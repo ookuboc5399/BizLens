@@ -1,0 +1,937 @@
+2025-01-02 11:44:39,730 - INFO - ====== WebDriver manager ======
+2025-01-02 11:44:39,945 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-02 11:44:39,950 - DEBUG - Starting new HTTPS connection (1): googlechromelabs.github.io:443
+2025-01-02 11:44:39,987 - DEBUG - https://googlechromelabs.github.io:443 "GET /chrome-for-testing/latest-patch-versions-per-build.json HTTP/1.1" 200 8974
+2025-01-02 11:44:39,989 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-02 11:44:39,990 - DEBUG - Starting new HTTPS connection (1): googlechromelabs.github.io:443
+2025-01-02 11:44:40,024 - DEBUG - https://googlechromelabs.github.io:443 "GET /chrome-for-testing/latest-patch-versions-per-build.json HTTP/1.1" 200 8974
+2025-01-02 11:44:40,027 - INFO - Driver [/Users/ookubo/.wdm/drivers/chromedriver/mac64/131.0.6778.204/chromedriver-mac-arm64/chromedriver] found in cache
+2025-01-02 11:44:40,027 - DEBUG - Skipping Selenium Manager; path to chrome driver specified in Service class: /Users/ookubo/.wdm/drivers/chromedriver/mac64/131.0.6778.204/chromedriver-mac-arm64/chromedriver
+2025-01-02 11:44:40,030 - DEBUG - Started executable: `/Users/ookubo/.wdm/drivers/chromedriver/mac64/131.0.6778.204/chromedriver-mac-arm64/chromedriver` in a child process with pid: 53864 using 0 to output -3
+2025-01-02 11:44:40,222 - DEBUG - POST http://localhost:54044/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'goog:chromeOptions': {'extensions': [], 'args': ['--no-sandbox', '--disable-dev-shm-usage', '--window-size=1920,1080', '--lang=ja']}}}}
+2025-01-02 11:44:40,222 - DEBUG - Starting new HTTP connection (1): localhost:54044
+2025-01-02 11:44:40,848 - DEBUG - http://localhost:54044 "POST /session HTTP/1.1" 200 0
+2025-01-02 11:44:40,852 - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"131.0.6778.205","chrome":{"chromedriverVersion":"131.0.6778.204 (52183f9e99a61056f9b78535f53d256f1516f2a0-refs/branch-heads/6778_155@{#7})","userDataDir":"/var/folders/2h/_zxvmj6d6djg0s16cqgpy6nm0000gn/T/.org.chromium.Chromium.kmrvUO"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:54057"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"mac","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"f071a01783b0f324d4b12615a40e84df"}} | headers=HTTPHeaderDict({'Content-Length': '893', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:40,852 - DEBUG - Finished Request
+2025-01-02 11:44:40,859 - INFO - === メインページアクセス ===
+2025-01-02 11:44:40,863 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/url {'url': 'https://www.release.tdnet.info/index.html'}
+2025-01-02 11:44:41,205 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/url HTTP/1.1" 200 0
+2025-01-02 11:44:41,208 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:41,208 - DEBUG - Finished Request
+2025-01-02 11:44:43,212 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/source {}
+2025-01-02 11:44:43,213 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/source HTTP/1.1" 200 0
+2025-01-02 11:44:43,214 - DEBUG - Remote response: status=200 | data={"value":"\u003Chtml style=\"height:100%; overflow:hidden;\">\u003Chead>\n\u003Cmeta http-equiv=\"content-type\" content=\"text/html;charset=UTF-8\">\n\u003Cmeta http-equiv=\"Pragma\" content=\"no-cache\">\n\u003Cmeta name=\"robots\" content=\"noindex,nofollow\">\n\u003Cscript type=\"text/javascript\" src=\"/onsf/js/I_JAVASCRIPT.js\">\u003C/script>\n\u003Ctitle>適時開示情報検索サービス\u003C/title>\n\u003C/head>\n\u003Cbody style=\"margin: 0px; height: 100%; *position:relative;\">\n\u003Ciframe src=\"/onsf/TDJFSearch/I_head\" seamless=\"\" width=\"100%\" height=\"100%\" frameborder=\"0\" style=\"display:block; margin: 0px; padding:0px; *position:relative;\">\u003C/iframe>\n\n\u003C/body>\u003C/html>"} | headers=HTTPHeaderDict({'Content-Length': '722', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,214 - DEBUG - Finished Request
+2025-01-02 11:44:43,214 - INFO - ページソースを保存: backend/app/logs/tdnet_main_20250102_114443.html
+2025-01-02 11:44:43,214 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/source {}
+2025-01-02 11:44:43,215 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/source HTTP/1.1" 200 0
+2025-01-02 11:44:43,215 - DEBUG - Remote response: status=200 | data={"value":"\u003Chtml style=\"height:100%; overflow:hidden;\">\u003Chead>\n\u003Cmeta http-equiv=\"content-type\" content=\"text/html;charset=UTF-8\">\n\u003Cmeta http-equiv=\"Pragma\" content=\"no-cache\">\n\u003Cmeta name=\"robots\" content=\"noindex,nofollow\">\n\u003Cscript type=\"text/javascript\" src=\"/onsf/js/I_JAVASCRIPT.js\">\u003C/script>\n\u003Ctitle>適時開示情報検索サービス\u003C/title>\n\u003C/head>\n\u003Cbody style=\"margin: 0px; height: 100%; *position:relative;\">\n\u003Ciframe src=\"/onsf/TDJFSearch/I_head\" seamless=\"\" width=\"100%\" height=\"100%\" frameborder=\"0\" style=\"display:block; margin: 0px; padding:0px; *position:relative;\">\u003C/iframe>\n\n\u003C/body>\u003C/html>"} | headers=HTTPHeaderDict({'Content-Length': '722', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,215 - DEBUG - Finished Request
+2025-01-02 11:44:43,215 - INFO - 
+=== BeautifulSoup解析開始 ===
+2025-01-02 11:44:43,215 - INFO - 
+--- ページ構造の確認 ---
+2025-01-02 11:44:43,215 - INFO - Title: 適時開示情報検索サービス
+2025-01-02 11:44:43,215 - INFO - 
+Forms found: 0
+2025-01-02 11:44:43,215 - INFO - 
+Frames found: 1
+2025-01-02 11:44:43,215 - INFO - Frame info: {
+  "tag": "iframe",
+  "src": "/onsf/TDJFSearch/I_head",
+  "id": "",
+  "name": "",
+  "class": []
+}
+2025-01-02 11:44:43,216 - INFO - 
+Tables found: 0
+2025-01-02 11:44:43,216 - INFO - 検索フォームのiframeに切り替え
+2025-01-02 11:44:43,216 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element {'using': 'tag name', 'value': 'iframe'}
+2025-01-02 11:44:43,221 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/element HTTP/1.1" 200 0
+2025-01-02 11:44:43,221 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.C6E2723A067C3637D7B13C5F5DFC9D89.d.EE5EEF02B28A41A855DC045767CFE726.e.17"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,221 - DEBUG - Finished Request
+2025-01-02 11:44:43,221 - INFO - === 検索フォームiframe情報 ===
+2025-01-02 11:44:43,222 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.C6E2723A067C3637D7B13C5F5DFC9D89.d.EE5EEF02B28A41A855DC045767CFE726.e.17'}, 'src']}
+2025-01-02 11:44:43,225 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,225 - DEBUG - Remote response: status=200 | data={"value":"https://www.release.tdnet.info/onsf/TDJFSearch/I_head"} | headers=HTTPHeaderDict({'Content-Length': '65', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,225 - DEBUG - Finished Request
+2025-01-02 11:44:43,225 - INFO - src: https://www.release.tdnet.info/onsf/TDJFSearch/I_head
+2025-01-02 11:44:43,225 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.C6E2723A067C3637D7B13C5F5DFC9D89.d.EE5EEF02B28A41A855DC045767CFE726.e.17'}, 'id']}
+2025-01-02 11:44:43,227 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,227 - DEBUG - Remote response: status=200 | data={"value":""} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,227 - DEBUG - Finished Request
+2025-01-02 11:44:43,227 - INFO - id: 
+2025-01-02 11:44:43,227 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.C6E2723A067C3637D7B13C5F5DFC9D89.d.EE5EEF02B28A41A855DC045767CFE726.e.17'}, 'name']}
+2025-01-02 11:44:43,229 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,229 - DEBUG - Remote response: status=200 | data={"value":""} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,230 - DEBUG - Finished Request
+2025-01-02 11:44:43,230 - INFO - name: 
+2025-01-02 11:44:43,230 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/frame {'id': {'element-6066-11e4-a52e-4f735466cecf': 'f.C6E2723A067C3637D7B13C5F5DFC9D89.d.EE5EEF02B28A41A855DC045767CFE726.e.17'}}
+2025-01-02 11:44:43,238 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/frame HTTP/1.1" 200 0
+2025-01-02 11:44:43,238 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,239 - DEBUG - Finished Request
+2025-01-02 11:44:43,239 - INFO - 検索フォームのiframeに切り替え完了
+2025-01-02 11:44:43,239 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/source {}
+2025-01-02 11:44:43,240 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/source HTTP/1.1" 200 0
+2025-01-02 11:44:43,240 - DEBUG - Remote response: status=200 | data={"value":"\u003Chtml style=\"overflow:hidden;\">\u003Chead>\n\t\u003Cmeta http-equiv=\"content-type\" content=\"text/html;charset=UTF-8\">\n\t\u003Cmeta http-equiv=\"Pragma\" content=\"no-cache\">\n\t\u003Cmeta name=\"robots\" content=\"noindex,nofollow\">\n\t\u003Cscript src=\"/onsf/runtime/jquery-1.8.3.min.js\">\u003C/script>\n\t\u003Cscript src=\"/onsf/js/TDJFModal.js\">\u003C/script>\n\t\u003Cscript type=\"text/javascript\" src=\"/onsf/js/I_JAVASCRIPT.js\">\u003C/script>\n\t\u003Clink rel=\"stylesheet\" href=\"/onsf/css/import.css\" type=\"text/css\" media=\"screen, tv\" charset=\"UTF-8\">\n\t\u003Clink rel=\"stylesheet\" href=\"/onsf/css/header.css\" type=\"text/css\" media=\"screen, tv\" charset=\"UTF-8\">\n\t\u003Ctitle>適時開示情報検索サービス\u003C/title>\n\t\u003Cscript type=\"text/javascript\">\n\t\u003C!--\n\t$(function(){\n\t\tfunction adjust(){\n\t\t\tvar h = $(window).height();\n\t\t\tvar h1= $('#header').height();\n\t\t\t$('#mainlist').css('height', h-h1 + 'px');\n\t\t}\n\t\tadjust();\n\n\t\t$(window).on('load resize', function(){\n\t\t\tadjust();\n\t\t})\n\t});\n\n\tfunction form_submit() {\n\t \tvar v = document.search.q.value;\n\t\tif( v == null || v == \"(コード／会社名／表題、複数指定可)                                \" || v == \"\" ) {\n\t\t\talert( \"検索条件を入力してください。\" );\n\t\t\treturn false;\n\t\t}\n\t\telse {\n\t\t\tdocument.search.t0.focus();\n\t\t\treturn true;\n\t\t}\n\t}\n\n\t$(function() {\n\t    $( 'a[rel*=modal]').modal({\n\t        top : 50,\n\t        overlay : 0.5,\n\t        speed : 200\n\t    });\n\t});\n\n\t$(function(){\n\t    $(window).load(function(){\n\t        $('iframe.modal').contents().find('html').css({\"width\":\"700px\",\"overflow-x\":\"hidden\"});\n\t        $('iframe.modal').contents().find('#content').css({\"width\":\"660px\",\"overflow-x\":\"hidden\"});\n\t    });\n\t});\n\n\t$(function(){\n\t\t$(\"select\").change(function () {\n\t\t\tvar c = $(this).children(\":selected\").attr(\"class\");\n\t\t\t$(this).removeClass(\"weekday saturday sunday\");\n\t\t\t$(this).addClass(c);\n\t\t\t});\n\t\tvar c = $(\"select\").children(\":selected\").attr(\"class\");\n\t\t$(\"select\").addClass(c);\n\t});\n\n\t$(function(){\n\t\tvar textBox = jQuery(\"input:text\");\n\t\ttextBox.focus(function(){\n\t\t\tjQuery(this).addClass(\"focus\");\n\t\t\tif(this.value == this.defaultValue){\n\t\t\t\tjQuery(this).val('');\n\t\t}\n\t\t}).blur(function(){\n\t\tif($(this).val() == ''){\n\t\t\t$(this).val(this.defaultValue).removeClass(\"focus\");\n\t\t\t}\n\t\t});\n\t});\n\t-->\n\t\u003C/script>\n\u003C/head>\n\n\n\u003Cbody>\n\n\t\u003Cdiv id=\"header\">\n\t\t\u003Cdiv id=\"logo\">\n\t\t\t\u003Ch1>\u003Cimg src=\"/onsf/img/logo.png\" alt=\"TDnet\" width=\"125px\" height=\"37px\">\u003C/h1>\n\t\t\t\u003Cdiv id=\"title\">\n\t\t\t\t\u003Ch2>適時開示情報閲覧サービス\u003C/h2>\n\t\t\t\t\u003Cp>Company Announcements Disclosure Service\u003C/p>\n\t\t\t\t\u003Ca href=\"#helpmodal\" rel=\"modal\" id=\"help\">検索方法\u003C/a>\n\t\t\t\u003C/div>\n\t\t\u003C/div>\n\t\t\u003Cdiv id=\"searchmenu\">\n\t\t\t\u003Ch3>開示情報検索\u003C/h3>\n\t\t\t\t\u003Cform name=\"search\" target=\"mainlist\" action=\"./TDJFSearch\" method=\"post\" onsubmit=\"return form_submit()\">\n\t\t\t\t\t\u003Cdl>\n\t\t\t\t\t\t\u003Cdt>検索期間\u003C/dt>\n\t\t\t\t\t\t\u003Cdd>\n\t\t\t\t\t\t\t\u003Cselect name=\"t0\" style=\"height:25px; width:155px; font-size: 14px; font-family: Meiryo UI,'メイリオ'\" class=\"weekday\">\n\t\t\t\t\t\t\t\u003Coption class=\"weekday\" value=\"20250102\">2025/01/02(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20250101\">2025/01/01(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241231\">2024/12/31(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241230\">2024/12/30(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241229\">2024/12/29(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241228\">2024/12/28(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241227\">2024/12/27(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241226\">2024/12/26(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241225\">2024/12/25(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241224\">2024/12/24(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241223\">2024/12/23(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241222\">2024/12/22(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241221\">2024/12/21(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241220\">2024/12/20(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241219\">2024/12/19(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241218\">2024/12/18(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241217\">2024/12/17(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241216\">2024/12/16(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241215\">2024/12/15(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241214\">2024/12/14(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241213\">2024/12/13(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241212\">2024/12/12(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241211\">2024/12/11(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241210\">2024/12/10(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241209\">2024/12/09(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241208\">2024/12/08(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241207\">2024/12/07(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241206\">2024/12/06(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241205\">2024/12/05(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241204\">2024/12/04(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241203\">2024/12/03(火)\u003C/option>\n\n\t\t\t\t\t\t\t\u003C/select>\n\t\t\t\t\t\t\t～\n\t\t\t\t\t\t\t\u003Cselect name=\"t1\" style=\"height:25px; width:155px; font-size: 14px; font-family: Meiryo UI,'メイリオ'\" class=\"weekday\">\n\t\t\t\t\t\t\t\u003Coption class=\"weekday\" value=\"20250102\">2025/01/02(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20250101\">2025/01/01(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241231\">2024/12/31(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241230\">2024/12/30(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241229\">2024/12/29(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241228\">2024/12/28(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241227\">2024/12/27(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241226\">2024/12/26(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241225\">2024/12/25(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241224\">2024/12/24(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241223\">2024/12/23(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241222\">2024/12/22(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241221\">2024/12/21(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241220\">2024/12/20(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241219\">2024/12/19(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241218\">2024/12/18(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241217\">2024/12/17(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241216\">2024/12/16(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241215\">2024/12/15(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241214\">2024/12/14(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241213\">2024/12/13(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241212\">2024/12/12(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241211\">2024/12/11(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241210\">2024/12/10(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241209\">2024/12/09(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241208\">2024/12/08(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241207\">2024/12/07(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241206\">2024/12/06(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241205\">2024/12/05(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241204\">2024/12/04(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241203\">2024/12/03(火)\u003C/option>\n\n\t\t\t\t\t\t\t\u003C/select>\n\t\t\t\t\t\t\u003C/dd>\n\t\t\t\t\t\t\u003Cdt>キーワード検索\u003C/dt>\n\t\t\t\t\t\t\u003Cdd id=\"freewordtxtdd\">\u003Cinput name=\"q\" type=\"text\" maxlength=\"50\" id=\"freewordtxt\" value=\"(コード／会社名／表題、複数指定可)                                \">\n\t\t\t\t\t\t\t\u003Cdiv id=\"submitmask\">\u003Cdiv id=\"submitmask-2\">\u003Cbutton type=\"submit\" id=\"searchbtn\" alt=\"検索\" value=\"\">\u003Cimg src=\"/onsf/img/icn_search.png\">\u003C/button>\u003C/div>\u003C/div>\n\t\t\t\t\t\t\u003C/dd>\n\t\t\t\t\t\u003C/dl>\n\t\t\t\t\t\u003Cinput type=\"hidden\" name=\"m\" value=\"0\">\n\t\t\t\t\u003C/form>\n\t\t\t\u003C/div>\n\t\t\u003C/div>\n\t\u003Ciframe src=\"/onsf/TDJFRESULT_INITIAL.html\" id=\"mainlist\" name=\"mainlist\" seamless=\"\" frameborder=\"0\" style=\"height: 641px;\">\u003C/iframe>\n\t\u003Ciframe src=\"/onsf/help/help.html\" id=\"helpmodal\" class=\"modal\" seamless=\"\" frameborder=\"0\">\u003C/iframe>\n\n\n\n\u003Cdiv id=\"glayLayer\">\u003C/div>\u003C/body>\u003C/html>"} | headers=HTTPHeaderDict({'Content-Length': '9870', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,240 - DEBUG - Finished Request
+2025-01-02 11:44:43,240 - INFO - ページソースを保存: backend/app/logs/tdnet_search_20250102_114443.html
+2025-01-02 11:44:43,241 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/source {}
+2025-01-02 11:44:43,242 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/source HTTP/1.1" 200 0
+2025-01-02 11:44:43,242 - DEBUG - Remote response: status=200 | data={"value":"\u003Chtml style=\"overflow:hidden;\">\u003Chead>\n\t\u003Cmeta http-equiv=\"content-type\" content=\"text/html;charset=UTF-8\">\n\t\u003Cmeta http-equiv=\"Pragma\" content=\"no-cache\">\n\t\u003Cmeta name=\"robots\" content=\"noindex,nofollow\">\n\t\u003Cscript src=\"/onsf/runtime/jquery-1.8.3.min.js\">\u003C/script>\n\t\u003Cscript src=\"/onsf/js/TDJFModal.js\">\u003C/script>\n\t\u003Cscript type=\"text/javascript\" src=\"/onsf/js/I_JAVASCRIPT.js\">\u003C/script>\n\t\u003Clink rel=\"stylesheet\" href=\"/onsf/css/import.css\" type=\"text/css\" media=\"screen, tv\" charset=\"UTF-8\">\n\t\u003Clink rel=\"stylesheet\" href=\"/onsf/css/header.css\" type=\"text/css\" media=\"screen, tv\" charset=\"UTF-8\">\n\t\u003Ctitle>適時開示情報検索サービス\u003C/title>\n\t\u003Cscript type=\"text/javascript\">\n\t\u003C!--\n\t$(function(){\n\t\tfunction adjust(){\n\t\t\tvar h = $(window).height();\n\t\t\tvar h1= $('#header').height();\n\t\t\t$('#mainlist').css('height', h-h1 + 'px');\n\t\t}\n\t\tadjust();\n\n\t\t$(window).on('load resize', function(){\n\t\t\tadjust();\n\t\t})\n\t});\n\n\tfunction form_submit() {\n\t \tvar v = document.search.q.value;\n\t\tif( v == null || v == \"(コード／会社名／表題、複数指定可)                                \" || v == \"\" ) {\n\t\t\talert( \"検索条件を入力してください。\" );\n\t\t\treturn false;\n\t\t}\n\t\telse {\n\t\t\tdocument.search.t0.focus();\n\t\t\treturn true;\n\t\t}\n\t}\n\n\t$(function() {\n\t    $( 'a[rel*=modal]').modal({\n\t        top : 50,\n\t        overlay : 0.5,\n\t        speed : 200\n\t    });\n\t});\n\n\t$(function(){\n\t    $(window).load(function(){\n\t        $('iframe.modal').contents().find('html').css({\"width\":\"700px\",\"overflow-x\":\"hidden\"});\n\t        $('iframe.modal').contents().find('#content').css({\"width\":\"660px\",\"overflow-x\":\"hidden\"});\n\t    });\n\t});\n\n\t$(function(){\n\t\t$(\"select\").change(function () {\n\t\t\tvar c = $(this).children(\":selected\").attr(\"class\");\n\t\t\t$(this).removeClass(\"weekday saturday sunday\");\n\t\t\t$(this).addClass(c);\n\t\t\t});\n\t\tvar c = $(\"select\").children(\":selected\").attr(\"class\");\n\t\t$(\"select\").addClass(c);\n\t});\n\n\t$(function(){\n\t\tvar textBox = jQuery(\"input:text\");\n\t\ttextBox.focus(function(){\n\t\t\tjQuery(this).addClass(\"focus\");\n\t\t\tif(this.value == this.defaultValue){\n\t\t\t\tjQuery(this).val('');\n\t\t}\n\t\t}).blur(function(){\n\t\tif($(this).val() == ''){\n\t\t\t$(this).val(this.defaultValue).removeClass(\"focus\");\n\t\t\t}\n\t\t});\n\t});\n\t-->\n\t\u003C/script>\n\u003C/head>\n\n\n\u003Cbody>\n\n\t\u003Cdiv id=\"header\">\n\t\t\u003Cdiv id=\"logo\">\n\t\t\t\u003Ch1>\u003Cimg src=\"/onsf/img/logo.png\" alt=\"TDnet\" width=\"125px\" height=\"37px\">\u003C/h1>\n\t\t\t\u003Cdiv id=\"title\">\n\t\t\t\t\u003Ch2>適時開示情報閲覧サービス\u003C/h2>\n\t\t\t\t\u003Cp>Company Announcements Disclosure Service\u003C/p>\n\t\t\t\t\u003Ca href=\"#helpmodal\" rel=\"modal\" id=\"help\">検索方法\u003C/a>\n\t\t\t\u003C/div>\n\t\t\u003C/div>\n\t\t\u003Cdiv id=\"searchmenu\">\n\t\t\t\u003Ch3>開示情報検索\u003C/h3>\n\t\t\t\t\u003Cform name=\"search\" target=\"mainlist\" action=\"./TDJFSearch\" method=\"post\" onsubmit=\"return form_submit()\">\n\t\t\t\t\t\u003Cdl>\n\t\t\t\t\t\t\u003Cdt>検索期間\u003C/dt>\n\t\t\t\t\t\t\u003Cdd>\n\t\t\t\t\t\t\t\u003Cselect name=\"t0\" style=\"height:25px; width:155px; font-size: 14px; font-family: Meiryo UI,'メイリオ'\" class=\"weekday\">\n\t\t\t\t\t\t\t\u003Coption class=\"weekday\" value=\"20250102\">2025/01/02(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20250101\">2025/01/01(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241231\">2024/12/31(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241230\">2024/12/30(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241229\">2024/12/29(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241228\">2024/12/28(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241227\">2024/12/27(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241226\">2024/12/26(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241225\">2024/12/25(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241224\">2024/12/24(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241223\">2024/12/23(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241222\">2024/12/22(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241221\">2024/12/21(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241220\">2024/12/20(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241219\">2024/12/19(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241218\">2024/12/18(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241217\">2024/12/17(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241216\">2024/12/16(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241215\">2024/12/15(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241214\">2024/12/14(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241213\">2024/12/13(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241212\">2024/12/12(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241211\">2024/12/11(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241210\">2024/12/10(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241209\">2024/12/09(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241208\">2024/12/08(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241207\">2024/12/07(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241206\">2024/12/06(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241205\">2024/12/05(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241204\">2024/12/04(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241203\">2024/12/03(火)\u003C/option>\n\n\t\t\t\t\t\t\t\u003C/select>\n\t\t\t\t\t\t\t～\n\t\t\t\t\t\t\t\u003Cselect name=\"t1\" style=\"height:25px; width:155px; font-size: 14px; font-family: Meiryo UI,'メイリオ'\" class=\"weekday\">\n\t\t\t\t\t\t\t\u003Coption class=\"weekday\" value=\"20250102\">2025/01/02(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20250101\">2025/01/01(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241231\">2024/12/31(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241230\">2024/12/30(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241229\">2024/12/29(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241228\">2024/12/28(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241227\">2024/12/27(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241226\">2024/12/26(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241225\">2024/12/25(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241224\">2024/12/24(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241223\">2024/12/23(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241222\">2024/12/22(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241221\">2024/12/21(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241220\">2024/12/20(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241219\">2024/12/19(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241218\">2024/12/18(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241217\">2024/12/17(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241216\">2024/12/16(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241215\">2024/12/15(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241214\">2024/12/14(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241213\">2024/12/13(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241212\">2024/12/12(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241211\">2024/12/11(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241210\">2024/12/10(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241209\">2024/12/09(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241208\">2024/12/08(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241207\">2024/12/07(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241206\">2024/12/06(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241205\">2024/12/05(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241204\">2024/12/04(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241203\">2024/12/03(火)\u003C/option>\n\n\t\t\t\t\t\t\t\u003C/select>\n\t\t\t\t\t\t\u003C/dd>\n\t\t\t\t\t\t\u003Cdt>キーワード検索\u003C/dt>\n\t\t\t\t\t\t\u003Cdd id=\"freewordtxtdd\">\u003Cinput name=\"q\" type=\"text\" maxlength=\"50\" id=\"freewordtxt\" value=\"(コード／会社名／表題、複数指定可)                                \">\n\t\t\t\t\t\t\t\u003Cdiv id=\"submitmask\">\u003Cdiv id=\"submitmask-2\">\u003Cbutton type=\"submit\" id=\"searchbtn\" alt=\"検索\" value=\"\">\u003Cimg src=\"/onsf/img/icn_search.png\">\u003C/button>\u003C/div>\u003C/div>\n\t\t\t\t\t\t\u003C/dd>\n\t\t\t\t\t\u003C/dl>\n\t\t\t\t\t\u003Cinput type=\"hidden\" name=\"m\" value=\"0\">\n\t\t\t\t\u003C/form>\n\t\t\t\u003C/div>\n\t\t\u003C/div>\n\t\u003Ciframe src=\"/onsf/TDJFRESULT_INITIAL.html\" id=\"mainlist\" name=\"mainlist\" seamless=\"\" frameborder=\"0\" style=\"height: 641px;\">\u003C/iframe>\n\t\u003Ciframe src=\"/onsf/help/help.html\" id=\"helpmodal\" class=\"modal\" seamless=\"\" frameborder=\"0\">\u003C/iframe>\n\n\n\n\u003Cdiv id=\"glayLayer\">\u003C/div>\u003C/body>\u003C/html>"} | headers=HTTPHeaderDict({'Content-Length': '9870', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,242 - DEBUG - Finished Request
+2025-01-02 11:44:43,242 - INFO - 
+=== BeautifulSoup解析開始 ===
+2025-01-02 11:44:43,243 - INFO - 
+--- ページ構造の確認 ---
+2025-01-02 11:44:43,244 - INFO - Title: 適時開示情報検索サービス
+2025-01-02 11:44:43,244 - INFO - 
+Forms found: 1
+2025-01-02 11:44:43,244 - INFO - Form action: ./TDJFSearch
+2025-01-02 11:44:43,244 - INFO - Form method: post
+2025-01-02 11:44:43,244 - INFO - Form id: 
+2025-01-02 11:44:43,244 - INFO - Select name: t0
+2025-01-02 11:44:43,244 - INFO - Options count: 31
+2025-01-02 11:44:43,244 - INFO - Option 0: value: 20250102, text: 2025/01/02(木)
+2025-01-02 11:44:43,244 - INFO - Option 1: value: 20250101, text: 2025/01/01(水)
+2025-01-02 11:44:43,244 - INFO - Option 2: value: 20241231, text: 2024/12/31(火)
+2025-01-02 11:44:43,244 - INFO - Option 3: value: 20241230, text: 2024/12/30(月)
+2025-01-02 11:44:43,244 - INFO - Option 4: value: 20241229, text: 2024/12/29(日)
+2025-01-02 11:44:43,244 - INFO - Option 5: value: 20241228, text: 2024/12/28(土)
+2025-01-02 11:44:43,244 - INFO - Option 6: value: 20241227, text: 2024/12/27(金)
+2025-01-02 11:44:43,244 - INFO - Option 7: value: 20241226, text: 2024/12/26(木)
+2025-01-02 11:44:43,244 - INFO - Option 8: value: 20241225, text: 2024/12/25(水)
+2025-01-02 11:44:43,245 - INFO - Option 9: value: 20241224, text: 2024/12/24(火)
+2025-01-02 11:44:43,245 - INFO - Option 10: value: 20241223, text: 2024/12/23(月)
+2025-01-02 11:44:43,245 - INFO - Option 11: value: 20241222, text: 2024/12/22(日)
+2025-01-02 11:44:43,245 - INFO - Option 12: value: 20241221, text: 2024/12/21(土)
+2025-01-02 11:44:43,245 - INFO - Option 13: value: 20241220, text: 2024/12/20(金)
+2025-01-02 11:44:43,245 - INFO - Option 14: value: 20241219, text: 2024/12/19(木)
+2025-01-02 11:44:43,245 - INFO - Option 15: value: 20241218, text: 2024/12/18(水)
+2025-01-02 11:44:43,245 - INFO - Option 16: value: 20241217, text: 2024/12/17(火)
+2025-01-02 11:44:43,245 - INFO - Option 17: value: 20241216, text: 2024/12/16(月)
+2025-01-02 11:44:43,245 - INFO - Option 18: value: 20241215, text: 2024/12/15(日)
+2025-01-02 11:44:43,245 - INFO - Option 19: value: 20241214, text: 2024/12/14(土)
+2025-01-02 11:44:43,245 - INFO - Option 20: value: 20241213, text: 2024/12/13(金)
+2025-01-02 11:44:43,246 - INFO - Option 21: value: 20241212, text: 2024/12/12(木)
+2025-01-02 11:44:43,246 - INFO - Option 22: value: 20241211, text: 2024/12/11(水)
+2025-01-02 11:44:43,246 - INFO - Option 23: value: 20241210, text: 2024/12/10(火)
+2025-01-02 11:44:43,246 - INFO - Option 24: value: 20241209, text: 2024/12/09(月)
+2025-01-02 11:44:43,246 - INFO - Option 25: value: 20241208, text: 2024/12/08(日)
+2025-01-02 11:44:43,246 - INFO - Option 26: value: 20241207, text: 2024/12/07(土)
+2025-01-02 11:44:43,246 - INFO - Option 27: value: 20241206, text: 2024/12/06(金)
+2025-01-02 11:44:43,246 - INFO - Option 28: value: 20241205, text: 2024/12/05(木)
+2025-01-02 11:44:43,246 - INFO - Option 29: value: 20241204, text: 2024/12/04(水)
+2025-01-02 11:44:43,246 - INFO - Option 30: value: 20241203, text: 2024/12/03(火)
+2025-01-02 11:44:43,246 - INFO - Select name: t1
+2025-01-02 11:44:43,246 - INFO - Options count: 31
+2025-01-02 11:44:43,246 - INFO - Option 0: value: 20250102, text: 2025/01/02(木)
+2025-01-02 11:44:43,246 - INFO - Option 1: value: 20250101, text: 2025/01/01(水)
+2025-01-02 11:44:43,246 - INFO - Option 2: value: 20241231, text: 2024/12/31(火)
+2025-01-02 11:44:43,246 - INFO - Option 3: value: 20241230, text: 2024/12/30(月)
+2025-01-02 11:44:43,246 - INFO - Option 4: value: 20241229, text: 2024/12/29(日)
+2025-01-02 11:44:43,246 - INFO - Option 5: value: 20241228, text: 2024/12/28(土)
+2025-01-02 11:44:43,246 - INFO - Option 6: value: 20241227, text: 2024/12/27(金)
+2025-01-02 11:44:43,246 - INFO - Option 7: value: 20241226, text: 2024/12/26(木)
+2025-01-02 11:44:43,246 - INFO - Option 8: value: 20241225, text: 2024/12/25(水)
+2025-01-02 11:44:43,246 - INFO - Option 9: value: 20241224, text: 2024/12/24(火)
+2025-01-02 11:44:43,246 - INFO - Option 10: value: 20241223, text: 2024/12/23(月)
+2025-01-02 11:44:43,246 - INFO - Option 11: value: 20241222, text: 2024/12/22(日)
+2025-01-02 11:44:43,246 - INFO - Option 12: value: 20241221, text: 2024/12/21(土)
+2025-01-02 11:44:43,246 - INFO - Option 13: value: 20241220, text: 2024/12/20(金)
+2025-01-02 11:44:43,246 - INFO - Option 14: value: 20241219, text: 2024/12/19(木)
+2025-01-02 11:44:43,246 - INFO - Option 15: value: 20241218, text: 2024/12/18(水)
+2025-01-02 11:44:43,246 - INFO - Option 16: value: 20241217, text: 2024/12/17(火)
+2025-01-02 11:44:43,246 - INFO - Option 17: value: 20241216, text: 2024/12/16(月)
+2025-01-02 11:44:43,246 - INFO - Option 18: value: 20241215, text: 2024/12/15(日)
+2025-01-02 11:44:43,246 - INFO - Option 19: value: 20241214, text: 2024/12/14(土)
+2025-01-02 11:44:43,246 - INFO - Option 20: value: 20241213, text: 2024/12/13(金)
+2025-01-02 11:44:43,246 - INFO - Option 21: value: 20241212, text: 2024/12/12(木)
+2025-01-02 11:44:43,246 - INFO - Option 22: value: 20241211, text: 2024/12/11(水)
+2025-01-02 11:44:43,246 - INFO - Option 23: value: 20241210, text: 2024/12/10(火)
+2025-01-02 11:44:43,246 - INFO - Option 24: value: 20241209, text: 2024/12/09(月)
+2025-01-02 11:44:43,246 - INFO - Option 25: value: 20241208, text: 2024/12/08(日)
+2025-01-02 11:44:43,246 - INFO - Option 26: value: 20241207, text: 2024/12/07(土)
+2025-01-02 11:44:43,246 - INFO - Option 27: value: 20241206, text: 2024/12/06(金)
+2025-01-02 11:44:43,246 - INFO - Option 28: value: 20241205, text: 2024/12/05(木)
+2025-01-02 11:44:43,246 - INFO - Option 29: value: 20241204, text: 2024/12/04(水)
+2025-01-02 11:44:43,246 - INFO - Option 30: value: 20241203, text: 2024/12/03(火)
+2025-01-02 11:44:43,247 - INFO - 
+Frames found: 2
+2025-01-02 11:44:43,247 - INFO - Frame info: {
+  "tag": "iframe",
+  "src": "/onsf/TDJFRESULT_INITIAL.html",
+  "id": "mainlist",
+  "name": "mainlist",
+  "class": []
+}
+2025-01-02 11:44:43,247 - INFO - Frame info: {
+  "tag": "iframe",
+  "src": "/onsf/help/help.html",
+  "id": "helpmodal",
+  "name": "",
+  "class": [
+    "modal"
+  ]
+}
+2025-01-02 11:44:43,247 - INFO - 
+Tables found: 0
+2025-01-02 11:44:43,247 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element {'using': 'css selector', 'value': '[name="t0"]'}
+2025-01-02 11:44:43,251 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/element HTTP/1.1" 200 0
+2025-01-02 11:44:43,251 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.4"}} | headers=HTTPHeaderDict({'Content-Length': '125', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,251 - DEBUG - Finished Request
+2025-01-02 11:44:43,251 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.4/name {}
+2025-01-02 11:44:43,254 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.4/name HTTP/1.1" 200 0
+2025-01-02 11:44:43,254 - DEBUG - Remote response: status=200 | data={"value":"select"} | headers=HTTPHeaderDict({'Content-Length': '18', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,254 - DEBUG - Finished Request
+2025-01-02 11:44:43,254 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.4/attribute/multiple {}
+2025-01-02 11:44:43,255 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.4/attribute/multiple HTTP/1.1" 200 0
+2025-01-02 11:44:43,255 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,255 - DEBUG - Finished Request
+2025-01-02 11:44:43,256 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.4/elements {'using': 'tag name', 'value': 'option'}
+2025-01-02 11:44:43,261 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.4/elements HTTP/1.1" 200 0
+2025-01-02 11:44:43,261 - DEBUG - Remote response: status=200 | data={"value":[{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.19"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.21"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.23"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.25"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.27"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.29"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.31"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.33"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.35"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.37"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.39"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.41"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.43"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.45"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.47"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.49"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.51"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.53"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.55"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.57"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.59"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.61"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.63"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.65"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.67"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.69"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.71"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.73"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.75"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.77"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.79"}]} | headers=HTTPHeaderDict({'Content-Length': '3638', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,261 - DEBUG - Finished Request
+2025-01-02 11:44:43,261 - INFO - 開始日の選択肢数: 31
+2025-01-02 11:44:43,261 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.19'}, 'value']}
+2025-01-02 11:44:43,264 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,264 - DEBUG - Remote response: status=200 | data={"value":"20250102"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,264 - DEBUG - Finished Request
+2025-01-02 11:44:43,264 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.19/text {}
+2025-01-02 11:44:43,269 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.19/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,269 - DEBUG - Remote response: status=200 | data={"value":"2025/01/02(木)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,269 - DEBUG - Finished Request
+2025-01-02 11:44:43,269 - INFO - Option 0: value: 20250102, text: 2025/01/02(木)
+2025-01-02 11:44:43,269 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.21'}, 'value']}
+2025-01-02 11:44:43,272 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,272 - DEBUG - Remote response: status=200 | data={"value":"20250101"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,272 - DEBUG - Finished Request
+2025-01-02 11:44:43,272 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.21/text {}
+2025-01-02 11:44:43,275 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.21/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,275 - DEBUG - Remote response: status=200 | data={"value":"2025/01/01(水)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,275 - DEBUG - Finished Request
+2025-01-02 11:44:43,275 - INFO - Option 1: value: 20250101, text: 2025/01/01(水)
+2025-01-02 11:44:43,275 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.23'}, 'value']}
+2025-01-02 11:44:43,277 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,277 - DEBUG - Remote response: status=200 | data={"value":"20241231"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,277 - DEBUG - Finished Request
+2025-01-02 11:44:43,277 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.23/text {}
+2025-01-02 11:44:43,281 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.23/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,281 - DEBUG - Remote response: status=200 | data={"value":"2024/12/31(火)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,281 - DEBUG - Finished Request
+2025-01-02 11:44:43,281 - INFO - Option 2: value: 20241231, text: 2024/12/31(火)
+2025-01-02 11:44:43,281 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.25'}, 'value']}
+2025-01-02 11:44:43,283 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,283 - DEBUG - Remote response: status=200 | data={"value":"20241230"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,283 - DEBUG - Finished Request
+2025-01-02 11:44:43,283 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.25/text {}
+2025-01-02 11:44:43,286 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.25/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,286 - DEBUG - Remote response: status=200 | data={"value":"2024/12/30(月)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,286 - DEBUG - Finished Request
+2025-01-02 11:44:43,286 - INFO - Option 3: value: 20241230, text: 2024/12/30(月)
+2025-01-02 11:44:43,286 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.27'}, 'value']}
+2025-01-02 11:44:43,288 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,288 - DEBUG - Remote response: status=200 | data={"value":"20241229"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,289 - DEBUG - Finished Request
+2025-01-02 11:44:43,289 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.27/text {}
+2025-01-02 11:44:43,292 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.27/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,292 - DEBUG - Remote response: status=200 | data={"value":"2024/12/29(日)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,292 - DEBUG - Finished Request
+2025-01-02 11:44:43,292 - INFO - Option 4: value: 20241229, text: 2024/12/29(日)
+2025-01-02 11:44:43,292 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.29'}, 'value']}
+2025-01-02 11:44:43,294 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,294 - DEBUG - Remote response: status=200 | data={"value":"20241228"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,294 - DEBUG - Finished Request
+2025-01-02 11:44:43,294 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.29/text {}
+2025-01-02 11:44:43,298 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.29/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,298 - DEBUG - Remote response: status=200 | data={"value":"2024/12/28(土)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,298 - DEBUG - Finished Request
+2025-01-02 11:44:43,298 - INFO - Option 5: value: 20241228, text: 2024/12/28(土)
+2025-01-02 11:44:43,298 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.31'}, 'value']}
+2025-01-02 11:44:43,300 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,300 - DEBUG - Remote response: status=200 | data={"value":"20241227"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,300 - DEBUG - Finished Request
+2025-01-02 11:44:43,300 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.31/text {}
+2025-01-02 11:44:43,303 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.31/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,303 - DEBUG - Remote response: status=200 | data={"value":"2024/12/27(金)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,304 - DEBUG - Finished Request
+2025-01-02 11:44:43,304 - INFO - Option 6: value: 20241227, text: 2024/12/27(金)
+2025-01-02 11:44:43,304 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.33'}, 'value']}
+2025-01-02 11:44:43,306 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,306 - DEBUG - Remote response: status=200 | data={"value":"20241226"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,306 - DEBUG - Finished Request
+2025-01-02 11:44:43,306 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.33/text {}
+2025-01-02 11:44:43,309 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.33/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,309 - DEBUG - Remote response: status=200 | data={"value":"2024/12/26(木)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,309 - DEBUG - Finished Request
+2025-01-02 11:44:43,309 - INFO - Option 7: value: 20241226, text: 2024/12/26(木)
+2025-01-02 11:44:43,309 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.35'}, 'value']}
+2025-01-02 11:44:43,312 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,312 - DEBUG - Remote response: status=200 | data={"value":"20241225"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,312 - DEBUG - Finished Request
+2025-01-02 11:44:43,312 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.35/text {}
+2025-01-02 11:44:43,315 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.35/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,315 - DEBUG - Remote response: status=200 | data={"value":"2024/12/25(水)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,315 - DEBUG - Finished Request
+2025-01-02 11:44:43,315 - INFO - Option 8: value: 20241225, text: 2024/12/25(水)
+2025-01-02 11:44:43,315 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.37'}, 'value']}
+2025-01-02 11:44:43,317 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,317 - DEBUG - Remote response: status=200 | data={"value":"20241224"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,317 - DEBUG - Finished Request
+2025-01-02 11:44:43,317 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.37/text {}
+2025-01-02 11:44:43,321 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.37/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,321 - DEBUG - Remote response: status=200 | data={"value":"2024/12/24(火)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,321 - DEBUG - Finished Request
+2025-01-02 11:44:43,321 - INFO - Option 9: value: 20241224, text: 2024/12/24(火)
+2025-01-02 11:44:43,321 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.39'}, 'value']}
+2025-01-02 11:44:43,323 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,323 - DEBUG - Remote response: status=200 | data={"value":"20241223"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,323 - DEBUG - Finished Request
+2025-01-02 11:44:43,323 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.39/text {}
+2025-01-02 11:44:43,326 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.39/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,326 - DEBUG - Remote response: status=200 | data={"value":"2024/12/23(月)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,326 - DEBUG - Finished Request
+2025-01-02 11:44:43,326 - INFO - Option 10: value: 20241223, text: 2024/12/23(月)
+2025-01-02 11:44:43,326 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.41'}, 'value']}
+2025-01-02 11:44:43,329 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,329 - DEBUG - Remote response: status=200 | data={"value":"20241222"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,329 - DEBUG - Finished Request
+2025-01-02 11:44:43,329 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.41/text {}
+2025-01-02 11:44:43,332 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.41/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,332 - DEBUG - Remote response: status=200 | data={"value":"2024/12/22(日)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,332 - DEBUG - Finished Request
+2025-01-02 11:44:43,332 - INFO - Option 11: value: 20241222, text: 2024/12/22(日)
+2025-01-02 11:44:43,332 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.43'}, 'value']}
+2025-01-02 11:44:43,334 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,334 - DEBUG - Remote response: status=200 | data={"value":"20241221"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,334 - DEBUG - Finished Request
+2025-01-02 11:44:43,334 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.43/text {}
+2025-01-02 11:44:43,338 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.43/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,338 - DEBUG - Remote response: status=200 | data={"value":"2024/12/21(土)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,338 - DEBUG - Finished Request
+2025-01-02 11:44:43,338 - INFO - Option 12: value: 20241221, text: 2024/12/21(土)
+2025-01-02 11:44:43,338 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.45'}, 'value']}
+2025-01-02 11:44:43,340 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,340 - DEBUG - Remote response: status=200 | data={"value":"20241220"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,340 - DEBUG - Finished Request
+2025-01-02 11:44:43,340 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.45/text {}
+2025-01-02 11:44:43,343 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.45/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,343 - DEBUG - Remote response: status=200 | data={"value":"2024/12/20(金)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,343 - DEBUG - Finished Request
+2025-01-02 11:44:43,343 - INFO - Option 13: value: 20241220, text: 2024/12/20(金)
+2025-01-02 11:44:43,343 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.47'}, 'value']}
+2025-01-02 11:44:43,346 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,346 - DEBUG - Remote response: status=200 | data={"value":"20241219"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,346 - DEBUG - Finished Request
+2025-01-02 11:44:43,346 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.47/text {}
+2025-01-02 11:44:43,349 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.47/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,349 - DEBUG - Remote response: status=200 | data={"value":"2024/12/19(木)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,349 - DEBUG - Finished Request
+2025-01-02 11:44:43,349 - INFO - Option 14: value: 20241219, text: 2024/12/19(木)
+2025-01-02 11:44:43,349 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.49'}, 'value']}
+2025-01-02 11:44:43,352 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,352 - DEBUG - Remote response: status=200 | data={"value":"20241218"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,352 - DEBUG - Finished Request
+2025-01-02 11:44:43,352 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.49/text {}
+2025-01-02 11:44:43,355 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.49/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,355 - DEBUG - Remote response: status=200 | data={"value":"2024/12/18(水)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,356 - DEBUG - Finished Request
+2025-01-02 11:44:43,356 - INFO - Option 15: value: 20241218, text: 2024/12/18(水)
+2025-01-02 11:44:43,356 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.51'}, 'value']}
+2025-01-02 11:44:43,358 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,358 - DEBUG - Remote response: status=200 | data={"value":"20241217"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,358 - DEBUG - Finished Request
+2025-01-02 11:44:43,358 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.51/text {}
+2025-01-02 11:44:43,361 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.51/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,361 - DEBUG - Remote response: status=200 | data={"value":"2024/12/17(火)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,361 - DEBUG - Finished Request
+2025-01-02 11:44:43,361 - INFO - Option 16: value: 20241217, text: 2024/12/17(火)
+2025-01-02 11:44:43,361 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.53'}, 'value']}
+2025-01-02 11:44:43,364 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,364 - DEBUG - Remote response: status=200 | data={"value":"20241216"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,364 - DEBUG - Finished Request
+2025-01-02 11:44:43,364 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.53/text {}
+2025-01-02 11:44:43,367 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.53/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,367 - DEBUG - Remote response: status=200 | data={"value":"2024/12/16(月)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,367 - DEBUG - Finished Request
+2025-01-02 11:44:43,367 - INFO - Option 17: value: 20241216, text: 2024/12/16(月)
+2025-01-02 11:44:43,367 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.55'}, 'value']}
+2025-01-02 11:44:43,369 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,369 - DEBUG - Remote response: status=200 | data={"value":"20241215"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,369 - DEBUG - Finished Request
+2025-01-02 11:44:43,369 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.55/text {}
+2025-01-02 11:44:43,372 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.55/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,372 - DEBUG - Remote response: status=200 | data={"value":"2024/12/15(日)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,372 - DEBUG - Finished Request
+2025-01-02 11:44:43,372 - INFO - Option 18: value: 20241215, text: 2024/12/15(日)
+2025-01-02 11:44:43,373 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.57'}, 'value']}
+2025-01-02 11:44:43,374 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,375 - DEBUG - Remote response: status=200 | data={"value":"20241214"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,375 - DEBUG - Finished Request
+2025-01-02 11:44:43,375 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.57/text {}
+2025-01-02 11:44:43,378 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.57/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,378 - DEBUG - Remote response: status=200 | data={"value":"2024/12/14(土)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,378 - DEBUG - Finished Request
+2025-01-02 11:44:43,378 - INFO - Option 19: value: 20241214, text: 2024/12/14(土)
+2025-01-02 11:44:43,378 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.59'}, 'value']}
+2025-01-02 11:44:43,381 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,381 - DEBUG - Remote response: status=200 | data={"value":"20241213"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,381 - DEBUG - Finished Request
+2025-01-02 11:44:43,381 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.59/text {}
+2025-01-02 11:44:43,384 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.59/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,384 - DEBUG - Remote response: status=200 | data={"value":"2024/12/13(金)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,384 - DEBUG - Finished Request
+2025-01-02 11:44:43,384 - INFO - Option 20: value: 20241213, text: 2024/12/13(金)
+2025-01-02 11:44:43,384 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.61'}, 'value']}
+2025-01-02 11:44:43,386 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,387 - DEBUG - Remote response: status=200 | data={"value":"20241212"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,387 - DEBUG - Finished Request
+2025-01-02 11:44:43,387 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.61/text {}
+2025-01-02 11:44:43,390 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.61/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,390 - DEBUG - Remote response: status=200 | data={"value":"2024/12/12(木)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,390 - DEBUG - Finished Request
+2025-01-02 11:44:43,390 - INFO - Option 21: value: 20241212, text: 2024/12/12(木)
+2025-01-02 11:44:43,390 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.63'}, 'value']}
+2025-01-02 11:44:43,392 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,392 - DEBUG - Remote response: status=200 | data={"value":"20241211"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,392 - DEBUG - Finished Request
+2025-01-02 11:44:43,392 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.63/text {}
+2025-01-02 11:44:43,395 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.63/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,396 - DEBUG - Remote response: status=200 | data={"value":"2024/12/11(水)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,396 - DEBUG - Finished Request
+2025-01-02 11:44:43,396 - INFO - Option 22: value: 20241211, text: 2024/12/11(水)
+2025-01-02 11:44:43,396 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.65'}, 'value']}
+2025-01-02 11:44:43,398 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,398 - DEBUG - Remote response: status=200 | data={"value":"20241210"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,398 - DEBUG - Finished Request
+2025-01-02 11:44:43,398 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.65/text {}
+2025-01-02 11:44:43,401 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.65/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,401 - DEBUG - Remote response: status=200 | data={"value":"2024/12/10(火)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,401 - DEBUG - Finished Request
+2025-01-02 11:44:43,401 - INFO - Option 23: value: 20241210, text: 2024/12/10(火)
+2025-01-02 11:44:43,401 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.67'}, 'value']}
+2025-01-02 11:44:43,403 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,403 - DEBUG - Remote response: status=200 | data={"value":"20241209"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,403 - DEBUG - Finished Request
+2025-01-02 11:44:43,403 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.67/text {}
+2025-01-02 11:44:43,407 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.67/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,407 - DEBUG - Remote response: status=200 | data={"value":"2024/12/09(月)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,407 - DEBUG - Finished Request
+2025-01-02 11:44:43,407 - INFO - Option 24: value: 20241209, text: 2024/12/09(月)
+2025-01-02 11:44:43,407 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.69'}, 'value']}
+2025-01-02 11:44:43,409 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,409 - DEBUG - Remote response: status=200 | data={"value":"20241208"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,409 - DEBUG - Finished Request
+2025-01-02 11:44:43,409 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.69/text {}
+2025-01-02 11:44:43,412 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.69/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,412 - DEBUG - Remote response: status=200 | data={"value":"2024/12/08(日)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,412 - DEBUG - Finished Request
+2025-01-02 11:44:43,412 - INFO - Option 25: value: 20241208, text: 2024/12/08(日)
+2025-01-02 11:44:43,412 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.71'}, 'value']}
+2025-01-02 11:44:43,414 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,414 - DEBUG - Remote response: status=200 | data={"value":"20241207"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,414 - DEBUG - Finished Request
+2025-01-02 11:44:43,414 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.71/text {}
+2025-01-02 11:44:43,417 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.71/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,417 - DEBUG - Remote response: status=200 | data={"value":"2024/12/07(土)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,417 - DEBUG - Finished Request
+2025-01-02 11:44:43,417 - INFO - Option 26: value: 20241207, text: 2024/12/07(土)
+2025-01-02 11:44:43,417 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.73'}, 'value']}
+2025-01-02 11:44:43,419 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,419 - DEBUG - Remote response: status=200 | data={"value":"20241206"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,419 - DEBUG - Finished Request
+2025-01-02 11:44:43,419 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.73/text {}
+2025-01-02 11:44:43,423 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.73/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,423 - DEBUG - Remote response: status=200 | data={"value":"2024/12/06(金)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,423 - DEBUG - Finished Request
+2025-01-02 11:44:43,423 - INFO - Option 27: value: 20241206, text: 2024/12/06(金)
+2025-01-02 11:44:43,423 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.75'}, 'value']}
+2025-01-02 11:44:43,425 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,425 - DEBUG - Remote response: status=200 | data={"value":"20241205"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,425 - DEBUG - Finished Request
+2025-01-02 11:44:43,425 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.75/text {}
+2025-01-02 11:44:43,428 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.75/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,428 - DEBUG - Remote response: status=200 | data={"value":"2024/12/05(木)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,428 - DEBUG - Finished Request
+2025-01-02 11:44:43,428 - INFO - Option 28: value: 20241205, text: 2024/12/05(木)
+2025-01-02 11:44:43,428 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.77'}, 'value']}
+2025-01-02 11:44:43,430 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,430 - DEBUG - Remote response: status=200 | data={"value":"20241204"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,431 - DEBUG - Finished Request
+2025-01-02 11:44:43,431 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.77/text {}
+2025-01-02 11:44:43,434 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.77/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,434 - DEBUG - Remote response: status=200 | data={"value":"2024/12/04(水)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,434 - DEBUG - Finished Request
+2025-01-02 11:44:43,434 - INFO - Option 29: value: 20241204, text: 2024/12/04(水)
+2025-01-02 11:44:43,434 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.79'}, 'value']}
+2025-01-02 11:44:43,436 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,436 - DEBUG - Remote response: status=200 | data={"value":"20241203"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,436 - DEBUG - Finished Request
+2025-01-02 11:44:43,436 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.79/text {}
+2025-01-02 11:44:43,439 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.79/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,439 - DEBUG - Remote response: status=200 | data={"value":"2024/12/03(火)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,439 - DEBUG - Finished Request
+2025-01-02 11:44:43,439 - INFO - Option 30: value: 20241203, text: 2024/12/03(火)
+2025-01-02 11:44:43,440 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.4/elements {'using': 'tag name', 'value': 'option'}
+2025-01-02 11:44:43,443 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.4/elements HTTP/1.1" 200 0
+2025-01-02 11:44:43,443 - DEBUG - Remote response: status=200 | data={"value":[{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.19"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.21"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.23"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.25"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.27"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.29"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.31"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.33"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.35"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.37"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.39"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.41"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.43"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.45"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.47"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.49"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.51"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.53"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.55"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.57"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.59"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.61"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.63"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.65"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.67"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.69"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.71"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.73"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.75"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.77"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.79"}]} | headers=HTTPHeaderDict({'Content-Length': '3638', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,443 - DEBUG - Finished Request
+2025-01-02 11:44:43,443 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.19'}, 'index']}
+2025-01-02 11:44:43,446 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,446 - DEBUG - Remote response: status=200 | data={"value":"0"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,446 - DEBUG - Finished Request
+2025-01-02 11:44:43,446 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.21'}, 'index']}
+2025-01-02 11:44:43,448 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,448 - DEBUG - Remote response: status=200 | data={"value":"1"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,448 - DEBUG - Finished Request
+2025-01-02 11:44:43,448 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.23'}, 'index']}
+2025-01-02 11:44:43,450 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,450 - DEBUG - Remote response: status=200 | data={"value":"2"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,450 - DEBUG - Finished Request
+2025-01-02 11:44:43,450 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.25'}, 'index']}
+2025-01-02 11:44:43,452 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,452 - DEBUG - Remote response: status=200 | data={"value":"3"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,452 - DEBUG - Finished Request
+2025-01-02 11:44:43,453 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.27'}, 'index']}
+2025-01-02 11:44:43,455 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,455 - DEBUG - Remote response: status=200 | data={"value":"4"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,455 - DEBUG - Finished Request
+2025-01-02 11:44:43,455 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.29'}, 'index']}
+2025-01-02 11:44:43,457 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,457 - DEBUG - Remote response: status=200 | data={"value":"5"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,457 - DEBUG - Finished Request
+2025-01-02 11:44:43,457 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.31'}, 'index']}
+2025-01-02 11:44:43,460 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,460 - DEBUG - Remote response: status=200 | data={"value":"6"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,460 - DEBUG - Finished Request
+2025-01-02 11:44:43,460 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.33'}, 'index']}
+2025-01-02 11:44:43,462 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,463 - DEBUG - Remote response: status=200 | data={"value":"7"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,463 - DEBUG - Finished Request
+2025-01-02 11:44:43,463 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.35'}, 'index']}
+2025-01-02 11:44:43,464 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,464 - DEBUG - Remote response: status=200 | data={"value":"8"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,464 - DEBUG - Finished Request
+2025-01-02 11:44:43,464 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.37'}, 'index']}
+2025-01-02 11:44:43,466 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,466 - DEBUG - Remote response: status=200 | data={"value":"9"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,466 - DEBUG - Finished Request
+2025-01-02 11:44:43,466 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.39'}, 'index']}
+2025-01-02 11:44:43,469 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,469 - DEBUG - Remote response: status=200 | data={"value":"10"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,469 - DEBUG - Finished Request
+2025-01-02 11:44:43,469 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.41'}, 'index']}
+2025-01-02 11:44:43,472 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,472 - DEBUG - Remote response: status=200 | data={"value":"11"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,472 - DEBUG - Finished Request
+2025-01-02 11:44:43,473 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.43'}, 'index']}
+2025-01-02 11:44:43,482 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,483 - DEBUG - Remote response: status=200 | data={"value":"12"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,484 - DEBUG - Finished Request
+2025-01-02 11:44:43,485 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.45'}, 'index']}
+2025-01-02 11:44:43,490 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,490 - DEBUG - Remote response: status=200 | data={"value":"13"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,490 - DEBUG - Finished Request
+2025-01-02 11:44:43,490 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.47'}, 'index']}
+2025-01-02 11:44:43,496 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,496 - DEBUG - Remote response: status=200 | data={"value":"14"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,496 - DEBUG - Finished Request
+2025-01-02 11:44:43,497 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.49'}, 'index']}
+2025-01-02 11:44:43,502 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,503 - DEBUG - Remote response: status=200 | data={"value":"15"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,503 - DEBUG - Finished Request
+2025-01-02 11:44:43,503 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.51'}, 'index']}
+2025-01-02 11:44:43,510 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,510 - DEBUG - Remote response: status=200 | data={"value":"16"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,510 - DEBUG - Finished Request
+2025-01-02 11:44:43,511 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.53'}, 'index']}
+2025-01-02 11:44:43,514 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,515 - DEBUG - Remote response: status=200 | data={"value":"17"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,515 - DEBUG - Finished Request
+2025-01-02 11:44:43,515 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.55'}, 'index']}
+2025-01-02 11:44:43,517 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,517 - DEBUG - Remote response: status=200 | data={"value":"18"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,517 - DEBUG - Finished Request
+2025-01-02 11:44:43,517 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.57'}, 'index']}
+2025-01-02 11:44:43,520 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,520 - DEBUG - Remote response: status=200 | data={"value":"19"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,520 - DEBUG - Finished Request
+2025-01-02 11:44:43,520 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.59'}, 'index']}
+2025-01-02 11:44:43,522 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,522 - DEBUG - Remote response: status=200 | data={"value":"20"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,522 - DEBUG - Finished Request
+2025-01-02 11:44:43,522 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.61'}, 'index']}
+2025-01-02 11:44:43,525 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,525 - DEBUG - Remote response: status=200 | data={"value":"21"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,525 - DEBUG - Finished Request
+2025-01-02 11:44:43,525 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.63'}, 'index']}
+2025-01-02 11:44:43,527 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,527 - DEBUG - Remote response: status=200 | data={"value":"22"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,527 - DEBUG - Finished Request
+2025-01-02 11:44:43,527 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.65'}, 'index']}
+2025-01-02 11:44:43,530 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,530 - DEBUG - Remote response: status=200 | data={"value":"23"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,530 - DEBUG - Finished Request
+2025-01-02 11:44:43,530 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.67'}, 'index']}
+2025-01-02 11:44:43,532 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,532 - DEBUG - Remote response: status=200 | data={"value":"24"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,532 - DEBUG - Finished Request
+2025-01-02 11:44:43,532 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.69'}, 'index']}
+2025-01-02 11:44:43,534 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,534 - DEBUG - Remote response: status=200 | data={"value":"25"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,534 - DEBUG - Finished Request
+2025-01-02 11:44:43,534 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.71'}, 'index']}
+2025-01-02 11:44:43,536 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,536 - DEBUG - Remote response: status=200 | data={"value":"26"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,536 - DEBUG - Finished Request
+2025-01-02 11:44:43,536 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.73'}, 'index']}
+2025-01-02 11:44:43,538 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,538 - DEBUG - Remote response: status=200 | data={"value":"27"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,538 - DEBUG - Finished Request
+2025-01-02 11:44:43,538 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.75'}, 'index']}
+2025-01-02 11:44:43,540 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,540 - DEBUG - Remote response: status=200 | data={"value":"28"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,540 - DEBUG - Finished Request
+2025-01-02 11:44:43,540 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.77'}, 'index']}
+2025-01-02 11:44:43,542 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,542 - DEBUG - Remote response: status=200 | data={"value":"29"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,542 - DEBUG - Finished Request
+2025-01-02 11:44:43,542 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.79'}, 'index']}
+2025-01-02 11:44:43,545 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,545 - DEBUG - Remote response: status=200 | data={"value":"30"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,545 - DEBUG - Finished Request
+2025-01-02 11:44:43,545 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.79/selected {}
+2025-01-02 11:44:43,549 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.79/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,549 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,549 - DEBUG - Finished Request
+2025-01-02 11:44:43,549 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.79/enabled {}
+2025-01-02 11:44:43,553 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.79/enabled HTTP/1.1" 200 0
+2025-01-02 11:44:43,553 - DEBUG - Remote response: status=200 | data={"value":true} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,553 - DEBUG - Finished Request
+2025-01-02 11:44:43,553 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.79/click {}
+2025-01-02 11:44:43,563 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.79/click HTTP/1.1" 200 0
+2025-01-02 11:44:43,563 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,563 - DEBUG - Finished Request
+2025-01-02 11:44:43,563 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.4/elements {'using': 'tag name', 'value': 'option'}
+2025-01-02 11:44:43,567 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.4/elements HTTP/1.1" 200 0
+2025-01-02 11:44:43,567 - DEBUG - Remote response: status=200 | data={"value":[{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.19"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.21"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.23"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.25"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.27"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.29"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.31"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.33"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.35"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.37"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.39"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.41"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.43"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.45"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.47"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.49"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.51"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.53"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.55"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.57"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.59"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.61"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.63"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.65"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.67"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.69"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.71"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.73"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.75"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.77"},{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.79"}]} | headers=HTTPHeaderDict({'Content-Length': '3638', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,567 - DEBUG - Finished Request
+2025-01-02 11:44:43,567 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.19/selected {}
+2025-01-02 11:44:43,571 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.19/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,571 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,571 - DEBUG - Finished Request
+2025-01-02 11:44:43,571 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.21/selected {}
+2025-01-02 11:44:43,574 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.21/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,574 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,574 - DEBUG - Finished Request
+2025-01-02 11:44:43,574 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.23/selected {}
+2025-01-02 11:44:43,577 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.23/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,577 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,577 - DEBUG - Finished Request
+2025-01-02 11:44:43,577 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.25/selected {}
+2025-01-02 11:44:43,580 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.25/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,580 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,580 - DEBUG - Finished Request
+2025-01-02 11:44:43,580 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.27/selected {}
+2025-01-02 11:44:43,582 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.27/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,582 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,582 - DEBUG - Finished Request
+2025-01-02 11:44:43,582 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.29/selected {}
+2025-01-02 11:44:43,585 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.29/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,585 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,585 - DEBUG - Finished Request
+2025-01-02 11:44:43,585 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.31/selected {}
+2025-01-02 11:44:43,588 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.31/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,588 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,588 - DEBUG - Finished Request
+2025-01-02 11:44:43,588 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.33/selected {}
+2025-01-02 11:44:43,591 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.33/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,591 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,591 - DEBUG - Finished Request
+2025-01-02 11:44:43,591 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.35/selected {}
+2025-01-02 11:44:43,593 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.35/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,593 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,593 - DEBUG - Finished Request
+2025-01-02 11:44:43,593 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.37/selected {}
+2025-01-02 11:44:43,596 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.37/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,596 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,596 - DEBUG - Finished Request
+2025-01-02 11:44:43,597 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.39/selected {}
+2025-01-02 11:44:43,599 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.39/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,599 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,599 - DEBUG - Finished Request
+2025-01-02 11:44:43,599 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.41/selected {}
+2025-01-02 11:44:43,601 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.41/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,601 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,601 - DEBUG - Finished Request
+2025-01-02 11:44:43,601 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.43/selected {}
+2025-01-02 11:44:43,604 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.43/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,604 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,604 - DEBUG - Finished Request
+2025-01-02 11:44:43,604 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.45/selected {}
+2025-01-02 11:44:43,607 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.45/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,607 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,607 - DEBUG - Finished Request
+2025-01-02 11:44:43,607 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.47/selected {}
+2025-01-02 11:44:43,610 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.47/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,610 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,610 - DEBUG - Finished Request
+2025-01-02 11:44:43,610 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.49/selected {}
+2025-01-02 11:44:43,613 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.49/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,613 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,613 - DEBUG - Finished Request
+2025-01-02 11:44:43,613 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.51/selected {}
+2025-01-02 11:44:43,616 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.51/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,616 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,616 - DEBUG - Finished Request
+2025-01-02 11:44:43,616 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.53/selected {}
+2025-01-02 11:44:43,619 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.53/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,619 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,619 - DEBUG - Finished Request
+2025-01-02 11:44:43,619 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.55/selected {}
+2025-01-02 11:44:43,622 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.55/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,622 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,622 - DEBUG - Finished Request
+2025-01-02 11:44:43,622 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.57/selected {}
+2025-01-02 11:44:43,625 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.57/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,625 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,625 - DEBUG - Finished Request
+2025-01-02 11:44:43,625 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.59/selected {}
+2025-01-02 11:44:43,628 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.59/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,628 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,628 - DEBUG - Finished Request
+2025-01-02 11:44:43,628 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.61/selected {}
+2025-01-02 11:44:43,631 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.61/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,631 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,631 - DEBUG - Finished Request
+2025-01-02 11:44:43,631 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.63/selected {}
+2025-01-02 11:44:43,633 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.63/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,633 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,633 - DEBUG - Finished Request
+2025-01-02 11:44:43,633 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.65/selected {}
+2025-01-02 11:44:43,636 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.65/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,636 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,636 - DEBUG - Finished Request
+2025-01-02 11:44:43,636 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.67/selected {}
+2025-01-02 11:44:43,638 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.67/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,639 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,639 - DEBUG - Finished Request
+2025-01-02 11:44:43,639 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.69/selected {}
+2025-01-02 11:44:43,641 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.69/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,641 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,641 - DEBUG - Finished Request
+2025-01-02 11:44:43,642 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.71/selected {}
+2025-01-02 11:44:43,645 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.71/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,645 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,645 - DEBUG - Finished Request
+2025-01-02 11:44:43,645 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.73/selected {}
+2025-01-02 11:44:43,647 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.73/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,647 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,647 - DEBUG - Finished Request
+2025-01-02 11:44:43,647 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.75/selected {}
+2025-01-02 11:44:43,650 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.75/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,650 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,650 - DEBUG - Finished Request
+2025-01-02 11:44:43,650 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.77/selected {}
+2025-01-02 11:44:43,653 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.77/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,653 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,653 - DEBUG - Finished Request
+2025-01-02 11:44:43,653 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.79/selected {}
+2025-01-02 11:44:43,656 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.79/selected HTTP/1.1" 200 0
+2025-01-02 11:44:43,656 - DEBUG - Remote response: status=200 | data={"value":true} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,656 - DEBUG - Finished Request
+2025-01-02 11:44:43,656 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.79'}, 'value']}
+2025-01-02 11:44:43,658 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:43,658 - DEBUG - Remote response: status=200 | data={"value":"20241203"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,658 - DEBUG - Finished Request
+2025-01-02 11:44:43,658 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.79/text {}
+2025-01-02 11:44:43,661 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.79/text HTTP/1.1" 200 0
+2025-01-02 11:44:43,661 - DEBUG - Remote response: status=200 | data={"value":"2024/12/03(火)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:43,661 - DEBUG - Finished Request
+2025-01-02 11:44:43,661 - INFO - 選択した開始日: value=20241203, text=2024/12/03(火)
+2025-01-02 11:44:44,666 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element {'using': 'css selector', 'value': '[id="freewordtxt"]'}
+2025-01-02 11:44:44,673 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/element HTTP/1.1" 200 0
+2025-01-02 11:44:44,673 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.7"}} | headers=HTTPHeaderDict({'Content-Length': '125', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:44,673 - DEBUG - Finished Request
+2025-01-02 11:44:44,673 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.7/clear {}
+2025-01-02 11:44:44,689 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.7/clear HTTP/1.1" 200 0
+2025-01-02 11:44:44,689 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:44,689 - DEBUG - Finished Request
+2025-01-02 11:44:44,689 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.7/value {'text': '決算説明資料', 'value': ['決', '算', '説', '明', '資', '料']}
+2025-01-02 11:44:44,805 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.7/value HTTP/1.1" 200 0
+2025-01-02 11:44:44,805 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:44,806 - DEBUG - Finished Request
+2025-01-02 11:44:44,806 - INFO - 検索キーワード入力完了
+2025-01-02 11:44:45,811 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element {'using': 'css selector', 'value': '#searchbtn > img'}
+2025-01-02 11:44:45,817 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/element HTTP/1.1" 200 0
+2025-01-02 11:44:45,817 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.10"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:45,817 - DEBUG - Finished Request
+2025-01-02 11:44:45,817 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/url {}
+2025-01-02 11:44:45,820 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/url HTTP/1.1" 200 0
+2025-01-02 11:44:45,820 - DEBUG - Remote response: status=200 | data={"value":"https://www.release.tdnet.info/index.html"} | headers=HTTPHeaderDict({'Content-Length': '53', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:45,820 - DEBUG - Finished Request
+2025-01-02 11:44:45,820 - INFO - Click前のURL: https://www.release.tdnet.info/index.html
+2025-01-02 11:44:45,820 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element {'using': 'tag name', 'value': 'form'}
+2025-01-02 11:44:45,825 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/element HTTP/1.1" 200 0
+2025-01-02 11:44:45,825 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.5"}} | headers=HTTPHeaderDict({'Content-Length': '125', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:45,825 - DEBUG - Finished Request
+2025-01-02 11:44:45,825 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.5'}, 'action']}
+2025-01-02 11:44:45,828 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:45,828 - DEBUG - Remote response: status=200 | data={"value":"https://www.release.tdnet.info/onsf/TDJFSearch/TDJFSearch"} | headers=HTTPHeaderDict({'Content-Length': '69', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:45,828 - DEBUG - Finished Request
+2025-01-02 11:44:45,828 - INFO - Form action: https://www.release.tdnet.info/onsf/TDJFSearch/TDJFSearch
+2025-01-02 11:44:45,828 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.5'}, 'method']}
+2025-01-02 11:44:45,831 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:45,831 - DEBUG - Remote response: status=200 | data={"value":"post"} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:45,831 - DEBUG - Finished Request
+2025-01-02 11:44:45,831 - INFO - Form method: post
+2025-01-02 11:44:45,831 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.10/click {}
+2025-01-02 11:44:45,886 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/element/f.FDD5A04D7818CED9F1DDBF50AC6CA9D5.d.AB9A7E6C2EE4597B767C6CBF6B8CC8FE.e.10/click HTTP/1.1" 200 0
+2025-01-02 11:44:45,886 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:45,886 - DEBUG - Finished Request
+2025-01-02 11:44:45,886 - INFO - 検索ボタンクリック完了
+2025-01-02 11:44:47,887 - INFO - 検索結果のiframeに切り替え
+2025-01-02 11:44:47,888 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/frame {'id': None}
+2025-01-02 11:44:47,889 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/frame HTTP/1.1" 200 0
+2025-01-02 11:44:47,889 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:47,889 - DEBUG - Finished Request
+2025-01-02 11:44:47,889 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/element {'using': 'tag name', 'value': 'iframe'}
+2025-01-02 11:44:47,894 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/element HTTP/1.1" 200 0
+2025-01-02 11:44:47,894 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.C6E2723A067C3637D7B13C5F5DFC9D89.d.EE5EEF02B28A41A855DC045767CFE726.e.17"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:47,894 - DEBUG - Finished Request
+2025-01-02 11:44:47,894 - INFO - === 検索結果iframe情報 ===
+2025-01-02 11:44:47,894 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.C6E2723A067C3637D7B13C5F5DFC9D89.d.EE5EEF02B28A41A855DC045767CFE726.e.17'}, 'src']}
+2025-01-02 11:44:47,897 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:47,897 - DEBUG - Remote response: status=200 | data={"value":"https://www.release.tdnet.info/onsf/TDJFSearch/I_head"} | headers=HTTPHeaderDict({'Content-Length': '65', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:47,897 - DEBUG - Finished Request
+2025-01-02 11:44:47,897 - INFO - src: https://www.release.tdnet.info/onsf/TDJFSearch/I_head
+2025-01-02 11:44:47,898 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.C6E2723A067C3637D7B13C5F5DFC9D89.d.EE5EEF02B28A41A855DC045767CFE726.e.17'}, 'id']}
+2025-01-02 11:44:47,900 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:47,900 - DEBUG - Remote response: status=200 | data={"value":""} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:47,900 - DEBUG - Finished Request
+2025-01-02 11:44:47,900 - INFO - id: 
+2025-01-02 11:44:47,900 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.C6E2723A067C3637D7B13C5F5DFC9D89.d.EE5EEF02B28A41A855DC045767CFE726.e.17'}, 'name']}
+2025-01-02 11:44:47,903 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:44:47,903 - DEBUG - Remote response: status=200 | data={"value":""} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:47,903 - DEBUG - Finished Request
+2025-01-02 11:44:47,903 - INFO - name: 
+2025-01-02 11:44:47,903 - DEBUG - POST http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/frame {'id': {'element-6066-11e4-a52e-4f735466cecf': 'f.C6E2723A067C3637D7B13C5F5DFC9D89.d.EE5EEF02B28A41A855DC045767CFE726.e.17'}}
+2025-01-02 11:44:47,911 - DEBUG - http://localhost:54044 "POST /session/f071a01783b0f324d4b12615a40e84df/frame HTTP/1.1" 200 0
+2025-01-02 11:44:47,912 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:47,912 - DEBUG - Finished Request
+2025-01-02 11:44:47,912 - INFO - 検索結果のiframeに切り替え完了
+2025-01-02 11:44:49,912 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/url {}
+2025-01-02 11:44:49,915 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/url HTTP/1.1" 200 0
+2025-01-02 11:44:49,915 - DEBUG - Remote response: status=200 | data={"value":"https://www.release.tdnet.info/index.html"} | headers=HTTPHeaderDict({'Content-Length': '53', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:49,915 - DEBUG - Finished Request
+2025-01-02 11:44:49,915 - INFO - Current URL: https://www.release.tdnet.info/index.html
+2025-01-02 11:44:49,915 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/source {}
+2025-01-02 11:44:49,917 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/source HTTP/1.1" 200 0
+2025-01-02 11:44:49,917 - DEBUG - Remote response: status=200 | data={"value":"\u003Chtml style=\"overflow:hidden;\">\u003Chead>\n\t\u003Cmeta http-equiv=\"content-type\" content=\"text/html;charset=UTF-8\">\n\t\u003Cmeta http-equiv=\"Pragma\" content=\"no-cache\">\n\t\u003Cmeta name=\"robots\" content=\"noindex,nofollow\">\n\t\u003Cscript src=\"/onsf/runtime/jquery-1.8.3.min.js\">\u003C/script>\n\t\u003Cscript src=\"/onsf/js/TDJFModal.js\">\u003C/script>\n\t\u003Cscript type=\"text/javascript\" src=\"/onsf/js/I_JAVASCRIPT.js\">\u003C/script>\n\t\u003Clink rel=\"stylesheet\" href=\"/onsf/css/import.css\" type=\"text/css\" media=\"screen, tv\" charset=\"UTF-8\">\n\t\u003Clink rel=\"stylesheet\" href=\"/onsf/css/header.css\" type=\"text/css\" media=\"screen, tv\" charset=\"UTF-8\">\n\t\u003Ctitle>適時開示情報検索サービス\u003C/title>\n\t\u003Cscript type=\"text/javascript\">\n\t\u003C!--\n\t$(function(){\n\t\tfunction adjust(){\n\t\t\tvar h = $(window).height();\n\t\t\tvar h1= $('#header').height();\n\t\t\t$('#mainlist').css('height', h-h1 + 'px');\n\t\t}\n\t\tadjust();\n\n\t\t$(window).on('load resize', function(){\n\t\t\tadjust();\n\t\t})\n\t});\n\n\tfunction form_submit() {\n\t \tvar v = document.search.q.value;\n\t\tif( v == null || v == \"(コード／会社名／表題、複数指定可)                                \" || v == \"\" ) {\n\t\t\talert( \"検索条件を入力してください。\" );\n\t\t\treturn false;\n\t\t}\n\t\telse {\n\t\t\tdocument.search.t0.focus();\n\t\t\treturn true;\n\t\t}\n\t}\n\n\t$(function() {\n\t    $( 'a[rel*=modal]').modal({\n\t        top : 50,\n\t        overlay : 0.5,\n\t        speed : 200\n\t    });\n\t});\n\n\t$(function(){\n\t    $(window).load(function(){\n\t        $('iframe.modal').contents().find('html').css({\"width\":\"700px\",\"overflow-x\":\"hidden\"});\n\t        $('iframe.modal').contents().find('#content').css({\"width\":\"660px\",\"overflow-x\":\"hidden\"});\n\t    });\n\t});\n\n\t$(function(){\n\t\t$(\"select\").change(function () {\n\t\t\tvar c = $(this).children(\":selected\").attr(\"class\");\n\t\t\t$(this).removeClass(\"weekday saturday sunday\");\n\t\t\t$(this).addClass(c);\n\t\t\t});\n\t\tvar c = $(\"select\").children(\":selected\").attr(\"class\");\n\t\t$(\"select\").addClass(c);\n\t});\n\n\t$(function(){\n\t\tvar textBox = jQuery(\"input:text\");\n\t\ttextBox.focus(function(){\n\t\t\tjQuery(this).addClass(\"focus\");\n\t\t\tif(this.value == this.defaultValue){\n\t\t\t\tjQuery(this).val('');\n\t\t}\n\t\t}).blur(function(){\n\t\tif($(this).val() == ''){\n\t\t\t$(this).val(this.defaultValue).removeClass(\"focus\");\n\t\t\t}\n\t\t});\n\t});\n\t-->\n\t\u003C/script>\n\u003C/head>\n\n\n\u003Cbody>\n\n\t\u003Cdiv id=\"header\">\n\t\t\u003Cdiv id=\"logo\">\n\t\t\t\u003Ch1>\u003Cimg src=\"/onsf/img/logo.png\" alt=\"TDnet\" width=\"125px\" height=\"37px\">\u003C/h1>\n\t\t\t\u003Cdiv id=\"title\">\n\t\t\t\t\u003Ch2>適時開示情報閲覧サービス\u003C/h2>\n\t\t\t\t\u003Cp>Company Announcements Disclosure Service\u003C/p>\n\t\t\t\t\u003Ca href=\"#helpmodal\" rel=\"modal\" id=\"help\">検索方法\u003C/a>\n\t\t\t\u003C/div>\n\t\t\u003C/div>\n\t\t\u003Cdiv id=\"searchmenu\">\n\t\t\t\u003Ch3>開示情報検索\u003C/h3>\n\t\t\t\t\u003Cform name=\"search\" target=\"mainlist\" action=\"./TDJFSearch\" method=\"post\" onsubmit=\"return form_submit()\">\n\t\t\t\t\t\u003Cdl>\n\t\t\t\t\t\t\u003Cdt>検索期間\u003C/dt>\n\t\t\t\t\t\t\u003Cdd>\n\t\t\t\t\t\t\t\u003Cselect name=\"t0\" style=\"height:25px; width:155px; font-size: 14px; font-family: Meiryo UI,'メイリオ'\" class=\"weekday\">\n\t\t\t\t\t\t\t\u003Coption class=\"weekday\" value=\"20250102\">2025/01/02(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20250101\">2025/01/01(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241231\">2024/12/31(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241230\">2024/12/30(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241229\">2024/12/29(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241228\">2024/12/28(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241227\">2024/12/27(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241226\">2024/12/26(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241225\">2024/12/25(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241224\">2024/12/24(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241223\">2024/12/23(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241222\">2024/12/22(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241221\">2024/12/21(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241220\">2024/12/20(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241219\">2024/12/19(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241218\">2024/12/18(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241217\">2024/12/17(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241216\">2024/12/16(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241215\">2024/12/15(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241214\">2024/12/14(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241213\">2024/12/13(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241212\">2024/12/12(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241211\">2024/12/11(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241210\">2024/12/10(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241209\">2024/12/09(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241208\">2024/12/08(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241207\">2024/12/07(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241206\">2024/12/06(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241205\">2024/12/05(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241204\">2024/12/04(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241203\">2024/12/03(火)\u003C/option>\n\n\t\t\t\t\t\t\t\u003C/select>\n\t\t\t\t\t\t\t～\n\t\t\t\t\t\t\t\u003Cselect name=\"t1\" style=\"height:25px; width:155px; font-size: 14px; font-family: Meiryo UI,'メイリオ'\" class=\"weekday\">\n\t\t\t\t\t\t\t\u003Coption class=\"weekday\" value=\"20250102\">2025/01/02(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20250101\">2025/01/01(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241231\">2024/12/31(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241230\">2024/12/30(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241229\">2024/12/29(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241228\">2024/12/28(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241227\">2024/12/27(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241226\">2024/12/26(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241225\">2024/12/25(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241224\">2024/12/24(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241223\">2024/12/23(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241222\">2024/12/22(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241221\">2024/12/21(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241220\">2024/12/20(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241219\">2024/12/19(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241218\">2024/12/18(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241217\">2024/12/17(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241216\">2024/12/16(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241215\">2024/12/15(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241214\">2024/12/14(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241213\">2024/12/13(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241212\">2024/12/12(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241211\">2024/12/11(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241210\">2024/12/10(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241209\">2024/12/09(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241208\">2024/12/08(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241207\">2024/12/07(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241206\">2024/12/06(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241205\">2024/12/05(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241204\">2024/12/04(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241203\">2024/12/03(火)\u003C/option>\n\n\t\t\t\t\t\t\t\u003C/select>\n\t\t\t\t\t\t\u003C/dd>\n\t\t\t\t\t\t\u003Cdt>キーワード検索\u003C/dt>\n\t\t\t\t\t\t\u003Cdd id=\"freewordtxtdd\">\u003Cinput name=\"q\" type=\"text\" maxlength=\"50\" id=\"freewordtxt\" value=\"(コード／会社名／表題、複数指定可)                                \" class=\"focus\">\n\t\t\t\t\t\t\t\u003Cdiv id=\"submitmask\">\u003Cdiv id=\"submitmask-2\">\u003Cbutton type=\"submit\" id=\"searchbtn\" alt=\"検索\" value=\"\">\u003Cimg src=\"/onsf/img/icn_search.png\">\u003C/button>\u003C/div>\u003C/div>\n\t\t\t\t\t\t\u003C/dd>\n\t\t\t\t\t\u003C/dl>\n\t\t\t\t\t\u003Cinput type=\"hidden\" name=\"m\" value=\"0\">\n\t\t\t\t\u003C/form>\n\t\t\t\u003C/div>\n\t\t\u003C/div>\n\t\u003Ciframe src=\"/onsf/TDJFRESULT_INITIAL.html\" id=\"mainlist\" name=\"mainlist\" seamless=\"\" frameborder=\"0\" style=\"height: 641px;\">\u003C/iframe>\n\t\u003Ciframe src=\"/onsf/help/help.html\" id=\"helpmodal\" class=\"modal\" seamless=\"\" frameborder=\"0\">\u003C/iframe>\n\n\n\n\u003Cdiv id=\"glayLayer\">\u003C/div>\u003C/body>\u003C/html>"} | headers=HTTPHeaderDict({'Content-Length': '9886', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:49,917 - DEBUG - Finished Request
+2025-01-02 11:44:49,918 - INFO - ページソースを保存: backend/app/logs/tdnet_result_20250102_114449.html
+2025-01-02 11:44:49,918 - DEBUG - GET http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df/source {}
+2025-01-02 11:44:49,920 - DEBUG - http://localhost:54044 "GET /session/f071a01783b0f324d4b12615a40e84df/source HTTP/1.1" 200 0
+2025-01-02 11:44:49,920 - DEBUG - Remote response: status=200 | data={"value":"\u003Chtml style=\"overflow:hidden;\">\u003Chead>\n\t\u003Cmeta http-equiv=\"content-type\" content=\"text/html;charset=UTF-8\">\n\t\u003Cmeta http-equiv=\"Pragma\" content=\"no-cache\">\n\t\u003Cmeta name=\"robots\" content=\"noindex,nofollow\">\n\t\u003Cscript src=\"/onsf/runtime/jquery-1.8.3.min.js\">\u003C/script>\n\t\u003Cscript src=\"/onsf/js/TDJFModal.js\">\u003C/script>\n\t\u003Cscript type=\"text/javascript\" src=\"/onsf/js/I_JAVASCRIPT.js\">\u003C/script>\n\t\u003Clink rel=\"stylesheet\" href=\"/onsf/css/import.css\" type=\"text/css\" media=\"screen, tv\" charset=\"UTF-8\">\n\t\u003Clink rel=\"stylesheet\" href=\"/onsf/css/header.css\" type=\"text/css\" media=\"screen, tv\" charset=\"UTF-8\">\n\t\u003Ctitle>適時開示情報検索サービス\u003C/title>\n\t\u003Cscript type=\"text/javascript\">\n\t\u003C!--\n\t$(function(){\n\t\tfunction adjust(){\n\t\t\tvar h = $(window).height();\n\t\t\tvar h1= $('#header').height();\n\t\t\t$('#mainlist').css('height', h-h1 + 'px');\n\t\t}\n\t\tadjust();\n\n\t\t$(window).on('load resize', function(){\n\t\t\tadjust();\n\t\t})\n\t});\n\n\tfunction form_submit() {\n\t \tvar v = document.search.q.value;\n\t\tif( v == null || v == \"(コード／会社名／表題、複数指定可)                                \" || v == \"\" ) {\n\t\t\talert( \"検索条件を入力してください。\" );\n\t\t\treturn false;\n\t\t}\n\t\telse {\n\t\t\tdocument.search.t0.focus();\n\t\t\treturn true;\n\t\t}\n\t}\n\n\t$(function() {\n\t    $( 'a[rel*=modal]').modal({\n\t        top : 50,\n\t        overlay : 0.5,\n\t        speed : 200\n\t    });\n\t});\n\n\t$(function(){\n\t    $(window).load(function(){\n\t        $('iframe.modal').contents().find('html').css({\"width\":\"700px\",\"overflow-x\":\"hidden\"});\n\t        $('iframe.modal').contents().find('#content').css({\"width\":\"660px\",\"overflow-x\":\"hidden\"});\n\t    });\n\t});\n\n\t$(function(){\n\t\t$(\"select\").change(function () {\n\t\t\tvar c = $(this).children(\":selected\").attr(\"class\");\n\t\t\t$(this).removeClass(\"weekday saturday sunday\");\n\t\t\t$(this).addClass(c);\n\t\t\t});\n\t\tvar c = $(\"select\").children(\":selected\").attr(\"class\");\n\t\t$(\"select\").addClass(c);\n\t});\n\n\t$(function(){\n\t\tvar textBox = jQuery(\"input:text\");\n\t\ttextBox.focus(function(){\n\t\t\tjQuery(this).addClass(\"focus\");\n\t\t\tif(this.value == this.defaultValue){\n\t\t\t\tjQuery(this).val('');\n\t\t}\n\t\t}).blur(function(){\n\t\tif($(this).val() == ''){\n\t\t\t$(this).val(this.defaultValue).removeClass(\"focus\");\n\t\t\t}\n\t\t});\n\t});\n\t-->\n\t\u003C/script>\n\u003C/head>\n\n\n\u003Cbody>\n\n\t\u003Cdiv id=\"header\">\n\t\t\u003Cdiv id=\"logo\">\n\t\t\t\u003Ch1>\u003Cimg src=\"/onsf/img/logo.png\" alt=\"TDnet\" width=\"125px\" height=\"37px\">\u003C/h1>\n\t\t\t\u003Cdiv id=\"title\">\n\t\t\t\t\u003Ch2>適時開示情報閲覧サービス\u003C/h2>\n\t\t\t\t\u003Cp>Company Announcements Disclosure Service\u003C/p>\n\t\t\t\t\u003Ca href=\"#helpmodal\" rel=\"modal\" id=\"help\">検索方法\u003C/a>\n\t\t\t\u003C/div>\n\t\t\u003C/div>\n\t\t\u003Cdiv id=\"searchmenu\">\n\t\t\t\u003Ch3>開示情報検索\u003C/h3>\n\t\t\t\t\u003Cform name=\"search\" target=\"mainlist\" action=\"./TDJFSearch\" method=\"post\" onsubmit=\"return form_submit()\">\n\t\t\t\t\t\u003Cdl>\n\t\t\t\t\t\t\u003Cdt>検索期間\u003C/dt>\n\t\t\t\t\t\t\u003Cdd>\n\t\t\t\t\t\t\t\u003Cselect name=\"t0\" style=\"height:25px; width:155px; font-size: 14px; font-family: Meiryo UI,'メイリオ'\" class=\"weekday\">\n\t\t\t\t\t\t\t\u003Coption class=\"weekday\" value=\"20250102\">2025/01/02(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20250101\">2025/01/01(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241231\">2024/12/31(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241230\">2024/12/30(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241229\">2024/12/29(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241228\">2024/12/28(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241227\">2024/12/27(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241226\">2024/12/26(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241225\">2024/12/25(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241224\">2024/12/24(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241223\">2024/12/23(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241222\">2024/12/22(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241221\">2024/12/21(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241220\">2024/12/20(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241219\">2024/12/19(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241218\">2024/12/18(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241217\">2024/12/17(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241216\">2024/12/16(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241215\">2024/12/15(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241214\">2024/12/14(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241213\">2024/12/13(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241212\">2024/12/12(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241211\">2024/12/11(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241210\">2024/12/10(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241209\">2024/12/09(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241208\">2024/12/08(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241207\">2024/12/07(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241206\">2024/12/06(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241205\">2024/12/05(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241204\">2024/12/04(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241203\">2024/12/03(火)\u003C/option>\n\n\t\t\t\t\t\t\t\u003C/select>\n\t\t\t\t\t\t\t～\n\t\t\t\t\t\t\t\u003Cselect name=\"t1\" style=\"height:25px; width:155px; font-size: 14px; font-family: Meiryo UI,'メイリオ'\" class=\"weekday\">\n\t\t\t\t\t\t\t\u003Coption class=\"weekday\" value=\"20250102\">2025/01/02(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20250101\">2025/01/01(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241231\">2024/12/31(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241230\">2024/12/30(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241229\">2024/12/29(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241228\">2024/12/28(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241227\">2024/12/27(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241226\">2024/12/26(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241225\">2024/12/25(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241224\">2024/12/24(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241223\">2024/12/23(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241222\">2024/12/22(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241221\">2024/12/21(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241220\">2024/12/20(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241219\">2024/12/19(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241218\">2024/12/18(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241217\">2024/12/17(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241216\">2024/12/16(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241215\">2024/12/15(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241214\">2024/12/14(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241213\">2024/12/13(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241212\">2024/12/12(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241211\">2024/12/11(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241210\">2024/12/10(火)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241209\">2024/12/09(月)\u003C/option>\n\u003Coption class=\"sunday\" value=\"20241208\">2024/12/08(日)\u003C/option>\n\u003Coption class=\"saturday\" value=\"20241207\">2024/12/07(土)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241206\">2024/12/06(金)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241205\">2024/12/05(木)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241204\">2024/12/04(水)\u003C/option>\n\u003Coption class=\"weekday\" value=\"20241203\">2024/12/03(火)\u003C/option>\n\n\t\t\t\t\t\t\t\u003C/select>\n\t\t\t\t\t\t\u003C/dd>\n\t\t\t\t\t\t\u003Cdt>キーワード検索\u003C/dt>\n\t\t\t\t\t\t\u003Cdd id=\"freewordtxtdd\">\u003Cinput name=\"q\" type=\"text\" maxlength=\"50\" id=\"freewordtxt\" value=\"(コード／会社名／表題、複数指定可)                                \" class=\"focus\">\n\t\t\t\t\t\t\t\u003Cdiv id=\"submitmask\">\u003Cdiv id=\"submitmask-2\">\u003Cbutton type=\"submit\" id=\"searchbtn\" alt=\"検索\" value=\"\">\u003Cimg src=\"/onsf/img/icn_search.png\">\u003C/button>\u003C/div>\u003C/div>\n\t\t\t\t\t\t\u003C/dd>\n\t\t\t\t\t\u003C/dl>\n\t\t\t\t\t\u003Cinput type=\"hidden\" name=\"m\" value=\"0\">\n\t\t\t\t\u003C/form>\n\t\t\t\u003C/div>\n\t\t\u003C/div>\n\t\u003Ciframe src=\"/onsf/TDJFRESULT_INITIAL.html\" id=\"mainlist\" name=\"mainlist\" seamless=\"\" frameborder=\"0\" style=\"height: 641px;\">\u003C/iframe>\n\t\u003Ciframe src=\"/onsf/help/help.html\" id=\"helpmodal\" class=\"modal\" seamless=\"\" frameborder=\"0\">\u003C/iframe>\n\n\n\n\u003Cdiv id=\"glayLayer\">\u003C/div>\u003C/body>\u003C/html>"} | headers=HTTPHeaderDict({'Content-Length': '9886', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:44:49,920 - DEBUG - Finished Request
+2025-01-02 11:44:49,920 - INFO - 
+=== BeautifulSoup解析開始 ===
+2025-01-02 11:44:49,922 - INFO - 
+--- ページ構造の確認 ---
+2025-01-02 11:44:49,922 - INFO - Title: 適時開示情報検索サービス
+2025-01-02 11:44:49,922 - INFO - 
+Forms found: 1
+2025-01-02 11:44:49,922 - INFO - Form action: ./TDJFSearch
+2025-01-02 11:44:49,922 - INFO - Form method: post
+2025-01-02 11:44:49,922 - INFO - Form id: 
+2025-01-02 11:44:49,922 - INFO - Select name: t0
+2025-01-02 11:44:49,922 - INFO - Options count: 31
+2025-01-02 11:44:49,922 - INFO - Option 0: value: 20250102, text: 2025/01/02(木)
+2025-01-02 11:44:49,922 - INFO - Option 1: value: 20250101, text: 2025/01/01(水)
+2025-01-02 11:44:49,922 - INFO - Option 2: value: 20241231, text: 2024/12/31(火)
+2025-01-02 11:44:49,922 - INFO - Option 3: value: 20241230, text: 2024/12/30(月)
+2025-01-02 11:44:49,922 - INFO - Option 4: value: 20241229, text: 2024/12/29(日)
+2025-01-02 11:44:49,922 - INFO - Option 5: value: 20241228, text: 2024/12/28(土)
+2025-01-02 11:44:49,922 - INFO - Option 6: value: 20241227, text: 2024/12/27(金)
+2025-01-02 11:44:49,922 - INFO - Option 7: value: 20241226, text: 2024/12/26(木)
+2025-01-02 11:44:49,923 - INFO - Option 8: value: 20241225, text: 2024/12/25(水)
+2025-01-02 11:44:49,923 - INFO - Option 9: value: 20241224, text: 2024/12/24(火)
+2025-01-02 11:44:49,923 - INFO - Option 10: value: 20241223, text: 2024/12/23(月)
+2025-01-02 11:44:49,923 - INFO - Option 11: value: 20241222, text: 2024/12/22(日)
+2025-01-02 11:44:49,923 - INFO - Option 12: value: 20241221, text: 2024/12/21(土)
+2025-01-02 11:44:49,924 - INFO - Option 13: value: 20241220, text: 2024/12/20(金)
+2025-01-02 11:44:49,924 - INFO - Option 14: value: 20241219, text: 2024/12/19(木)
+2025-01-02 11:44:49,924 - INFO - Option 15: value: 20241218, text: 2024/12/18(水)
+2025-01-02 11:44:49,924 - INFO - Option 16: value: 20241217, text: 2024/12/17(火)
+2025-01-02 11:44:49,924 - INFO - Option 17: value: 20241216, text: 2024/12/16(月)
+2025-01-02 11:44:49,924 - INFO - Option 18: value: 20241215, text: 2024/12/15(日)
+2025-01-02 11:44:49,924 - INFO - Option 19: value: 20241214, text: 2024/12/14(土)
+2025-01-02 11:44:49,924 - INFO - Option 20: value: 20241213, text: 2024/12/13(金)
+2025-01-02 11:44:49,924 - INFO - Option 21: value: 20241212, text: 2024/12/12(木)
+2025-01-02 11:44:49,924 - INFO - Option 22: value: 20241211, text: 2024/12/11(水)
+2025-01-02 11:44:49,924 - INFO - Option 23: value: 20241210, text: 2024/12/10(火)
+2025-01-02 11:44:49,924 - INFO - Option 24: value: 20241209, text: 2024/12/09(月)
+2025-01-02 11:44:49,924 - INFO - Option 25: value: 20241208, text: 2024/12/08(日)
+2025-01-02 11:44:49,924 - INFO - Option 26: value: 20241207, text: 2024/12/07(土)
+2025-01-02 11:44:49,924 - INFO - Option 27: value: 20241206, text: 2024/12/06(金)
+2025-01-02 11:44:49,924 - INFO - Option 28: value: 20241205, text: 2024/12/05(木)
+2025-01-02 11:44:49,924 - INFO - Option 29: value: 20241204, text: 2024/12/04(水)
+2025-01-02 11:44:49,924 - INFO - Option 30: value: 20241203, text: 2024/12/03(火)
+2025-01-02 11:44:49,924 - INFO - Select name: t1
+2025-01-02 11:44:49,924 - INFO - Options count: 31
+2025-01-02 11:44:49,924 - INFO - Option 0: value: 20250102, text: 2025/01/02(木)
+2025-01-02 11:44:49,924 - INFO - Option 1: value: 20250101, text: 2025/01/01(水)
+2025-01-02 11:44:49,924 - INFO - Option 2: value: 20241231, text: 2024/12/31(火)
+2025-01-02 11:44:49,924 - INFO - Option 3: value: 20241230, text: 2024/12/30(月)
+2025-01-02 11:44:49,924 - INFO - Option 4: value: 20241229, text: 2024/12/29(日)
+2025-01-02 11:44:49,924 - INFO - Option 5: value: 20241228, text: 2024/12/28(土)
+2025-01-02 11:44:49,924 - INFO - Option 6: value: 20241227, text: 2024/12/27(金)
+2025-01-02 11:44:49,924 - INFO - Option 7: value: 20241226, text: 2024/12/26(木)
+2025-01-02 11:44:49,924 - INFO - Option 8: value: 20241225, text: 2024/12/25(水)
+2025-01-02 11:44:49,924 - INFO - Option 9: value: 20241224, text: 2024/12/24(火)
+2025-01-02 11:44:49,924 - INFO - Option 10: value: 20241223, text: 2024/12/23(月)
+2025-01-02 11:44:49,924 - INFO - Option 11: value: 20241222, text: 2024/12/22(日)
+2025-01-02 11:44:49,924 - INFO - Option 12: value: 20241221, text: 2024/12/21(土)
+2025-01-02 11:44:49,924 - INFO - Option 13: value: 20241220, text: 2024/12/20(金)
+2025-01-02 11:44:49,924 - INFO - Option 14: value: 20241219, text: 2024/12/19(木)
+2025-01-02 11:44:49,924 - INFO - Option 15: value: 20241218, text: 2024/12/18(水)
+2025-01-02 11:44:49,924 - INFO - Option 16: value: 20241217, text: 2024/12/17(火)
+2025-01-02 11:44:49,924 - INFO - Option 17: value: 20241216, text: 2024/12/16(月)
+2025-01-02 11:44:49,924 - INFO - Option 18: value: 20241215, text: 2024/12/15(日)
+2025-01-02 11:44:49,924 - INFO - Option 19: value: 20241214, text: 2024/12/14(土)
+2025-01-02 11:44:49,924 - INFO - Option 20: value: 20241213, text: 2024/12/13(金)
+2025-01-02 11:44:49,924 - INFO - Option 21: value: 20241212, text: 2024/12/12(木)
+2025-01-02 11:44:49,924 - INFO - Option 22: value: 20241211, text: 2024/12/11(水)
+2025-01-02 11:44:49,925 - INFO - Option 23: value: 20241210, text: 2024/12/10(火)
+2025-01-02 11:44:49,925 - INFO - Option 24: value: 20241209, text: 2024/12/09(月)
+2025-01-02 11:44:49,925 - INFO - Option 25: value: 20241208, text: 2024/12/08(日)
+2025-01-02 11:44:49,925 - INFO - Option 26: value: 20241207, text: 2024/12/07(土)
+2025-01-02 11:44:49,925 - INFO - Option 27: value: 20241206, text: 2024/12/06(金)
+2025-01-02 11:44:49,925 - INFO - Option 28: value: 20241205, text: 2024/12/05(木)
+2025-01-02 11:44:49,925 - INFO - Option 29: value: 20241204, text: 2024/12/04(水)
+2025-01-02 11:44:49,925 - INFO - Option 30: value: 20241203, text: 2024/12/03(火)
+2025-01-02 11:44:49,925 - INFO - 
+Frames found: 2
+2025-01-02 11:44:49,925 - INFO - Frame info: {
+  "tag": "iframe",
+  "src": "/onsf/TDJFRESULT_INITIAL.html",
+  "id": "mainlist",
+  "name": "mainlist",
+  "class": []
+}
+2025-01-02 11:44:49,925 - INFO - Frame info: {
+  "tag": "iframe",
+  "src": "/onsf/help/help.html",
+  "id": "helpmodal",
+  "name": "",
+  "class": [
+    "modal"
+  ]
+}
+2025-01-02 11:44:49,925 - INFO - 
+Tables found: 0
+2025-01-02 11:44:49,925 - INFO - 処理が完了しました
+2025-01-02 11:49:39,986 - DEBUG - DELETE http://localhost:54044/session/f071a01783b0f324d4b12615a40e84df {}
+2025-01-02 11:49:40,045 - DEBUG - http://localhost:54044 "DELETE /session/f071a01783b0f324d4b12615a40e84df HTTP/1.1" 200 0
+2025-01-02 11:49:40,045 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:49:40,045 - DEBUG - Finished Request

@@ -1,6 +1,6 @@
 import asyncio
 import logging
-from app.services.data_collector import DataCollector
+from backend.app.services.companies.data_collector import DataCollector
 import json
 import os
 

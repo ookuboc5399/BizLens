@@ -1,0 +1,182 @@
+<html style="overflow:hidden;"><head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta name="robots" content="noindex,nofollow">
+	<script src="/onsf/runtime/jquery-1.8.3.min.js"></script>
+	<script src="/onsf/js/TDJFModal.js"></script>
+	<script type="text/javascript" src="/onsf/js/I_JAVASCRIPT.js"></script>
+	<link rel="stylesheet" href="/onsf/css/import.css" type="text/css" media="screen, tv" charset="UTF-8">
+	<link rel="stylesheet" href="/onsf/css/header.css" type="text/css" media="screen, tv" charset="UTF-8">
+	<title>適時開示情報検索サービス</title>
+	<script type="text/javascript">
+	<!--
+	$(function(){
+		function adjust(){
+			var h = $(window).height();
+			var h1= $('#header').height();
+			$('#mainlist').css('height', h-h1 + 'px');
+		}
+		adjust();
+
+		$(window).on('load resize', function(){
+			adjust();
+		})
+	});
+
+	function form_submit() {
+	 	var v = document.search.q.value;
+		if( v == null || v == "(コード／会社名／表題、複数指定可)                                " || v == "" ) {
+			alert( "検索条件を入力してください。" );
+			return false;
+		}
+		else {
+			document.search.t0.focus();
+			return true;
+		}
+	}
+
+	$(function() {
+	    $( 'a[rel*=modal]').modal({
+	        top : 50,
+	        overlay : 0.5,
+	        speed : 200
+	    });
+	});
+
+	$(function(){
+	    $(window).load(function(){
+	        $('iframe.modal').contents().find('html').css({"width":"700px","overflow-x":"hidden"});
+	        $('iframe.modal').contents().find('#content').css({"width":"660px","overflow-x":"hidden"});
+	    });
+	});
+
+	$(function(){
+		$("select").change(function () {
+			var c = $(this).children(":selected").attr("class");
+			$(this).removeClass("weekday saturday sunday");
+			$(this).addClass(c);
+			});
+		var c = $("select").children(":selected").attr("class");
+		$("select").addClass(c);
+	});
+
+	$(function(){
+		var textBox = jQuery("input:text");
+		textBox.focus(function(){
+			jQuery(this).addClass("focus");
+			if(this.value == this.defaultValue){
+				jQuery(this).val('');
+		}
+		}).blur(function(){
+		if($(this).val() == ''){
+			$(this).val(this.defaultValue).removeClass("focus");
+			}
+		});
+	});
+	-->
+	</script>
+</head>
+
+
+<body>
+
+	<div id="header">
+		<div id="logo">
+			<h1><img src="/onsf/img/logo.png" alt="TDnet" width="125px" height="37px"></h1>
+			<div id="title">
+				<h2>適時開示情報閲覧サービス</h2>
+				<p>Company Announcements Disclosure Service</p>
+				<a href="#helpmodal" rel="modal" id="help">検索方法</a>
+			</div>
+		</div>
+		<div id="searchmenu">
+			<h3>開示情報検索</h3>
+				<form name="search" target="mainlist" action="./TDJFSearch" method="post" onsubmit="return form_submit()">
+					<dl>
+						<dt>検索期間</dt>
+						<dd>
+							<select name="t0" style="height:25px; width:155px; font-size: 14px; font-family: Meiryo UI,'メイリオ'" class="weekday">
+							<option class="weekday" value="20250102">2025/01/02(木)</option>
+<option class="weekday" value="20250101">2025/01/01(水)</option>
+<option class="weekday" value="20241231">2024/12/31(火)</option>
+<option class="weekday" value="20241230">2024/12/30(月)</option>
+<option class="sunday" value="20241229">2024/12/29(日)</option>
+<option class="saturday" value="20241228">2024/12/28(土)</option>
+<option class="weekday" value="20241227">2024/12/27(金)</option>
+<option class="weekday" value="20241226">2024/12/26(木)</option>
+<option class="weekday" value="20241225">2024/12/25(水)</option>
+<option class="weekday" value="20241224">2024/12/24(火)</option>
+<option class="weekday" value="20241223">2024/12/23(月)</option>
+<option class="sunday" value="20241222">2024/12/22(日)</option>
+<option class="saturday" value="20241221">2024/12/21(土)</option>
+<option class="weekday" value="20241220">2024/12/20(金)</option>
+<option class="weekday" value="20241219">2024/12/19(木)</option>
+<option class="weekday" value="20241218">2024/12/18(水)</option>
+<option class="weekday" value="20241217">2024/12/17(火)</option>
+<option class="weekday" value="20241216">2024/12/16(月)</option>
+<option class="sunday" value="20241215">2024/12/15(日)</option>
+<option class="saturday" value="20241214">2024/12/14(土)</option>
+<option class="weekday" value="20241213">2024/12/13(金)</option>
+<option class="weekday" value="20241212">2024/12/12(木)</option>
+<option class="weekday" value="20241211">2024/12/11(水)</option>
+<option class="weekday" value="20241210">2024/12/10(火)</option>
+<option class="weekday" value="20241209">2024/12/09(月)</option>
+<option class="sunday" value="20241208">2024/12/08(日)</option>
+<option class="saturday" value="20241207">2024/12/07(土)</option>
+<option class="weekday" value="20241206">2024/12/06(金)</option>
+<option class="weekday" value="20241205">2024/12/05(木)</option>
+<option class="weekday" value="20241204">2024/12/04(水)</option>
+<option class="weekday" value="20241203">2024/12/03(火)</option>
+
+							</select>
+							～
+							<select name="t1" style="height:25px; width:155px; font-size: 14px; font-family: Meiryo UI,'メイリオ'" class="weekday">
+							<option class="weekday" value="20250102">2025/01/02(木)</option>
+<option class="weekday" value="20250101">2025/01/01(水)</option>
+<option class="weekday" value="20241231">2024/12/31(火)</option>
+<option class="weekday" value="20241230">2024/12/30(月)</option>
+<option class="sunday" value="20241229">2024/12/29(日)</option>
+<option class="saturday" value="20241228">2024/12/28(土)</option>
+<option class="weekday" value="20241227">2024/12/27(金)</option>
+<option class="weekday" value="20241226">2024/12/26(木)</option>
+<option class="weekday" value="20241225">2024/12/25(水)</option>
+<option class="weekday" value="20241224">2024/12/24(火)</option>
+<option class="weekday" value="20241223">2024/12/23(月)</option>
+<option class="sunday" value="20241222">2024/12/22(日)</option>
+<option class="saturday" value="20241221">2024/12/21(土)</option>
+<option class="weekday" value="20241220">2024/12/20(金)</option>
+<option class="weekday" value="20241219">2024/12/19(木)</option>
+<option class="weekday" value="20241218">2024/12/18(水)</option>
+<option class="weekday" value="20241217">2024/12/17(火)</option>
+<option class="weekday" value="20241216">2024/12/16(月)</option>
+<option class="sunday" value="20241215">2024/12/15(日)</option>
+<option class="saturday" value="20241214">2024/12/14(土)</option>
+<option class="weekday" value="20241213">2024/12/13(金)</option>
+<option class="weekday" value="20241212">2024/12/12(木)</option>
+<option class="weekday" value="20241211">2024/12/11(水)</option>
+<option class="weekday" value="20241210">2024/12/10(火)</option>
+<option class="weekday" value="20241209">2024/12/09(月)</option>
+<option class="sunday" value="20241208">2024/12/08(日)</option>
+<option class="saturday" value="20241207">2024/12/07(土)</option>
+<option class="weekday" value="20241206">2024/12/06(金)</option>
+<option class="weekday" value="20241205">2024/12/05(木)</option>
+<option class="weekday" value="20241204">2024/12/04(水)</option>
+<option class="weekday" value="20241203">2024/12/03(火)</option>
+
+							</select>
+						</dd>
+						<dt>キーワード検索</dt>
+						<dd id="freewordtxtdd"><input name="q" type="text" maxlength="50" id="freewordtxt" value="(コード／会社名／表題、複数指定可)                                ">
+							<div id="submitmask"><div id="submitmask-2"><button type="submit" id="searchbtn" alt="検索" value=""><img src="/onsf/img/icn_search.png"></button></div></div>
+						</dd>
+					</dl>
+					<input type="hidden" name="m" value="0">
+				</form>
+			</div>
+		</div>
+	<iframe src="/onsf/TDJFRESULT_INITIAL.html" id="mainlist" name="mainlist" seamless="" frameborder="0" style="height: 641px;"></iframe>
+	<iframe src="/onsf/help/help.html" id="helpmodal" class="modal" seamless="" frameborder="0"></iframe>
+
+
+
+<div id="glayLayer"></div></body></html>

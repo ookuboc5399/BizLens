@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List
-from ...services.financial_report_service import FinancialReportService
+from ...services.financial_reports.financial_report_service import FinancialReportService
 from ...models.financial_report import FinancialReportResponse
 from ...auth.dependencies import get_current_admin_user
 import logging

@@ -1,0 +1,733 @@
+2025-01-02 11:58:21,046 - INFO - ====== WebDriver manager ======
+2025-01-02 11:58:21,254 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-02 11:58:21,260 - DEBUG - Starting new HTTPS connection (1): googlechromelabs.github.io:443
+2025-01-02 11:58:21,300 - DEBUG - https://googlechromelabs.github.io:443 "GET /chrome-for-testing/latest-patch-versions-per-build.json HTTP/1.1" 200 8974
+2025-01-02 11:58:21,302 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-02 11:58:21,303 - DEBUG - Starting new HTTPS connection (1): googlechromelabs.github.io:443
+2025-01-02 11:58:21,345 - DEBUG - https://googlechromelabs.github.io:443 "GET /chrome-for-testing/latest-patch-versions-per-build.json HTTP/1.1" 200 8974
+2025-01-02 11:58:21,347 - INFO - Driver [/Users/ookubo/.wdm/drivers/chromedriver/mac64/131.0.6778.204/chromedriver-mac-arm64/chromedriver] found in cache
+2025-01-02 11:58:21,347 - DEBUG - Skipping Selenium Manager; path to chrome driver specified in Service class: /Users/ookubo/.wdm/drivers/chromedriver/mac64/131.0.6778.204/chromedriver-mac-arm64/chromedriver
+2025-01-02 11:58:21,353 - DEBUG - Started executable: `/Users/ookubo/.wdm/drivers/chromedriver/mac64/131.0.6778.204/chromedriver-mac-arm64/chromedriver` in a child process with pid: 54268 using 0 to output -3
+2025-01-02 11:58:21,549 - DEBUG - POST http://localhost:57817/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'goog:chromeOptions': {'extensions': [], 'args': ['--no-sandbox', '--disable-dev-shm-usage', '--window-size=1920,1080', '--lang=ja']}}}}
+2025-01-02 11:58:21,549 - DEBUG - Starting new HTTP connection (1): localhost:57817
+2025-01-02 11:58:22,206 - DEBUG - http://localhost:57817 "POST /session HTTP/1.1" 200 0
+2025-01-02 11:58:22,209 - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"131.0.6778.205","chrome":{"chromedriverVersion":"131.0.6778.204 (52183f9e99a61056f9b78535f53d256f1516f2a0-refs/branch-heads/6778_155@{#7})","userDataDir":"/var/folders/2h/_zxvmj6d6djg0s16cqgpy6nm0000gn/T/.org.chromium.Chromium.4MRDkw"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:57830"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"mac","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"dd6af820e0f6c65b1f81ac6a6a23dbdd"}} | headers=HTTPHeaderDict({'Content-Length': '893', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:22,210 - DEBUG - Finished Request
+2025-01-02 11:58:22,217 - INFO - === メインページアクセス ===
+2025-01-02 11:58:22,217 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/url {'url': 'https://www.release.tdnet.info/index.html'}
+2025-01-02 11:58:22,772 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/url HTTP/1.1" 200 0
+2025-01-02 11:58:22,774 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:22,774 - DEBUG - Finished Request
+2025-01-02 11:58:24,779 - INFO - 検索フォームのiframeに切り替え
+2025-01-02 11:58:24,780 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element {'using': 'tag name', 'value': 'iframe'}
+2025-01-02 11:58:24,789 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element HTTP/1.1" 200 0
+2025-01-02 11:58:24,790 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.925C1BD8B71D21A0C5016AFD79DE609A.d.CA85E98D19812EE15E6873162252224C.e.16"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,790 - DEBUG - Finished Request
+2025-01-02 11:58:24,790 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/frame {'id': {'element-6066-11e4-a52e-4f735466cecf': 'f.925C1BD8B71D21A0C5016AFD79DE609A.d.CA85E98D19812EE15E6873162252224C.e.16'}}
+2025-01-02 11:58:24,801 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/frame HTTP/1.1" 200 0
+2025-01-02 11:58:24,802 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,802 - DEBUG - Finished Request
+2025-01-02 11:58:24,802 - INFO - 検索フォームのiframeに切り替え完了
+2025-01-02 11:58:24,802 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element {'using': 'css selector', 'value': '[name="t0"]'}
+2025-01-02 11:58:24,807 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element HTTP/1.1" 200 0
+2025-01-02 11:58:24,807 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.3"}} | headers=HTTPHeaderDict({'Content-Length': '125', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,807 - DEBUG - Finished Request
+2025-01-02 11:58:24,807 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.3/name {}
+2025-01-02 11:58:24,810 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.3/name HTTP/1.1" 200 0
+2025-01-02 11:58:24,810 - DEBUG - Remote response: status=200 | data={"value":"select"} | headers=HTTPHeaderDict({'Content-Length': '18', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,810 - DEBUG - Finished Request
+2025-01-02 11:58:24,810 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.3/attribute/multiple {}
+2025-01-02 11:58:24,812 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.3/attribute/multiple HTTP/1.1" 200 0
+2025-01-02 11:58:24,812 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,812 - DEBUG - Finished Request
+2025-01-02 11:58:24,812 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.3/elements {'using': 'tag name', 'value': 'option'}
+2025-01-02 11:58:24,819 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.3/elements HTTP/1.1" 200 0
+2025-01-02 11:58:24,819 - DEBUG - Remote response: status=200 | data={"value":[{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.18"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.20"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.22"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.24"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.26"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.28"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.30"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.32"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.34"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.36"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.38"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.40"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.42"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.44"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.46"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.48"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.50"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.52"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.54"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.56"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.58"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.60"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.62"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.64"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.66"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.68"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.70"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.72"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.74"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.76"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.78"}]} | headers=HTTPHeaderDict({'Content-Length': '3638', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,819 - DEBUG - Finished Request
+2025-01-02 11:58:24,819 - INFO - 開始日の選択肢数: 31
+2025-01-02 11:58:24,820 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.18'}, 'value']}
+2025-01-02 11:58:24,823 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,823 - DEBUG - Remote response: status=200 | data={"value":"20250102"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,823 - DEBUG - Finished Request
+2025-01-02 11:58:24,823 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.18/text {}
+2025-01-02 11:58:24,830 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.18/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,830 - DEBUG - Remote response: status=200 | data={"value":"2025/01/02(木)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,830 - DEBUG - Finished Request
+2025-01-02 11:58:24,830 - INFO - Option 0: value: 20250102, text: 2025/01/02(木)
+2025-01-02 11:58:24,830 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.20'}, 'value']}
+2025-01-02 11:58:24,834 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,834 - DEBUG - Remote response: status=200 | data={"value":"20250101"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,835 - DEBUG - Finished Request
+2025-01-02 11:58:24,835 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.20/text {}
+2025-01-02 11:58:24,838 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.20/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,838 - DEBUG - Remote response: status=200 | data={"value":"2025/01/01(水)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,838 - DEBUG - Finished Request
+2025-01-02 11:58:24,838 - INFO - Option 1: value: 20250101, text: 2025/01/01(水)
+2025-01-02 11:58:24,838 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.22'}, 'value']}
+2025-01-02 11:58:24,840 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,840 - DEBUG - Remote response: status=200 | data={"value":"20241231"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,840 - DEBUG - Finished Request
+2025-01-02 11:58:24,840 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.22/text {}
+2025-01-02 11:58:24,843 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.22/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,843 - DEBUG - Remote response: status=200 | data={"value":"2024/12/31(火)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,843 - DEBUG - Finished Request
+2025-01-02 11:58:24,844 - INFO - Option 2: value: 20241231, text: 2024/12/31(火)
+2025-01-02 11:58:24,844 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.24'}, 'value']}
+2025-01-02 11:58:24,846 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,846 - DEBUG - Remote response: status=200 | data={"value":"20241230"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,846 - DEBUG - Finished Request
+2025-01-02 11:58:24,846 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.24/text {}
+2025-01-02 11:58:24,849 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.24/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,849 - DEBUG - Remote response: status=200 | data={"value":"2024/12/30(月)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,849 - DEBUG - Finished Request
+2025-01-02 11:58:24,849 - INFO - Option 3: value: 20241230, text: 2024/12/30(月)
+2025-01-02 11:58:24,849 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.26'}, 'value']}
+2025-01-02 11:58:24,851 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,851 - DEBUG - Remote response: status=200 | data={"value":"20241229"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,851 - DEBUG - Finished Request
+2025-01-02 11:58:24,851 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.26/text {}
+2025-01-02 11:58:24,854 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.26/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,855 - DEBUG - Remote response: status=200 | data={"value":"2024/12/29(日)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,855 - DEBUG - Finished Request
+2025-01-02 11:58:24,855 - INFO - Option 4: value: 20241229, text: 2024/12/29(日)
+2025-01-02 11:58:24,855 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.28'}, 'value']}
+2025-01-02 11:58:24,857 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,857 - DEBUG - Remote response: status=200 | data={"value":"20241228"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,857 - DEBUG - Finished Request
+2025-01-02 11:58:24,857 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.28/text {}
+2025-01-02 11:58:24,860 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.28/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,860 - DEBUG - Remote response: status=200 | data={"value":"2024/12/28(土)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,860 - DEBUG - Finished Request
+2025-01-02 11:58:24,861 - INFO - Option 5: value: 20241228, text: 2024/12/28(土)
+2025-01-02 11:58:24,861 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.30'}, 'value']}
+2025-01-02 11:58:24,863 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,863 - DEBUG - Remote response: status=200 | data={"value":"20241227"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,863 - DEBUG - Finished Request
+2025-01-02 11:58:24,863 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.30/text {}
+2025-01-02 11:58:24,866 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.30/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,866 - DEBUG - Remote response: status=200 | data={"value":"2024/12/27(金)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,866 - DEBUG - Finished Request
+2025-01-02 11:58:24,866 - INFO - Option 6: value: 20241227, text: 2024/12/27(金)
+2025-01-02 11:58:24,866 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.32'}, 'value']}
+2025-01-02 11:58:24,868 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,868 - DEBUG - Remote response: status=200 | data={"value":"20241226"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,868 - DEBUG - Finished Request
+2025-01-02 11:58:24,868 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.32/text {}
+2025-01-02 11:58:24,871 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.32/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,871 - DEBUG - Remote response: status=200 | data={"value":"2024/12/26(木)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,871 - DEBUG - Finished Request
+2025-01-02 11:58:24,871 - INFO - Option 7: value: 20241226, text: 2024/12/26(木)
+2025-01-02 11:58:24,872 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.34'}, 'value']}
+2025-01-02 11:58:24,874 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,874 - DEBUG - Remote response: status=200 | data={"value":"20241225"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,874 - DEBUG - Finished Request
+2025-01-02 11:58:24,874 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.34/text {}
+2025-01-02 11:58:24,878 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.34/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,878 - DEBUG - Remote response: status=200 | data={"value":"2024/12/25(水)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,878 - DEBUG - Finished Request
+2025-01-02 11:58:24,878 - INFO - Option 8: value: 20241225, text: 2024/12/25(水)
+2025-01-02 11:58:24,878 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.36'}, 'value']}
+2025-01-02 11:58:24,880 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,880 - DEBUG - Remote response: status=200 | data={"value":"20241224"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,880 - DEBUG - Finished Request
+2025-01-02 11:58:24,880 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.36/text {}
+2025-01-02 11:58:24,883 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.36/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,883 - DEBUG - Remote response: status=200 | data={"value":"2024/12/24(火)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,883 - DEBUG - Finished Request
+2025-01-02 11:58:24,884 - INFO - Option 9: value: 20241224, text: 2024/12/24(火)
+2025-01-02 11:58:24,884 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.38'}, 'value']}
+2025-01-02 11:58:24,886 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,886 - DEBUG - Remote response: status=200 | data={"value":"20241223"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,886 - DEBUG - Finished Request
+2025-01-02 11:58:24,886 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.38/text {}
+2025-01-02 11:58:24,889 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.38/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,889 - DEBUG - Remote response: status=200 | data={"value":"2024/12/23(月)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,889 - DEBUG - Finished Request
+2025-01-02 11:58:24,889 - INFO - Option 10: value: 20241223, text: 2024/12/23(月)
+2025-01-02 11:58:24,889 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.40'}, 'value']}
+2025-01-02 11:58:24,892 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,892 - DEBUG - Remote response: status=200 | data={"value":"20241222"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,892 - DEBUG - Finished Request
+2025-01-02 11:58:24,892 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.40/text {}
+2025-01-02 11:58:24,895 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.40/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,895 - DEBUG - Remote response: status=200 | data={"value":"2024/12/22(日)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,895 - DEBUG - Finished Request
+2025-01-02 11:58:24,895 - INFO - Option 11: value: 20241222, text: 2024/12/22(日)
+2025-01-02 11:58:24,895 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.42'}, 'value']}
+2025-01-02 11:58:24,897 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,897 - DEBUG - Remote response: status=200 | data={"value":"20241221"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,897 - DEBUG - Finished Request
+2025-01-02 11:58:24,897 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.42/text {}
+2025-01-02 11:58:24,901 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.42/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,901 - DEBUG - Remote response: status=200 | data={"value":"2024/12/21(土)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,901 - DEBUG - Finished Request
+2025-01-02 11:58:24,901 - INFO - Option 12: value: 20241221, text: 2024/12/21(土)
+2025-01-02 11:58:24,901 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.44'}, 'value']}
+2025-01-02 11:58:24,903 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,903 - DEBUG - Remote response: status=200 | data={"value":"20241220"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,903 - DEBUG - Finished Request
+2025-01-02 11:58:24,903 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.44/text {}
+2025-01-02 11:58:24,906 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.44/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,906 - DEBUG - Remote response: status=200 | data={"value":"2024/12/20(金)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,906 - DEBUG - Finished Request
+2025-01-02 11:58:24,906 - INFO - Option 13: value: 20241220, text: 2024/12/20(金)
+2025-01-02 11:58:24,906 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.46'}, 'value']}
+2025-01-02 11:58:24,909 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,909 - DEBUG - Remote response: status=200 | data={"value":"20241219"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,909 - DEBUG - Finished Request
+2025-01-02 11:58:24,909 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.46/text {}
+2025-01-02 11:58:24,912 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.46/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,912 - DEBUG - Remote response: status=200 | data={"value":"2024/12/19(木)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,912 - DEBUG - Finished Request
+2025-01-02 11:58:24,912 - INFO - Option 14: value: 20241219, text: 2024/12/19(木)
+2025-01-02 11:58:24,912 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.48'}, 'value']}
+2025-01-02 11:58:24,914 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,914 - DEBUG - Remote response: status=200 | data={"value":"20241218"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,914 - DEBUG - Finished Request
+2025-01-02 11:58:24,914 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.48/text {}
+2025-01-02 11:58:24,918 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.48/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,918 - DEBUG - Remote response: status=200 | data={"value":"2024/12/18(水)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,918 - DEBUG - Finished Request
+2025-01-02 11:58:24,918 - INFO - Option 15: value: 20241218, text: 2024/12/18(水)
+2025-01-02 11:58:24,918 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.50'}, 'value']}
+2025-01-02 11:58:24,920 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,920 - DEBUG - Remote response: status=200 | data={"value":"20241217"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,920 - DEBUG - Finished Request
+2025-01-02 11:58:24,920 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.50/text {}
+2025-01-02 11:58:24,924 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.50/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,924 - DEBUG - Remote response: status=200 | data={"value":"2024/12/17(火)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,924 - DEBUG - Finished Request
+2025-01-02 11:58:24,924 - INFO - Option 16: value: 20241217, text: 2024/12/17(火)
+2025-01-02 11:58:24,924 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.52'}, 'value']}
+2025-01-02 11:58:24,926 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,926 - DEBUG - Remote response: status=200 | data={"value":"20241216"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,926 - DEBUG - Finished Request
+2025-01-02 11:58:24,926 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.52/text {}
+2025-01-02 11:58:24,929 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.52/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,929 - DEBUG - Remote response: status=200 | data={"value":"2024/12/16(月)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,929 - DEBUG - Finished Request
+2025-01-02 11:58:24,929 - INFO - Option 17: value: 20241216, text: 2024/12/16(月)
+2025-01-02 11:58:24,930 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.54'}, 'value']}
+2025-01-02 11:58:24,932 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,932 - DEBUG - Remote response: status=200 | data={"value":"20241215"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,932 - DEBUG - Finished Request
+2025-01-02 11:58:24,932 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.54/text {}
+2025-01-02 11:58:24,935 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.54/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,935 - DEBUG - Remote response: status=200 | data={"value":"2024/12/15(日)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,935 - DEBUG - Finished Request
+2025-01-02 11:58:24,935 - INFO - Option 18: value: 20241215, text: 2024/12/15(日)
+2025-01-02 11:58:24,935 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.56'}, 'value']}
+2025-01-02 11:58:24,937 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,937 - DEBUG - Remote response: status=200 | data={"value":"20241214"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,937 - DEBUG - Finished Request
+2025-01-02 11:58:24,937 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.56/text {}
+2025-01-02 11:58:24,942 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.56/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,942 - DEBUG - Remote response: status=200 | data={"value":"2024/12/14(土)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,942 - DEBUG - Finished Request
+2025-01-02 11:58:24,942 - INFO - Option 19: value: 20241214, text: 2024/12/14(土)
+2025-01-02 11:58:24,942 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.58'}, 'value']}
+2025-01-02 11:58:24,944 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,944 - DEBUG - Remote response: status=200 | data={"value":"20241213"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,944 - DEBUG - Finished Request
+2025-01-02 11:58:24,945 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.58/text {}
+2025-01-02 11:58:24,948 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.58/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,948 - DEBUG - Remote response: status=200 | data={"value":"2024/12/13(金)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,948 - DEBUG - Finished Request
+2025-01-02 11:58:24,948 - INFO - Option 20: value: 20241213, text: 2024/12/13(金)
+2025-01-02 11:58:24,948 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.60'}, 'value']}
+2025-01-02 11:58:24,950 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,950 - DEBUG - Remote response: status=200 | data={"value":"20241212"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,950 - DEBUG - Finished Request
+2025-01-02 11:58:24,950 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.60/text {}
+2025-01-02 11:58:24,953 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.60/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,953 - DEBUG - Remote response: status=200 | data={"value":"2024/12/12(木)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,953 - DEBUG - Finished Request
+2025-01-02 11:58:24,953 - INFO - Option 21: value: 20241212, text: 2024/12/12(木)
+2025-01-02 11:58:24,953 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.62'}, 'value']}
+2025-01-02 11:58:24,956 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,956 - DEBUG - Remote response: status=200 | data={"value":"20241211"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,956 - DEBUG - Finished Request
+2025-01-02 11:58:24,956 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.62/text {}
+2025-01-02 11:58:24,962 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.62/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,962 - DEBUG - Remote response: status=200 | data={"value":"2024/12/11(水)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,962 - DEBUG - Finished Request
+2025-01-02 11:58:24,962 - INFO - Option 22: value: 20241211, text: 2024/12/11(水)
+2025-01-02 11:58:24,963 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.64'}, 'value']}
+2025-01-02 11:58:24,965 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,965 - DEBUG - Remote response: status=200 | data={"value":"20241210"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,965 - DEBUG - Finished Request
+2025-01-02 11:58:24,965 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.64/text {}
+2025-01-02 11:58:24,968 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.64/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,969 - DEBUG - Remote response: status=200 | data={"value":"2024/12/10(火)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,969 - DEBUG - Finished Request
+2025-01-02 11:58:24,969 - INFO - Option 23: value: 20241210, text: 2024/12/10(火)
+2025-01-02 11:58:24,969 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.66'}, 'value']}
+2025-01-02 11:58:24,971 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,971 - DEBUG - Remote response: status=200 | data={"value":"20241209"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,971 - DEBUG - Finished Request
+2025-01-02 11:58:24,971 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.66/text {}
+2025-01-02 11:58:24,974 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.66/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,974 - DEBUG - Remote response: status=200 | data={"value":"2024/12/09(月)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,974 - DEBUG - Finished Request
+2025-01-02 11:58:24,974 - INFO - Option 24: value: 20241209, text: 2024/12/09(月)
+2025-01-02 11:58:24,974 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.68'}, 'value']}
+2025-01-02 11:58:24,976 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,976 - DEBUG - Remote response: status=200 | data={"value":"20241208"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,976 - DEBUG - Finished Request
+2025-01-02 11:58:24,977 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.68/text {}
+2025-01-02 11:58:24,980 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.68/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,980 - DEBUG - Remote response: status=200 | data={"value":"2024/12/08(日)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,980 - DEBUG - Finished Request
+2025-01-02 11:58:24,980 - INFO - Option 25: value: 20241208, text: 2024/12/08(日)
+2025-01-02 11:58:24,980 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.70'}, 'value']}
+2025-01-02 11:58:24,982 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,982 - DEBUG - Remote response: status=200 | data={"value":"20241207"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,982 - DEBUG - Finished Request
+2025-01-02 11:58:24,982 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.70/text {}
+2025-01-02 11:58:24,985 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.70/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,985 - DEBUG - Remote response: status=200 | data={"value":"2024/12/07(土)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,985 - DEBUG - Finished Request
+2025-01-02 11:58:24,986 - INFO - Option 26: value: 20241207, text: 2024/12/07(土)
+2025-01-02 11:58:24,986 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.72'}, 'value']}
+2025-01-02 11:58:24,988 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,988 - DEBUG - Remote response: status=200 | data={"value":"20241206"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,988 - DEBUG - Finished Request
+2025-01-02 11:58:24,988 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.72/text {}
+2025-01-02 11:58:24,991 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.72/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,991 - DEBUG - Remote response: status=200 | data={"value":"2024/12/06(金)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,991 - DEBUG - Finished Request
+2025-01-02 11:58:24,991 - INFO - Option 27: value: 20241206, text: 2024/12/06(金)
+2025-01-02 11:58:24,991 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.74'}, 'value']}
+2025-01-02 11:58:24,993 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,993 - DEBUG - Remote response: status=200 | data={"value":"20241205"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,993 - DEBUG - Finished Request
+2025-01-02 11:58:24,993 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.74/text {}
+2025-01-02 11:58:24,997 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.74/text HTTP/1.1" 200 0
+2025-01-02 11:58:24,997 - DEBUG - Remote response: status=200 | data={"value":"2024/12/05(木)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,997 - DEBUG - Finished Request
+2025-01-02 11:58:24,997 - INFO - Option 28: value: 20241205, text: 2024/12/05(木)
+2025-01-02 11:58:24,997 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.76'}, 'value']}
+2025-01-02 11:58:24,999 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:24,999 - DEBUG - Remote response: status=200 | data={"value":"20241204"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:24,999 - DEBUG - Finished Request
+2025-01-02 11:58:24,999 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.76/text {}
+2025-01-02 11:58:25,002 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.76/text HTTP/1.1" 200 0
+2025-01-02 11:58:25,002 - DEBUG - Remote response: status=200 | data={"value":"2024/12/04(水)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,002 - DEBUG - Finished Request
+2025-01-02 11:58:25,002 - INFO - Option 29: value: 20241204, text: 2024/12/04(水)
+2025-01-02 11:58:25,002 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.78'}, 'value']}
+2025-01-02 11:58:25,004 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,004 - DEBUG - Remote response: status=200 | data={"value":"20241203"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,004 - DEBUG - Finished Request
+2025-01-02 11:58:25,004 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.78/text {}
+2025-01-02 11:58:25,008 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.78/text HTTP/1.1" 200 0
+2025-01-02 11:58:25,008 - DEBUG - Remote response: status=200 | data={"value":"2024/12/03(火)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,008 - DEBUG - Finished Request
+2025-01-02 11:58:25,008 - INFO - Option 30: value: 20241203, text: 2024/12/03(火)
+2025-01-02 11:58:25,008 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.3/elements {'using': 'tag name', 'value': 'option'}
+2025-01-02 11:58:25,012 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.3/elements HTTP/1.1" 200 0
+2025-01-02 11:58:25,012 - DEBUG - Remote response: status=200 | data={"value":[{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.18"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.20"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.22"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.24"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.26"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.28"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.30"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.32"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.34"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.36"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.38"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.40"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.42"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.44"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.46"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.48"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.50"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.52"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.54"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.56"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.58"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.60"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.62"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.64"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.66"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.68"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.70"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.72"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.74"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.76"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.78"}]} | headers=HTTPHeaderDict({'Content-Length': '3638', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,012 - DEBUG - Finished Request
+2025-01-02 11:58:25,012 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.18'}, 'index']}
+2025-01-02 11:58:25,014 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,014 - DEBUG - Remote response: status=200 | data={"value":"0"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,014 - DEBUG - Finished Request
+2025-01-02 11:58:25,014 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.20'}, 'index']}
+2025-01-02 11:58:25,017 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,017 - DEBUG - Remote response: status=200 | data={"value":"1"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,017 - DEBUG - Finished Request
+2025-01-02 11:58:25,017 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.22'}, 'index']}
+2025-01-02 11:58:25,019 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,019 - DEBUG - Remote response: status=200 | data={"value":"2"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,019 - DEBUG - Finished Request
+2025-01-02 11:58:25,019 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.24'}, 'index']}
+2025-01-02 11:58:25,021 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,021 - DEBUG - Remote response: status=200 | data={"value":"3"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,021 - DEBUG - Finished Request
+2025-01-02 11:58:25,021 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.26'}, 'index']}
+2025-01-02 11:58:25,023 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,023 - DEBUG - Remote response: status=200 | data={"value":"4"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,023 - DEBUG - Finished Request
+2025-01-02 11:58:25,023 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.28'}, 'index']}
+2025-01-02 11:58:25,025 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,025 - DEBUG - Remote response: status=200 | data={"value":"5"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,025 - DEBUG - Finished Request
+2025-01-02 11:58:25,025 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.30'}, 'index']}
+2025-01-02 11:58:25,027 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,027 - DEBUG - Remote response: status=200 | data={"value":"6"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,027 - DEBUG - Finished Request
+2025-01-02 11:58:25,027 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.32'}, 'index']}
+2025-01-02 11:58:25,029 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,029 - DEBUG - Remote response: status=200 | data={"value":"7"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,030 - DEBUG - Finished Request
+2025-01-02 11:58:25,030 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.34'}, 'index']}
+2025-01-02 11:58:25,032 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,032 - DEBUG - Remote response: status=200 | data={"value":"8"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,032 - DEBUG - Finished Request
+2025-01-02 11:58:25,032 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.36'}, 'index']}
+2025-01-02 11:58:25,034 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,034 - DEBUG - Remote response: status=200 | data={"value":"9"} | headers=HTTPHeaderDict({'Content-Length': '13', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,034 - DEBUG - Finished Request
+2025-01-02 11:58:25,034 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.38'}, 'index']}
+2025-01-02 11:58:25,037 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,037 - DEBUG - Remote response: status=200 | data={"value":"10"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,037 - DEBUG - Finished Request
+2025-01-02 11:58:25,037 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.40'}, 'index']}
+2025-01-02 11:58:25,039 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,039 - DEBUG - Remote response: status=200 | data={"value":"11"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,039 - DEBUG - Finished Request
+2025-01-02 11:58:25,039 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.42'}, 'index']}
+2025-01-02 11:58:25,042 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,042 - DEBUG - Remote response: status=200 | data={"value":"12"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,042 - DEBUG - Finished Request
+2025-01-02 11:58:25,042 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.44'}, 'index']}
+2025-01-02 11:58:25,044 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,044 - DEBUG - Remote response: status=200 | data={"value":"13"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,045 - DEBUG - Finished Request
+2025-01-02 11:58:25,045 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.46'}, 'index']}
+2025-01-02 11:58:25,047 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,047 - DEBUG - Remote response: status=200 | data={"value":"14"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,047 - DEBUG - Finished Request
+2025-01-02 11:58:25,047 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.48'}, 'index']}
+2025-01-02 11:58:25,050 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,050 - DEBUG - Remote response: status=200 | data={"value":"15"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,050 - DEBUG - Finished Request
+2025-01-02 11:58:25,050 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.50'}, 'index']}
+2025-01-02 11:58:25,052 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,052 - DEBUG - Remote response: status=200 | data={"value":"16"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,052 - DEBUG - Finished Request
+2025-01-02 11:58:25,053 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.52'}, 'index']}
+2025-01-02 11:58:25,059 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,059 - DEBUG - Remote response: status=200 | data={"value":"17"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,060 - DEBUG - Finished Request
+2025-01-02 11:58:25,060 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.54'}, 'index']}
+2025-01-02 11:58:25,068 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,068 - DEBUG - Remote response: status=200 | data={"value":"18"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,068 - DEBUG - Finished Request
+2025-01-02 11:58:25,068 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.56'}, 'index']}
+2025-01-02 11:58:25,078 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,078 - DEBUG - Remote response: status=200 | data={"value":"19"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,078 - DEBUG - Finished Request
+2025-01-02 11:58:25,080 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.58'}, 'index']}
+2025-01-02 11:58:25,090 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,091 - DEBUG - Remote response: status=200 | data={"value":"20"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,091 - DEBUG - Finished Request
+2025-01-02 11:58:25,092 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.60'}, 'index']}
+2025-01-02 11:58:25,095 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,095 - DEBUG - Remote response: status=200 | data={"value":"21"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,095 - DEBUG - Finished Request
+2025-01-02 11:58:25,095 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.62'}, 'index']}
+2025-01-02 11:58:25,097 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,097 - DEBUG - Remote response: status=200 | data={"value":"22"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,097 - DEBUG - Finished Request
+2025-01-02 11:58:25,097 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.64'}, 'index']}
+2025-01-02 11:58:25,101 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,101 - DEBUG - Remote response: status=200 | data={"value":"23"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,101 - DEBUG - Finished Request
+2025-01-02 11:58:25,101 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.66'}, 'index']}
+2025-01-02 11:58:25,106 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,106 - DEBUG - Remote response: status=200 | data={"value":"24"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,106 - DEBUG - Finished Request
+2025-01-02 11:58:25,106 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.68'}, 'index']}
+2025-01-02 11:58:25,109 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,109 - DEBUG - Remote response: status=200 | data={"value":"25"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,109 - DEBUG - Finished Request
+2025-01-02 11:58:25,109 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.70'}, 'index']}
+2025-01-02 11:58:25,111 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,111 - DEBUG - Remote response: status=200 | data={"value":"26"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,111 - DEBUG - Finished Request
+2025-01-02 11:58:25,111 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.72'}, 'index']}
+2025-01-02 11:58:25,113 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,113 - DEBUG - Remote response: status=200 | data={"value":"27"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,113 - DEBUG - Finished Request
+2025-01-02 11:58:25,113 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.74'}, 'index']}
+2025-01-02 11:58:25,116 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,116 - DEBUG - Remote response: status=200 | data={"value":"28"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,116 - DEBUG - Finished Request
+2025-01-02 11:58:25,116 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.76'}, 'index']}
+2025-01-02 11:58:25,119 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,119 - DEBUG - Remote response: status=200 | data={"value":"29"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,119 - DEBUG - Finished Request
+2025-01-02 11:58:25,119 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.78'}, 'index']}
+2025-01-02 11:58:25,121 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,121 - DEBUG - Remote response: status=200 | data={"value":"30"} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,121 - DEBUG - Finished Request
+2025-01-02 11:58:25,121 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.78/selected {}
+2025-01-02 11:58:25,125 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.78/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,125 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,125 - DEBUG - Finished Request
+2025-01-02 11:58:25,125 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.78/enabled {}
+2025-01-02 11:58:25,129 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.78/enabled HTTP/1.1" 200 0
+2025-01-02 11:58:25,129 - DEBUG - Remote response: status=200 | data={"value":true} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,129 - DEBUG - Finished Request
+2025-01-02 11:58:25,129 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.78/click {}
+2025-01-02 11:58:25,138 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.78/click HTTP/1.1" 200 0
+2025-01-02 11:58:25,138 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,138 - DEBUG - Finished Request
+2025-01-02 11:58:25,138 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.3/elements {'using': 'tag name', 'value': 'option'}
+2025-01-02 11:58:25,143 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.3/elements HTTP/1.1" 200 0
+2025-01-02 11:58:25,143 - DEBUG - Remote response: status=200 | data={"value":[{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.18"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.20"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.22"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.24"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.26"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.28"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.30"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.32"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.34"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.36"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.38"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.40"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.42"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.44"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.46"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.48"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.50"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.52"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.54"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.56"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.58"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.60"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.62"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.64"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.66"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.68"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.70"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.72"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.74"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.76"},{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.78"}]} | headers=HTTPHeaderDict({'Content-Length': '3638', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,143 - DEBUG - Finished Request
+2025-01-02 11:58:25,143 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.18/selected {}
+2025-01-02 11:58:25,146 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.18/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,146 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,147 - DEBUG - Finished Request
+2025-01-02 11:58:25,147 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.20/selected {}
+2025-01-02 11:58:25,149 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.20/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,149 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,149 - DEBUG - Finished Request
+2025-01-02 11:58:25,149 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.22/selected {}
+2025-01-02 11:58:25,152 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.22/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,152 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,152 - DEBUG - Finished Request
+2025-01-02 11:58:25,152 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.24/selected {}
+2025-01-02 11:58:25,154 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.24/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,154 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,154 - DEBUG - Finished Request
+2025-01-02 11:58:25,154 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.26/selected {}
+2025-01-02 11:58:25,157 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.26/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,157 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,157 - DEBUG - Finished Request
+2025-01-02 11:58:25,158 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.28/selected {}
+2025-01-02 11:58:25,161 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.28/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,161 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,161 - DEBUG - Finished Request
+2025-01-02 11:58:25,161 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.30/selected {}
+2025-01-02 11:58:25,163 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.30/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,163 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,163 - DEBUG - Finished Request
+2025-01-02 11:58:25,163 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.32/selected {}
+2025-01-02 11:58:25,166 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.32/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,166 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,166 - DEBUG - Finished Request
+2025-01-02 11:58:25,166 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.34/selected {}
+2025-01-02 11:58:25,169 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.34/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,169 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,169 - DEBUG - Finished Request
+2025-01-02 11:58:25,169 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.36/selected {}
+2025-01-02 11:58:25,174 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.36/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,175 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,175 - DEBUG - Finished Request
+2025-01-02 11:58:25,176 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.38/selected {}
+2025-01-02 11:58:25,183 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.38/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,183 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,183 - DEBUG - Finished Request
+2025-01-02 11:58:25,184 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.40/selected {}
+2025-01-02 11:58:25,191 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.40/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,191 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,191 - DEBUG - Finished Request
+2025-01-02 11:58:25,191 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.42/selected {}
+2025-01-02 11:58:25,197 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.42/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,197 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,198 - DEBUG - Finished Request
+2025-01-02 11:58:25,198 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.44/selected {}
+2025-01-02 11:58:25,208 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.44/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,209 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,209 - DEBUG - Finished Request
+2025-01-02 11:58:25,209 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.46/selected {}
+2025-01-02 11:58:25,216 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.46/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,216 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,216 - DEBUG - Finished Request
+2025-01-02 11:58:25,217 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.48/selected {}
+2025-01-02 11:58:25,220 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.48/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,221 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,221 - DEBUG - Finished Request
+2025-01-02 11:58:25,221 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.50/selected {}
+2025-01-02 11:58:25,226 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.50/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,226 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,226 - DEBUG - Finished Request
+2025-01-02 11:58:25,226 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.52/selected {}
+2025-01-02 11:58:25,230 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.52/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,230 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,230 - DEBUG - Finished Request
+2025-01-02 11:58:25,230 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.54/selected {}
+2025-01-02 11:58:25,233 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.54/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,233 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,233 - DEBUG - Finished Request
+2025-01-02 11:58:25,233 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.56/selected {}
+2025-01-02 11:58:25,236 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.56/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,236 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,236 - DEBUG - Finished Request
+2025-01-02 11:58:25,236 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.58/selected {}
+2025-01-02 11:58:25,239 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.58/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,239 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,239 - DEBUG - Finished Request
+2025-01-02 11:58:25,239 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.60/selected {}
+2025-01-02 11:58:25,242 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.60/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,242 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,242 - DEBUG - Finished Request
+2025-01-02 11:58:25,242 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.62/selected {}
+2025-01-02 11:58:25,245 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.62/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,245 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,245 - DEBUG - Finished Request
+2025-01-02 11:58:25,245 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.64/selected {}
+2025-01-02 11:58:25,248 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.64/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,248 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,248 - DEBUG - Finished Request
+2025-01-02 11:58:25,248 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.66/selected {}
+2025-01-02 11:58:25,251 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.66/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,251 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,251 - DEBUG - Finished Request
+2025-01-02 11:58:25,251 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.68/selected {}
+2025-01-02 11:58:25,254 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.68/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,254 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,254 - DEBUG - Finished Request
+2025-01-02 11:58:25,254 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.70/selected {}
+2025-01-02 11:58:25,257 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.70/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,257 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,257 - DEBUG - Finished Request
+2025-01-02 11:58:25,257 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.72/selected {}
+2025-01-02 11:58:25,263 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.72/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,263 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,263 - DEBUG - Finished Request
+2025-01-02 11:58:25,263 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.74/selected {}
+2025-01-02 11:58:25,270 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.74/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,270 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,270 - DEBUG - Finished Request
+2025-01-02 11:58:25,271 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.76/selected {}
+2025-01-02 11:58:25,284 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.76/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,284 - DEBUG - Remote response: status=200 | data={"value":false} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,284 - DEBUG - Finished Request
+2025-01-02 11:58:25,285 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.78/selected {}
+2025-01-02 11:58:25,291 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.78/selected HTTP/1.1" 200 0
+2025-01-02 11:58:25,292 - DEBUG - Remote response: status=200 | data={"value":true} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,292 - DEBUG - Finished Request
+2025-01-02 11:58:25,292 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.78'}, 'value']}
+2025-01-02 11:58:25,296 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/execute/sync HTTP/1.1" 200 0
+2025-01-02 11:58:25,297 - DEBUG - Remote response: status=200 | data={"value":"20241203"} | headers=HTTPHeaderDict({'Content-Length': '20', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,298 - DEBUG - Finished Request
+2025-01-02 11:58:25,298 - DEBUG - GET http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.78/text {}
+2025-01-02 11:58:25,305 - DEBUG - http://localhost:57817 "GET /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.78/text HTTP/1.1" 200 0
+2025-01-02 11:58:25,305 - DEBUG - Remote response: status=200 | data={"value":"2024/12/03(火)"} | headers=HTTPHeaderDict({'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:25,305 - DEBUG - Finished Request
+2025-01-02 11:58:25,305 - INFO - 選択した開始日: value=20241203, text=2024/12/03(火)
+2025-01-02 11:58:26,306 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element {'using': 'css selector', 'value': '[id="freewordtxt"]'}
+2025-01-02 11:58:26,313 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element HTTP/1.1" 200 0
+2025-01-02 11:58:26,313 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.6"}} | headers=HTTPHeaderDict({'Content-Length': '125', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:26,314 - DEBUG - Finished Request
+2025-01-02 11:58:26,314 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.6/clear {}
+2025-01-02 11:58:26,330 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.6/clear HTTP/1.1" 200 0
+2025-01-02 11:58:26,330 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:26,330 - DEBUG - Finished Request
+2025-01-02 11:58:26,331 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.6/value {'text': '決算説明資料', 'value': ['決', '算', '説', '明', '資', '料']}
+2025-01-02 11:58:26,419 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.6/value HTTP/1.1" 200 0
+2025-01-02 11:58:26,419 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:26,419 - DEBUG - Finished Request
+2025-01-02 11:58:26,419 - INFO - 検索キーワード入力完了
+2025-01-02 11:58:27,425 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element {'using': 'css selector', 'value': '#searchbtn > img'}
+2025-01-02 11:58:27,432 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element HTTP/1.1" 200 0
+2025-01-02 11:58:27,432 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.10"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:27,432 - DEBUG - Finished Request
+2025-01-02 11:58:27,432 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.10/click {}
+2025-01-02 11:58:27,490 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element/f.BAC88308BAC091630792112FE7D81F49.d.0486653061E8944584AFCC83CD58EBA4.e.10/click HTTP/1.1" 200 0
+2025-01-02 11:58:27,490 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:27,490 - DEBUG - Finished Request
+2025-01-02 11:58:27,490 - INFO - 検索ボタンクリック完了
+2025-01-02 11:58:29,491 - INFO - 検索結果のiframeに切り替え
+2025-01-02 11:58:29,492 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/frame {'id': None}
+2025-01-02 11:58:29,493 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/frame HTTP/1.1" 200 0
+2025-01-02 11:58:29,493 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:29,493 - DEBUG - Finished Request
+2025-01-02 11:58:29,493 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element {'using': 'tag name', 'value': 'iframe'}
+2025-01-02 11:58:29,497 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/element HTTP/1.1" 200 0
+2025-01-02 11:58:29,497 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.925C1BD8B71D21A0C5016AFD79DE609A.d.CA85E98D19812EE15E6873162252224C.e.16"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:29,497 - DEBUG - Finished Request
+2025-01-02 11:58:29,497 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/frame {'id': {'element-6066-11e4-a52e-4f735466cecf': 'f.925C1BD8B71D21A0C5016AFD79DE609A.d.CA85E98D19812EE15E6873162252224C.e.16'}}
+2025-01-02 11:58:29,504 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/frame HTTP/1.1" 200 0
+2025-01-02 11:58:29,504 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:29,504 - DEBUG - Finished Request
+2025-01-02 11:58:29,504 - INFO - 検索結果のiframeに切り替え完了
+2025-01-02 11:58:29,504 - INFO - 
+=== テーブルデータの解析 ===
+2025-01-02 11:58:29,504 - INFO - テーブルのロードを待機中...
+2025-01-02 11:58:29,504 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:29,509 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:29,509 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:29,509 - DEBUG - Finished Request
+2025-01-02 11:58:30,014 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:30,019 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:30,019 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:30,019 - DEBUG - Finished Request
+2025-01-02 11:58:30,519 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:30,523 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:30,523 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:30,523 - DEBUG - Finished Request
+2025-01-02 11:58:31,025 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:31,029 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:31,029 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:31,029 - DEBUG - Finished Request
+2025-01-02 11:58:31,534 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:31,538 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:31,538 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:31,538 - DEBUG - Finished Request
+2025-01-02 11:58:32,042 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:32,045 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:32,045 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:32,045 - DEBUG - Finished Request
+2025-01-02 11:58:32,550 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:32,554 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:32,554 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:32,554 - DEBUG - Finished Request
+2025-01-02 11:58:33,058 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:33,062 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:33,062 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:33,062 - DEBUG - Finished Request
+2025-01-02 11:58:33,566 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:33,569 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:33,570 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:33,570 - DEBUG - Finished Request
+2025-01-02 11:58:34,071 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:34,075 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:34,075 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:34,075 - DEBUG - Finished Request
+2025-01-02 11:58:34,577 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:34,580 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:34,581 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:34,581 - DEBUG - Finished Request
+2025-01-02 11:58:35,083 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:35,086 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:35,086 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:35,086 - DEBUG - Finished Request
+2025-01-02 11:58:35,592 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:35,596 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:35,596 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:35,596 - DEBUG - Finished Request
+2025-01-02 11:58:36,099 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:36,102 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:36,103 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:36,103 - DEBUG - Finished Request
+2025-01-02 11:58:36,607 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:36,610 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:36,610 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:36,610 - DEBUG - Finished Request
+2025-01-02 11:58:37,112 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:37,115 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:37,116 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:37,116 - DEBUG - Finished Request
+2025-01-02 11:58:37,618 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:37,621 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:37,621 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:37,621 - DEBUG - Finished Request
+2025-01-02 11:58:38,126 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:38,131 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:38,132 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:38,132 - DEBUG - Finished Request
+2025-01-02 11:58:38,637 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:38,641 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:38,641 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:38,642 - DEBUG - Finished Request
+2025-01-02 11:58:39,142 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:39,146 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:39,146 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:39,146 - DEBUG - Finished Request
+2025-01-02 11:58:39,652 - DEBUG - POST http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements {'using': 'tag name', 'value': 'table'}
+2025-01-02 11:58:39,655 - DEBUG - http://localhost:57817 "POST /session/dd6af820e0f6c65b1f81ac6a6a23dbdd/elements HTTP/1.1" 200 0
+2025-01-02 11:58:39,656 - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 11:58:39,656 - DEBUG - Finished Request
+2025-01-02 11:58:39,656 - ERROR - Timeout waiting for table to load
+2025-01-02 11:58:39,656 - ERROR - テーブルが見つかりませんでした
+2025-01-02 11:58:39,656 - INFO - 処理が完了しました
+2025-01-02 12:04:27,259 - DEBUG - DELETE http://localhost:57817/session/dd6af820e0f6c65b1f81ac6a6a23dbdd {}
+2025-01-02 12:04:27,317 - DEBUG - http://localhost:57817 "DELETE /session/dd6af820e0f6c65b1f81ac6a6a23dbdd HTTP/1.1" 200 0
+2025-01-02 12:04:27,317 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 12:04:27,317 - DEBUG - Finished Request

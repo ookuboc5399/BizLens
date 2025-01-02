@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import List
 import os
-from ..services.mock_chat_service import MockChatService
+from ..services.chat.mock_chat_service import MockChatService
 from ..services.company_service import CompanyService
 
 router = APIRouter(prefix="/chat", tags=["chat"])

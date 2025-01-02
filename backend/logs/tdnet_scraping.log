@@ -1,0 +1,4398 @@
+2025-01-02 14:47:45,417 - INFO - スクリプトを開始します
+2025-01-02 14:47:45,417 - INFO - === TDnetサイトの操作開始 ===
+2025-01-02 14:47:45,417 - INFO - Chromeドライバーの初期化
+2025-01-02 14:47:46,488 - INFO - === メインページアクセス ===
+2025-01-02 14:47:48,968 - INFO - 検索フォームのiframeに切り替え
+2025-01-02 14:47:48,987 - INFO - 検索フォームのiframeに切り替え完了
+2025-01-02 14:47:49,003 - INFO - 開始日の選択肢数: 31
+2025-01-02 14:47:49,014 - INFO - Option 0: value: 20250102, text: 2025/01/02(木)
+2025-01-02 14:47:49,020 - INFO - Option 1: value: 20250101, text: 2025/01/01(水)
+2025-01-02 14:47:49,025 - INFO - Option 2: value: 20241231, text: 2024/12/31(火)
+2025-01-02 14:47:49,030 - INFO - Option 3: value: 20241230, text: 2024/12/30(月)
+2025-01-02 14:47:49,036 - INFO - Option 4: value: 20241229, text: 2024/12/29(日)
+2025-01-02 14:47:49,041 - INFO - Option 5: value: 20241228, text: 2024/12/28(土)
+2025-01-02 14:47:49,046 - INFO - Option 6: value: 20241227, text: 2024/12/27(金)
+2025-01-02 14:47:49,051 - INFO - Option 7: value: 20241226, text: 2024/12/26(木)
+2025-01-02 14:47:49,056 - INFO - Option 8: value: 20241225, text: 2024/12/25(水)
+2025-01-02 14:47:49,061 - INFO - Option 9: value: 20241224, text: 2024/12/24(火)
+2025-01-02 14:47:49,067 - INFO - Option 10: value: 20241223, text: 2024/12/23(月)
+2025-01-02 14:47:49,072 - INFO - Option 11: value: 20241222, text: 2024/12/22(日)
+2025-01-02 14:47:49,077 - INFO - Option 12: value: 20241221, text: 2024/12/21(土)
+2025-01-02 14:47:49,081 - INFO - Option 13: value: 20241220, text: 2024/12/20(金)
+2025-01-02 14:47:49,086 - INFO - Option 14: value: 20241219, text: 2024/12/19(木)
+2025-01-02 14:47:49,091 - INFO - Option 15: value: 20241218, text: 2024/12/18(水)
+2025-01-02 14:47:49,096 - INFO - Option 16: value: 20241217, text: 2024/12/17(火)
+2025-01-02 14:47:49,101 - INFO - Option 17: value: 20241216, text: 2024/12/16(月)
+2025-01-02 14:47:49,106 - INFO - Option 18: value: 20241215, text: 2024/12/15(日)
+2025-01-02 14:47:49,111 - INFO - Option 19: value: 20241214, text: 2024/12/14(土)
+2025-01-02 14:47:49,116 - INFO - Option 20: value: 20241213, text: 2024/12/13(金)
+2025-01-02 14:47:49,121 - INFO - Option 21: value: 20241212, text: 2024/12/12(木)
+2025-01-02 14:47:49,126 - INFO - Option 22: value: 20241211, text: 2024/12/11(水)
+2025-01-02 14:47:49,131 - INFO - Option 23: value: 20241210, text: 2024/12/10(火)
+2025-01-02 14:47:49,136 - INFO - Option 24: value: 20241209, text: 2024/12/09(月)
+2025-01-02 14:47:49,141 - INFO - Option 25: value: 20241208, text: 2024/12/08(日)
+2025-01-02 14:47:49,146 - INFO - Option 26: value: 20241207, text: 2024/12/07(土)
+2025-01-02 14:47:49,151 - INFO - Option 27: value: 20241206, text: 2024/12/06(金)
+2025-01-02 14:47:49,155 - INFO - Option 28: value: 20241205, text: 2024/12/05(木)
+2025-01-02 14:47:49,160 - INFO - Option 29: value: 20241204, text: 2024/12/04(水)
+2025-01-02 14:47:49,165 - INFO - Option 30: value: 20241203, text: 2024/12/03(火)
+2025-01-02 14:47:49,320 - INFO - 選択した開始日: value=20241203, text=2024/12/03(火)
+2025-01-02 14:47:49,410 - INFO - 検索キーワード入力完了
+2025-01-02 14:47:49,480 - INFO - 検索ボタンクリック完了
+2025-01-02 14:47:54,484 - INFO - Switched back to main frame
+2025-01-02 14:47:54,484 - INFO - 
+=== テーブルデータの解析開始 ===
+2025-01-02 14:47:54,484 - INFO - 
+=== Looking for result table (depth: 0) ===
+2025-01-02 14:47:54,484 - INFO - Attempt 1 of 10
+2025-01-02 14:47:54,486 - DEBUG - Current frame HTML structure (depth: 0):
+<html style="height:100%; overflow:hidden;"><head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta name="robots" content="noindex,nofollow">
+<script type="text/javascript" src="/onsf/js/I_JAVASCRIPT.js"></script>
+<title>適時開示情報検索サービス</title>
+</head>
+<body style="margin: 0px; height: 100%; *position:relative;">
+<iframe src="/onsf/TDJFSearch/I_head" seamless="" width="100%" height="100%" frameborder="0" style="display:block; margin: 0px; padding:0px; *position:relative;" cd_frame_id_="b7ca9cdd2e3268f3aee2e97ee3b1f189"></iframe>
+
+</body></html>
+2025-01-02 14:47:54,502 - INFO - Found 0 tables at depth 0
+2025-01-02 14:47:54,508 - INFO - Found 1 iframes at depth 0
+2025-01-02 14:47:54,518 - INFO - Checking iframe 0 at depth 0:
+2025-01-02 14:47:54,518 - INFO - {
+  "id": "",
+  "name": "",
+  "src": "https://www.release.tdnet.info/onsf/TDJFSearch/I_head"
+}
+2025-01-02 14:47:54,527 - INFO - Switched to iframe 0 at depth 0
+2025-01-02 14:47:54,527 - INFO - 
+=== Looking for result table (depth: 1) ===
+2025-01-02 14:47:54,527 - INFO - Attempt 1 of 1
+2025-01-02 14:47:54,528 - DEBUG - Current frame HTML structure (depth: 1):
+<html style="overflow:hidden;"><head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta name="robots" content="noindex,nofollow">
+	<script src="/onsf/runtime/jquery-1.8.3.min.js"></script>
+	<script src="/onsf/js/TDJFModal.js"></script>
+	<script type="text/javascript" src="/onsf/js/I_JAVASCRIPT.js"></script>
+	<link rel="stylesheet" href="/onsf/css/import.css" type="text/css" media="screen, tv" charset="UTF-8">
+	<link rel="stylesheet" href="/onsf/css/header.css" type="text/css" media="screen, tv" charset="UTF-8">
+	<title>適時開示情報検索サービス</title>
+	<script type="text/javascript">
+	<!--
+	$(function(){
+		function adjust(){
+			var h = $(window).height();
+			var h1= $('#header').height();
+			$('#mainlist').css('height', h-h1 + 'px');
+		}
+		adjust();
+
+		$(window).on('load resize', function(){
+			adjust();
+		})
+	});
+
+	function form_submit() {
+	 	var v = document.search.q.value;
+		if( v == null || v == "(コード／会社名／表題、複数指定可)                                " || v == "" ) {
+			alert( "検索条件を入力してください。" );
+			return false;
+		}
+		else {
+			document.search.t0.focus();
+			return true;
+		}
+	}
+
+	$(function() {
+	    $( 'a[rel*=modal]').modal({
+	        top : 50,
+	        overlay : 0.5,
+	        speed : 200
+	    });
+	});
+
+	$(function(){
+	    $(window).load(function(){
+	        $('iframe.modal').contents().find('html').css({"width":"700px","overflow-x":"hidden"});
+	        $('iframe.modal').contents().find('#content').css({"width":"660px","overflow-x":"hidden"});
+	    });
+	});
+
+	$(function(){
+		$("select").change(function () {
+			var c = $(this).children(":selected").attr("class");
+			$(this).removeClass("weekday saturday sunday");
+			$(this).addClass(c);
+			});
+		var c = $("select").children(":selected").attr("class");
+		$("select").addClass(c);
+	});
+
+	$(function(){
+		var textBox = jQuery("input:text");
+		textBox.focus(function(){
+			jQuery(this).addClass("focus");
+			if(this.value == this.defaultValue){
+				jQuery(this).val('');
+		}
+		}).blur(function(){
+		if($(this).val() == ''){
+			$(this).val(this.defaultValue).removeClass("focus");
+			}
+		});
+	});
+	-->
+	</script>
+</head>
+
+
+<body>
+
+	<div id="header">
+		<div id="logo">
+			<h1><img src="/onsf/img/logo.png" alt="TDnet" width="125px" height="37px"></h1>
+			<div id="title">
+				<h2>適時開示情報閲覧サービス</h2>
+				<p>Company Announcements Disclosure Service</p>
+				<a href="#helpmodal" rel="modal" id="help">検索方法</a>
+			</div>
+		</div>
+		<div id="searchmenu">
+			<h3>開示情報検索</h3>
+				<form name="search" target="mainlist" action="./TDJFSearch" method="post" onsubmit="return form_submit()">
+					<dl>
+						<dt>検索期間</dt>
+						<dd>
+							<select name="t0" style="height:25px; width:155px; font-size: 14px; font-family: Meiryo UI,'メイリオ'" class="weekday">
+							<option class="weekday" value="20250102">2025/01/02(木)</option>
+<option class="weekday" value="20250101">2025/01/01(水)</option>
+<option class="weekday" value="20241231">2024/12/31(火)</option>
+<option class="weekday" value="20241230">2024/12/30(月)</option>
+<option class="sunday" value="20241229">2024/12/29(日)</option>
+<option class="saturday" value="20241228">2024/12/28(土)</option>
+<option class="weekday" value="20241227">2024/12/27(金)</option>
+<option class="weekday" value="20241226">2024/12/26(木)</option>
+<option class="weekday" value="20241225">2024/12/25(水)</option>
+<option class="weekday" value="20241224">2024/12/24(火)</option>
+<option class="weekday" value="20241223">2024/12/23(月)</option>
+<option class="sunday" value="20241222">2024/12/22(日)</option>
+<option class="saturday" value="20241221">2024/12/21(土)</option>
+<option class="weekday" value="20241220">2024/12/20(金)</option>
+<option class="weekday" value="20241219">2024/12/19(木)</option>
+<option class="weekday" value="20241218">2024/12/18(水)</option>
+<option class="weekday" value="20241217">2024/12/17(火)</option>
+<option class="weekday" value="20241216">2024/12/16(月)</option>
+<option class="sunday" value="20241215">2024/12/15(日)</option>
+<option class="saturday" value="20241214">2024/12/14(土)</option>
+<option class="weekday" value="20241213">2024/12/13(金)</option>
+<option class="weekday" value="20241212">2024/12/12(木)</option>
+<option class="weekday" value="20241211">2024/12/11(水)</option>
+<option class="weekday" value="20241210">2024/12/10(火)</option>
+<option class="weekday" value="20241209">2024/12/09(月)</option>
+<option class="sunday" value="20241208">2024/12/08(日)</option>
+<option class="saturday" value="20241207">2024/12/07(土)</option>
+<option class="weekday" value="20241206">2024/12/06(金)</option>
+<option class="weekday" value="20241205">2024/12/05(木)</option>
+<option class="weekday" value="20241204">2024/12/04(水)</option>
+<option class="weekday" value="20241203">2024/12/03(火)</option>
+
+							</select>
+							～
+							<select name="t1" style="height:25px; width:155px; font-size: 14px; font-family: Meiryo UI,'メイリオ'" class="weekday">
+							<option class="weekday" value="20250102">2025/01/02(木)</option>
+<option class="weekday" value="20250101">2025/01/01(水)</option>
+<option class="weekday" value="20241231">2024/12/31(火)</option>
+<option class="weekday" value="20241230">2024/12/30(月)</option>
+<option class="sunday" value="20241229">2024/12/29(日)</option>
+<option class="saturday" value="20241228">2024/12/28(土)</option>
+<option class="weekday" value="20241227">2024/12/27(金)</option>
+<option class="weekday" value="20241226">2024/12/26(木)</option>
+<option class="weekday" value="20241225">2024/12/25(水)</option>
+<option class="weekday" value="20241224">2024/12/24(火)</option>
+<option class="weekday" value="20241223">2024/12/23(月)</option>
+<option class="sunday" value="20241222">2024/12/22(日)</option>
+<option class="saturday" value="20241221">2024/12/21(土)</option>
+<option class="weekday" value="20241220">2024/12/20(金)</option>
+<option class="weekday" value="20241219">2024/12/19(木)</option>
+<option class="weekday" value="20241218">2024/12/18(水)</option>
+<option class="weekday" value="20241217">2024/12/17(火)</option>
+<option class="weekday" value="20241216">2024/12/16(月)</option>
+<option class="sunday" value="20241215">2024/12/15(日)</option>
+<option class="saturday" value="20241214">2024/12/14(土)</option>
+<option class="weekday" value="20241213">2024/12/13(金)</option>
+<option class="weekday" value="20241212">2024/12/12(木)</option>
+<option class="weekday" value="20241211">2024/12/11(水)</option>
+<option class="weekday" value="20241210">2024/12/10(火)</option>
+<option class="weekday" value="20241209">2024/12/09(月)</option>
+<option class="sunday" value="20241208">2024/12/08(日)</option>
+<option class="saturday" value="20241207">2024/12/07(土)</option>
+<option class="weekday" value="20241206">2024/12/06(金)</option>
+<option class="weekday" value="20241205">2024/12/05(木)</option>
+<option class="weekday" value="20241204">2024/12/04(水)</option>
+<option class="weekday" value="20241203">2024/12/03(火)</option>
+
+							</select>
+						</dd>
+						<dt>キーワード検索</dt>
+						<dd id="freewordtxtdd"><input name="q" type="text" maxlength="50" id="freewordtxt" value="(コード／会社名／表題、複数指定可)                                " class="focus">
+							<div id="submitmask"><div id="submitmask-2"><button type="submit" id="searchbtn" alt="検索" value=""><img src="/onsf/img/icn_search.png"></button></div></div>
+						</dd>
+					</dl>
+					<input type="hidden" name="m" value="0">
+				</form>
+			</div>
+		</div>
+	<iframe src="/onsf/TDJFRESULT_INITIAL.html" id="mainlist" name="mainlist" seamless="" frameborder="0" style="height: 642px;"></iframe>
+	<iframe src="/onsf/help/help.html" id="helpmodal" class="modal" seamless="" frameborder="0"></iframe>
+
+
+
+<div id="glayLayer"></div></body></html>
+2025-01-02 14:47:54,534 - INFO - Found 0 tables at depth 1
+2025-01-02 14:47:54,537 - INFO - Found 2 iframes at depth 1
+2025-01-02 14:47:54,544 - INFO - Checking iframe 0 at depth 1:
+2025-01-02 14:47:54,544 - INFO - {
+  "id": "mainlist",
+  "name": "mainlist",
+  "src": "https://www.release.tdnet.info/onsf/TDJFRESULT_INITIAL.html"
+}
+2025-01-02 14:47:54,551 - INFO - Switched to iframe 0 at depth 1
+2025-01-02 14:47:54,551 - INFO - 
+=== Looking for result table (depth: 2) ===
+2025-01-02 14:47:54,551 - INFO - Attempt 1 of 1
+2025-01-02 14:47:54,554 - DEBUG - Current frame HTML structure (depth: 2):
+<html><head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta name="robots" content="noindex,nofollow">
+	<script type="text/javascript" src="/onsf/js/I_JAVASCRIPT.js"></script>
+	<script type="text/javascript" src="/onsf/js/I_MENSEKI.js"></script>
+	<link rel="stylesheet" href="/onsf/css/import.css" type="text/css" media="screen, tv" charset="UTF-8">
+	<link rel="stylesheet" href="/onsf/css/content.css" type="text/css" media="screen, tv" charset="UTF-8">
+	<title>適時開示情報検索サービス</title>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="contentwrapper">
+			<div id="sticky">
+				<h4><span id="result">108件</span>の結果が見つかりました。</h4>
+				<table border="0" cellspacing="0" cellpadding="0" align="left" id="tableheader">
+					<tbody><tr>
+						<td nowrap="" align="center" class="header-L time-h">時刻</td>
+						<td nowrap="" align="center" class="header-M code-h">コード</td>
+						<td nowrap="" align="center" class="header-M companyname-h">会社名</td>
+						<td nowrap="" align="center" class="header-M title-h">表題</td>
+						<td nowrap="" align="center" class="header-M xbrl-h">XBRL</td>
+						<td nowrap="" align="center" class="header-M exchange-h">上場取引所</td>
+						<td nowrap="" align="center" class="header-R update-h">更新履歴</td>
+					</tr>
+				</tbody></table>
+			</div>
+			<table border="0" cellspacing="0" cellpadding="3" align="left" id="maintable">
+
+
+
+				<tbody><tr class="odd">
+
+					<td class="time" nowrap="">2024/12/27 16:00</td>
+					<td class="code" nowrap="">39330</td>
+					<td class="companyname">チエル</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241227545819.pdf">2025年3月期&nbsp;中間期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/27 15:30</td>
+					<td class="code" nowrap="">192A0</td>
+					<td class="companyname">Ｇ－インテグループ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241226545479.pdf">2025年５月期&nbsp;第２四半期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/27 15:30</td>
+					<td class="code" nowrap="">48250</td>
+					<td class="companyname">ＷＮＩウェザー</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241227545763.pdf">2025年5月期&nbsp;第2四半期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/27 15:30</td>
+					<td class="code" nowrap="">60830</td>
+					<td class="companyname">ＥＲＩ　ＨＤ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241227545602.pdf">2025年５月期第２四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/27 13:00</td>
+					<td class="code" nowrap="">62250</td>
+					<td class="companyname">エコム</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241227545729.pdf">2025年７月期　第１四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">名</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/26 15:45</td>
+					<td class="code" nowrap="">30350</td>
+					<td class="companyname">ＫＴＫ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241225544584.pdf">2025年8月期&nbsp;第1四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東名</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/26 15:30</td>
+					<td class="code" nowrap="">70680</td>
+					<td class="companyname">Ｇ－ＦフォースＧ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241226544936.pdf">2025年5月期Q2&nbsp;決算説明資料（事業計画及び成長可能性に関する事項）</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/26 14:00</td>
+					<td class="code" nowrap="">31600</td>
+					<td class="companyname">大光</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241226545041.pdf">（訂正）「2025年5月期&nbsp;第2四半期（中間期）決算説明資料」の一部訂正について</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/24 16:00</td>
+					<td class="code" nowrap="">23540</td>
+					<td class="companyname">ＹＥ　ＤＩＧＩＴＡＬ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241223542657.pdf">2025年２月期&nbsp;第３四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/23 16:00</td>
+					<td class="code" nowrap="">50790</td>
+					<td class="companyname">ノバック</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241223542643.pdf">2025年4月期&nbsp;第2四半期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/23 15:30</td>
+					<td class="code" nowrap="">31600</td>
+					<td class="companyname">大光</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241220542237.pdf">2025年5月期&nbsp;第2四半期（中間期）決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/23 15:30</td>
+					<td class="code" nowrap="">33330</td>
+					<td class="companyname">あさひ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241220541702.pdf">2025年２月期第３四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/20 19:15</td>
+					<td class="code" nowrap="">88940</td>
+					<td class="companyname">ＲＥＶＯＬＵＴＩＯＮ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241220542355.pdf">2024年10月期通期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/20 13:00</td>
+					<td class="code" nowrap="">42980</td>
+					<td class="companyname">プロトコーポ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538586.pdf">2025年3月期　第2四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東名</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/20 11:30</td>
+					<td class="code" nowrap="">69050</td>
+					<td class="companyname">コーセル</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241219541194.pdf">2025年５月期&nbsp;第２四半期（中間期）決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/18 17:00</td>
+					<td class="code" nowrap="">71310</td>
+					<td class="companyname">のむら産業</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241218540579.pdf">2024年10月期　決算説明資料(スクリプト付)</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/17 16:00</td>
+					<td class="code" nowrap="">99410</td>
+					<td class="companyname">太洋物産</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241217539822.pdf">2024年９月期　決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/16 18:00</td>
+					<td class="code" nowrap="">55720</td>
+					<td class="companyname">Ｇ－リッジアイ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241216539500.pdf">（訂正）2025年７月期&nbsp;第１四半期&nbsp;決算説明資料の一部訂正について</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/16 17:20</td>
+					<td class="code" nowrap="">89720</td>
+					<td class="companyname">Ｒ－ＫＤＸ不動産</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538799.pdf">2024年10月期　決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/16 16:00</td>
+					<td class="code" nowrap="">34150</td>
+					<td class="companyname">トウキョウベース</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241216538976.pdf">2025年1月期　第３四半期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/16 16:00</td>
+					<td class="code" nowrap="">78040</td>
+					<td class="companyname">ビーアンドピー</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241216539341.pdf">（訂正）「2024年10月期&nbsp;決算説明資料」の一部訂正について</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/16 15:30</td>
+					<td class="code" nowrap="">278A0</td>
+					<td class="companyname">Ｇ－テラドローン</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241216539177.pdf">2025年１月期第３四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/16 15:30</td>
+					<td class="code" nowrap="">32870</td>
+					<td class="companyname">Ｒ－星野</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241216538928.pdf">2024年10月期（第23期）決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/16 15:30</td>
+					<td class="code" nowrap="">33090</td>
+					<td class="companyname">Ｒ－積水ハウスリート</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241216539347.pdf">2024年10月期（第20期）決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/16 15:30</td>
+					<td class="code" nowrap="">58880</td>
+					<td class="companyname">Ｇ－ダイワサイクル</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241216539142.pdf">2025年1月期第3四半期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/16 15:30</td>
+					<td class="code" nowrap="">70340</td>
+					<td class="companyname">プロレドパートナーズ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538713.pdf">2024年10月期&nbsp;通期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/16 15:30</td>
+					<td class="code" nowrap="">89560</td>
+					<td class="companyname">Ｒ－ＮＴＴ都市開発Ｒ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241216539251.pdf">ＮＴＴ都市開発リート投資法人　第44期（2024年10月期）決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/16 15:30</td>
+					<td class="code" nowrap="">89750</td>
+					<td class="companyname">Ｒ－いちごオフィス</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538379.pdf">2024&nbsp;年10月期（第38期）決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/16 10:00</td>
+					<td class="code" nowrap="">40260</td>
+					<td class="companyname">神島化学工業</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538108.pdf">2025年4月期&nbsp;第2四半期(中間期)&nbsp;決算説明資料&nbsp;～決算概要～</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 19:00</td>
+					<td class="code" nowrap="">70950</td>
+					<td class="companyname">ＭａｃｂｅｅＰ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538753.pdf">(訂正)「2025年４月期&nbsp;第１四半期決算説明資料」の一部訂正に関するお知らせ</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 16:45</td>
+					<td class="code" nowrap="">55720</td>
+					<td class="companyname">Ｇ－リッジアイ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241212537941.pdf">2025年７月期　第１四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 16:20</td>
+					<td class="code" nowrap="">38430</td>
+					<td class="companyname">フリービット</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241212537590.pdf">2025年４月期&nbsp;第２四半期（中間期）決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 16:10</td>
+					<td class="code" nowrap="">39310</td>
+					<td class="companyname">Ｇ－バリューゴルフ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241212537742.pdf">2025年１月期&nbsp;第３四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 16:00</td>
+					<td class="code" nowrap="">186A0</td>
+					<td class="companyname">Ｇ－アストロスケール</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538646.pdf">2025年4月期上期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 16:00</td>
+					<td class="code" nowrap="">43780</td>
+					<td class="companyname">Ｇ－ＣＩＮＣ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241212537947.pdf">2024年10月期通期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 16:00</td>
+					<td class="code" nowrap="">44310</td>
+					<td class="companyname">Ｇ－スマレジ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538337.pdf">2025年4月期第2四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 16:00</td>
+					<td class="code" nowrap="">44460</td>
+					<td class="companyname">Ｌｉｎｋ－Ｕグループ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538587.pdf">2025年7月期　第1四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 16:00</td>
+					<td class="code" nowrap="">51310</td>
+					<td class="companyname">Ｇ－リンカーズ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538022.pdf">2025年7月期第1四半期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 16:00</td>
+					<td class="code" nowrap="">52480</td>
+					<td class="companyname">Ｇ－テクノロジーズ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538113.pdf">2025年１月期&nbsp;第３四半期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 16:00</td>
+					<td class="code" nowrap="">55850</td>
+					<td class="companyname">Ｇ－エコナビスタ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538187.pdf">2024年10月期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 16:00</td>
+					<td class="code" nowrap="">70500</td>
+					<td class="companyname">Ｇ－フロンティアＩ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538246.pdf">2025年４月期第２四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 16:00</td>
+					<td class="code" nowrap="">92370</td>
+					<td class="companyname">Ｇ－笑美面</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538568.pdf">2024年10月期通期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">14440</td>
+					<td class="companyname">Ｇ－ニッソウ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241212537885.pdf">2025年7月期第1四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東名</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">212A0</td>
+					<td class="companyname">フィットイージー</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538054.pdf">2024年10月期　決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東名</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">218A0</td>
+					<td class="companyname">Ｇ－リベラウェア</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538401.pdf">2025年７月期&nbsp;第１四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">29970</td>
+					<td class="companyname">Ｇ－ストレージ王</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538296.pdf">決算説明資料_2025年1月期第3四半期決算</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">30380</td>
+					<td class="companyname">神戸物産</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241212537460.pdf">2024年10月期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">31340</td>
+					<td class="companyname">Ｈａｍｅｅ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538325.pdf">2025年４月期　第２四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">40140</td>
+					<td class="companyname">Ｇ－カラダノート</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241211537083.pdf">2025年７月期&nbsp;第1四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">40750</td>
+					<td class="companyname">Ｇ－ブレインズ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538397.pdf">2025年７月期第１四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">41740</td>
+					<td class="companyname">アピリッツ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241209535887.pdf">2025年１月期&nbsp;第３四半期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">41750</td>
+					<td class="companyname">Ｇ－ｃｏｌｙ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538298.pdf">2025年１月期第３四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">42670</td>
+					<td class="companyname">Ｇ－ライトワークス</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538351.pdf">2025年１月期　第３四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">42870</td>
+					<td class="companyname">ジャストプラ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538095.pdf">2025年１月期　第３四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">43820</td>
+					<td class="companyname">ＨＥＲＯＺ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538294.pdf">2025年４月期第２四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">49340</td>
+					<td class="companyname">Ｇ－Ｐアンチエイジ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538527.pdf">2025年７月期&nbsp;第１四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">49360</td>
+					<td class="companyname">アクシージア</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241212537862.pdf">2025年７月期第１四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">70330</td>
+					<td class="companyname">ＭＳＯＬ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538372.pdf">2024年12月期&nbsp;第４四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">71310</td>
+					<td class="companyname">のむら産業</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538241.pdf">2024年10月期　決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">73780</td>
+					<td class="companyname">Ｇ－アシロ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538140.pdf">2024年10月期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">73790</td>
+					<td class="companyname">Ｇ－サーキュ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538036.pdf">2025年７月期第１四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">91630</td>
+					<td class="companyname">Ｇ－ナレルグループ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241202533299.pdf">2024年10月期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">92510</td>
+					<td class="companyname">Ｇ－ＡＢ＆Ｃ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538149.pdf">2024年10月期通期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">92790</td>
+					<td class="companyname">ギフトＨＤ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538253.pdf">2024年10月期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 15:30</td>
+					<td class="code" nowrap="">97430</td>
+					<td class="companyname">丹青社</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538088.pdf">2025年1月期第3四半期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 15:00</td>
+					<td class="code" nowrap="">60370</td>
+					<td class="companyname">楽待</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538204.pdf">2025年７月期　第１四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 13:00</td>
+					<td class="code" nowrap="">70730</td>
+					<td class="companyname">Ｇ－ジェイック</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241212537441.pdf">2025年１月期&nbsp;第３四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 12:35</td>
+					<td class="code" nowrap="">92540</td>
+					<td class="companyname">Ｇ－ラバブルマーケ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538215.pdf">2024年10月期通期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/13 12:00</td>
+					<td class="code" nowrap="">34750</td>
+					<td class="companyname">グッドコムアセット</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241213538192.pdf">2024年10月期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/13 11:30</td>
+					<td class="code" nowrap="">95560</td>
+					<td class="companyname">Ｇ－ＩＮＴＬＯＯＰ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241212537527.pdf">第１四半期決算説明資料&nbsp;FY25/7&nbsp;Q1</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/12 15:30</td>
+					<td class="code" nowrap="">215A0</td>
+					<td class="companyname">Ｇ－タイミー</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241212537552.pdf">2024年10月期&nbsp;通期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/12 15:30</td>
+					<td class="code" nowrap="">34580</td>
+					<td class="companyname">シーアールイー</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241212537374.pdf">2025年７月期第１四半期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/12 15:30</td>
+					<td class="code" nowrap="">41940</td>
+					<td class="companyname">ビジョナル</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241211537080.pdf">2025年７月期&nbsp;第１四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/12 15:30</td>
+					<td class="code" nowrap="">51340</td>
+					<td class="companyname">Ｇ－ＰＯＰＥＲ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241209535870.pdf">2024年10月期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/12 15:30</td>
+					<td class="code" nowrap="">52180</td>
+					<td class="companyname">オハラ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241211537209.pdf">2024年10月期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/12 15:30</td>
+					<td class="code" nowrap="">61840</td>
+					<td class="companyname">鎌倉新書</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241212537410.pdf">2025年１月期&nbsp;第３四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/12 15:30</td>
+					<td class="code" nowrap="">70950</td>
+					<td class="companyname">ＭａｃｂｅｅＰ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241212537401.pdf">2025年４月期第２四半期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/12 15:30</td>
+					<td class="code" nowrap="">70970</td>
+					<td class="companyname">Ｇ－さくらさく</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241212537344.pdf">2025年７月期&nbsp;第１四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/12 15:30</td>
+					<td class="code" nowrap="">71960</td>
+					<td class="companyname">Ｃａｓａ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241211537235.pdf">2025年１月期&nbsp;第３四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/12 15:30</td>
+					<td class="code" nowrap="">81420</td>
+					<td class="companyname">トーホー</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241211537117.pdf">2025年1月期第3四半期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/12 15:00</td>
+					<td class="code" nowrap="">76230</td>
+					<td class="companyname">サンオータス</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241211536713.pdf">2025年４月期　第２四半期（中間期）決算短信　決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/12 14:00</td>
+					<td class="code" nowrap="">58890</td>
+					<td class="companyname">ＪＥＨ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241211536891.pdf">2025年1月期_第3四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/11 16:45</td>
+					<td class="code" nowrap="">37700</td>
+					<td class="companyname">ザッパラス</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241211537111.pdf">決算説明資料&nbsp;2025年4月期&nbsp;2Q</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/11 16:00</td>
+					<td class="code" nowrap="">51320</td>
+					<td class="companyname">Ｇ－ｐｌｕｓｚｅｒｏ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241211536803.pdf">2024年10月期通期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/11 15:30</td>
+					<td class="code" nowrap="">34910</td>
+					<td class="companyname">Ｇ－ＧＡ　ＴＥＣＨ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241211536889.pdf">2024年10月期通期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/11 15:30</td>
+					<td class="code" nowrap="">39030</td>
+					<td class="companyname">ｇｕｍｉ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241206535199.pdf">2025年４月期第２四半期（中間期）決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/11 15:30</td>
+					<td class="code" nowrap="">50310</td>
+					<td class="companyname">Ｇ－モイ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241211536726.pdf">2025年1月期&nbsp;第3四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/11 15:30</td>
+					<td class="code" nowrap="">50320</td>
+					<td class="companyname">ＡＮＹＣＯＬＯＲ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241211536841.pdf">2025年４月期&nbsp;第２四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/11 15:30</td>
+					<td class="code" nowrap="">70640</td>
+					<td class="companyname">Ｇ－ハウテレビジョン</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241101509256.pdf">2025年1月期&nbsp;第3四半期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/11 12:30</td>
+					<td class="code" nowrap="">65770</td>
+					<td class="companyname">Ｇ－ベストワンドット</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241211536872.pdf">2025年７月期第１四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/11 10:30</td>
+					<td class="code" nowrap="">29340</td>
+					<td class="companyname">Ｇ－Ｊフロンティア</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241210536634.pdf">2024年5月期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/10 16:00</td>
+					<td class="code" nowrap="">44410</td>
+					<td class="companyname">トビラシステムズ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241210536348.pdf">2024年10月期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/10 15:30</td>
+					<td class="code" nowrap="">14330</td>
+					<td class="companyname">ベステラ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241210536179.pdf">2025年１月期　第３四半期　決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/10 15:30</td>
+					<td class="code" nowrap="">14360</td>
+					<td class="companyname">Ｇ－グリーンエナジー</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241210536406.pdf">2025年4月期　第２四半期　決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/10 15:30</td>
+					<td class="code" nowrap="">39210</td>
+					<td class="companyname">ネオジャパン</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241210536322.pdf">2025年１月期第３四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/10 12:00</td>
+					<td class="code" nowrap="">65350</td>
+					<td class="companyname">アイモバイル</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241205534891.pdf">2025年７月期&nbsp;第１四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/09 15:30</td>
+					<td class="code" nowrap="">23010</td>
+					<td class="companyname">学情</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241206535463.pdf">2024年10月期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/09 15:30</td>
+					<td class="code" nowrap="">24380</td>
+					<td class="companyname">Ｇ－アスカネット</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241206535182.pdf">2025年４月期&nbsp;中間期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/09 15:30</td>
+					<td class="code" nowrap="">29830</td>
+					<td class="companyname">Ｇ－アールプランナー</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241207534960.pdf">2025年１月期第３四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東名</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/09 15:30</td>
+					<td class="code" nowrap="">42380</td>
+					<td class="companyname">ミライアル</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241209535569.pdf">2025年１月期　第３四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/09 15:30</td>
+					<td class="code" nowrap="">78040</td>
+					<td class="companyname">ビーアンドピー</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241206535469.pdf">2024年10月期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/09 14:00</td>
+					<td class="code" nowrap="">29910</td>
+					<td class="companyname">ランドネット</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241208535478.pdf">2025年７月期　第１四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/09 10:30</td>
+					<td class="code" nowrap="">29100</td>
+					<td class="companyname">ロックフィルド</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241206535426.pdf">2025年４月期　第２四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/06 17:30</td>
+					<td class="code" nowrap="">36620</td>
+					<td class="companyname">エイチーム</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241206535157.pdf">2025年7月期&nbsp;第1四半期&nbsp;決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/06 17:00</td>
+					<td class="code" nowrap="">73760</td>
+					<td class="companyname">Ｇ－ＢＣＣ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241205534762.pdf">2024年９月期　決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/06 15:30</td>
+					<td class="code" nowrap="">66960</td>
+					<td class="companyname">Ｇ－トラースＯＰ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241206535220.pdf">2025年１月期&nbsp;第３四半期決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="odd">
+
+					<td class="time" nowrap="">2024/12/05 10:00</td>
+					<td class="code" nowrap="">31660</td>
+					<td class="companyname">ＯＣＨＩ・ＨＤ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241204534353.pdf">2025年3月期　第2四半期（中間期）決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東福</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+
+
+				<tr class="even">
+
+					<td class="time" nowrap="">2024/12/03 13:00</td>
+					<td class="code" nowrap="">24880</td>
+					<td class="companyname">ＪＴＰ</td>
+					<td class="title" align="left"><a target="_blank" href="/inbs/140120241203533356.pdf">2025年3月期&nbsp;第2四半期（中間）決算説明資料</a></td>
+					<td class="xbrl" nowrap="" align="center"><br></td>
+					<td class="exchange" nowrap="" align="left">東</td>
+					<td class="update" align="left"><br></td>
+				</tr>
+
+			</tbody></table>
+		</div>
+		<div id="footer" class="clearfix">
+			<script type="text/javascript">
+			document.write(mensekiNaiyou4);
+			</script><div id="menseki"><p>※上場取引所に表示される「PH」は、日本証券業協会が指定するフェニックス銘柄の発行会社を指します。</p><h5>免責事項</h5><p>当サイトに掲載されている情報の正確性については万全を期しておりますが、株式会社東京証券取引所は利用者が当サイトの利用に伴って発生した不利益や問題について、何ら責任を負うものではありません。<br>適時開示情報閲覧サービスに記載されている内容は、著作物として著作権法により保護されており、株式会社東京証券取引所に無断で転用、複製又は販売等を行うことは固く禁じます。</p></div>
+			<div id="address">
+				<address>Copyright © Tokyo Stock Exchange, Inc. All rights reserved.</address>
+			</div>	
+		</div>
+	</div>
+
+
+</body></html>
+2025-01-02 14:47:54,557 - INFO - Found maintable by ID
+2025-01-02 14:47:54,557 - INFO - Found result table
+2025-01-02 14:47:54,564 - INFO - 
+Found 108 rows
+2025-01-02 14:47:54,651 - INFO - 
+=== Row 1 Data ===
+2025-01-02 14:47:54,651 - INFO - {
+  "date": "2024/12/27",
+  "time": "15:30",
+  "code": "192A0",
+  "company": "Ｇ－インテグループ",
+  "title": "2025年５月期 第２四半期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241226545479.pdf",
+      "text": "2025年５月期 第２四半期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241226545479.pdf\">2025年５月期&nbsp;第２四半期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:54.651830+00:00",
+  "updated_at": "2025-01-02T05:47:54.651838+00:00"
+}
+2025-01-02 14:47:54,651 - INFO - 
+Found 1 PDF links in row 1
+2025-01-02 14:47:54,651 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241226545479.pdf
+2025-01-02 14:47:54,651 - INFO - Link Text: 2025年５月期 第２四半期 決算説明資料
+2025-01-02 14:47:54,652 - INFO - HTML: <a target="_blank" href="/inbs/140120241226545479.pdf">2025年５月期&nbsp;第２四半期&nbsp;決算説明資料</a>
+2025-01-02 14:47:54,730 - INFO - 
+=== Row 2 Data ===
+2025-01-02 14:47:54,730 - INFO - {
+  "date": "2024/12/27",
+  "time": "15:30",
+  "code": "48250",
+  "company": "ＷＮＩウェザー",
+  "title": "2025年5月期 第2四半期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241227545763.pdf",
+      "text": "2025年5月期 第2四半期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241227545763.pdf\">2025年5月期&nbsp;第2四半期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:54.730279+00:00",
+  "updated_at": "2025-01-02T05:47:54.730285+00:00"
+}
+2025-01-02 14:47:54,730 - INFO - 
+Found 1 PDF links in row 2
+2025-01-02 14:47:54,730 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241227545763.pdf
+2025-01-02 14:47:54,730 - INFO - Link Text: 2025年5月期 第2四半期 決算説明資料
+2025-01-02 14:47:54,730 - INFO - HTML: <a target="_blank" href="/inbs/140120241227545763.pdf">2025年5月期&nbsp;第2四半期&nbsp;決算説明資料</a>
+2025-01-02 14:47:54,807 - INFO - 
+=== Row 3 Data ===
+2025-01-02 14:47:54,807 - INFO - {
+  "date": "2024/12/27",
+  "time": "15:30",
+  "code": "60830",
+  "company": "ＥＲＩ　ＨＤ",
+  "title": "2025年５月期第２四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241227545602.pdf",
+      "text": "2025年５月期第２四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241227545602.pdf\">2025年５月期第２四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:54.807643+00:00",
+  "updated_at": "2025-01-02T05:47:54.807650+00:00"
+}
+2025-01-02 14:47:54,807 - INFO - 
+Found 1 PDF links in row 3
+2025-01-02 14:47:54,807 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241227545602.pdf
+2025-01-02 14:47:54,807 - INFO - Link Text: 2025年５月期第２四半期決算説明資料
+2025-01-02 14:47:54,807 - INFO - HTML: <a target="_blank" href="/inbs/140120241227545602.pdf">2025年５月期第２四半期決算説明資料</a>
+2025-01-02 14:47:54,884 - INFO - 
+=== Row 4 Data ===
+2025-01-02 14:47:54,884 - INFO - {
+  "date": "2024/12/27",
+  "time": "13:00",
+  "code": "62250",
+  "company": "エコム",
+  "title": "2025年７月期　第１四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241227545729.pdf",
+      "text": "2025年７月期　第１四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241227545729.pdf\">2025年７月期　第１四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "名",
+  "created_at": "2025-01-02T05:47:54.884453+00:00",
+  "updated_at": "2025-01-02T05:47:54.884460+00:00"
+}
+2025-01-02 14:47:54,884 - INFO - 
+Found 1 PDF links in row 4
+2025-01-02 14:47:54,884 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241227545729.pdf
+2025-01-02 14:47:54,884 - INFO - Link Text: 2025年７月期　第１四半期決算説明資料
+2025-01-02 14:47:54,884 - INFO - HTML: <a target="_blank" href="/inbs/140120241227545729.pdf">2025年７月期　第１四半期決算説明資料</a>
+2025-01-02 14:47:54,957 - INFO - 
+=== Row 5 Data ===
+2025-01-02 14:47:54,958 - INFO - {
+  "date": "2024/12/26",
+  "time": "15:45",
+  "code": "30350",
+  "company": "ＫＴＫ",
+  "title": "2025年8月期 第1四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241225544584.pdf",
+      "text": "2025年8月期 第1四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241225544584.pdf\">2025年8月期&nbsp;第1四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東名",
+  "created_at": "2025-01-02T05:47:54.957935+00:00",
+  "updated_at": "2025-01-02T05:47:54.957942+00:00"
+}
+2025-01-02 14:47:54,958 - INFO - 
+Found 1 PDF links in row 5
+2025-01-02 14:47:54,958 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241225544584.pdf
+2025-01-02 14:47:54,958 - INFO - Link Text: 2025年8月期 第1四半期決算説明資料
+2025-01-02 14:47:54,958 - INFO - HTML: <a target="_blank" href="/inbs/140120241225544584.pdf">2025年8月期&nbsp;第1四半期決算説明資料</a>
+2025-01-02 14:47:55,031 - INFO - 
+=== Row 6 Data ===
+2025-01-02 14:47:55,031 - INFO - {
+  "date": "2024/12/26",
+  "time": "15:30",
+  "code": "70680",
+  "company": "Ｇ－ＦフォースＧ",
+  "title": "2025年5月期Q2 決算説明資料（事業計画及び成長可能性に関する事項）",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241226544936.pdf",
+      "text": "2025年5月期Q2 決算説明資料（事業計画及び成長可能性に関する事項）",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241226544936.pdf\">2025年5月期Q2&nbsp;決算説明資料（事業計画及び成長可能性に関する事項）</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:55.031696+00:00",
+  "updated_at": "2025-01-02T05:47:55.031702+00:00"
+}
+2025-01-02 14:47:55,031 - INFO - 
+Found 1 PDF links in row 6
+2025-01-02 14:47:55,031 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241226544936.pdf
+2025-01-02 14:47:55,031 - INFO - Link Text: 2025年5月期Q2 決算説明資料（事業計画及び成長可能性に関する事項）
+2025-01-02 14:47:55,031 - INFO - HTML: <a target="_blank" href="/inbs/140120241226544936.pdf">2025年5月期Q2&nbsp;決算説明資料（事業計画及び成長可能性に関する事項）</a>
+2025-01-02 14:47:55,108 - INFO - 
+=== Row 7 Data ===
+2025-01-02 14:47:55,108 - INFO - {
+  "date": "2024/12/26",
+  "time": "14:00",
+  "code": "31600",
+  "company": "大光",
+  "title": "（訂正）「2025年5月期 第2四半期（中間期）決算説明資料」の一部訂正について",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241226545041.pdf",
+      "text": "（訂正）「2025年5月期 第2四半期（中間期）決算説明資料」の一部訂正について",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241226545041.pdf\">（訂正）「2025年5月期&nbsp;第2四半期（中間期）決算説明資料」の一部訂正について</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:55.108767+00:00",
+  "updated_at": "2025-01-02T05:47:55.108774+00:00"
+}
+2025-01-02 14:47:55,108 - INFO - 
+Found 1 PDF links in row 7
+2025-01-02 14:47:55,108 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241226545041.pdf
+2025-01-02 14:47:55,108 - INFO - Link Text: （訂正）「2025年5月期 第2四半期（中間期）決算説明資料」の一部訂正について
+2025-01-02 14:47:55,108 - INFO - HTML: <a target="_blank" href="/inbs/140120241226545041.pdf">（訂正）「2025年5月期&nbsp;第2四半期（中間期）決算説明資料」の一部訂正について</a>
+2025-01-02 14:47:55,184 - INFO - 
+=== Row 8 Data ===
+2025-01-02 14:47:55,185 - INFO - {
+  "date": "2024/12/24",
+  "time": "16:00",
+  "code": "23540",
+  "company": "ＹＥ　ＤＩＧＩＴＡＬ",
+  "title": "2025年２月期 第３四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241223542657.pdf",
+      "text": "2025年２月期 第３四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241223542657.pdf\">2025年２月期&nbsp;第３四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:55.184980+00:00",
+  "updated_at": "2025-01-02T05:47:55.184987+00:00"
+}
+2025-01-02 14:47:55,185 - INFO - 
+Found 1 PDF links in row 8
+2025-01-02 14:47:55,185 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241223542657.pdf
+2025-01-02 14:47:55,185 - INFO - Link Text: 2025年２月期 第３四半期決算説明資料
+2025-01-02 14:47:55,185 - INFO - HTML: <a target="_blank" href="/inbs/140120241223542657.pdf">2025年２月期&nbsp;第３四半期決算説明資料</a>
+2025-01-02 14:47:55,261 - INFO - 
+=== Row 9 Data ===
+2025-01-02 14:47:55,261 - INFO - {
+  "date": "2024/12/23",
+  "time": "16:00",
+  "code": "50790",
+  "company": "ノバック",
+  "title": "2025年4月期 第2四半期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241223542643.pdf",
+      "text": "2025年4月期 第2四半期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241223542643.pdf\">2025年4月期&nbsp;第2四半期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:55.261511+00:00",
+  "updated_at": "2025-01-02T05:47:55.261519+00:00"
+}
+2025-01-02 14:47:55,261 - INFO - 
+Found 1 PDF links in row 9
+2025-01-02 14:47:55,261 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241223542643.pdf
+2025-01-02 14:47:55,261 - INFO - Link Text: 2025年4月期 第2四半期 決算説明資料
+2025-01-02 14:47:55,261 - INFO - HTML: <a target="_blank" href="/inbs/140120241223542643.pdf">2025年4月期&nbsp;第2四半期&nbsp;決算説明資料</a>
+2025-01-02 14:47:55,337 - INFO - 
+=== Row 10 Data ===
+2025-01-02 14:47:55,337 - INFO - {
+  "date": "2024/12/23",
+  "time": "15:30",
+  "code": "31600",
+  "company": "大光",
+  "title": "2025年5月期 第2四半期（中間期）決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241220542237.pdf",
+      "text": "2025年5月期 第2四半期（中間期）決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241220542237.pdf\">2025年5月期&nbsp;第2四半期（中間期）決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:55.337776+00:00",
+  "updated_at": "2025-01-02T05:47:55.337784+00:00"
+}
+2025-01-02 14:47:55,337 - INFO - 
+Found 1 PDF links in row 10
+2025-01-02 14:47:55,337 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241220542237.pdf
+2025-01-02 14:47:55,337 - INFO - Link Text: 2025年5月期 第2四半期（中間期）決算説明資料
+2025-01-02 14:47:55,337 - INFO - HTML: <a target="_blank" href="/inbs/140120241220542237.pdf">2025年5月期&nbsp;第2四半期（中間期）決算説明資料</a>
+2025-01-02 14:47:55,411 - INFO - 
+=== Row 11 Data ===
+2025-01-02 14:47:55,412 - INFO - {
+  "date": "2024/12/23",
+  "time": "15:30",
+  "code": "33330",
+  "company": "あさひ",
+  "title": "2025年２月期第３四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241220541702.pdf",
+      "text": "2025年２月期第３四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241220541702.pdf\">2025年２月期第３四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:55.411947+00:00",
+  "updated_at": "2025-01-02T05:47:55.411953+00:00"
+}
+2025-01-02 14:47:55,412 - INFO - 
+Found 1 PDF links in row 11
+2025-01-02 14:47:55,412 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241220541702.pdf
+2025-01-02 14:47:55,412 - INFO - Link Text: 2025年２月期第３四半期決算説明資料
+2025-01-02 14:47:55,412 - INFO - HTML: <a target="_blank" href="/inbs/140120241220541702.pdf">2025年２月期第３四半期決算説明資料</a>
+2025-01-02 14:47:55,486 - INFO - 
+=== Row 12 Data ===
+2025-01-02 14:47:55,486 - INFO - {
+  "date": "2024/12/20",
+  "time": "19:15",
+  "code": "88940",
+  "company": "ＲＥＶＯＬＵＴＩＯＮ",
+  "title": "2024年10月期通期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241220542355.pdf",
+      "text": "2024年10月期通期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241220542355.pdf\">2024年10月期通期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:55.486003+00:00",
+  "updated_at": "2025-01-02T05:47:55.486009+00:00"
+}
+2025-01-02 14:47:55,486 - INFO - 
+Found 1 PDF links in row 12
+2025-01-02 14:47:55,486 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241220542355.pdf
+2025-01-02 14:47:55,486 - INFO - Link Text: 2024年10月期通期決算説明資料
+2025-01-02 14:47:55,486 - INFO - HTML: <a target="_blank" href="/inbs/140120241220542355.pdf">2024年10月期通期決算説明資料</a>
+2025-01-02 14:47:55,560 - INFO - 
+=== Row 13 Data ===
+2025-01-02 14:47:55,560 - INFO - {
+  "date": "2024/12/20",
+  "time": "13:00",
+  "code": "42980",
+  "company": "プロトコーポ",
+  "title": "2025年3月期　第2四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538586.pdf",
+      "text": "2025年3月期　第2四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538586.pdf\">2025年3月期　第2四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東名",
+  "created_at": "2025-01-02T05:47:55.560122+00:00",
+  "updated_at": "2025-01-02T05:47:55.560129+00:00"
+}
+2025-01-02 14:47:55,560 - INFO - 
+Found 1 PDF links in row 13
+2025-01-02 14:47:55,560 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538586.pdf
+2025-01-02 14:47:55,560 - INFO - Link Text: 2025年3月期　第2四半期決算説明資料
+2025-01-02 14:47:55,560 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538586.pdf">2025年3月期　第2四半期決算説明資料</a>
+2025-01-02 14:47:55,636 - INFO - 
+=== Row 14 Data ===
+2025-01-02 14:47:55,636 - INFO - {
+  "date": "2024/12/20",
+  "time": "11:30",
+  "code": "69050",
+  "company": "コーセル",
+  "title": "2025年５月期 第２四半期（中間期）決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241219541194.pdf",
+      "text": "2025年５月期 第２四半期（中間期）決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241219541194.pdf\">2025年５月期&nbsp;第２四半期（中間期）決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:55.636832+00:00",
+  "updated_at": "2025-01-02T05:47:55.636839+00:00"
+}
+2025-01-02 14:47:55,636 - INFO - 
+Found 1 PDF links in row 14
+2025-01-02 14:47:55,636 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241219541194.pdf
+2025-01-02 14:47:55,636 - INFO - Link Text: 2025年５月期 第２四半期（中間期）決算説明資料
+2025-01-02 14:47:55,637 - INFO - HTML: <a target="_blank" href="/inbs/140120241219541194.pdf">2025年５月期&nbsp;第２四半期（中間期）決算説明資料</a>
+2025-01-02 14:47:55,713 - INFO - 
+=== Row 15 Data ===
+2025-01-02 14:47:55,713 - INFO - {
+  "date": "2024/12/18",
+  "time": "17:00",
+  "code": "71310",
+  "company": "のむら産業",
+  "title": "2024年10月期　決算説明資料(スクリプト付)",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241218540579.pdf",
+      "text": "2024年10月期　決算説明資料(スクリプト付)",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241218540579.pdf\">2024年10月期　決算説明資料(スクリプト付)</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:55.713200+00:00",
+  "updated_at": "2025-01-02T05:47:55.713206+00:00"
+}
+2025-01-02 14:47:55,713 - INFO - 
+Found 1 PDF links in row 15
+2025-01-02 14:47:55,713 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241218540579.pdf
+2025-01-02 14:47:55,713 - INFO - Link Text: 2024年10月期　決算説明資料(スクリプト付)
+2025-01-02 14:47:55,713 - INFO - HTML: <a target="_blank" href="/inbs/140120241218540579.pdf">2024年10月期　決算説明資料(スクリプト付)</a>
+2025-01-02 14:47:55,791 - INFO - 
+=== Row 16 Data ===
+2025-01-02 14:47:55,792 - INFO - {
+  "date": "2024/12/17",
+  "time": "16:00",
+  "code": "99410",
+  "company": "太洋物産",
+  "title": "2024年９月期　決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241217539822.pdf",
+      "text": "2024年９月期　決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241217539822.pdf\">2024年９月期　決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:55.791966+00:00",
+  "updated_at": "2025-01-02T05:47:55.791978+00:00"
+}
+2025-01-02 14:47:55,792 - INFO - 
+Found 1 PDF links in row 16
+2025-01-02 14:47:55,792 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241217539822.pdf
+2025-01-02 14:47:55,792 - INFO - Link Text: 2024年９月期　決算説明資料
+2025-01-02 14:47:55,792 - INFO - HTML: <a target="_blank" href="/inbs/140120241217539822.pdf">2024年９月期　決算説明資料</a>
+2025-01-02 14:47:55,868 - INFO - 
+=== Row 17 Data ===
+2025-01-02 14:47:55,868 - INFO - {
+  "date": "2024/12/16",
+  "time": "18:00",
+  "code": "55720",
+  "company": "Ｇ－リッジアイ",
+  "title": "（訂正）2025年７月期 第１四半期 決算説明資料の一部訂正について",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241216539500.pdf",
+      "text": "（訂正）2025年７月期 第１四半期 決算説明資料の一部訂正について",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241216539500.pdf\">（訂正）2025年７月期&nbsp;第１四半期&nbsp;決算説明資料の一部訂正について</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:55.868838+00:00",
+  "updated_at": "2025-01-02T05:47:55.868845+00:00"
+}
+2025-01-02 14:47:55,868 - INFO - 
+Found 1 PDF links in row 17
+2025-01-02 14:47:55,868 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241216539500.pdf
+2025-01-02 14:47:55,869 - INFO - Link Text: （訂正）2025年７月期 第１四半期 決算説明資料の一部訂正について
+2025-01-02 14:47:55,869 - INFO - HTML: <a target="_blank" href="/inbs/140120241216539500.pdf">（訂正）2025年７月期&nbsp;第１四半期&nbsp;決算説明資料の一部訂正について</a>
+2025-01-02 14:47:55,942 - INFO - 
+=== Row 18 Data ===
+2025-01-02 14:47:55,942 - INFO - {
+  "date": "2024/12/16",
+  "time": "17:20",
+  "code": "89720",
+  "company": "Ｒ－ＫＤＸ不動産",
+  "title": "2024年10月期　決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538799.pdf",
+      "text": "2024年10月期　決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538799.pdf\">2024年10月期　決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:55.942842+00:00",
+  "updated_at": "2025-01-02T05:47:55.942852+00:00"
+}
+2025-01-02 14:47:55,942 - INFO - 
+Found 1 PDF links in row 18
+2025-01-02 14:47:55,943 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538799.pdf
+2025-01-02 14:47:55,943 - INFO - Link Text: 2024年10月期　決算説明資料
+2025-01-02 14:47:55,943 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538799.pdf">2024年10月期　決算説明資料</a>
+2025-01-02 14:47:56,017 - INFO - 
+=== Row 19 Data ===
+2025-01-02 14:47:56,017 - INFO - {
+  "date": "2024/12/16",
+  "time": "16:00",
+  "code": "34150",
+  "company": "トウキョウベース",
+  "title": "2025年1月期　第３四半期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241216538976.pdf",
+      "text": "2025年1月期　第３四半期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241216538976.pdf\">2025年1月期　第３四半期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:56.017467+00:00",
+  "updated_at": "2025-01-02T05:47:56.017472+00:00"
+}
+2025-01-02 14:47:56,017 - INFO - 
+Found 1 PDF links in row 19
+2025-01-02 14:47:56,017 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241216538976.pdf
+2025-01-02 14:47:56,017 - INFO - Link Text: 2025年1月期　第３四半期 決算説明資料
+2025-01-02 14:47:56,017 - INFO - HTML: <a target="_blank" href="/inbs/140120241216538976.pdf">2025年1月期　第３四半期&nbsp;決算説明資料</a>
+2025-01-02 14:47:56,091 - INFO - 
+=== Row 20 Data ===
+2025-01-02 14:47:56,091 - INFO - {
+  "date": "2024/12/16",
+  "time": "16:00",
+  "code": "78040",
+  "company": "ビーアンドピー",
+  "title": "（訂正）「2024年10月期 決算説明資料」の一部訂正について",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241216539341.pdf",
+      "text": "（訂正）「2024年10月期 決算説明資料」の一部訂正について",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241216539341.pdf\">（訂正）「2024年10月期&nbsp;決算説明資料」の一部訂正について</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:56.091516+00:00",
+  "updated_at": "2025-01-02T05:47:56.091522+00:00"
+}
+2025-01-02 14:47:56,091 - INFO - 
+Found 1 PDF links in row 20
+2025-01-02 14:47:56,091 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241216539341.pdf
+2025-01-02 14:47:56,091 - INFO - Link Text: （訂正）「2024年10月期 決算説明資料」の一部訂正について
+2025-01-02 14:47:56,091 - INFO - HTML: <a target="_blank" href="/inbs/140120241216539341.pdf">（訂正）「2024年10月期&nbsp;決算説明資料」の一部訂正について</a>
+2025-01-02 14:47:56,167 - INFO - 
+=== Row 21 Data ===
+2025-01-02 14:47:56,167 - INFO - {
+  "date": "2024/12/16",
+  "time": "15:30",
+  "code": "278A0",
+  "company": "Ｇ－テラドローン",
+  "title": "2025年１月期第３四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241216539177.pdf",
+      "text": "2025年１月期第３四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241216539177.pdf\">2025年１月期第３四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:56.167232+00:00",
+  "updated_at": "2025-01-02T05:47:56.167239+00:00"
+}
+2025-01-02 14:47:56,167 - INFO - 
+Found 1 PDF links in row 21
+2025-01-02 14:47:56,167 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241216539177.pdf
+2025-01-02 14:47:56,167 - INFO - Link Text: 2025年１月期第３四半期決算説明資料
+2025-01-02 14:47:56,167 - INFO - HTML: <a target="_blank" href="/inbs/140120241216539177.pdf">2025年１月期第３四半期決算説明資料</a>
+2025-01-02 14:47:56,242 - INFO - 
+=== Row 22 Data ===
+2025-01-02 14:47:56,242 - INFO - {
+  "date": "2024/12/16",
+  "time": "15:30",
+  "code": "32870",
+  "company": "Ｒ－星野",
+  "title": "2024年10月期（第23期）決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241216538928.pdf",
+      "text": "2024年10月期（第23期）決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241216538928.pdf\">2024年10月期（第23期）決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:56.242122+00:00",
+  "updated_at": "2025-01-02T05:47:56.242129+00:00"
+}
+2025-01-02 14:47:56,242 - INFO - 
+Found 1 PDF links in row 22
+2025-01-02 14:47:56,242 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241216538928.pdf
+2025-01-02 14:47:56,242 - INFO - Link Text: 2024年10月期（第23期）決算説明資料
+2025-01-02 14:47:56,242 - INFO - HTML: <a target="_blank" href="/inbs/140120241216538928.pdf">2024年10月期（第23期）決算説明資料</a>
+2025-01-02 14:47:56,318 - INFO - 
+=== Row 23 Data ===
+2025-01-02 14:47:56,318 - INFO - {
+  "date": "2024/12/16",
+  "time": "15:30",
+  "code": "33090",
+  "company": "Ｒ－積水ハウスリート",
+  "title": "2024年10月期（第20期）決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241216539347.pdf",
+      "text": "2024年10月期（第20期）決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241216539347.pdf\">2024年10月期（第20期）決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:56.318692+00:00",
+  "updated_at": "2025-01-02T05:47:56.318699+00:00"
+}
+2025-01-02 14:47:56,318 - INFO - 
+Found 1 PDF links in row 23
+2025-01-02 14:47:56,318 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241216539347.pdf
+2025-01-02 14:47:56,318 - INFO - Link Text: 2024年10月期（第20期）決算説明資料
+2025-01-02 14:47:56,318 - INFO - HTML: <a target="_blank" href="/inbs/140120241216539347.pdf">2024年10月期（第20期）決算説明資料</a>
+2025-01-02 14:47:56,394 - INFO - 
+=== Row 24 Data ===
+2025-01-02 14:47:56,395 - INFO - {
+  "date": "2024/12/16",
+  "time": "15:30",
+  "code": "58880",
+  "company": "Ｇ－ダイワサイクル",
+  "title": "2025年1月期第3四半期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241216539142.pdf",
+      "text": "2025年1月期第3四半期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241216539142.pdf\">2025年1月期第3四半期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:56.394839+00:00",
+  "updated_at": "2025-01-02T05:47:56.394845+00:00"
+}
+2025-01-02 14:47:56,395 - INFO - 
+Found 1 PDF links in row 24
+2025-01-02 14:47:56,395 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241216539142.pdf
+2025-01-02 14:47:56,395 - INFO - Link Text: 2025年1月期第3四半期 決算説明資料
+2025-01-02 14:47:56,395 - INFO - HTML: <a target="_blank" href="/inbs/140120241216539142.pdf">2025年1月期第3四半期&nbsp;決算説明資料</a>
+2025-01-02 14:47:56,462 - INFO - 
+=== Row 25 Data ===
+2025-01-02 14:47:56,463 - INFO - {
+  "date": "2024/12/16",
+  "time": "15:30",
+  "code": "70340",
+  "company": "プロレドパートナーズ",
+  "title": "2024年10月期 通期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538713.pdf",
+      "text": "2024年10月期 通期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538713.pdf\">2024年10月期&nbsp;通期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:56.462936+00:00",
+  "updated_at": "2025-01-02T05:47:56.462945+00:00"
+}
+2025-01-02 14:47:56,463 - INFO - 
+Found 1 PDF links in row 25
+2025-01-02 14:47:56,463 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538713.pdf
+2025-01-02 14:47:56,466 - INFO - Link Text: 2024年10月期 通期決算説明資料
+2025-01-02 14:47:56,466 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538713.pdf">2024年10月期&nbsp;通期決算説明資料</a>
+2025-01-02 14:47:56,540 - INFO - 
+=== Row 26 Data ===
+2025-01-02 14:47:56,540 - INFO - {
+  "date": "2024/12/16",
+  "time": "15:30",
+  "code": "89560",
+  "company": "Ｒ－ＮＴＴ都市開発Ｒ",
+  "title": "ＮＴＴ都市開発リート投資法人　第44期（2024年10月期）決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241216539251.pdf",
+      "text": "ＮＴＴ都市開発リート投資法人　第44期（2024年10月期）決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241216539251.pdf\">ＮＴＴ都市開発リート投資法人　第44期（2024年10月期）決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:56.540011+00:00",
+  "updated_at": "2025-01-02T05:47:56.540021+00:00"
+}
+2025-01-02 14:47:56,540 - INFO - 
+Found 1 PDF links in row 26
+2025-01-02 14:47:56,540 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241216539251.pdf
+2025-01-02 14:47:56,540 - INFO - Link Text: ＮＴＴ都市開発リート投資法人　第44期（2024年10月期）決算説明資料
+2025-01-02 14:47:56,540 - INFO - HTML: <a target="_blank" href="/inbs/140120241216539251.pdf">ＮＴＴ都市開発リート投資法人　第44期（2024年10月期）決算説明資料</a>
+2025-01-02 14:47:56,613 - INFO - 
+=== Row 27 Data ===
+2025-01-02 14:47:56,613 - INFO - {
+  "date": "2024/12/16",
+  "time": "15:30",
+  "code": "89750",
+  "company": "Ｒ－いちごオフィス",
+  "title": "2024 年10月期（第38期）決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538379.pdf",
+      "text": "2024 年10月期（第38期）決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538379.pdf\">2024&nbsp;年10月期（第38期）決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:56.613652+00:00",
+  "updated_at": "2025-01-02T05:47:56.613658+00:00"
+}
+2025-01-02 14:47:56,613 - INFO - 
+Found 1 PDF links in row 27
+2025-01-02 14:47:56,613 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538379.pdf
+2025-01-02 14:47:56,613 - INFO - Link Text: 2024 年10月期（第38期）決算説明資料
+2025-01-02 14:47:56,613 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538379.pdf">2024&nbsp;年10月期（第38期）決算説明資料</a>
+2025-01-02 14:47:56,693 - INFO - 
+=== Row 28 Data ===
+2025-01-02 14:47:56,693 - INFO - {
+  "date": "2024/12/16",
+  "time": "10:00",
+  "code": "40260",
+  "company": "神島化学工業",
+  "title": "2025年4月期 第2四半期(中間期) 決算説明資料 ～決算概要～",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538108.pdf",
+      "text": "2025年4月期 第2四半期(中間期) 決算説明資料 ～決算概要～",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538108.pdf\">2025年4月期&nbsp;第2四半期(中間期)&nbsp;決算説明資料&nbsp;～決算概要～</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:56.693074+00:00",
+  "updated_at": "2025-01-02T05:47:56.693082+00:00"
+}
+2025-01-02 14:47:56,693 - INFO - 
+Found 1 PDF links in row 28
+2025-01-02 14:47:56,693 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538108.pdf
+2025-01-02 14:47:56,693 - INFO - Link Text: 2025年4月期 第2四半期(中間期) 決算説明資料 ～決算概要～
+2025-01-02 14:47:56,693 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538108.pdf">2025年4月期&nbsp;第2四半期(中間期)&nbsp;決算説明資料&nbsp;～決算概要～</a>
+2025-01-02 14:47:56,767 - INFO - 
+=== Row 29 Data ===
+2025-01-02 14:47:56,767 - INFO - {
+  "date": "2024/12/13",
+  "time": "19:00",
+  "code": "70950",
+  "company": "ＭａｃｂｅｅＰ",
+  "title": "(訂正)「2025年４月期 第１四半期決算説明資料」の一部訂正に関するお知らせ",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538753.pdf",
+      "text": "(訂正)「2025年４月期 第１四半期決算説明資料」の一部訂正に関するお知らせ",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538753.pdf\">(訂正)「2025年４月期&nbsp;第１四半期決算説明資料」の一部訂正に関するお知らせ</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:56.767202+00:00",
+  "updated_at": "2025-01-02T05:47:56.767211+00:00"
+}
+2025-01-02 14:47:56,767 - INFO - 
+Found 1 PDF links in row 29
+2025-01-02 14:47:56,767 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538753.pdf
+2025-01-02 14:47:56,767 - INFO - Link Text: (訂正)「2025年４月期 第１四半期決算説明資料」の一部訂正に関するお知らせ
+2025-01-02 14:47:56,767 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538753.pdf">(訂正)「2025年４月期&nbsp;第１四半期決算説明資料」の一部訂正に関するお知らせ</a>
+2025-01-02 14:47:56,842 - INFO - 
+=== Row 30 Data ===
+2025-01-02 14:47:56,842 - INFO - {
+  "date": "2024/12/13",
+  "time": "16:45",
+  "code": "55720",
+  "company": "Ｇ－リッジアイ",
+  "title": "2025年７月期　第１四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241212537941.pdf",
+      "text": "2025年７月期　第１四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241212537941.pdf\">2025年７月期　第１四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:56.842220+00:00",
+  "updated_at": "2025-01-02T05:47:56.842228+00:00"
+}
+2025-01-02 14:47:56,842 - INFO - 
+Found 1 PDF links in row 30
+2025-01-02 14:47:56,842 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241212537941.pdf
+2025-01-02 14:47:56,842 - INFO - Link Text: 2025年７月期　第１四半期決算説明資料
+2025-01-02 14:47:56,842 - INFO - HTML: <a target="_blank" href="/inbs/140120241212537941.pdf">2025年７月期　第１四半期決算説明資料</a>
+2025-01-02 14:47:56,913 - INFO - 
+=== Row 31 Data ===
+2025-01-02 14:47:56,913 - INFO - {
+  "date": "2024/12/13",
+  "time": "16:20",
+  "code": "38430",
+  "company": "フリービット",
+  "title": "2025年４月期 第２四半期（中間期）決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241212537590.pdf",
+      "text": "2025年４月期 第２四半期（中間期）決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241212537590.pdf\">2025年４月期&nbsp;第２四半期（中間期）決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:56.913082+00:00",
+  "updated_at": "2025-01-02T05:47:56.913090+00:00"
+}
+2025-01-02 14:47:56,913 - INFO - 
+Found 1 PDF links in row 31
+2025-01-02 14:47:56,913 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241212537590.pdf
+2025-01-02 14:47:56,913 - INFO - Link Text: 2025年４月期 第２四半期（中間期）決算説明資料
+2025-01-02 14:47:56,913 - INFO - HTML: <a target="_blank" href="/inbs/140120241212537590.pdf">2025年４月期&nbsp;第２四半期（中間期）決算説明資料</a>
+2025-01-02 14:47:56,989 - INFO - 
+=== Row 32 Data ===
+2025-01-02 14:47:56,989 - INFO - {
+  "date": "2024/12/13",
+  "time": "16:10",
+  "code": "39310",
+  "company": "Ｇ－バリューゴルフ",
+  "title": "2025年１月期 第３四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241212537742.pdf",
+      "text": "2025年１月期 第３四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241212537742.pdf\">2025年１月期&nbsp;第３四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:56.989663+00:00",
+  "updated_at": "2025-01-02T05:47:56.989671+00:00"
+}
+2025-01-02 14:47:56,989 - INFO - 
+Found 1 PDF links in row 32
+2025-01-02 14:47:56,989 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241212537742.pdf
+2025-01-02 14:47:56,989 - INFO - Link Text: 2025年１月期 第３四半期決算説明資料
+2025-01-02 14:47:56,989 - INFO - HTML: <a target="_blank" href="/inbs/140120241212537742.pdf">2025年１月期&nbsp;第３四半期決算説明資料</a>
+2025-01-02 14:47:57,068 - INFO - 
+=== Row 33 Data ===
+2025-01-02 14:47:57,068 - INFO - {
+  "date": "2024/12/13",
+  "time": "16:00",
+  "code": "186A0",
+  "company": "Ｇ－アストロスケール",
+  "title": "2025年4月期上期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538646.pdf",
+      "text": "2025年4月期上期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538646.pdf\">2025年4月期上期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:57.068632+00:00",
+  "updated_at": "2025-01-02T05:47:57.068639+00:00"
+}
+2025-01-02 14:47:57,068 - INFO - 
+Found 1 PDF links in row 33
+2025-01-02 14:47:57,068 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538646.pdf
+2025-01-02 14:47:57,068 - INFO - Link Text: 2025年4月期上期 決算説明資料
+2025-01-02 14:47:57,068 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538646.pdf">2025年4月期上期&nbsp;決算説明資料</a>
+2025-01-02 14:47:57,143 - INFO - 
+=== Row 34 Data ===
+2025-01-02 14:47:57,144 - INFO - {
+  "date": "2024/12/13",
+  "time": "16:00",
+  "code": "43780",
+  "company": "Ｇ－ＣＩＮＣ",
+  "title": "2024年10月期通期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241212537947.pdf",
+      "text": "2024年10月期通期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241212537947.pdf\">2024年10月期通期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:57.143527+00:00",
+  "updated_at": "2025-01-02T05:47:57.143534+00:00"
+}
+2025-01-02 14:47:57,144 - INFO - 
+Found 1 PDF links in row 34
+2025-01-02 14:47:57,144 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241212537947.pdf
+2025-01-02 14:47:57,144 - INFO - Link Text: 2024年10月期通期 決算説明資料
+2025-01-02 14:47:57,144 - INFO - HTML: <a target="_blank" href="/inbs/140120241212537947.pdf">2024年10月期通期&nbsp;決算説明資料</a>
+2025-01-02 14:47:57,220 - INFO - 
+=== Row 35 Data ===
+2025-01-02 14:47:57,220 - INFO - {
+  "date": "2024/12/13",
+  "time": "16:00",
+  "code": "44310",
+  "company": "Ｇ－スマレジ",
+  "title": "2025年4月期第2四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538337.pdf",
+      "text": "2025年4月期第2四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538337.pdf\">2025年4月期第2四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:57.220590+00:00",
+  "updated_at": "2025-01-02T05:47:57.220597+00:00"
+}
+2025-01-02 14:47:57,220 - INFO - 
+Found 1 PDF links in row 35
+2025-01-02 14:47:57,220 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538337.pdf
+2025-01-02 14:47:57,220 - INFO - Link Text: 2025年4月期第2四半期決算説明資料
+2025-01-02 14:47:57,220 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538337.pdf">2025年4月期第2四半期決算説明資料</a>
+2025-01-02 14:47:57,297 - INFO - 
+=== Row 36 Data ===
+2025-01-02 14:47:57,298 - INFO - {
+  "date": "2024/12/13",
+  "time": "16:00",
+  "code": "44460",
+  "company": "Ｌｉｎｋ－Ｕグループ",
+  "title": "2025年7月期　第1四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538587.pdf",
+      "text": "2025年7月期　第1四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538587.pdf\">2025年7月期　第1四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:57.297770+00:00",
+  "updated_at": "2025-01-02T05:47:57.297778+00:00"
+}
+2025-01-02 14:47:57,299 - INFO - 
+Found 1 PDF links in row 36
+2025-01-02 14:47:57,299 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538587.pdf
+2025-01-02 14:47:57,299 - INFO - Link Text: 2025年7月期　第1四半期決算説明資料
+2025-01-02 14:47:57,299 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538587.pdf">2025年7月期　第1四半期決算説明資料</a>
+2025-01-02 14:47:57,375 - INFO - 
+=== Row 37 Data ===
+2025-01-02 14:47:57,375 - INFO - {
+  "date": "2024/12/13",
+  "time": "16:00",
+  "code": "51310",
+  "company": "Ｇ－リンカーズ",
+  "title": "2025年7月期第1四半期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538022.pdf",
+      "text": "2025年7月期第1四半期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538022.pdf\">2025年7月期第1四半期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:57.375214+00:00",
+  "updated_at": "2025-01-02T05:47:57.375223+00:00"
+}
+2025-01-02 14:47:57,375 - INFO - 
+Found 1 PDF links in row 37
+2025-01-02 14:47:57,375 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538022.pdf
+2025-01-02 14:47:57,375 - INFO - Link Text: 2025年7月期第1四半期 決算説明資料
+2025-01-02 14:47:57,375 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538022.pdf">2025年7月期第1四半期&nbsp;決算説明資料</a>
+2025-01-02 14:47:57,454 - INFO - 
+=== Row 38 Data ===
+2025-01-02 14:47:57,457 - INFO - {
+  "date": "2024/12/13",
+  "time": "16:00",
+  "code": "52480",
+  "company": "Ｇ－テクノロジーズ",
+  "title": "2025年１月期 第３四半期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538113.pdf",
+      "text": "2025年１月期 第３四半期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538113.pdf\">2025年１月期&nbsp;第３四半期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:57.454020+00:00",
+  "updated_at": "2025-01-02T05:47:57.454028+00:00"
+}
+2025-01-02 14:47:57,457 - INFO - 
+Found 1 PDF links in row 38
+2025-01-02 14:47:57,457 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538113.pdf
+2025-01-02 14:47:57,457 - INFO - Link Text: 2025年１月期 第３四半期 決算説明資料
+2025-01-02 14:47:57,457 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538113.pdf">2025年１月期&nbsp;第３四半期&nbsp;決算説明資料</a>
+2025-01-02 14:47:57,530 - INFO - 
+=== Row 39 Data ===
+2025-01-02 14:47:57,531 - INFO - {
+  "date": "2024/12/13",
+  "time": "16:00",
+  "code": "55850",
+  "company": "Ｇ－エコナビスタ",
+  "title": "2024年10月期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538187.pdf",
+      "text": "2024年10月期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538187.pdf\">2024年10月期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:57.530900+00:00",
+  "updated_at": "2025-01-02T05:47:57.530910+00:00"
+}
+2025-01-02 14:47:57,531 - INFO - 
+Found 1 PDF links in row 39
+2025-01-02 14:47:57,531 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538187.pdf
+2025-01-02 14:47:57,531 - INFO - Link Text: 2024年10月期決算説明資料
+2025-01-02 14:47:57,531 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538187.pdf">2024年10月期決算説明資料</a>
+2025-01-02 14:47:57,605 - INFO - 
+=== Row 40 Data ===
+2025-01-02 14:47:57,605 - INFO - {
+  "date": "2024/12/13",
+  "time": "16:00",
+  "code": "70500",
+  "company": "Ｇ－フロンティアＩ",
+  "title": "2025年４月期第２四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538246.pdf",
+      "text": "2025年４月期第２四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538246.pdf\">2025年４月期第２四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:57.605271+00:00",
+  "updated_at": "2025-01-02T05:47:57.605278+00:00"
+}
+2025-01-02 14:47:57,605 - INFO - 
+Found 1 PDF links in row 40
+2025-01-02 14:47:57,605 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538246.pdf
+2025-01-02 14:47:57,605 - INFO - Link Text: 2025年４月期第２四半期決算説明資料
+2025-01-02 14:47:57,605 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538246.pdf">2025年４月期第２四半期決算説明資料</a>
+2025-01-02 14:47:57,677 - INFO - 
+=== Row 41 Data ===
+2025-01-02 14:47:57,677 - INFO - {
+  "date": "2024/12/13",
+  "time": "16:00",
+  "code": "92370",
+  "company": "Ｇ－笑美面",
+  "title": "2024年10月期通期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538568.pdf",
+      "text": "2024年10月期通期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538568.pdf\">2024年10月期通期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:57.677600+00:00",
+  "updated_at": "2025-01-02T05:47:57.677606+00:00"
+}
+2025-01-02 14:47:57,677 - INFO - 
+Found 1 PDF links in row 41
+2025-01-02 14:47:57,677 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538568.pdf
+2025-01-02 14:47:57,677 - INFO - Link Text: 2024年10月期通期決算説明資料
+2025-01-02 14:47:57,677 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538568.pdf">2024年10月期通期決算説明資料</a>
+2025-01-02 14:47:57,756 - INFO - 
+=== Row 42 Data ===
+2025-01-02 14:47:57,756 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "14440",
+  "company": "Ｇ－ニッソウ",
+  "title": "2025年7月期第1四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241212537885.pdf",
+      "text": "2025年7月期第1四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241212537885.pdf\">2025年7月期第1四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東名",
+  "created_at": "2025-01-02T05:47:57.756567+00:00",
+  "updated_at": "2025-01-02T05:47:57.756575+00:00"
+}
+2025-01-02 14:47:57,756 - INFO - 
+Found 1 PDF links in row 42
+2025-01-02 14:47:57,756 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241212537885.pdf
+2025-01-02 14:47:57,756 - INFO - Link Text: 2025年7月期第1四半期決算説明資料
+2025-01-02 14:47:57,756 - INFO - HTML: <a target="_blank" href="/inbs/140120241212537885.pdf">2025年7月期第1四半期決算説明資料</a>
+2025-01-02 14:47:57,833 - INFO - 
+=== Row 43 Data ===
+2025-01-02 14:47:57,833 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "212A0",
+  "company": "フィットイージー",
+  "title": "2024年10月期　決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538054.pdf",
+      "text": "2024年10月期　決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538054.pdf\">2024年10月期　決算説明資料</a>"
+    }
+  ],
+  "exchange": "東名",
+  "created_at": "2025-01-02T05:47:57.833322+00:00",
+  "updated_at": "2025-01-02T05:47:57.833329+00:00"
+}
+2025-01-02 14:47:57,833 - INFO - 
+Found 1 PDF links in row 43
+2025-01-02 14:47:57,833 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538054.pdf
+2025-01-02 14:47:57,833 - INFO - Link Text: 2024年10月期　決算説明資料
+2025-01-02 14:47:57,833 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538054.pdf">2024年10月期　決算説明資料</a>
+2025-01-02 14:47:57,911 - INFO - 
+=== Row 44 Data ===
+2025-01-02 14:47:57,911 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "218A0",
+  "company": "Ｇ－リベラウェア",
+  "title": "2025年７月期 第１四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538401.pdf",
+      "text": "2025年７月期 第１四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538401.pdf\">2025年７月期&nbsp;第１四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:57.911169+00:00",
+  "updated_at": "2025-01-02T05:47:57.911175+00:00"
+}
+2025-01-02 14:47:57,911 - INFO - 
+Found 1 PDF links in row 44
+2025-01-02 14:47:57,911 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538401.pdf
+2025-01-02 14:47:57,911 - INFO - Link Text: 2025年７月期 第１四半期決算説明資料
+2025-01-02 14:47:57,911 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538401.pdf">2025年７月期&nbsp;第１四半期決算説明資料</a>
+2025-01-02 14:47:57,985 - INFO - 
+=== Row 45 Data ===
+2025-01-02 14:47:57,985 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "29970",
+  "company": "Ｇ－ストレージ王",
+  "title": "決算説明資料_2025年1月期第3四半期決算",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538296.pdf",
+      "text": "決算説明資料_2025年1月期第3四半期決算",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538296.pdf\">決算説明資料_2025年1月期第3四半期決算</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:57.985103+00:00",
+  "updated_at": "2025-01-02T05:47:57.985111+00:00"
+}
+2025-01-02 14:47:57,985 - INFO - 
+Found 1 PDF links in row 45
+2025-01-02 14:47:57,985 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538296.pdf
+2025-01-02 14:47:57,985 - INFO - Link Text: 決算説明資料_2025年1月期第3四半期決算
+2025-01-02 14:47:57,985 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538296.pdf">決算説明資料_2025年1月期第3四半期決算</a>
+2025-01-02 14:47:58,059 - INFO - 
+=== Row 46 Data ===
+2025-01-02 14:47:58,059 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "30380",
+  "company": "神戸物産",
+  "title": "2024年10月期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241212537460.pdf",
+      "text": "2024年10月期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241212537460.pdf\">2024年10月期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:58.059240+00:00",
+  "updated_at": "2025-01-02T05:47:58.059245+00:00"
+}
+2025-01-02 14:47:58,059 - INFO - 
+Found 1 PDF links in row 46
+2025-01-02 14:47:58,059 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241212537460.pdf
+2025-01-02 14:47:58,059 - INFO - Link Text: 2024年10月期 決算説明資料
+2025-01-02 14:47:58,059 - INFO - HTML: <a target="_blank" href="/inbs/140120241212537460.pdf">2024年10月期&nbsp;決算説明資料</a>
+2025-01-02 14:47:58,134 - INFO - 
+=== Row 47 Data ===
+2025-01-02 14:47:58,134 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "31340",
+  "company": "Ｈａｍｅｅ",
+  "title": "2025年４月期　第２四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538325.pdf",
+      "text": "2025年４月期　第２四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538325.pdf\">2025年４月期　第２四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:58.134162+00:00",
+  "updated_at": "2025-01-02T05:47:58.134171+00:00"
+}
+2025-01-02 14:47:58,134 - INFO - 
+Found 1 PDF links in row 47
+2025-01-02 14:47:58,134 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538325.pdf
+2025-01-02 14:47:58,134 - INFO - Link Text: 2025年４月期　第２四半期決算説明資料
+2025-01-02 14:47:58,134 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538325.pdf">2025年４月期　第２四半期決算説明資料</a>
+2025-01-02 14:47:58,209 - INFO - 
+=== Row 48 Data ===
+2025-01-02 14:47:58,209 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "40140",
+  "company": "Ｇ－カラダノート",
+  "title": "2025年７月期 第1四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241211537083.pdf",
+      "text": "2025年７月期 第1四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241211537083.pdf\">2025年７月期&nbsp;第1四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:58.209159+00:00",
+  "updated_at": "2025-01-02T05:47:58.209165+00:00"
+}
+2025-01-02 14:47:58,209 - INFO - 
+Found 1 PDF links in row 48
+2025-01-02 14:47:58,209 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241211537083.pdf
+2025-01-02 14:47:58,209 - INFO - Link Text: 2025年７月期 第1四半期決算説明資料
+2025-01-02 14:47:58,209 - INFO - HTML: <a target="_blank" href="/inbs/140120241211537083.pdf">2025年７月期&nbsp;第1四半期決算説明資料</a>
+2025-01-02 14:47:58,283 - INFO - 
+=== Row 49 Data ===
+2025-01-02 14:47:58,284 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "40750",
+  "company": "Ｇ－ブレインズ",
+  "title": "2025年７月期第１四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538397.pdf",
+      "text": "2025年７月期第１四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538397.pdf\">2025年７月期第１四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:58.283907+00:00",
+  "updated_at": "2025-01-02T05:47:58.283919+00:00"
+}
+2025-01-02 14:47:58,284 - INFO - 
+Found 1 PDF links in row 49
+2025-01-02 14:47:58,284 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538397.pdf
+2025-01-02 14:47:58,284 - INFO - Link Text: 2025年７月期第１四半期決算説明資料
+2025-01-02 14:47:58,284 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538397.pdf">2025年７月期第１四半期決算説明資料</a>
+2025-01-02 14:47:58,360 - INFO - 
+=== Row 50 Data ===
+2025-01-02 14:47:58,360 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "41740",
+  "company": "アピリッツ",
+  "title": "2025年１月期 第３四半期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241209535887.pdf",
+      "text": "2025年１月期 第３四半期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241209535887.pdf\">2025年１月期&nbsp;第３四半期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:58.360151+00:00",
+  "updated_at": "2025-01-02T05:47:58.360158+00:00"
+}
+2025-01-02 14:47:58,360 - INFO - 
+Found 1 PDF links in row 50
+2025-01-02 14:47:58,360 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241209535887.pdf
+2025-01-02 14:47:58,360 - INFO - Link Text: 2025年１月期 第３四半期 決算説明資料
+2025-01-02 14:47:58,360 - INFO - HTML: <a target="_blank" href="/inbs/140120241209535887.pdf">2025年１月期&nbsp;第３四半期&nbsp;決算説明資料</a>
+2025-01-02 14:47:58,437 - INFO - 
+=== Row 51 Data ===
+2025-01-02 14:47:58,437 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "41750",
+  "company": "Ｇ－ｃｏｌｙ",
+  "title": "2025年１月期第３四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538298.pdf",
+      "text": "2025年１月期第３四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538298.pdf\">2025年１月期第３四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:58.437160+00:00",
+  "updated_at": "2025-01-02T05:47:58.437166+00:00"
+}
+2025-01-02 14:47:58,437 - INFO - 
+Found 1 PDF links in row 51
+2025-01-02 14:47:58,437 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538298.pdf
+2025-01-02 14:47:58,437 - INFO - Link Text: 2025年１月期第３四半期決算説明資料
+2025-01-02 14:47:58,437 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538298.pdf">2025年１月期第３四半期決算説明資料</a>
+2025-01-02 14:47:58,514 - INFO - 
+=== Row 52 Data ===
+2025-01-02 14:47:58,514 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "42670",
+  "company": "Ｇ－ライトワークス",
+  "title": "2025年１月期　第３四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538351.pdf",
+      "text": "2025年１月期　第３四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538351.pdf\">2025年１月期　第３四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:58.514627+00:00",
+  "updated_at": "2025-01-02T05:47:58.514634+00:00"
+}
+2025-01-02 14:47:58,514 - INFO - 
+Found 1 PDF links in row 52
+2025-01-02 14:47:58,514 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538351.pdf
+2025-01-02 14:47:58,514 - INFO - Link Text: 2025年１月期　第３四半期決算説明資料
+2025-01-02 14:47:58,514 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538351.pdf">2025年１月期　第３四半期決算説明資料</a>
+2025-01-02 14:47:58,589 - INFO - 
+=== Row 53 Data ===
+2025-01-02 14:47:58,589 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "42870",
+  "company": "ジャストプラ",
+  "title": "2025年１月期　第３四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538095.pdf",
+      "text": "2025年１月期　第３四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538095.pdf\">2025年１月期　第３四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:58.589032+00:00",
+  "updated_at": "2025-01-02T05:47:58.589042+00:00"
+}
+2025-01-02 14:47:58,589 - INFO - 
+Found 1 PDF links in row 53
+2025-01-02 14:47:58,589 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538095.pdf
+2025-01-02 14:47:58,589 - INFO - Link Text: 2025年１月期　第３四半期決算説明資料
+2025-01-02 14:47:58,589 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538095.pdf">2025年１月期　第３四半期決算説明資料</a>
+2025-01-02 14:47:58,665 - INFO - 
+=== Row 54 Data ===
+2025-01-02 14:47:58,665 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "43820",
+  "company": "ＨＥＲＯＺ",
+  "title": "2025年４月期第２四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538294.pdf",
+      "text": "2025年４月期第２四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538294.pdf\">2025年４月期第２四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:58.665287+00:00",
+  "updated_at": "2025-01-02T05:47:58.665296+00:00"
+}
+2025-01-02 14:47:58,665 - INFO - 
+Found 1 PDF links in row 54
+2025-01-02 14:47:58,665 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538294.pdf
+2025-01-02 14:47:58,665 - INFO - Link Text: 2025年４月期第２四半期決算説明資料
+2025-01-02 14:47:58,665 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538294.pdf">2025年４月期第２四半期決算説明資料</a>
+2025-01-02 14:47:58,739 - INFO - 
+=== Row 55 Data ===
+2025-01-02 14:47:58,739 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "49340",
+  "company": "Ｇ－Ｐアンチエイジ",
+  "title": "2025年７月期 第１四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538527.pdf",
+      "text": "2025年７月期 第１四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538527.pdf\">2025年７月期&nbsp;第１四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:58.739636+00:00",
+  "updated_at": "2025-01-02T05:47:58.739642+00:00"
+}
+2025-01-02 14:47:58,739 - INFO - 
+Found 1 PDF links in row 55
+2025-01-02 14:47:58,739 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538527.pdf
+2025-01-02 14:47:58,739 - INFO - Link Text: 2025年７月期 第１四半期決算説明資料
+2025-01-02 14:47:58,739 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538527.pdf">2025年７月期&nbsp;第１四半期決算説明資料</a>
+2025-01-02 14:47:58,815 - INFO - 
+=== Row 56 Data ===
+2025-01-02 14:47:58,815 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "49360",
+  "company": "アクシージア",
+  "title": "2025年７月期第１四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241212537862.pdf",
+      "text": "2025年７月期第１四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241212537862.pdf\">2025年７月期第１四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:58.815310+00:00",
+  "updated_at": "2025-01-02T05:47:58.815317+00:00"
+}
+2025-01-02 14:47:58,815 - INFO - 
+Found 1 PDF links in row 56
+2025-01-02 14:47:58,815 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241212537862.pdf
+2025-01-02 14:47:58,815 - INFO - Link Text: 2025年７月期第１四半期決算説明資料
+2025-01-02 14:47:58,815 - INFO - HTML: <a target="_blank" href="/inbs/140120241212537862.pdf">2025年７月期第１四半期決算説明資料</a>
+2025-01-02 14:47:58,892 - INFO - 
+=== Row 57 Data ===
+2025-01-02 14:47:58,892 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "70330",
+  "company": "ＭＳＯＬ",
+  "title": "2024年12月期 第４四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538372.pdf",
+      "text": "2024年12月期 第４四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538372.pdf\">2024年12月期&nbsp;第４四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:58.892162+00:00",
+  "updated_at": "2025-01-02T05:47:58.892169+00:00"
+}
+2025-01-02 14:47:58,892 - INFO - 
+Found 1 PDF links in row 57
+2025-01-02 14:47:58,892 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538372.pdf
+2025-01-02 14:47:58,892 - INFO - Link Text: 2024年12月期 第４四半期決算説明資料
+2025-01-02 14:47:58,892 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538372.pdf">2024年12月期&nbsp;第４四半期決算説明資料</a>
+2025-01-02 14:47:58,969 - INFO - 
+=== Row 58 Data ===
+2025-01-02 14:47:58,969 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "71310",
+  "company": "のむら産業",
+  "title": "2024年10月期　決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538241.pdf",
+      "text": "2024年10月期　決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538241.pdf\">2024年10月期　決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:58.969578+00:00",
+  "updated_at": "2025-01-02T05:47:58.969585+00:00"
+}
+2025-01-02 14:47:58,969 - INFO - 
+Found 1 PDF links in row 58
+2025-01-02 14:47:58,969 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538241.pdf
+2025-01-02 14:47:58,969 - INFO - Link Text: 2024年10月期　決算説明資料
+2025-01-02 14:47:58,969 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538241.pdf">2024年10月期　決算説明資料</a>
+2025-01-02 14:47:59,046 - INFO - 
+=== Row 59 Data ===
+2025-01-02 14:47:59,046 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "73780",
+  "company": "Ｇ－アシロ",
+  "title": "2024年10月期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538140.pdf",
+      "text": "2024年10月期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538140.pdf\">2024年10月期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:59.046601+00:00",
+  "updated_at": "2025-01-02T05:47:59.046606+00:00"
+}
+2025-01-02 14:47:59,046 - INFO - 
+Found 1 PDF links in row 59
+2025-01-02 14:47:59,046 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538140.pdf
+2025-01-02 14:47:59,046 - INFO - Link Text: 2024年10月期 決算説明資料
+2025-01-02 14:47:59,046 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538140.pdf">2024年10月期&nbsp;決算説明資料</a>
+2025-01-02 14:47:59,121 - INFO - 
+=== Row 60 Data ===
+2025-01-02 14:47:59,121 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "73790",
+  "company": "Ｇ－サーキュ",
+  "title": "2025年７月期第１四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538036.pdf",
+      "text": "2025年７月期第１四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538036.pdf\">2025年７月期第１四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:59.120993+00:00",
+  "updated_at": "2025-01-02T05:47:59.120999+00:00"
+}
+2025-01-02 14:47:59,121 - INFO - 
+Found 1 PDF links in row 60
+2025-01-02 14:47:59,121 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538036.pdf
+2025-01-02 14:47:59,121 - INFO - Link Text: 2025年７月期第１四半期決算説明資料
+2025-01-02 14:47:59,121 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538036.pdf">2025年７月期第１四半期決算説明資料</a>
+2025-01-02 14:47:59,195 - INFO - 
+=== Row 61 Data ===
+2025-01-02 14:47:59,195 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "91630",
+  "company": "Ｇ－ナレルグループ",
+  "title": "2024年10月期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241202533299.pdf",
+      "text": "2024年10月期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241202533299.pdf\">2024年10月期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:59.195147+00:00",
+  "updated_at": "2025-01-02T05:47:59.195153+00:00"
+}
+2025-01-02 14:47:59,195 - INFO - 
+Found 1 PDF links in row 61
+2025-01-02 14:47:59,195 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241202533299.pdf
+2025-01-02 14:47:59,195 - INFO - Link Text: 2024年10月期決算説明資料
+2025-01-02 14:47:59,195 - INFO - HTML: <a target="_blank" href="/inbs/140120241202533299.pdf">2024年10月期決算説明資料</a>
+2025-01-02 14:47:59,292 - INFO - 
+=== Row 62 Data ===
+2025-01-02 14:47:59,296 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "92510",
+  "company": "Ｇ－ＡＢ＆Ｃ",
+  "title": "2024年10月期通期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538149.pdf",
+      "text": "2024年10月期通期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538149.pdf\">2024年10月期通期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:59.292689+00:00",
+  "updated_at": "2025-01-02T05:47:59.292699+00:00"
+}
+2025-01-02 14:47:59,296 - INFO - 
+Found 1 PDF links in row 62
+2025-01-02 14:47:59,296 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538149.pdf
+2025-01-02 14:47:59,296 - INFO - Link Text: 2024年10月期通期決算説明資料
+2025-01-02 14:47:59,296 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538149.pdf">2024年10月期通期決算説明資料</a>
+2025-01-02 14:47:59,375 - INFO - 
+=== Row 63 Data ===
+2025-01-02 14:47:59,375 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "92790",
+  "company": "ギフトＨＤ",
+  "title": "2024年10月期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538253.pdf",
+      "text": "2024年10月期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538253.pdf\">2024年10月期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:59.375239+00:00",
+  "updated_at": "2025-01-02T05:47:59.375247+00:00"
+}
+2025-01-02 14:47:59,375 - INFO - 
+Found 1 PDF links in row 63
+2025-01-02 14:47:59,375 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538253.pdf
+2025-01-02 14:47:59,375 - INFO - Link Text: 2024年10月期決算説明資料
+2025-01-02 14:47:59,375 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538253.pdf">2024年10月期決算説明資料</a>
+2025-01-02 14:47:59,452 - INFO - 
+=== Row 64 Data ===
+2025-01-02 14:47:59,452 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:30",
+  "code": "97430",
+  "company": "丹青社",
+  "title": "2025年1月期第3四半期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538088.pdf",
+      "text": "2025年1月期第3四半期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538088.pdf\">2025年1月期第3四半期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:59.452125+00:00",
+  "updated_at": "2025-01-02T05:47:59.452132+00:00"
+}
+2025-01-02 14:47:59,452 - INFO - 
+Found 1 PDF links in row 64
+2025-01-02 14:47:59,452 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538088.pdf
+2025-01-02 14:47:59,452 - INFO - Link Text: 2025年1月期第3四半期 決算説明資料
+2025-01-02 14:47:59,452 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538088.pdf">2025年1月期第3四半期&nbsp;決算説明資料</a>
+2025-01-02 14:47:59,529 - INFO - 
+=== Row 65 Data ===
+2025-01-02 14:47:59,529 - INFO - {
+  "date": "2024/12/13",
+  "time": "15:00",
+  "code": "60370",
+  "company": "楽待",
+  "title": "2025年７月期　第１四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538204.pdf",
+      "text": "2025年７月期　第１四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538204.pdf\">2025年７月期　第１四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:59.529753+00:00",
+  "updated_at": "2025-01-02T05:47:59.529760+00:00"
+}
+2025-01-02 14:47:59,529 - INFO - 
+Found 1 PDF links in row 65
+2025-01-02 14:47:59,529 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538204.pdf
+2025-01-02 14:47:59,529 - INFO - Link Text: 2025年７月期　第１四半期決算説明資料
+2025-01-02 14:47:59,529 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538204.pdf">2025年７月期　第１四半期決算説明資料</a>
+2025-01-02 14:47:59,609 - INFO - 
+=== Row 66 Data ===
+2025-01-02 14:47:59,609 - INFO - {
+  "date": "2024/12/13",
+  "time": "13:00",
+  "code": "70730",
+  "company": "Ｇ－ジェイック",
+  "title": "2025年１月期 第３四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241212537441.pdf",
+      "text": "2025年１月期 第３四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241212537441.pdf\">2025年１月期&nbsp;第３四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:59.609451+00:00",
+  "updated_at": "2025-01-02T05:47:59.609459+00:00"
+}
+2025-01-02 14:47:59,609 - INFO - 
+Found 1 PDF links in row 66
+2025-01-02 14:47:59,609 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241212537441.pdf
+2025-01-02 14:47:59,609 - INFO - Link Text: 2025年１月期 第３四半期決算説明資料
+2025-01-02 14:47:59,609 - INFO - HTML: <a target="_blank" href="/inbs/140120241212537441.pdf">2025年１月期&nbsp;第３四半期決算説明資料</a>
+2025-01-02 14:47:59,684 - INFO - 
+=== Row 67 Data ===
+2025-01-02 14:47:59,684 - INFO - {
+  "date": "2024/12/13",
+  "time": "12:35",
+  "code": "92540",
+  "company": "Ｇ－ラバブルマーケ",
+  "title": "2024年10月期通期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538215.pdf",
+      "text": "2024年10月期通期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538215.pdf\">2024年10月期通期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:59.684475+00:00",
+  "updated_at": "2025-01-02T05:47:59.684481+00:00"
+}
+2025-01-02 14:47:59,684 - INFO - 
+Found 1 PDF links in row 67
+2025-01-02 14:47:59,684 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538215.pdf
+2025-01-02 14:47:59,684 - INFO - Link Text: 2024年10月期通期 決算説明資料
+2025-01-02 14:47:59,684 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538215.pdf">2024年10月期通期&nbsp;決算説明資料</a>
+2025-01-02 14:47:59,759 - INFO - 
+=== Row 68 Data ===
+2025-01-02 14:47:59,759 - INFO - {
+  "date": "2024/12/13",
+  "time": "12:00",
+  "code": "34750",
+  "company": "グッドコムアセット",
+  "title": "2024年10月期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241213538192.pdf",
+      "text": "2024年10月期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241213538192.pdf\">2024年10月期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:59.759880+00:00",
+  "updated_at": "2025-01-02T05:47:59.759886+00:00"
+}
+2025-01-02 14:47:59,760 - INFO - 
+Found 1 PDF links in row 68
+2025-01-02 14:47:59,760 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241213538192.pdf
+2025-01-02 14:47:59,760 - INFO - Link Text: 2024年10月期 決算説明資料
+2025-01-02 14:47:59,760 - INFO - HTML: <a target="_blank" href="/inbs/140120241213538192.pdf">2024年10月期&nbsp;決算説明資料</a>
+2025-01-02 14:47:59,835 - INFO - 
+=== Row 69 Data ===
+2025-01-02 14:47:59,835 - INFO - {
+  "date": "2024/12/13",
+  "time": "11:30",
+  "code": "95560",
+  "company": "Ｇ－ＩＮＴＬＯＯＰ",
+  "title": "第１四半期決算説明資料 FY25/7 Q1",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241212537527.pdf",
+      "text": "第１四半期決算説明資料 FY25/7 Q1",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241212537527.pdf\">第１四半期決算説明資料&nbsp;FY25/7&nbsp;Q1</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:59.835744+00:00",
+  "updated_at": "2025-01-02T05:47:59.835750+00:00"
+}
+2025-01-02 14:47:59,835 - INFO - 
+Found 1 PDF links in row 69
+2025-01-02 14:47:59,835 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241212537527.pdf
+2025-01-02 14:47:59,835 - INFO - Link Text: 第１四半期決算説明資料 FY25/7 Q1
+2025-01-02 14:47:59,835 - INFO - HTML: <a target="_blank" href="/inbs/140120241212537527.pdf">第１四半期決算説明資料&nbsp;FY25/7&nbsp;Q1</a>
+2025-01-02 14:47:59,912 - INFO - 
+=== Row 70 Data ===
+2025-01-02 14:47:59,912 - INFO - {
+  "date": "2024/12/12",
+  "time": "15:30",
+  "code": "215A0",
+  "company": "Ｇ－タイミー",
+  "title": "2024年10月期 通期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241212537552.pdf",
+      "text": "2024年10月期 通期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241212537552.pdf\">2024年10月期&nbsp;通期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:59.912385+00:00",
+  "updated_at": "2025-01-02T05:47:59.912396+00:00"
+}
+2025-01-02 14:47:59,912 - INFO - 
+Found 1 PDF links in row 70
+2025-01-02 14:47:59,912 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241212537552.pdf
+2025-01-02 14:47:59,912 - INFO - Link Text: 2024年10月期 通期決算説明資料
+2025-01-02 14:47:59,912 - INFO - HTML: <a target="_blank" href="/inbs/140120241212537552.pdf">2024年10月期&nbsp;通期決算説明資料</a>
+2025-01-02 14:47:59,989 - INFO - 
+=== Row 71 Data ===
+2025-01-02 14:47:59,989 - INFO - {
+  "date": "2024/12/12",
+  "time": "15:30",
+  "code": "34580",
+  "company": "シーアールイー",
+  "title": "2025年７月期第１四半期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241212537374.pdf",
+      "text": "2025年７月期第１四半期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241212537374.pdf\">2025年７月期第１四半期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:47:59.989723+00:00",
+  "updated_at": "2025-01-02T05:47:59.989730+00:00"
+}
+2025-01-02 14:47:59,989 - INFO - 
+Found 1 PDF links in row 71
+2025-01-02 14:47:59,989 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241212537374.pdf
+2025-01-02 14:47:59,989 - INFO - Link Text: 2025年７月期第１四半期 決算説明資料
+2025-01-02 14:47:59,989 - INFO - HTML: <a target="_blank" href="/inbs/140120241212537374.pdf">2025年７月期第１四半期&nbsp;決算説明資料</a>
+2025-01-02 14:48:00,067 - INFO - 
+=== Row 72 Data ===
+2025-01-02 14:48:00,067 - INFO - {
+  "date": "2024/12/12",
+  "time": "15:30",
+  "code": "41940",
+  "company": "ビジョナル",
+  "title": "2025年７月期 第１四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241211537080.pdf",
+      "text": "2025年７月期 第１四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241211537080.pdf\">2025年７月期&nbsp;第１四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:00.067480+00:00",
+  "updated_at": "2025-01-02T05:48:00.067486+00:00"
+}
+2025-01-02 14:48:00,067 - INFO - 
+Found 1 PDF links in row 72
+2025-01-02 14:48:00,067 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241211537080.pdf
+2025-01-02 14:48:00,067 - INFO - Link Text: 2025年７月期 第１四半期決算説明資料
+2025-01-02 14:48:00,067 - INFO - HTML: <a target="_blank" href="/inbs/140120241211537080.pdf">2025年７月期&nbsp;第１四半期決算説明資料</a>
+2025-01-02 14:48:00,144 - INFO - 
+=== Row 73 Data ===
+2025-01-02 14:48:00,144 - INFO - {
+  "date": "2024/12/12",
+  "time": "15:30",
+  "code": "51340",
+  "company": "Ｇ－ＰＯＰＥＲ",
+  "title": "2024年10月期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241209535870.pdf",
+      "text": "2024年10月期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241209535870.pdf\">2024年10月期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:00.144003+00:00",
+  "updated_at": "2025-01-02T05:48:00.144011+00:00"
+}
+2025-01-02 14:48:00,144 - INFO - 
+Found 1 PDF links in row 73
+2025-01-02 14:48:00,144 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241209535870.pdf
+2025-01-02 14:48:00,144 - INFO - Link Text: 2024年10月期 決算説明資料
+2025-01-02 14:48:00,144 - INFO - HTML: <a target="_blank" href="/inbs/140120241209535870.pdf">2024年10月期&nbsp;決算説明資料</a>
+2025-01-02 14:48:00,219 - INFO - 
+=== Row 74 Data ===
+2025-01-02 14:48:00,219 - INFO - {
+  "date": "2024/12/12",
+  "time": "15:30",
+  "code": "52180",
+  "company": "オハラ",
+  "title": "2024年10月期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241211537209.pdf",
+      "text": "2024年10月期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241211537209.pdf\">2024年10月期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:00.219760+00:00",
+  "updated_at": "2025-01-02T05:48:00.219769+00:00"
+}
+2025-01-02 14:48:00,219 - INFO - 
+Found 1 PDF links in row 74
+2025-01-02 14:48:00,219 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241211537209.pdf
+2025-01-02 14:48:00,219 - INFO - Link Text: 2024年10月期 決算説明資料
+2025-01-02 14:48:00,219 - INFO - HTML: <a target="_blank" href="/inbs/140120241211537209.pdf">2024年10月期&nbsp;決算説明資料</a>
+2025-01-02 14:48:00,294 - INFO - 
+=== Row 75 Data ===
+2025-01-02 14:48:00,294 - INFO - {
+  "date": "2024/12/12",
+  "time": "15:30",
+  "code": "61840",
+  "company": "鎌倉新書",
+  "title": "2025年１月期 第３四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241212537410.pdf",
+      "text": "2025年１月期 第３四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241212537410.pdf\">2025年１月期&nbsp;第３四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:00.294523+00:00",
+  "updated_at": "2025-01-02T05:48:00.294529+00:00"
+}
+2025-01-02 14:48:00,294 - INFO - 
+Found 1 PDF links in row 75
+2025-01-02 14:48:00,294 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241212537410.pdf
+2025-01-02 14:48:00,294 - INFO - Link Text: 2025年１月期 第３四半期決算説明資料
+2025-01-02 14:48:00,294 - INFO - HTML: <a target="_blank" href="/inbs/140120241212537410.pdf">2025年１月期&nbsp;第３四半期決算説明資料</a>
+2025-01-02 14:48:00,368 - INFO - 
+=== Row 76 Data ===
+2025-01-02 14:48:00,368 - INFO - {
+  "date": "2024/12/12",
+  "time": "15:30",
+  "code": "70950",
+  "company": "ＭａｃｂｅｅＰ",
+  "title": "2025年４月期第２四半期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241212537401.pdf",
+      "text": "2025年４月期第２四半期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241212537401.pdf\">2025年４月期第２四半期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:00.368514+00:00",
+  "updated_at": "2025-01-02T05:48:00.368521+00:00"
+}
+2025-01-02 14:48:00,368 - INFO - 
+Found 1 PDF links in row 76
+2025-01-02 14:48:00,368 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241212537401.pdf
+2025-01-02 14:48:00,368 - INFO - Link Text: 2025年４月期第２四半期 決算説明資料
+2025-01-02 14:48:00,368 - INFO - HTML: <a target="_blank" href="/inbs/140120241212537401.pdf">2025年４月期第２四半期&nbsp;決算説明資料</a>
+2025-01-02 14:48:00,445 - INFO - 
+=== Row 77 Data ===
+2025-01-02 14:48:00,445 - INFO - {
+  "date": "2024/12/12",
+  "time": "15:30",
+  "code": "70970",
+  "company": "Ｇ－さくらさく",
+  "title": "2025年７月期 第１四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241212537344.pdf",
+      "text": "2025年７月期 第１四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241212537344.pdf\">2025年７月期&nbsp;第１四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:00.445850+00:00",
+  "updated_at": "2025-01-02T05:48:00.445863+00:00"
+}
+2025-01-02 14:48:00,445 - INFO - 
+Found 1 PDF links in row 77
+2025-01-02 14:48:00,445 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241212537344.pdf
+2025-01-02 14:48:00,446 - INFO - Link Text: 2025年７月期 第１四半期決算説明資料
+2025-01-02 14:48:00,446 - INFO - HTML: <a target="_blank" href="/inbs/140120241212537344.pdf">2025年７月期&nbsp;第１四半期決算説明資料</a>
+2025-01-02 14:48:00,523 - INFO - 
+=== Row 78 Data ===
+2025-01-02 14:48:00,524 - INFO - {
+  "date": "2024/12/12",
+  "time": "15:30",
+  "code": "71960",
+  "company": "Ｃａｓａ",
+  "title": "2025年１月期 第３四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241211537235.pdf",
+      "text": "2025年１月期 第３四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241211537235.pdf\">2025年１月期&nbsp;第３四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:00.523931+00:00",
+  "updated_at": "2025-01-02T05:48:00.523939+00:00"
+}
+2025-01-02 14:48:00,524 - INFO - 
+Found 1 PDF links in row 78
+2025-01-02 14:48:00,524 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241211537235.pdf
+2025-01-02 14:48:00,524 - INFO - Link Text: 2025年１月期 第３四半期決算説明資料
+2025-01-02 14:48:00,524 - INFO - HTML: <a target="_blank" href="/inbs/140120241211537235.pdf">2025年１月期&nbsp;第３四半期決算説明資料</a>
+2025-01-02 14:48:00,602 - INFO - 
+=== Row 79 Data ===
+2025-01-02 14:48:00,602 - INFO - {
+  "date": "2024/12/12",
+  "time": "15:30",
+  "code": "81420",
+  "company": "トーホー",
+  "title": "2025年1月期第3四半期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241211537117.pdf",
+      "text": "2025年1月期第3四半期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241211537117.pdf\">2025年1月期第3四半期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:00.602670+00:00",
+  "updated_at": "2025-01-02T05:48:00.602681+00:00"
+}
+2025-01-02 14:48:00,602 - INFO - 
+Found 1 PDF links in row 79
+2025-01-02 14:48:00,602 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241211537117.pdf
+2025-01-02 14:48:00,602 - INFO - Link Text: 2025年1月期第3四半期 決算説明資料
+2025-01-02 14:48:00,602 - INFO - HTML: <a target="_blank" href="/inbs/140120241211537117.pdf">2025年1月期第3四半期&nbsp;決算説明資料</a>
+2025-01-02 14:48:00,678 - INFO - 
+=== Row 80 Data ===
+2025-01-02 14:48:00,678 - INFO - {
+  "date": "2024/12/12",
+  "time": "15:00",
+  "code": "76230",
+  "company": "サンオータス",
+  "title": "2025年４月期　第２四半期（中間期）決算短信　決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241211536713.pdf",
+      "text": "2025年４月期　第２四半期（中間期）決算短信　決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241211536713.pdf\">2025年４月期　第２四半期（中間期）決算短信　決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:00.678296+00:00",
+  "updated_at": "2025-01-02T05:48:00.678305+00:00"
+}
+2025-01-02 14:48:00,678 - INFO - 
+Found 1 PDF links in row 80
+2025-01-02 14:48:00,678 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241211536713.pdf
+2025-01-02 14:48:00,678 - INFO - Link Text: 2025年４月期　第２四半期（中間期）決算短信　決算説明資料
+2025-01-02 14:48:00,678 - INFO - HTML: <a target="_blank" href="/inbs/140120241211536713.pdf">2025年４月期　第２四半期（中間期）決算短信　決算説明資料</a>
+2025-01-02 14:48:00,753 - INFO - 
+=== Row 81 Data ===
+2025-01-02 14:48:00,753 - INFO - {
+  "date": "2024/12/12",
+  "time": "14:00",
+  "code": "58890",
+  "company": "ＪＥＨ",
+  "title": "2025年1月期_第3四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241211536891.pdf",
+      "text": "2025年1月期_第3四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241211536891.pdf\">2025年1月期_第3四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:00.753102+00:00",
+  "updated_at": "2025-01-02T05:48:00.753108+00:00"
+}
+2025-01-02 14:48:00,753 - INFO - 
+Found 1 PDF links in row 81
+2025-01-02 14:48:00,753 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241211536891.pdf
+2025-01-02 14:48:00,753 - INFO - Link Text: 2025年1月期_第3四半期決算説明資料
+2025-01-02 14:48:00,753 - INFO - HTML: <a target="_blank" href="/inbs/140120241211536891.pdf">2025年1月期_第3四半期決算説明資料</a>
+2025-01-02 14:48:00,827 - INFO - 
+=== Row 82 Data ===
+2025-01-02 14:48:00,827 - INFO - {
+  "date": "2024/12/11",
+  "time": "16:45",
+  "code": "37700",
+  "company": "ザッパラス",
+  "title": "決算説明資料 2025年4月期 2Q",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241211537111.pdf",
+      "text": "決算説明資料 2025年4月期 2Q",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241211537111.pdf\">決算説明資料&nbsp;2025年4月期&nbsp;2Q</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:00.827135+00:00",
+  "updated_at": "2025-01-02T05:48:00.827141+00:00"
+}
+2025-01-02 14:48:00,827 - INFO - 
+Found 1 PDF links in row 82
+2025-01-02 14:48:00,827 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241211537111.pdf
+2025-01-02 14:48:00,827 - INFO - Link Text: 決算説明資料 2025年4月期 2Q
+2025-01-02 14:48:00,827 - INFO - HTML: <a target="_blank" href="/inbs/140120241211537111.pdf">決算説明資料&nbsp;2025年4月期&nbsp;2Q</a>
+2025-01-02 14:48:00,901 - INFO - 
+=== Row 83 Data ===
+2025-01-02 14:48:00,901 - INFO - {
+  "date": "2024/12/11",
+  "time": "16:00",
+  "code": "51320",
+  "company": "Ｇ－ｐｌｕｓｚｅｒｏ",
+  "title": "2024年10月期通期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241211536803.pdf",
+      "text": "2024年10月期通期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241211536803.pdf\">2024年10月期通期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:00.901756+00:00",
+  "updated_at": "2025-01-02T05:48:00.901762+00:00"
+}
+2025-01-02 14:48:00,901 - INFO - 
+Found 1 PDF links in row 83
+2025-01-02 14:48:00,901 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241211536803.pdf
+2025-01-02 14:48:00,901 - INFO - Link Text: 2024年10月期通期 決算説明資料
+2025-01-02 14:48:00,901 - INFO - HTML: <a target="_blank" href="/inbs/140120241211536803.pdf">2024年10月期通期&nbsp;決算説明資料</a>
+2025-01-02 14:48:00,976 - INFO - 
+=== Row 84 Data ===
+2025-01-02 14:48:00,977 - INFO - {
+  "date": "2024/12/11",
+  "time": "15:30",
+  "code": "34910",
+  "company": "Ｇ－ＧＡ　ＴＥＣＨ",
+  "title": "2024年10月期通期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241211536889.pdf",
+      "text": "2024年10月期通期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241211536889.pdf\">2024年10月期通期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:00.976967+00:00",
+  "updated_at": "2025-01-02T05:48:00.976975+00:00"
+}
+2025-01-02 14:48:00,977 - INFO - 
+Found 1 PDF links in row 84
+2025-01-02 14:48:00,977 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241211536889.pdf
+2025-01-02 14:48:00,977 - INFO - Link Text: 2024年10月期通期 決算説明資料
+2025-01-02 14:48:00,977 - INFO - HTML: <a target="_blank" href="/inbs/140120241211536889.pdf">2024年10月期通期&nbsp;決算説明資料</a>
+2025-01-02 14:48:01,056 - INFO - 
+=== Row 85 Data ===
+2025-01-02 14:48:01,056 - INFO - {
+  "date": "2024/12/11",
+  "time": "15:30",
+  "code": "39030",
+  "company": "ｇｕｍｉ",
+  "title": "2025年４月期第２四半期（中間期）決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241206535199.pdf",
+      "text": "2025年４月期第２四半期（中間期）決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241206535199.pdf\">2025年４月期第２四半期（中間期）決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:01.056676+00:00",
+  "updated_at": "2025-01-02T05:48:01.056683+00:00"
+}
+2025-01-02 14:48:01,056 - INFO - 
+Found 1 PDF links in row 85
+2025-01-02 14:48:01,056 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241206535199.pdf
+2025-01-02 14:48:01,056 - INFO - Link Text: 2025年４月期第２四半期（中間期）決算説明資料
+2025-01-02 14:48:01,056 - INFO - HTML: <a target="_blank" href="/inbs/140120241206535199.pdf">2025年４月期第２四半期（中間期）決算説明資料</a>
+2025-01-02 14:48:01,133 - INFO - 
+=== Row 86 Data ===
+2025-01-02 14:48:01,134 - INFO - {
+  "date": "2024/12/11",
+  "time": "15:30",
+  "code": "50310",
+  "company": "Ｇ－モイ",
+  "title": "2025年1月期 第3四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241211536726.pdf",
+      "text": "2025年1月期 第3四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241211536726.pdf\">2025年1月期&nbsp;第3四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:01.133976+00:00",
+  "updated_at": "2025-01-02T05:48:01.133982+00:00"
+}
+2025-01-02 14:48:01,134 - INFO - 
+Found 1 PDF links in row 86
+2025-01-02 14:48:01,134 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241211536726.pdf
+2025-01-02 14:48:01,134 - INFO - Link Text: 2025年1月期 第3四半期決算説明資料
+2025-01-02 14:48:01,134 - INFO - HTML: <a target="_blank" href="/inbs/140120241211536726.pdf">2025年1月期&nbsp;第3四半期決算説明資料</a>
+2025-01-02 14:48:01,208 - INFO - 
+=== Row 87 Data ===
+2025-01-02 14:48:01,208 - INFO - {
+  "date": "2024/12/11",
+  "time": "15:30",
+  "code": "50320",
+  "company": "ＡＮＹＣＯＬＯＲ",
+  "title": "2025年４月期 第２四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241211536841.pdf",
+      "text": "2025年４月期 第２四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241211536841.pdf\">2025年４月期&nbsp;第２四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:01.208796+00:00",
+  "updated_at": "2025-01-02T05:48:01.208801+00:00"
+}
+2025-01-02 14:48:01,208 - INFO - 
+Found 1 PDF links in row 87
+2025-01-02 14:48:01,208 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241211536841.pdf
+2025-01-02 14:48:01,208 - INFO - Link Text: 2025年４月期 第２四半期決算説明資料
+2025-01-02 14:48:01,208 - INFO - HTML: <a target="_blank" href="/inbs/140120241211536841.pdf">2025年４月期&nbsp;第２四半期決算説明資料</a>
+2025-01-02 14:48:01,289 - INFO - 
+=== Row 88 Data ===
+2025-01-02 14:48:01,289 - INFO - {
+  "date": "2024/12/11",
+  "time": "15:30",
+  "code": "70640",
+  "company": "Ｇ－ハウテレビジョン",
+  "title": "2025年1月期 第3四半期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241101509256.pdf",
+      "text": "2025年1月期 第3四半期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241101509256.pdf\">2025年1月期&nbsp;第3四半期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:01.289414+00:00",
+  "updated_at": "2025-01-02T05:48:01.289423+00:00"
+}
+2025-01-02 14:48:01,289 - INFO - 
+Found 1 PDF links in row 88
+2025-01-02 14:48:01,289 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241101509256.pdf
+2025-01-02 14:48:01,289 - INFO - Link Text: 2025年1月期 第3四半期 決算説明資料
+2025-01-02 14:48:01,289 - INFO - HTML: <a target="_blank" href="/inbs/140120241101509256.pdf">2025年1月期&nbsp;第3四半期&nbsp;決算説明資料</a>
+2025-01-02 14:48:01,363 - INFO - 
+=== Row 89 Data ===
+2025-01-02 14:48:01,363 - INFO - {
+  "date": "2024/12/11",
+  "time": "12:30",
+  "code": "65770",
+  "company": "Ｇ－ベストワンドット",
+  "title": "2025年７月期第１四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241211536872.pdf",
+      "text": "2025年７月期第１四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241211536872.pdf\">2025年７月期第１四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:01.363552+00:00",
+  "updated_at": "2025-01-02T05:48:01.363559+00:00"
+}
+2025-01-02 14:48:01,363 - INFO - 
+Found 1 PDF links in row 89
+2025-01-02 14:48:01,363 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241211536872.pdf
+2025-01-02 14:48:01,363 - INFO - Link Text: 2025年７月期第１四半期決算説明資料
+2025-01-02 14:48:01,363 - INFO - HTML: <a target="_blank" href="/inbs/140120241211536872.pdf">2025年７月期第１四半期決算説明資料</a>
+2025-01-02 14:48:01,439 - INFO - 
+=== Row 90 Data ===
+2025-01-02 14:48:01,440 - INFO - {
+  "date": "2024/12/11",
+  "time": "10:30",
+  "code": "29340",
+  "company": "Ｇ－Ｊフロンティア",
+  "title": "2024年5月期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241210536634.pdf",
+      "text": "2024年5月期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241210536634.pdf\">2024年5月期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:01.439899+00:00",
+  "updated_at": "2025-01-02T05:48:01.439906+00:00"
+}
+2025-01-02 14:48:01,440 - INFO - 
+Found 1 PDF links in row 90
+2025-01-02 14:48:01,440 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241210536634.pdf
+2025-01-02 14:48:01,440 - INFO - Link Text: 2024年5月期決算説明資料
+2025-01-02 14:48:01,440 - INFO - HTML: <a target="_blank" href="/inbs/140120241210536634.pdf">2024年5月期決算説明資料</a>
+2025-01-02 14:48:01,515 - INFO - 
+=== Row 91 Data ===
+2025-01-02 14:48:01,515 - INFO - {
+  "date": "2024/12/10",
+  "time": "16:00",
+  "code": "44410",
+  "company": "トビラシステムズ",
+  "title": "2024年10月期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241210536348.pdf",
+      "text": "2024年10月期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241210536348.pdf\">2024年10月期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:01.515235+00:00",
+  "updated_at": "2025-01-02T05:48:01.515243+00:00"
+}
+2025-01-02 14:48:01,515 - INFO - 
+Found 1 PDF links in row 91
+2025-01-02 14:48:01,515 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241210536348.pdf
+2025-01-02 14:48:01,515 - INFO - Link Text: 2024年10月期決算説明資料
+2025-01-02 14:48:01,515 - INFO - HTML: <a target="_blank" href="/inbs/140120241210536348.pdf">2024年10月期決算説明資料</a>
+2025-01-02 14:48:01,591 - INFO - 
+=== Row 92 Data ===
+2025-01-02 14:48:01,591 - INFO - {
+  "date": "2024/12/10",
+  "time": "15:30",
+  "code": "14330",
+  "company": "ベステラ",
+  "title": "2025年１月期　第３四半期　決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241210536179.pdf",
+      "text": "2025年１月期　第３四半期　決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241210536179.pdf\">2025年１月期　第３四半期　決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:01.591532+00:00",
+  "updated_at": "2025-01-02T05:48:01.591540+00:00"
+}
+2025-01-02 14:48:01,591 - INFO - 
+Found 1 PDF links in row 92
+2025-01-02 14:48:01,591 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241210536179.pdf
+2025-01-02 14:48:01,591 - INFO - Link Text: 2025年１月期　第３四半期　決算説明資料
+2025-01-02 14:48:01,591 - INFO - HTML: <a target="_blank" href="/inbs/140120241210536179.pdf">2025年１月期　第３四半期　決算説明資料</a>
+2025-01-02 14:48:01,667 - INFO - 
+=== Row 93 Data ===
+2025-01-02 14:48:01,667 - INFO - {
+  "date": "2024/12/10",
+  "time": "15:30",
+  "code": "14360",
+  "company": "Ｇ－グリーンエナジー",
+  "title": "2025年4月期　第２四半期　決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241210536406.pdf",
+      "text": "2025年4月期　第２四半期　決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241210536406.pdf\">2025年4月期　第２四半期　決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:01.667235+00:00",
+  "updated_at": "2025-01-02T05:48:01.667242+00:00"
+}
+2025-01-02 14:48:01,667 - INFO - 
+Found 1 PDF links in row 93
+2025-01-02 14:48:01,667 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241210536406.pdf
+2025-01-02 14:48:01,667 - INFO - Link Text: 2025年4月期　第２四半期　決算説明資料
+2025-01-02 14:48:01,667 - INFO - HTML: <a target="_blank" href="/inbs/140120241210536406.pdf">2025年4月期　第２四半期　決算説明資料</a>
+2025-01-02 14:48:01,742 - INFO - 
+=== Row 94 Data ===
+2025-01-02 14:48:01,742 - INFO - {
+  "date": "2024/12/10",
+  "time": "15:30",
+  "code": "39210",
+  "company": "ネオジャパン",
+  "title": "2025年１月期第３四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241210536322.pdf",
+      "text": "2025年１月期第３四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241210536322.pdf\">2025年１月期第３四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:01.742172+00:00",
+  "updated_at": "2025-01-02T05:48:01.742179+00:00"
+}
+2025-01-02 14:48:01,742 - INFO - 
+Found 1 PDF links in row 94
+2025-01-02 14:48:01,742 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241210536322.pdf
+2025-01-02 14:48:01,742 - INFO - Link Text: 2025年１月期第３四半期決算説明資料
+2025-01-02 14:48:01,742 - INFO - HTML: <a target="_blank" href="/inbs/140120241210536322.pdf">2025年１月期第３四半期決算説明資料</a>
+2025-01-02 14:48:01,816 - INFO - 
+=== Row 95 Data ===
+2025-01-02 14:48:01,816 - INFO - {
+  "date": "2024/12/10",
+  "time": "12:00",
+  "code": "65350",
+  "company": "アイモバイル",
+  "title": "2025年７月期 第１四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241205534891.pdf",
+      "text": "2025年７月期 第１四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241205534891.pdf\">2025年７月期&nbsp;第１四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:01.816490+00:00",
+  "updated_at": "2025-01-02T05:48:01.816497+00:00"
+}
+2025-01-02 14:48:01,816 - INFO - 
+Found 1 PDF links in row 95
+2025-01-02 14:48:01,816 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241205534891.pdf
+2025-01-02 14:48:01,816 - INFO - Link Text: 2025年７月期 第１四半期決算説明資料
+2025-01-02 14:48:01,816 - INFO - HTML: <a target="_blank" href="/inbs/140120241205534891.pdf">2025年７月期&nbsp;第１四半期決算説明資料</a>
+2025-01-02 14:48:01,890 - INFO - 
+=== Row 96 Data ===
+2025-01-02 14:48:01,890 - INFO - {
+  "date": "2024/12/09",
+  "time": "15:30",
+  "code": "23010",
+  "company": "学情",
+  "title": "2024年10月期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241206535463.pdf",
+      "text": "2024年10月期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241206535463.pdf\">2024年10月期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:01.890226+00:00",
+  "updated_at": "2025-01-02T05:48:01.890231+00:00"
+}
+2025-01-02 14:48:01,890 - INFO - 
+Found 1 PDF links in row 96
+2025-01-02 14:48:01,890 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241206535463.pdf
+2025-01-02 14:48:01,890 - INFO - Link Text: 2024年10月期 決算説明資料
+2025-01-02 14:48:01,890 - INFO - HTML: <a target="_blank" href="/inbs/140120241206535463.pdf">2024年10月期&nbsp;決算説明資料</a>
+2025-01-02 14:48:01,965 - INFO - 
+=== Row 97 Data ===
+2025-01-02 14:48:01,965 - INFO - {
+  "date": "2024/12/09",
+  "time": "15:30",
+  "code": "24380",
+  "company": "Ｇ－アスカネット",
+  "title": "2025年４月期 中間期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241206535182.pdf",
+      "text": "2025年４月期 中間期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241206535182.pdf\">2025年４月期&nbsp;中間期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:01.965423+00:00",
+  "updated_at": "2025-01-02T05:48:01.965430+00:00"
+}
+2025-01-02 14:48:01,965 - INFO - 
+Found 1 PDF links in row 97
+2025-01-02 14:48:01,965 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241206535182.pdf
+2025-01-02 14:48:01,965 - INFO - Link Text: 2025年４月期 中間期決算説明資料
+2025-01-02 14:48:01,965 - INFO - HTML: <a target="_blank" href="/inbs/140120241206535182.pdf">2025年４月期&nbsp;中間期決算説明資料</a>
+2025-01-02 14:48:02,042 - INFO - 
+=== Row 98 Data ===
+2025-01-02 14:48:02,042 - INFO - {
+  "date": "2024/12/09",
+  "time": "15:30",
+  "code": "29830",
+  "company": "Ｇ－アールプランナー",
+  "title": "2025年１月期第３四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241207534960.pdf",
+      "text": "2025年１月期第３四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241207534960.pdf\">2025年１月期第３四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東名",
+  "created_at": "2025-01-02T05:48:02.042074+00:00",
+  "updated_at": "2025-01-02T05:48:02.042081+00:00"
+}
+2025-01-02 14:48:02,042 - INFO - 
+Found 1 PDF links in row 98
+2025-01-02 14:48:02,042 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241207534960.pdf
+2025-01-02 14:48:02,042 - INFO - Link Text: 2025年１月期第３四半期決算説明資料
+2025-01-02 14:48:02,042 - INFO - HTML: <a target="_blank" href="/inbs/140120241207534960.pdf">2025年１月期第３四半期決算説明資料</a>
+2025-01-02 14:48:02,118 - INFO - 
+=== Row 99 Data ===
+2025-01-02 14:48:02,118 - INFO - {
+  "date": "2024/12/09",
+  "time": "15:30",
+  "code": "42380",
+  "company": "ミライアル",
+  "title": "2025年１月期　第３四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241209535569.pdf",
+      "text": "2025年１月期　第３四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241209535569.pdf\">2025年１月期　第３四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:02.118565+00:00",
+  "updated_at": "2025-01-02T05:48:02.118572+00:00"
+}
+2025-01-02 14:48:02,118 - INFO - 
+Found 1 PDF links in row 99
+2025-01-02 14:48:02,118 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241209535569.pdf
+2025-01-02 14:48:02,118 - INFO - Link Text: 2025年１月期　第３四半期決算説明資料
+2025-01-02 14:48:02,118 - INFO - HTML: <a target="_blank" href="/inbs/140120241209535569.pdf">2025年１月期　第３四半期決算説明資料</a>
+2025-01-02 14:48:02,200 - INFO - 
+=== Row 100 Data ===
+2025-01-02 14:48:02,200 - INFO - {
+  "date": "2024/12/09",
+  "time": "15:30",
+  "code": "78040",
+  "company": "ビーアンドピー",
+  "title": "2024年10月期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241206535469.pdf",
+      "text": "2024年10月期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241206535469.pdf\">2024年10月期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:02.199999+00:00",
+  "updated_at": "2025-01-02T05:48:02.200008+00:00"
+}
+2025-01-02 14:48:02,200 - INFO - 
+Found 1 PDF links in row 100
+2025-01-02 14:48:02,200 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241206535469.pdf
+2025-01-02 14:48:02,200 - INFO - Link Text: 2024年10月期 決算説明資料
+2025-01-02 14:48:02,200 - INFO - HTML: <a target="_blank" href="/inbs/140120241206535469.pdf">2024年10月期&nbsp;決算説明資料</a>
+2025-01-02 14:48:02,275 - INFO - 
+=== Row 101 Data ===
+2025-01-02 14:48:02,275 - INFO - {
+  "date": "2024/12/09",
+  "time": "14:00",
+  "code": "29910",
+  "company": "ランドネット",
+  "title": "2025年７月期　第１四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241208535478.pdf",
+      "text": "2025年７月期　第１四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241208535478.pdf\">2025年７月期　第１四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:02.275150+00:00",
+  "updated_at": "2025-01-02T05:48:02.275161+00:00"
+}
+2025-01-02 14:48:02,275 - INFO - 
+Found 1 PDF links in row 101
+2025-01-02 14:48:02,275 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241208535478.pdf
+2025-01-02 14:48:02,275 - INFO - Link Text: 2025年７月期　第１四半期決算説明資料
+2025-01-02 14:48:02,275 - INFO - HTML: <a target="_blank" href="/inbs/140120241208535478.pdf">2025年７月期　第１四半期決算説明資料</a>
+2025-01-02 14:48:02,351 - INFO - 
+=== Row 102 Data ===
+2025-01-02 14:48:02,351 - INFO - {
+  "date": "2024/12/09",
+  "time": "10:30",
+  "code": "29100",
+  "company": "ロックフィルド",
+  "title": "2025年４月期　第２四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241206535426.pdf",
+      "text": "2025年４月期　第２四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241206535426.pdf\">2025年４月期　第２四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:02.351847+00:00",
+  "updated_at": "2025-01-02T05:48:02.351856+00:00"
+}
+2025-01-02 14:48:02,351 - INFO - 
+Found 1 PDF links in row 102
+2025-01-02 14:48:02,352 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241206535426.pdf
+2025-01-02 14:48:02,352 - INFO - Link Text: 2025年４月期　第２四半期決算説明資料
+2025-01-02 14:48:02,352 - INFO - HTML: <a target="_blank" href="/inbs/140120241206535426.pdf">2025年４月期　第２四半期決算説明資料</a>
+2025-01-02 14:48:02,425 - INFO - 
+=== Row 103 Data ===
+2025-01-02 14:48:02,425 - INFO - {
+  "date": "2024/12/06",
+  "time": "17:30",
+  "code": "36620",
+  "company": "エイチーム",
+  "title": "2025年7月期 第1四半期 決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241206535157.pdf",
+      "text": "2025年7月期 第1四半期 決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241206535157.pdf\">2025年7月期&nbsp;第1四半期&nbsp;決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:02.425542+00:00",
+  "updated_at": "2025-01-02T05:48:02.425551+00:00"
+}
+2025-01-02 14:48:02,425 - INFO - 
+Found 1 PDF links in row 103
+2025-01-02 14:48:02,425 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241206535157.pdf
+2025-01-02 14:48:02,425 - INFO - Link Text: 2025年7月期 第1四半期 決算説明資料
+2025-01-02 14:48:02,425 - INFO - HTML: <a target="_blank" href="/inbs/140120241206535157.pdf">2025年7月期&nbsp;第1四半期&nbsp;決算説明資料</a>
+2025-01-02 14:48:02,535 - INFO - 
+=== Row 104 Data ===
+2025-01-02 14:48:02,535 - INFO - {
+  "date": "2024/12/06",
+  "time": "17:00",
+  "code": "73760",
+  "company": "Ｇ－ＢＣＣ",
+  "title": "2024年９月期　決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241205534762.pdf",
+      "text": "2024年９月期　決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241205534762.pdf\">2024年９月期　決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:02.535148+00:00",
+  "updated_at": "2025-01-02T05:48:02.535159+00:00"
+}
+2025-01-02 14:48:02,535 - INFO - 
+Found 1 PDF links in row 104
+2025-01-02 14:48:02,535 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241205534762.pdf
+2025-01-02 14:48:02,535 - INFO - Link Text: 2024年９月期　決算説明資料
+2025-01-02 14:48:02,535 - INFO - HTML: <a target="_blank" href="/inbs/140120241205534762.pdf">2024年９月期　決算説明資料</a>
+2025-01-02 14:48:02,612 - INFO - 
+=== Row 105 Data ===
+2025-01-02 14:48:02,612 - INFO - {
+  "date": "2024/12/06",
+  "time": "15:30",
+  "code": "66960",
+  "company": "Ｇ－トラースＯＰ",
+  "title": "2025年１月期 第３四半期決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241206535220.pdf",
+      "text": "2025年１月期 第３四半期決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241206535220.pdf\">2025年１月期&nbsp;第３四半期決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:02.612231+00:00",
+  "updated_at": "2025-01-02T05:48:02.612238+00:00"
+}
+2025-01-02 14:48:02,612 - INFO - 
+Found 1 PDF links in row 105
+2025-01-02 14:48:02,612 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241206535220.pdf
+2025-01-02 14:48:02,612 - INFO - Link Text: 2025年１月期 第３四半期決算説明資料
+2025-01-02 14:48:02,612 - INFO - HTML: <a target="_blank" href="/inbs/140120241206535220.pdf">2025年１月期&nbsp;第３四半期決算説明資料</a>
+2025-01-02 14:48:02,689 - INFO - 
+=== Row 106 Data ===
+2025-01-02 14:48:02,689 - INFO - {
+  "date": "2024/12/05",
+  "time": "10:00",
+  "code": "31660",
+  "company": "ＯＣＨＩ・ＨＤ",
+  "title": "2025年3月期　第2四半期（中間期）決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241204534353.pdf",
+      "text": "2025年3月期　第2四半期（中間期）決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241204534353.pdf\">2025年3月期　第2四半期（中間期）決算説明資料</a>"
+    }
+  ],
+  "exchange": "東福",
+  "created_at": "2025-01-02T05:48:02.688997+00:00",
+  "updated_at": "2025-01-02T05:48:02.689004+00:00"
+}
+2025-01-02 14:48:02,689 - INFO - 
+Found 1 PDF links in row 106
+2025-01-02 14:48:02,689 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241204534353.pdf
+2025-01-02 14:48:02,689 - INFO - Link Text: 2025年3月期　第2四半期（中間期）決算説明資料
+2025-01-02 14:48:02,689 - INFO - HTML: <a target="_blank" href="/inbs/140120241204534353.pdf">2025年3月期　第2四半期（中間期）決算説明資料</a>
+2025-01-02 14:48:02,768 - INFO - 
+=== Row 107 Data ===
+2025-01-02 14:48:02,768 - INFO - {
+  "date": "2024/12/03",
+  "time": "13:00",
+  "code": "24880",
+  "company": "ＪＴＰ",
+  "title": "2025年3月期 第2四半期（中間）決算説明資料",
+  "pdf_links": [
+    {
+      "url": "https://www.release.tdnet.info/inbs/140120241203533356.pdf",
+      "text": "2025年3月期 第2四半期（中間）決算説明資料",
+      "cell_index": 3,
+      "html": "<a target=\"_blank\" href=\"/inbs/140120241203533356.pdf\">2025年3月期&nbsp;第2四半期（中間）決算説明資料</a>"
+    }
+  ],
+  "exchange": "東",
+  "created_at": "2025-01-02T05:48:02.768112+00:00",
+  "updated_at": "2025-01-02T05:48:02.768120+00:00"
+}
+2025-01-02 14:48:02,768 - INFO - 
+Found 1 PDF links in row 107
+2025-01-02 14:48:02,768 - INFO - PDF Link: https://www.release.tdnet.info/inbs/140120241203533356.pdf
+2025-01-02 14:48:02,768 - INFO - Link Text: 2025年3月期 第2四半期（中間）決算説明資料
+2025-01-02 14:48:02,768 - INFO - HTML: <a target="_blank" href="/inbs/140120241203533356.pdf">2025年3月期&nbsp;第2四半期（中間）決算説明資料</a>
+2025-01-02 14:48:02,770 - INFO - Saved data to data/financial_reports.json
+2025-01-02 14:48:02,770 - INFO - Saved 107 reports to data/financial_reports.json
+2025-01-02 14:48:02,770 - INFO - 処理が完了しました
+2025-01-02 14:49:13,924 - INFO - ブラウザを終了しました
+2025-01-02 14:49:13,925 - INFO - スクリプトを終了します

@@ -1,0 +1,25 @@
+2025-01-02 12:18:09,417 - INFO - ====== WebDriver manager ======
+2025-01-02 12:18:09,608 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-02 12:18:09,612 - DEBUG - Starting new HTTPS connection (1): googlechromelabs.github.io:443
+2025-01-02 12:18:09,648 - DEBUG - https://googlechromelabs.github.io:443 "GET /chrome-for-testing/latest-patch-versions-per-build.json HTTP/1.1" 200 8974
+2025-01-02 12:18:09,650 - INFO - Get LATEST chromedriver version for google-chrome
+2025-01-02 12:18:09,651 - DEBUG - Starting new HTTPS connection (1): googlechromelabs.github.io:443
+2025-01-02 12:18:09,686 - DEBUG - https://googlechromelabs.github.io:443 "GET /chrome-for-testing/latest-patch-versions-per-build.json HTTP/1.1" 200 8974
+2025-01-02 12:18:09,689 - INFO - Driver [/Users/ookubo/.wdm/drivers/chromedriver/mac64/131.0.6778.204/chromedriver-mac-arm64/chromedriver] found in cache
+2025-01-02 12:18:09,690 - DEBUG - Skipping Selenium Manager; path to chrome driver specified in Service class: /Users/ookubo/.wdm/drivers/chromedriver/mac64/131.0.6778.204/chromedriver-mac-arm64/chromedriver
+2025-01-02 12:18:09,693 - DEBUG - Started executable: `/Users/ookubo/.wdm/drivers/chromedriver/mac64/131.0.6778.204/chromedriver-mac-arm64/chromedriver` in a child process with pid: 54889 using 0 to output -3
+2025-01-02 12:18:09,888 - DEBUG - POST http://localhost:63300/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'goog:chromeOptions': {'extensions': [], 'args': ['--no-sandbox', '--disable-dev-shm-usage', '--window-size=1920,1080', '--lang=ja']}}}}
+2025-01-02 12:18:09,888 - DEBUG - Starting new HTTP connection (1): localhost:63300
+2025-01-02 12:18:10,536 - DEBUG - http://localhost:63300 "POST /session HTTP/1.1" 200 0
+2025-01-02 12:18:10,541 - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"131.0.6778.205","chrome":{"chromedriverVersion":"131.0.6778.204 (52183f9e99a61056f9b78535f53d256f1516f2a0-refs/branch-heads/6778_155@{#7})","userDataDir":"/var/folders/2h/_zxvmj6d6djg0s16cqgpy6nm0000gn/T/.org.chromium.Chromium.MTvKSX"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:63309"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"mac","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"fc38d4e8b57d53062b1df1a5c682046a"}} | headers=HTTPHeaderDict({'Content-Length': '893', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 12:18:10,542 - DEBUG - Finished Request
+2025-01-02 12:18:10,542 - INFO - === メインページアクセス ===
+2025-01-02 12:18:10,542 - DEBUG - POST http://localhost:63300/session/fc38d4e8b57d53062b1df1a5c682046a/url {'url': 'https://www.release.tdnet.info/index.html'}
+2025-01-02 12:18:10,846 - DEBUG - http://localhost:63300 "POST /session/fc38d4e8b57d53062b1df1a5c682046a/url HTTP/1.1" 200 0
+2025-01-02 12:18:10,848 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 12:18:10,849 - DEBUG - Finished Request
+2025-01-02 12:18:12,852 - INFO - 検索フォームのiframeに切り替え
+2025-01-02 12:18:12,853 - DEBUG - DELETE http://localhost:63300/session/fc38d4e8b57d53062b1df1a5c682046a {}
+2025-01-02 12:18:12,907 - DEBUG - http://localhost:63300 "DELETE /session/fc38d4e8b57d53062b1df1a5c682046a HTTP/1.1" 200 0
+2025-01-02 12:18:12,907 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-01-02 12:18:12,907 - DEBUG - Finished Request
