@@ -1,0 +1,86 @@
+{
+  "ticker": "BRK-B",
+  "fetched_at": "2025-01-03T04:32:42.475926+00:00",
+  "data": {
+    "Valuation Measures": {
+      "Market Cap": 978010000000.0,
+      "Enterprise Value": 1070000000000.0001,
+      "Trailing P/E": 9.12,
+      "Forward P/E": 22.94,
+      "PEG Ratio (5yr expected)": "--",
+      "Price/Sales": 2.15,
+      "Price/Book": 1.55,
+      "Enterprise Value/Revenue": 2.34,
+      "Enterprise Value/EBITDA": "--"
+    },
+    "Fiscal Year": {
+      "Fiscal Year Ends": "12/31/2023",
+      "Most Recent Quarter (mrq)": "9/30/2024"
+    },
+    "Profitability": {
+      "Profit Margin": 0.2889,
+      "Operating Margin (ttm)": 0.3602
+    },
+    "Management Effectiveness": {
+      "Return on Assets (ttm)": 0.0789,
+      "Return on Equity (ttm)": 0.1844
+    },
+    "Income Statement": {
+      "Revenue (ttm)": 369890000000.0,
+      "Revenue Per Share (ttm)": 257067.58,
+      "Quarterly Revenue Growth (yoy)": -0.002,
+      "Gross Profit (ttm)": "--",
+      "EBITDA": 149550000000.0,
+      "Net Income Avi to Common (ttm)": 106880000000.0,
+      "Diluted EPS (ttm)": 49.45,
+      "Quarterly Earnings Growth (yoy)": "--"
+    },
+    "Balance Sheet": {
+      "Total Cash (mrq)": 325210000000.0,
+      "Total Cash Per Share (mrq)": 226216.81,
+      "Total Debt (mrq)": 124510000000.0,
+      "Total Debt/Equity (mrq)": 0.1971,
+      "Current Ratio (mrq)": 2.45,
+      "Book Value Per Share (mrq)": 437445.53
+    },
+    "Cash Flow Statement": {
+      "Operating Cash Flow (ttm)": 40370000000.0,
+      "Levered Free Cash Flow (ttm)": 96290000000.0
+    },
+    "Stock Price History": {
+      "Beta (5Y Monthly)": 0.87,
+      "52 Week Range 3": 0.2339,
+      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week High 3": 491.67,
+      "52 Week Low 3": 357.98,
+      "50-Day Moving Average 3": 462.23,
+      "200-Day Moving Average 3": 436.78
+    },
+    "Share Statistics": {
+      "Avg Vol (3 month) 3": 3850000.0,
+      "Avg Vol (10 day) 3": 4290000.0,
+      "Shares Outstanding 5": 1330000000.0,
+      "Implied Shares Outstanding 6": 2160000000.0,
+      "Float 8": 1220000.0,
+      "% Held by Insiders 1": 0.0039000000000000003,
+      "% Held by Institutions 1": 0.6643000000000001,
+      "Shares Short (12/13/2024) 4": 15250000.0,
+      "Short Ratio (12/13/2024) 4": 3.94,
+      "Short % of Float (12/13/2024) 4": 0.0129,
+      "Short % of Shares Outstanding (12/13/2024) 4": 0.0070999999999999995,
+      "Shares Short (prior month 11/15/2024) 4": 15580000.0
+    },
+    "Dividends & Splits": {
+      "Forward Annual Dividend Rate 4": "--",
+      "Forward Annual Dividend Yield 4": "--",
+      "Trailing Annual Dividend Rate 3": 0.0,
+      "Trailing Annual Dividend Yield 3": 0.0,
+      "5 Year Average Dividend Yield 4": "--",
+      "Payout Ratio 4": 0.0,
+      "Dividend Date 3": "--",
+      "Ex-Dividend Date 4": "--",
+      "Last Split Factor 2": "50:1",
+      "Last Split Date 3": "1/21/2010"
+    }
+  }
+}

@@ -38,6 +38,147 @@ class FinancialReportService:
         self.tdnet_scraper.close()
         logger.info("FinancialReportService closed")
 
+    async def search_reports(self, company_id=None, company_name=None, fiscal_year=None, quarter=None, sector=None, industry=None):
+        """決算資料を検索"""
+        try:
+            conditions = []
+            params = {}
+
+            # 検索条件の構築
+            if company_id:
+                conditions.append("code = @company_id")
+                params["company_id"] = company_id
+            if company_name:
+                conditions.append("LOWER(company) LIKE CONCAT('%', LOWER(@company_name), '%')")
+                params["company_name"] = company_name
+            if fiscal_year:
+                conditions.append("earnings_fiscal_year = @fiscal_year")
+                params["fiscal_year"] = fiscal_year
+            if quarter:
+                conditions.append("earnings_quarter = @quarter")
+                params["quarter"] = quarter
+            if sector:
+                conditions.append("sector = @sector")
+                params["sector"] = sector
+            if industry:
+                conditions.append("industry = @industry")
+                params["industry"] = industry
+
+            # クエリの構築
+            query = f"""
+            SELECT 
+                date,
+                time,
+                code,
+                company,
+                title,
+                pdf_url,
+                exchange,
+                sector,
+                industry,
+                market,
+                description,
+                earnings_date,
+                earnings_fiscal_year,
+                earnings_quarter,
+                created_at,
+                updated_at
+            FROM `{self.bigquery_service.project_id}.{self.bigquery_service.dataset}.company_financial_data`
+            """
+
+            if conditions:
+                query += " WHERE " + " AND ".join(conditions)
+            
+            query += " ORDER BY date DESC, time DESC"
+
+            # クエリの実行
+            results = self.bigquery_service.query(query)
+            
+            # 結果の整形
+            reports = []
+            for row in results:
+                report = {
+                    "date": row["date"].strftime("%Y/%m/%d"),
+                    "time": row["time"],
+                    "code": row["code"],
+                    "company": row["company"],
+                    "title": row["title"],
+                    "pdf_url": row["pdf_url"],
+                    "exchange": row["exchange"],
+                    "sector": row["sector"],
+                    "industry": row["industry"],
+                    "market": row["market"],
+                    "description": row["description"],
+                    "earnings_date": row["earnings_date"].strftime("%Y/%m/%d") if row["earnings_date"] else None,
+                    "earnings_fiscal_year": row["earnings_fiscal_year"],
+                    "earnings_quarter": row["earnings_quarter"],
+                    "created_at": row["created_at"].isoformat(),
+                    "updated_at": row["updated_at"].isoformat()
+                }
+                reports.append(report)
+
+            return reports
+
+        except Exception as e:
+            logger.error(f"Error searching reports: {str(e)}")
+            raise
+
+    async def get_company_reports(self, company_id: str):
+        """企業の決算資料一覧を取得"""
+        try:
+            query = f"""
+            SELECT 
+                date,
+                time,
+                code,
+                company,
+                title,
+                pdf_url,
+                exchange,
+                sector,
+                industry,
+                market,
+                description,
+                earnings_date,
+                earnings_fiscal_year,
+                earnings_quarter,
+                created_at,
+                updated_at
+            FROM `{self.bigquery_service.project_id}.{self.bigquery_service.dataset}.company_financial_data`
+            WHERE code = @company_id
+            ORDER BY date DESC, time DESC
+            """
+
+            results = self.bigquery_service.query(query, {"company_id": company_id})
+            
+            reports = []
+            for row in results:
+                report = {
+                    "date": row["date"].strftime("%Y/%m/%d"),
+                    "time": row["time"],
+                    "code": row["code"],
+                    "company": row["company"],
+                    "title": row["title"],
+                    "pdf_url": row["pdf_url"],
+                    "exchange": row["exchange"],
+                    "sector": row["sector"],
+                    "industry": row["industry"],
+                    "market": row["market"],
+                    "description": row["description"],
+                    "earnings_date": row["earnings_date"].strftime("%Y/%m/%d") if row["earnings_date"] else None,
+                    "earnings_fiscal_year": row["earnings_fiscal_year"],
+                    "earnings_quarter": row["earnings_quarter"],
+                    "created_at": row["created_at"].isoformat(),
+                    "updated_at": row["updated_at"].isoformat()
+                }
+                reports.append(report)
+
+            return reports
+
+        except Exception as e:
+            logger.error(f"Error getting company reports: {str(e)}")
+            raise
+
     async def fetch_tdnet_reports(self, start_date=None, end_date=None, progress_callback=None):
         """TDnetから決算資料を取得してBigQueryに保存"""
         try:
@@ -54,16 +195,7 @@ class FinancialReportService:
             # 取得した決算資料をBigQueryに保存
             for i, report in enumerate(reports, 1):
                 try:
-                    await self._save_report(
-                        company_id=report["company_id"],
-                        company_name=report["company_name"],
-                        fiscal_year=report["fiscal_year"],
-                        quarter=report["quarter"],
-                        report_type=report["report_type"],
-                        file_url=report["file_url"],
-                        source=report["source"],
-                        report_date=report["report_date"]
-                    )
+                    await self._save_report(report)
                     saved_reports += 1
 
                     # 進捗状況の更新
@@ -82,31 +214,64 @@ class FinancialReportService:
             logger.error("Error in fetch_tdnet_reports: %s", str(e), exc_info=True)
             return {"status": "error", "message": str(e)}
 
-    async def _save_report(self, company_id: str, company_name: str, fiscal_year: str, quarter: str,
-                          report_type: str, file_url: str, source: str, report_date: datetime):
+    async def _save_report(self, report):
         """決算資料をBigQueryに保存"""
         try:
+            # 企業情報を取得
+            company_query = f"""
+            SELECT 
+                sector,
+                industry,
+                market,
+                description
+            FROM `{self.bigquery_service.project_id}.{self.bigquery_service.dataset}.companies`
+            WHERE code = @code
+            """
+            company_results = self.bigquery_service.query(company_query, {"code": report["code"]})
+            company_data = next(company_results, {})
+
+            # 決算予定情報を取得
+            earnings_query = f"""
+            SELECT 
+                earnings_date,
+                fiscal_year,
+                quarter
+            FROM `{self.bigquery_service.project_id}.{self.bigquery_service.dataset}.earnings_calendar`
+            WHERE code = @code
+            ORDER BY earnings_date DESC
+            LIMIT 1
+            """
+            earnings_results = self.bigquery_service.query(earnings_query, {"code": report["code"]})
+            earnings_data = next(earnings_results, {})
+
+            # データの統合
             report_data = {
-                "company_id": company_id,
-                "company_name": company_name,
-                "fiscal_year": fiscal_year,
-                "quarter": quarter,
-                "report_type": report_type,
-                "file_url": file_url,
-                "source": source,
-                "report_date": report_date.isoformat(),
+                "date": report["date"],
+                "time": report["time"],
+                "code": report["code"],
+                "company": report["company"],
+                "title": report["title"],
+                "pdf_url": report["pdf_url"] if "pdf_url" in report else None,
+                "exchange": report["exchange"],
+                "sector": company_data.get("sector"),
+                "industry": company_data.get("industry"),
+                "market": company_data.get("market"),
+                "description": company_data.get("description"),
+                "earnings_date": earnings_data.get("earnings_date"),
+                "earnings_fiscal_year": earnings_data.get("fiscal_year"),
+                "earnings_quarter": earnings_data.get("quarter"),
                 "created_at": datetime.now(timezone.utc).isoformat(),
                 "updated_at": datetime.now(timezone.utc).isoformat()
             }
             
             logger.debug("Saving report data: %s", report_data)
             
-            table_id = f"{self.bigquery_service.project_id}.{self.bigquery_service.dataset}.financial_reports"
+            table_id = f"{self.bigquery_service.project_id}.{self.bigquery_service.dataset}.company_financial_data"
             errors = self.bigquery_service.client.insert_rows_json(table_id, [report_data])
             if errors:
                 logger.error("Error inserting rows: %s", errors)
                 raise Exception(f"Failed to insert rows: {errors}")
-            logger.info("Created report for %s (%s): %sQ%s", company_name, company_id, fiscal_year, quarter)
+            logger.info("Created report for %s (%s)", report_data["company"], report_data["code"])
             
         except Exception as e:
             logger.error("Error saving report: %s", str(e), exc_info=True)

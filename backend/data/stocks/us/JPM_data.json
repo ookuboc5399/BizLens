@@ -1,0 +1,86 @@
+{
+  "ticker": "JPM",
+  "fetched_at": "2025-01-03T04:32:52.842622+00:00",
+  "data": {
+    "Valuation Measures": {
+      "Market Cap": 674870000000.0,
+      "Enterprise Value": "--",
+      "Trailing P/E": 13.34,
+      "Forward P/E": 14.16,
+      "PEG Ratio (5yr expected)": 4.72,
+      "Price/Sales": 4.02,
+      "Price/Book": 2.08,
+      "Enterprise Value/Revenue": 5.23,
+      "Enterprise Value/EBITDA": "--"
+    },
+    "Fiscal Year": {
+      "Fiscal Year Ends": "12/31/2023",
+      "Most Recent Quarter (mrq)": "9/30/2024"
+    },
+    "Profitability": {
+      "Profit Margin": 0.33159999999999995,
+      "Operating Margin (ttm)": 0.4379
+    },
+    "Management Effectiveness": {
+      "Return on Assets (ttm)": 0.013300000000000001,
+      "Return on Equity (ttm)": 0.16219999999999998
+    },
+    "Income Statement": {
+      "Revenue (ttm)": 162150000000.0,
+      "Revenue Per Share (ttm)": 56.04,
+      "Quarterly Revenue Growth (yoy)": 0.03,
+      "Gross Profit (ttm)": "--",
+      "EBITDA": "--",
+      "Net Income Avi to Common (ttm)": 52070000000.0,
+      "Diluted EPS (ttm)": 17.98,
+      "Quarterly Earnings Growth (yoy)": -0.019
+    },
+    "Balance Sheet": {
+      "Total Cash (mrq)": 1420000000000.0,
+      "Total Cash Per Share (mrq)": 505.82,
+      "Total Debt (mrq)": 929200000000.0,
+      "Total Debt/Equity (mrq)": "--",
+      "Current Ratio (mrq)": "--",
+      "Book Value Per Share (mrq)": 115.15
+    },
+    "Cash Flow Statement": {
+      "Operating Cash Flow (ttm)": -129539999999.99998,
+      "Levered Free Cash Flow (ttm)": "--"
+    },
+    "Stock Price History": {
+      "Beta (5Y Monthly)": 1.09,
+      "52 Week Range 3": 0.3932,
+      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week High 3": 254.31,
+      "52 Week Low 3": 164.3,
+      "50-Day Moving Average 3": 238.1,
+      "200-Day Moving Average 3": 212.6
+    },
+    "Share Statistics": {
+      "Avg Vol (3 month) 3": 8650000.0,
+      "Avg Vol (10 day) 3": 9780000.0,
+      "Shares Outstanding 5": 2820000000.0,
+      "Implied Shares Outstanding 6": 2820000000.0,
+      "Float 8": 2800000000.0,
+      "% Held by Insiders 1": 0.0046,
+      "% Held by Institutions 1": 0.7373000000000001,
+      "Shares Short (12/13/2024) 4": 29190000.0,
+      "Short Ratio (12/13/2024) 4": 3.61,
+      "Short % of Float (12/13/2024) 4": 0.0104,
+      "Short % of Shares Outstanding (12/13/2024) 4": 0.0104,
+      "Shares Short (prior month 11/15/2024) 4": 30120000.0
+    },
+    "Dividends & Splits": {
+      "Forward Annual Dividend Rate 4": 5.0,
+      "Forward Annual Dividend Yield 4": 0.0209,
+      "Trailing Annual Dividend Rate 3": 4.6,
+      "Trailing Annual Dividend Yield 3": 0.0192,
+      "5 Year Average Dividend Yield 4": 2.75,
+      "Payout Ratio 4": 0.2557,
+      "Dividend Date 3": "1/31/2025",
+      "Ex-Dividend Date 4": "1/6/2025",
+      "Last Split Factor 2": "3:2",
+      "Last Split Date 3": "6/12/2000"
+    }
+  }
+}

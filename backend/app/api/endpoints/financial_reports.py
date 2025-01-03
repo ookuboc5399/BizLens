@@ -8,21 +8,29 @@ import logging
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
-@router.get("/{company_id}", response_model=List[FinancialReportResponse])
-async def get_company_reports(
-    company_id: str,
+@router.get("/search")
+async def search_reports(
+    company_id: str = None,
+    company_name: str = None,
+    fiscal_year: str = None,
+    quarter: str = None,
     current_user: dict = Depends(get_current_admin_user)
 ):
-    """企業の決算資料一覧を取得"""
+    """決算資料を検索"""
     try:
         service = FinancialReportService()
-        reports = await service.get_company_reports(company_id)
+        reports = await service.search_reports(
+            company_id=company_id,
+            company_name=company_name,
+            fiscal_year=fiscal_year,
+            quarter=quarter
+        )
         return reports
     except Exception as e:
-        logger.error(f"Error getting reports for company {company_id}: {str(e)}")
+        logger.error(f"Error searching reports: {str(e)}")
         raise HTTPException(
             status_code=500,
-            detail=f"決算資料の取得に失敗しました: {str(e)}"
+            detail=f"決算資料の検索に失敗しました: {str(e)}"
         )
 
 @router.get("/latest/{company_id}")
@@ -80,29 +88,19 @@ async def get_report_download_url(
             detail=f"ダウンロードURLの取得に失敗しました: {str(e)}"
         )
 
-@router.get("/search")
-async def search_reports(
-    company_id: str = None,
-    fiscal_year: str = None,
-    quarter: str = None,
-    report_type: str = None,
-    source: str = None,
+@router.get("/{company_id}", response_model=List[FinancialReportResponse])
+async def get_company_reports(
+    company_id: str,
     current_user: dict = Depends(get_current_admin_user)
 ):
-    """決算資料を検索"""
+    """企業の決算資料一覧を取得"""
     try:
         service = FinancialReportService()
-        reports = await service.search_reports(
-            company_id=company_id,
-            fiscal_year=fiscal_year,
-            quarter=quarter,
-            report_type=report_type,
-            source=source
-        )
+        reports = await service.get_company_reports(company_id)
         return reports
     except Exception as e:
-        logger.error(f"Error searching reports: {str(e)}")
+        logger.error(f"Error getting reports for company {company_id}: {str(e)}")
         raise HTTPException(
             status_code=500,
-            detail=f"決算資料の検索に失敗しました: {str(e)}"
+            detail=f"決算資料の取得に失敗しました: {str(e)}"
         )

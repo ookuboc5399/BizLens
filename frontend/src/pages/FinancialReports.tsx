@@ -6,18 +6,21 @@ import { Button } from '../components/ui/button';
 import { Progress } from '../components/ui/progress';
 import { useAuth } from '../hooks/useAuth';
 
-interface Company {
-  ticker: string;
-  company_name: string;
-  sector: string;
-  industry: string;
+interface FinancialReport {
+  date: string;
+  time: string;
+  code: string;
+  company: string;
+  title: string;
+  pdf_url: string;
+  exchange: string;
 }
 
 function FinancialReports() {
   const navigate = useNavigate();
   const { isAdmin } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
-  const [companies, setCompanies] = useState<Company[]>([]);
+  const [reports, setReports] = useState<FinancialReport[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -28,18 +31,18 @@ function FinancialReports() {
       setLoading(true);
       setError(null);
 
-      const response = await fetch(`/api/companies/search?query=${encodeURIComponent(searchTerm)}`);
+      const response = await fetch(`/api/financial-reports/search?company_name=${encodeURIComponent(searchTerm)}`);
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.detail || '検索に失敗しました');
       }
 
       const data = await response.json();
-      setCompanies(data.companies || []);
+      setReports(data || []);
 
     } catch (error) {
       setError(error instanceof Error ? error.message : '検索中にエラーが発生しました');
-      setCompanies([]);
+      setReports([]);
     } finally {
       setLoading(false);
     }
@@ -51,8 +54,8 @@ function FinancialReports() {
     }
   };
 
-  const handleCompanyClick = (ticker: string) => {
-    navigate(`/financial-reports/${ticker}`);
+  const handleReportClick = (code: string) => {
+    navigate(`/financial-reports/${code}`);
   };
 
   if (!isAdmin) {
@@ -99,21 +102,24 @@ function FinancialReports() {
             <p className="text-red-500">{error}</p>
           )}
 
-          {companies.length > 0 && (
+          {reports.length > 0 && (
             <div className="space-y-4">
-              {companies.map((company) => (
+              {reports.map((report) => (
                 <Card
-                  key={company.ticker}
+                  key={`${report.code}-${report.date}-${report.time}`}
                   className="cursor-pointer hover:bg-gray-50"
-                  onClick={() => handleCompanyClick(company.ticker)}
+                  onClick={() => handleReportClick(report.code)}
                 >
                   <CardContent className="pt-6">
                     <div>
                       <h3 className="font-semibold">
-                        {company.company_name} ({company.ticker})
+                        {report.company} ({report.code})
                       </h3>
                       <p className="text-sm text-gray-500">
-                        {company.sector} - {company.industry}
+                        {report.date} {report.time} - {report.title}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        {report.exchange}
                       </p>
                     </div>
                   </CardContent>
@@ -122,7 +128,7 @@ function FinancialReports() {
             </div>
           )}
 
-          {!loading && !error && companies.length === 0 && searchTerm && (
+          {!loading && !error && reports.length === 0 && searchTerm && (
             <p className="text-gray-500">検索結果が見つかりませんでした</p>
           )}
         </CardContent>

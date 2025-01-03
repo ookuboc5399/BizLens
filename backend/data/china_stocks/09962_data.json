@@ -1,0 +1,23 @@
+{
+  "ticker": "09962",
+  "fetched_at": "2025-01-03T00:56:17.074895+00:00",
+  "financial_info": {
+    "ticker": "09962",
+    "fetched_at": "2025-01-03T00:56:20.566210+00:00",
+    "data": {
+      "indicators": {}
+    }
+  },
+  "company_info": {
+    "error": "Message: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\".middleWord\"}\n  (Session info: chrome=131.0.6778.205); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception\nStacktrace:\n0   chromedriver                        0x0000000104f4b184 cxxbridge1$str$ptr + 3626716\n1   chromedriver                        0x0000000104f439d4 cxxbridge1$str$ptr + 3596076\n2   chromedriver                        0x00000001049b0968 cxxbridge1$string$len + 89228\n3   chromedriver                        0x00000001049f4d50 cxxbridge1$string$len + 368756\n4   chromedriver                        0x0000000104a2e5b4 cxxbridge1$string$len + 604376\n5   chromedriver                        0x00000001049e9568 cxxbridge1$string$len + 321676\n6   chromedriver                        0x00000001049ea1b8 cxxbridge1$string$len + 324828\n7   chromedriver                        0x0000000104f169ac cxxbridge1$str$ptr + 3411716\n8   chromedriver                        0x0000000104f19ccc cxxbridge1$str$ptr + 3424804\n9   chromedriver                        0x0000000104efd86c cxxbridge1$str$ptr + 3308996\n10  chromedriver                        0x0000000104f1a58c cxxbridge1$str$ptr + 3427044\n11  chromedriver                        0x0000000104eef09c cxxbridge1$str$ptr + 3249652\n12  chromedriver                        0x0000000104f344b8 cxxbridge1$str$ptr + 3533328\n13  chromedriver                        0x0000000104f34634 cxxbridge1$str$ptr + 3533708\n14  chromedriver                        0x0000000104f43648 cxxbridge1$str$ptr + 3595168\n15  libsystem_pthread.dylib             0x00000001964cf2e4 _pthread_start + 136\n16  libsystem_pthread.dylib             0x00000001964ca0fc thread_start + 8\n"
+  },
+  "stock_price": {
+    "ticker": "09962",
+    "fetched_at": "2025-01-03T00:56:25.002650+00:00",
+    "data": {
+      "current_price": {},
+      "trading_info": {},
+      "price_history": []
+    }
+  }
+}
