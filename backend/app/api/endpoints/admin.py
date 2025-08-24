@@ -126,7 +126,8 @@ async def collect_company_data():
                         await collector.collect_company_data(company["company_id"])
                     except Exception as e:
                         logger.error(f"Error collecting data for {company['company_id']}: {str(e)}")
-                        yield f"data: {json.dumps({'error': f'{company["company_name"]}のデータ収集に失敗: {str(e)}'})}\n\n"
+                        company_name = company["company_name"]
+                        yield f"data: {json.dumps({'error': f'{company_name}のデータ収集に失敗: {str(e)}'})}\n\n"
 
                 yield f"data: {json.dumps({
                     'progress': 100,
