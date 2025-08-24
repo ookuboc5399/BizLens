@@ -12,6 +12,42 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 // API設定
 const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
+// 型定義
+export interface CompanyMetrics {
+  // 企業メトリクスの型定義
+}
+
+export interface CompanyComparison {
+  // 企業比較の型定義
+}
+
+export const companyApi = {
+  // 企業関連API
+  getCompanies: async () => {
+    const response = await fetch(`${API_BASE_URL}/companies`);
+    return response.json();
+  },
+  
+  getCompany: async (id: string) => {
+    const response = await fetch(`${API_BASE_URL}/companies/${id}`);
+    return response.json();
+  }
+};
+
+export const chatApi = {
+  // チャット関連API
+  sendMessage: async (message: string) => {
+    const response = await fetch(`${API_BASE_URL}/chat`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ message }),
+    });
+    return response.json();
+  }
+};
+
 export const apiClient = {
   // 基本設定
   baseURL: API_BASE_URL,

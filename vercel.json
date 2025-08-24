@@ -23,6 +23,11 @@
       "dest": "frontend/$1"
     }
   ],
+  "functions": {
+    "backend/app/main.py": {
+      "maxDuration": 30
+    }
+  },
   "env": {
     "VITE_API_URL": "/api"
   }

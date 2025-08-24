@@ -1,0 +1,16 @@
+{
+  "name": "bizlens",
+  "version": "1.0.0",
+  "description": "BizLens - Business Intelligence Platform",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "dev": "cd frontend && npm run dev",
+    "start": "cd frontend && npm run preview"
+  },
+  "workspaces": [
+    "frontend"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

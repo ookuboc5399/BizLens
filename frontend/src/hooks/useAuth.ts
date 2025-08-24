@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { SupabaseClient } from '@supabase/supabase-js';
 
 // グローバル状態変数
 let globalUser: any = null;
