@@ -4,14 +4,16 @@ import aiohttp
 import asyncio
 from datetime import datetime, timezone
 import logging
-from ..bigquery_service import BigQueryService
+# from ..bigquery_service import BigQueryService # BigQueryServiceを削除
+from ..snowflake_service import SnowflakeService # SnowflakeServiceを追加
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class CompanyDataCollector:
     def __init__(self):
-        self.bq_client = BigQueryService()
+        # self.bq_client = BigQueryService() # BigQueryServiceを削除
+        self.sf_client = SnowflakeService() # SnowflakeServiceを追加
         self.session = None
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36'
@@ -29,34 +31,34 @@ class CompanyDataCollector:
             self.session = None
 
     async def fetch_all_companies(self):
-        """BigQueryからすべての企業情報を取得"""
+        """Snowflakeからすべての企業情報を取得"""
         try:
             query = """
             SELECT DISTINCT
-                ticker as company_id,
+                ticker,
                 company_name
-            FROM `{}.{}.companies`
+            FROM companies -- Snowflakeのテーブル名
             ORDER BY ticker
-            """.format(self.bq_client.project_id, self.bq_client.dataset)
+            """
             
-            query_job = self.bq_client.client.query(query)
-            results = query_job.result()
+            # SnowflakeServiceのqueryメソッドを使用
+            results = self.sf_client.query(query)
             
             companies = []
             for row in results:
                 companies.append({
-                    "company_id": row.company_id,
-                    "company_name": row.company_name
+                    "company_id": row["TICKER"],
+                    "company_name": row["COMPANY_NAME"]
                 })
             
             return companies
             
         except Exception as e:
-            logger.error(f"Error fetching companies: {str(e)}")
+            logger.error(f"Error fetching companies from Snowflake: {str(e)}")
             raise
 
     async def collect_company_data(self, ticker: str):
-        """企業の基本情報と財務データを収集"""
+        """企業の基本情報と財務データを収集し、Snowflakeに保存"""
         try:
             await self.initialize()
 
@@ -71,7 +73,7 @@ class CompanyDataCollector:
                 "sector": info.get("sector", ""),
                 "industry": info.get("industry", ""),
                 "market": "東証",
-                "market_price": info.get("currentPrice", 0),
+                "current_price": info.get("currentPrice", 0),
                 "market_cap": info.get("marketCap", 0),
                 "per": info.get("forwardPE", 0),
                 "pbr": info.get("priceToBook", 0),
@@ -82,16 +84,26 @@ class CompanyDataCollector:
                 "dividend_yield": info.get("dividendYield", 0),
                 "dividend_per_share": info.get("lastDividendValue", 0),
                 "beta": info.get("beta", 0),
-                "collected_at": datetime.now(timezone.utc).isoformat()
+                "collected_at": datetime.now(timezone.utc).isoformat(),
+                "country": info.get("country", ""),
+                "website": info.get("website", ""),
+                "business_description": info.get("longBusinessSummary", ""),
+                "shares_outstanding": info.get("sharesOutstanding", 0),
+                "volume": info.get("volume", 0),
+                "revenue": info.get("totalRevenue", 0),
+                "operating_profit": info.get("operatingProfits", 0),
+                "net_profit": info.get("netIncomeToCommon", 0),
+                "total_assets": info.get("totalAssets", 0),
+                "equity": info.get("totalStockholderEquity", 0),
+                "operating_margin": info.get("operatingMargins", 0),
+                "net_margin": info.get("netMargins", 0),
+                "tradingview_summary": None # TradingViewのデータは別途取得する場合
             }
 
-            # BigQueryに保存
-            table_id = f"{self.bq_client.project_id}.{self.bq_client.dataset}.companies"
-            errors = self.bq_client.client.insert_rows_json(table_id, [company_data])
-            if errors:
-                raise Exception(f"Failed to insert rows: {errors}")
+            # Snowflakeに保存 (upsert_companiesメソッドを使用)
+            self.sf_client.upsert_companies([company_data])
 
-            logger.info(f"Successfully collected data for {ticker}")
+            logger.info(f"Successfully collected and saved data for {ticker} to Snowflake")
             return {"status": "success", "data": company_data}
 
         except Exception as e:
@@ -101,13 +113,14 @@ class CompanyDataCollector:
         finally:
             await self.close()
 
-    def save_to_bigquery(self, data: dict, table_name: str):
-        """データをBigQueryに保存"""
-        try:
-            table_id = f"{self.bq_client.project_id}.{self.bq_client.dataset}.{table_name}"
-            errors = self.bq_client.client.insert_rows_json(table_id, [data])
-            if errors:
-                return {"status": "error", "message": str(errors)}
-            return {"status": "success"}
-        except Exception as e:
-            return {"status": "error", "message": str(e)}
+    # save_to_bigqueryメソッドは削除 (collect_company_data内でupsert_companiesを使うため)
+    # def save_to_bigquery(self, data: dict, table_name: str):
+    #     """データをBigQueryに保存"""
+    #     try:
+    #         table_id = f"{self.bq_client.project_id}.{self.bq_client.dataset}.{table_name}"
+    #         errors = self.bq_client.client.insert_rows_json(table_id, [data])
+    #         if errors:
+    #             return {"status": "error", "message": str(errors)}
+    #         return {"status": "success"}
+    #     except Exception as e:
+    #         return {"status": "error", "message": str(e)}
