@@ -9,13 +9,3 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
-
-  - type: web
-    name: bizlens-frontend
-    env: static
-    plan: free
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/dist
-    envVars:
-      - key: VITE_API_URL
-        value: https://bizlens-backend.onrender.com/api
