@@ -117,9 +117,10 @@ async def collect_company_data():
                 # 企業データを収集
                 for i, company in enumerate(companies, 1):
                     progress = int(10 + (i / total * 90))
+                    company_name = company["company_name"]
                     yield f"data: {json.dumps({
                         'progress': progress,
-                        'message': f'{company["company_name"]}の企業データを収集中... ({i}/{total})'
+                        'message': f'{company_name}の企業データを収集中... ({i}/{total})'
                     })}\n\n"
 
                     try:
