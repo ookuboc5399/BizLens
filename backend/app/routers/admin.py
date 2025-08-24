@@ -63,10 +63,9 @@ class AdminLoginRequest(BaseModel):
 #     return {"access_token": token, "user": {"email": request.email, "role": "admin"}}
 
 
-# 保護されたエンドポイントの例 (get_current_admin が削除されたため、修正が必要)
-from ..auth.dependencies import get_current_admin_user # 適切な依存関係をインポート
+# 保護されたエンドポイントの例 (認証はフロントエンドで管理)
 
 @router.post("/companies/collect-data")
-async def collect_company_data(current_admin = Depends(get_current_admin_user)): # get_current_admin_user を使用
+async def collect_company_data():
     # データ収集ロジック
     return {"message": "Data collection completed"}

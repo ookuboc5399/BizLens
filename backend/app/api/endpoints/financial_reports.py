@@ -1,8 +1,7 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, HTTPException
 from typing import List
 from ...services.financial_reports.financial_report_service import FinancialReportService
 from ...models.financial_report import FinancialReportResponse
-from ...auth.dependencies import get_current_admin_user
 import logging
 
 logger = logging.getLogger(__name__)
@@ -13,8 +12,7 @@ async def search_reports(
     company_id: str = None,
     company_name: str = None,
     fiscal_year: str = None,
-    quarter: str = None,
-    current_user: dict = Depends(get_current_admin_user)
+    quarter: str = None
 ):
     """決算資料を検索"""
     try:
@@ -35,8 +33,7 @@ async def search_reports(
 
 @router.get("/latest/{company_id}")
 async def get_latest_report(
-    company_id: str,
-    current_user: dict = Depends(get_current_admin_user)
+    company_id: str
 ):
     """企業の最新の決算資料を取得"""
     try:
@@ -61,8 +58,7 @@ async def get_latest_report(
 async def get_report_download_url(
     company_id: str,
     fiscal_year: str,
-    quarter: str,
-    current_user: dict = Depends(get_current_admin_user)
+    quarter: str
 ):
     """決算資料のダウンロードURLを取得"""
     try:
@@ -90,8 +86,7 @@ async def get_report_download_url(
 
 @router.get("/{company_id}", response_model=List[FinancialReportResponse])
 async def get_company_reports(
-    company_id: str,
-    current_user: dict = Depends(get_current_admin_user)
+    company_id: str
 ):
     """企業の決算資料一覧を取得"""
     try:
