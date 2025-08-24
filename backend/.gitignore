@@ -1,3 +1,7 @@
 # ChromeDriver
 app/drivers/
 .env
+
+# Logs
+app/logs/
+*.log
