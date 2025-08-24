@@ -2,10 +2,6 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/app/main.py",
-      "use": "@vercel/python"
-    },
-    {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
@@ -15,20 +11,10 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "backend/app/main.py"
-    },
-    {
       "src": "/(.*)",
-      "dest": "frontend/$1"
+      "dest": "/frontend/$1"
     }
   ],
-  "functions": {
-    "backend/app/main.py": {
-      "maxDuration": 30
-    }
-  },
-  "env": {
-    "VITE_API_URL": "/api"
-  }
+  "buildCommand": "cd frontend && npm install --legacy-peer-deps && npm run build",
+  "outputDirectory": "frontend/dist"
 }
