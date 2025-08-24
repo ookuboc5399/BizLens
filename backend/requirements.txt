@@ -11,3 +11,4 @@ tradingview-ta==3.3.0
 pandas==2.1.4
 numpy==1.24.3
 snowflake-connector-python==3.6.0
+aiohttp==3.9.1
