@@ -1,10 +1,10 @@
 {
   "ticker": "WMT",
-  "fetched_at": "2025-01-03T04:33:25.455947+00:00",
+  "fetched_at": "2025-01-04T01:57:45.740724+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 725820000000.0,
-      "Enterprise Value": 777520000000.0,
+      "Market Cap": 723000000000.0,
+      "Enterprise Value": 774700000000.0,
       "Trailing P/E": 37.19,
       "Forward P/E": 32.57,
       "PEG Ratio (5yr expected)": 2.71,
@@ -32,7 +32,7 @@
       "Gross Profit (ttm)": "--",
       "EBITDA": 40780000000.0,
       "Net Income Avi to Common (ttm)": 15550000000.0,
-      "Diluted EPS (ttm)": 2.42,
+      "Diluted EPS (ttm)": 2.44,
       "Quarterly Earnings Growth (yoy)": -0.43
     },
     "Balance Sheet": {
@@ -49,15 +49,15 @@
     },
     "Stock Price History": {
       "Beta (5Y Monthly)": 0.52,
-      "52 Week Range 3": 0.7229000000000001,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week Range 3": 0.7062,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 96.18,
-      "52 Week Low 3": 51.87,
+      "52 Week Low 3": 52.23,
       "50-Day Moving Average 3": 88.71,
       "200-Day Moving Average 3": 73.99
     },
     "Share Statistics": {
-      "Avg Vol (3 month) 3": 15610000.0,
+      "Avg Vol (3 month) 3": 15680000.0,
       "Avg Vol (10 day) 3": 18410000.0,
       "Shares Outstanding 5": 8029999999.999999,
       "Implied Shares Outstanding 6": 8090000000.0,

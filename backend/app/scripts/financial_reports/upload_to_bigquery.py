@@ -89,15 +89,31 @@ def upload_to_bigquery(records):
     """BigQueryにデータをアップロード"""
     try:
         bq_service = BigQueryService()
-        table_id = f"{bq_service.project_id}.{bq_service.dataset}.financial_reports"
-        
+        dataset_id = f"{bq_service.project_id}.{bq_service.dataset}"
+        table_id = f"{dataset_id}.financial_reports"
+
+        # データセットの存在確認と作成
+        try:
+            bq_service.client.get_dataset(dataset_id)
+            logger.info(f"Dataset {dataset_id} already exists.")
+        except Exception as e:
+            if "Not found" in str(e):
+                logger.info(f"Dataset {dataset_id} not found. Creating it...")
+                dataset = bigquery.Dataset(dataset_id)
+                dataset.location = "asia-northeast1"
+                bq_service.client.create_dataset(dataset, exists_ok=True)
+                logger.info(f"Dataset {dataset_id} created.")
+            else:
+                logger.error(f"Error checking for dataset {dataset_id}: {str(e)}")
+                raise
+
         # テーブルが存在する場合は削除
         try:
-            bq_service.client.delete_table(table_id)
-            logger.info(f"Deleted existing table {table_id}")
-        except Exception:
-            logger.info(f"Table {table_id} does not exist")
-        
+            bq_service.client.delete_table(table_id, not_found_ok=True)
+            logger.info(f"Checked for existing table {table_id} and ensured it is removed if it existed.")
+        except Exception as e:
+            logger.warning(f"Could not delete table {table_id}, proceeding. Error: {str(e)}")
+
         # テーブルを新規作成
         schema = get_bigquery_schema()
         table = bigquery.Table(table_id, schema=schema)

@@ -1,10 +1,10 @@
 {
   "ticker": "AMZN",
-  "fetched_at": "2025-01-03T04:32:21.533441+00:00",
+  "fetched_at": "2025-01-04T01:56:44.960219+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 2310000000000.0,
-      "Enterprise Value": 2350000000000.0,
+      "Market Cap": 2320000000000.0,
+      "Enterprise Value": 2360000000000.0,
       "Trailing P/E": 47.06,
       "Forward P/E": 35.21,
       "PEG Ratio (5yr expected)": 1.81,
@@ -32,7 +32,7 @@
       "Gross Profit (ttm)": "--",
       "EBITDA": 111580000000.0,
       "Net Income Avi to Common (ttm)": 49870000000.0,
-      "Diluted EPS (ttm)": 4.67,
+      "Diluted EPS (ttm)": 4.78,
       "Quarterly Earnings Growth (yoy)": 0.552
     },
     "Balance Sheet": {
@@ -49,16 +49,16 @@
     },
     "Stock Price History": {
       "Beta (5Y Monthly)": 1.15,
-      "52 Week Range 3": 0.5162,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week Range 3": 0.47700000000000004,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 233.0,
-      "52 Week Low 3": 144.53,
+      "52 Week Low 3": 146.15,
       "50-Day Moving Average 3": 210.47,
       "200-Day Moving Average 3": 189.97
     },
     "Share Statistics": {
-      "Avg Vol (3 month) 3": 37820000.0,
-      "Avg Vol (10 day) 3": 34510000.0,
+      "Avg Vol (3 month) 3": 37770000.0,
+      "Avg Vol (10 day) 3": 34520000.0,
       "Shares Outstanding 5": 10520000000.0,
       "Implied Shares Outstanding 6": 10520000000.0,
       "Float 8": 9390000000.0,

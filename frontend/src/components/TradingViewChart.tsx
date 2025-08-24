@@ -11,24 +11,26 @@ export const TradingViewChart: React.FC<TradingViewChartProps> = ({ symbol }) =>
     if (!container.current) return;
 
     const script = document.createElement('script');
-    script.src = 'https://s3.tradingview.com/tv.js';
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
     script.async = true;
     script.onload = () => {
-      if (typeof window.TradingView !== 'undefined' && container.current) {
-        new window.TradingView.widget({
-          autosize: true,
-          symbol: symbol,
-          interval: 'D',
-          timezone: 'Asia/Tokyo',
-          theme: 'light',
-          style: '1',
-          locale: 'ja',
-          toolbar_bg: '#f1f3f6',
-          enable_publishing: false,
-          allow_symbol_change: false,
-          container_id: container.current.id,
-          height: '100%',
-          width: '100%',
+      if (container.current) {
+        new window.TradingView.MediumWidget({
+          "container_id": container.current.id,
+          "symbols": [[symbol]],
+          "chartOnly": false,
+          "width": "100%",
+          "height": "100%",
+          "locale": "ja",
+          "colorTheme": "dark",
+          "gridLineColor": "#2A2E39",
+          "trendLineColor": "#1976D2",
+          "fontColor": "#787B86",
+          "underLineColor": "rgba(55, 166, 239, 0.15)",
+          "isTransparent": true,
+          "autosize": true,
+          "container": container.current.id,
+          "showFloatingTooltip": true
         });
       }
     };
@@ -48,10 +50,4 @@ export const TradingViewChart: React.FC<TradingViewChartProps> = ({ symbol }) =>
       style={{ height: '400px', width: '100%' }}
     />
   );
-}
-
-declare global {
-  interface Window {
-    TradingView: any;
-  }
 }

@@ -9,31 +9,63 @@ import { useAuth } from '../hooks/useAuth';
 interface CompanyData {
   ticker: string;
   company_name: string;
-  market_price: number;
-  market_cap: number;
-  per: number;
-  roe: number;
-  dividend_yield: number;
   market: string;
   sector: string;
+  industry: string;
+  country: string;
+  website: string;
+  business_description: string;
+  data_source: string;
+  last_updated: string;
+  current_price: number;
+  market_cap: number;
+  per: number;
   pbr: number;
+  eps: number;
+  bps: number;
+  roe: number;
   roa: number;
+  current_assets: number;
+  total_assets: number;
+  current_liabilities: number;
+  total_liabilities: number;
+  capital: number;
+  minority_interests: number;
+  shareholders_equity: number;
+  debt_ratio: number;
+  current_ratio: number;
+  equity_ratio: number;
+  operating_cash_flow: number;
+  investing_cash_flow: number;
+  financing_cash_flow: number;
+  cash_and_equivalents: number;
+  revenue: number;
+  operating_income: number;
+  net_income: number;
+  operating_margin: number;
   net_margin: number;
+  dividend_yield: number;
   dividend_per_share: number;
   payout_ratio: number;
   beta: number;
-  description?: string;
+  shares_outstanding: number;
+  market_type: string;
+  currency: string;
+  collected_at: string;
 }
 
 interface FinancialHistory {
-  year: number;
+  date: string;
   revenue: number;
-  operating_profit: number;
+  operating_income: number;
   net_income: number;
-  gross_profit_margin: number;
   operating_margin: number;
-  net_profit_margin: number;
+  net_margin: number;
   roe: number;
+  roa: number;
+  current_ratio: number;
+  debt_ratio: number;
+  equity_ratio: number;
 }
 
 export default function CompanyDetail() {
@@ -114,11 +146,11 @@ export default function CompanyDetail() {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <div className="text-sm text-gray-600">株価</div>
-                <div className="text-xl font-bold">¥{company.market_price ? formatNumber(company.market_price) : '-'}</div>
+                <div className="text-xl font-bold">{company.currency === 'USD' ? '$' : '¥'}{company.current_price ? formatNumber(company.current_price) : '-'}</div>
               </div>
               <div>
                 <div className="text-sm text-gray-600">時価総額</div>
-                <div className="text-xl font-bold">¥{company.market_cap ? formatNumber(company.market_cap / 1000000) + 'M' : '-'}</div>
+                <div className="text-xl font-bold">{company.currency === 'USD' ? '$' : '¥'}{company.market_cap ? formatNumber(company.market_cap / 1000000) + 'M' : '-'}</div>
               </div>
               <div>
                 <div className="text-sm text-gray-600">PER</div>
@@ -129,12 +161,12 @@ export default function CompanyDetail() {
                 <div className="text-xl font-bold">{company.pbr ? company.pbr.toFixed(2) + '倍' : '-'}</div>
               </div>
               <div>
-                <div className="text-sm text-gray-600">ROE</div>
-                <div className="text-xl font-bold">{company.roe ? (company.roe * 100).toFixed(2) + '%' : '-'}</div>
+              <div className="text-sm text-gray-600">ROE</div>
+              <div className="text-xl font-bold">{company.roe ? company.roe.toFixed(2) + '%' : '-'}</div>
               </div>
               <div>
-                <div className="text-sm text-gray-600">配当利回り</div>
-                <div className="text-xl font-bold">{company.dividend_yield ? (company.dividend_yield * 100).toFixed(2) + '%' : '-'}</div>
+              <div className="text-sm text-gray-600">配当利回り</div>
+              <div className="text-xl font-bold">{company.dividend_yield ? company.dividend_yield.toFixed(2) + '%' : '-'}</div>
               </div>
             </div>
           </CardContent>
@@ -159,9 +191,9 @@ export default function CompanyDetail() {
         
         <TabsContent value="financial">
           <Card>
-            <CardHeader>
-              <CardTitle>財務情報（{financialHistory[0]?.year}年度）</CardTitle>
-            </CardHeader>
+          <CardHeader>
+            <CardTitle>財務情報（{new Date(financialHistory[0]?.date).toLocaleDateString()}）</CardTitle>
+          </CardHeader>
             <CardContent>
               <div className="overflow-x-auto">
                 {financialHistory.length > 0 && (
@@ -175,7 +207,7 @@ export default function CompanyDetail() {
                     <div>
                       <div className="text-sm text-gray-600">営業利益</div>
                       <div className="text-xl font-bold">
-                        ¥{financialHistory[0].operating_profit ? formatNumber(financialHistory[0].operating_profit / 1000000) + 'M' : '-'}
+                        {company.currency === 'USD' ? '$' : '¥'}{financialHistory[0].operating_income ? formatNumber(financialHistory[0].operating_income / 1000000) + 'M' : '-'}
                       </div>
                     </div>
                     <div>
@@ -185,21 +217,21 @@ export default function CompanyDetail() {
                       </div>
                     </div>
                     <div>
-                      <div className="text-sm text-gray-600">売上総利益率</div>
+                      <div className="text-sm text-gray-600">自己資本比率</div>
                       <div className="text-xl font-bold">
-                        {financialHistory[0].gross_profit_margin ? (financialHistory[0].gross_profit_margin * 100).toFixed(2) + '%' : '-'}
+                        {financialHistory[0].equity_ratio ? financialHistory[0].equity_ratio.toFixed(2) + '%' : '-'}
                       </div>
                     </div>
                     <div>
                       <div className="text-sm text-gray-600">営業利益率</div>
                       <div className="text-xl font-bold">
-                        {financialHistory[0].operating_margin ? (financialHistory[0].operating_margin * 100).toFixed(2) + '%' : '-'}
+                        {financialHistory[0].operating_margin ? financialHistory[0].operating_margin.toFixed(2) + '%' : '-'}
                       </div>
                     </div>
                     <div>
                       <div className="text-sm text-gray-600">純利益率</div>
                       <div className="text-xl font-bold">
-                        {financialHistory[0].net_profit_margin ? (financialHistory[0].net_profit_margin * 100).toFixed(2) + '%' : '-'}
+                        {financialHistory[0].net_margin ? financialHistory[0].net_margin.toFixed(2) + '%' : '-'}
                       </div>
                     </div>
                   </div>
@@ -215,7 +247,26 @@ export default function CompanyDetail() {
               <CardTitle>企業概要</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="whitespace-pre-wrap">{company.description}</p>
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-semibold mb-2">業種</h3>
+                  <p>{company.industry || '-'}</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">ウェブサイト</h3>
+                  <a href={company.website} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700">
+                    {company.website || '-'}
+                  </a>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">事業概要</h3>
+                  <p className="whitespace-pre-wrap">{company.business_description || '-'}</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">データソース</h3>
+                  <p>{company.data_source} (最終更新: {new Date(company.last_updated).toLocaleString()})</p>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </TabsContent>

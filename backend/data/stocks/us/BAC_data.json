@@ -1,9 +1,9 @@
 {
   "ticker": "BAC",
-  "fetched_at": "2025-01-03T04:34:07.247034+00:00",
+  "fetched_at": "2025-01-04T01:58:34.271990+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 337220000000.0,
+      "Market Cap": 339830000000.0,
       "Enterprise Value": "--",
       "Trailing P/E": 16.05,
       "Forward P/E": 11.98,
@@ -32,7 +32,7 @@
       "Gross Profit (ttm)": "--",
       "EBITDA": "--",
       "Net Income Avi to Common (ttm)": 21940000000.0,
-      "Diluted EPS (ttm)": 2.76,
+      "Diluted EPS (ttm)": 2.79,
       "Quarterly Earnings Growth (yoy)": -0.11599999999999999
     },
     "Balance Sheet": {
@@ -49,8 +49,8 @@
     },
     "Stock Price History": {
       "Beta (5Y Monthly)": 1.33,
-      "52 Week Range 3": 0.2864,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week Range 3": 0.2965,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 48.08,
       "52 Week Low 3": 31.27,
       "50-Day Moving Average 3": 44.93,
@@ -72,9 +72,9 @@
     },
     "Dividends & Splits": {
       "Forward Annual Dividend Rate 4": 1.04,
-      "Forward Annual Dividend Yield 4": 0.023700000000000002,
+      "Forward Annual Dividend Yield 4": 0.0235,
       "Trailing Annual Dividend Rate 3": 0.98,
-      "Trailing Annual Dividend Yield 3": 0.0223,
+      "Trailing Annual Dividend Yield 3": 0.022099999999999998,
       "5 Year Average Dividend Yield 4": 2.45,
       "Payout Ratio 4": 0.35509999999999997,
       "Dividend Date 3": "12/27/2024",

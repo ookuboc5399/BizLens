@@ -1,10 +1,10 @@
 {
   "ticker": "MCD",
-  "fetched_at": "2025-01-03T04:36:00.691242+00:00",
+  "fetched_at": "2025-01-04T02:00:26.844178+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 207740000000.0,
-      "Enterprise Value": 259930000000.0,
+      "Market Cap": 209620000000.0,
+      "Enterprise Value": 261810000000.0,
       "Trailing P/E": 25.68,
       "Forward P/E": 23.15,
       "PEG Ratio (5yr expected)": 2.64,
@@ -32,7 +32,7 @@
       "Gross Profit (ttm)": "--",
       "EBITDA": 13850000000.0,
       "Net Income Avi to Common (ttm)": 8250000000.0,
-      "Diluted EPS (ttm)": 11.39,
+      "Diluted EPS (ttm)": 11.47,
       "Quarterly Earnings Growth (yoy)": -0.027000000000000003
     },
     "Balance Sheet": {
@@ -49,15 +49,15 @@
     },
     "Stock Price History": {
       "Beta (5Y Monthly)": 0.74,
-      "52 Week Range 3": 0.012199999999999999,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week Range 3": 0.0021,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 317.9,
       "52 Week Low 3": 243.53,
       "50-Day Moving Average 3": 295.3,
       "200-Day Moving Average 3": 279.92
     },
     "Share Statistics": {
-      "Avg Vol (3 month) 3": 3510000.0,
+      "Avg Vol (3 month) 3": 3530000.0,
       "Avg Vol (10 day) 3": 2890000.0,
       "Shares Outstanding 5": 716620000.0,
       "Implied Shares Outstanding 6": 716620000.0,
@@ -72,9 +72,9 @@
     },
     "Dividends & Splits": {
       "Forward Annual Dividend Rate 4": 7.08,
-      "Forward Annual Dividend Yield 4": 0.024399999999999998,
+      "Forward Annual Dividend Yield 4": 0.0242,
       "Trailing Annual Dividend Rate 3": 6.68,
-      "Trailing Annual Dividend Yield 3": 0.023,
+      "Trailing Annual Dividend Yield 3": 0.022799999999999997,
       "5 Year Average Dividend Yield 4": 2.25,
       "Payout Ratio 4": 0.5865,
       "Dividend Date 3": "12/16/2024",

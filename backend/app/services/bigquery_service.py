@@ -10,27 +10,23 @@ class BigQueryService:
     def __init__(self):
         try:
             load_dotenv()
-            credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
-            print(f"Initializing BigQueryService with credentials from: {credentials_path}")
+            print("Initializing BigQueryService using Application Default Credentials.")
             
-            if not credentials_path:
-                raise Exception("GOOGLE_APPLICATION_CREDENTIALS environment variable is not set")
-            
-            if not os.path.exists(credentials_path):
-                raise Exception(f"Credentials file not found at: {credentials_path}")
-            
-            credentials = service_account.Credentials.from_service_account_file(credentials_path)
             self.project_id = os.getenv('GOOGLE_CLOUD_PROJECT')
             self.dataset = os.getenv('BIGQUERY_DATASET')
             self.table = os.getenv('BIGQUERY_TABLE')
             
+            if not self.project_id or not self.dataset or not self.table:
+                raise Exception("GOOGLE_CLOUD_PROJECT, BIGQUERY_DATASET, and BIGQUERY_TABLE environment variables must be set.")
+
             print(f"BigQuery configuration:")
             print(f"Project ID: {self.project_id}")
             print(f"Dataset: {self.dataset}")
             print(f"Table: {self.table}")
             
-            self.client = bigquery.Client(credentials=credentials, project=self.project_id)
-            print("BigQuery client initialized successfully")
+            # GOOGLE_APPLICATION_CREDENTIALS を使わず、ADC を使用する
+            self.client = bigquery.Client(project=self.project_id)
+            print("BigQuery client initialized successfully using ADC.")
             
         except Exception as e:
             print(f"Error initializing BigQueryService: {str(e)}")

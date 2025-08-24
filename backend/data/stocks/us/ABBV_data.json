@@ -1,17 +1,17 @@
 {
   "ticker": "ABBV",
-  "fetched_at": "2025-01-03T04:34:48.817733+00:00",
+  "fetched_at": "2025-01-04T01:59:23.773171+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 314020000000.0,
-      "Enterprise Value": 377810000000.0,
-      "Trailing P/E": 61.92,
-      "Forward P/E": 14.99,
-      "PEG Ratio (5yr expected)": 0.42,
-      "Price/Sales": 5.67,
-      "Price/Book": 52.06,
-      "Enterprise Value/Revenue": 6.8,
-      "Enterprise Value/EBITDA": 20.73
+      "Market Cap": 317100000000.0,
+      "Enterprise Value": 380890000000.0,
+      "Trailing P/E": 62.52,
+      "Forward P/E": 15.13,
+      "PEG Ratio (5yr expected)": 0.43,
+      "Price/Sales": 5.73,
+      "Price/Book": 52.57,
+      "Enterprise Value/Revenue": 6.86,
+      "Enterprise Value/EBITDA": 20.9
     },
     "Fiscal Year": {
       "Fiscal Year Ends": "12/31/2023",
@@ -32,7 +32,7 @@
       "Gross Profit (ttm)": "--",
       "EBITDA": 25630000000.0,
       "Net Income Avi to Common (ttm)": 5080000000.0,
-      "Diluted EPS (ttm)": 2.88,
+      "Diluted EPS (ttm)": 2.9,
       "Quarterly Earnings Growth (yoy)": -0.122
     },
     "Balance Sheet": {
@@ -48,16 +48,16 @@
     },
     "Stock Price History": {
       "Beta (5Y Monthly)": 0.61,
-      "52 Week Range 3": 0.096,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week Range 3": 0.1116,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 207.32,
       "52 Week Low 3": 153.58,
-      "50-Day Moving Average 3": 181.16,
+      "50-Day Moving Average 3": 181.02,
       "200-Day Moving Average 3": 178.79
     },
     "Share Statistics": {
-      "Avg Vol (3 month) 3": 6260000.0,
-      "Avg Vol (10 day) 3": 6010000.0,
+      "Avg Vol (3 month) 3": 6250000.0,
+      "Avg Vol (10 day) 3": 5650000.0,
       "Shares Outstanding 5": 1770000000.0,
       "Implied Shares Outstanding 6": 1770000000.0,
       "Float 8": 1760000000.0,
@@ -71,9 +71,9 @@
     },
     "Dividends & Splits": {
       "Forward Annual Dividend Rate 4": 6.56,
-      "Forward Annual Dividend Yield 4": 0.0369,
+      "Forward Annual Dividend Yield 4": 0.0366,
       "Trailing Annual Dividend Rate 3": 6.2,
-      "Trailing Annual Dividend Yield 3": 0.0349,
+      "Trailing Annual Dividend Yield 3": 0.0346,
       "5 Year Average Dividend Yield 4": 4.11,
       "Payout Ratio 4": 2.1359,
       "Dividend Date 3": "2/14/2025",

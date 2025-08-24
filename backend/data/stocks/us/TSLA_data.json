@@ -1,17 +1,17 @@
 {
   "ticker": "TSLA",
-  "fetched_at": "2025-01-03T04:31:34.907221+00:00",
+  "fetched_at": "2025-01-04T01:56:04.807972+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 1300000000000.0,
-      "Enterprise Value": 1280000000000.0,
-      "Trailing P/E": 110.64,
-      "Forward P/E": 117.65,
-      "PEG Ratio (5yr expected)": 4.9,
-      "Price/Sales": 14.51,
-      "Price/Book": 18.54,
-      "Enterprise Value/Revenue": 13.13,
-      "Enterprise Value/EBITDA": 92.2
+      "Market Cap": 1220000000000.0,
+      "Enterprise Value": 1200000000000.0,
+      "Trailing P/E": 103.91,
+      "Forward P/E": 109.89,
+      "PEG Ratio (5yr expected)": 4.6,
+      "Price/Sales": 13.63,
+      "Price/Book": 17.41,
+      "Enterprise Value/Revenue": 12.32,
+      "Enterprise Value/EBITDA": 86.5
     },
     "Fiscal Year": {
       "Fiscal Year Ends": "12/31/2023",
@@ -32,7 +32,7 @@
       "Gross Profit (ttm)": "--",
       "EBITDA": 13240000000.0,
       "Net Income Avi to Common (ttm)": 12740000000.0,
-      "Diluted EPS (ttm)": 3.63,
+      "Diluted EPS (ttm)": 3.94,
       "Quarterly Earnings Growth (yoy)": 0.16899999999999998
     },
     "Balance Sheet": {
@@ -49,20 +49,20 @@
     },
     "Stock Price History": {
       "Beta (5Y Monthly)": 2.3,
-      "52 Week Range 3": 0.597,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week Range 3": 0.5774,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 488.54,
       "52 Week Low 3": 138.8,
       "50-Day Moving Average 3": 349.39,
       "200-Day Moving Average 3": 239.86
     },
     "Share Statistics": {
-      "Avg Vol (3 month) 3": 92790000.0,
-      "Avg Vol (10 day) 3": 94220000.0,
+      "Avg Vol (3 month) 3": 92900000.0,
+      "Avg Vol (10 day) 3": 94290000.0,
       "Shares Outstanding 5": 3210000000.0,
       "Implied Shares Outstanding 6": 3210000000.0,
       "Float 8": 2790000000.0,
-      "% Held by Insiders 1": 0.1291,
+      "% Held by Insiders 1": 0.129,
       "% Held by Institutions 1": 0.47869999999999996,
       "Shares Short (12/13/2024) 4": 80770000.0,
       "Short Ratio (12/13/2024) 4": 0.95,

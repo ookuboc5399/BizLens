@@ -1,10 +1,10 @@
 {
   "ticker": "CSCO",
-  "fetched_at": "2025-01-03T04:35:12.715042+00:00",
+  "fetched_at": "2025-01-04T01:59:44.526887+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 235780000000.0,
-      "Enterprise Value": 249100000000.0,
+      "Market Cap": 235380000000.0,
+      "Enterprise Value": 248700000000.0,
       "Trailing P/E": 25.36,
       "Forward P/E": 16.21,
       "PEG Ratio (5yr expected)": 2.66,
@@ -32,7 +32,7 @@
       "Gross Profit (ttm)": "--",
       "EBITDA": 13750000000.0,
       "Net Income Avi to Common (ttm)": 9390000000.0,
-      "Diluted EPS (ttm)": 2.33,
+      "Diluted EPS (ttm)": 2.32,
       "Quarterly Earnings Growth (yoy)": -0.255
     },
     "Balance Sheet": {
@@ -49,16 +49,16 @@
     },
     "Stock Price History": {
       "Beta (5Y Monthly)": "--",
-      "52 Week Range 3": 0.17989999999999998,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week Range 3": 0.17120000000000002,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 60.23,
       "52 Week Low 3": 44.5,
       "50-Day Moving Average 3": 58.05,
       "200-Day Moving Average 3": 51.08
     },
     "Share Statistics": {
-      "Avg Vol (3 month) 3": 18560000.0,
-      "Avg Vol (10 day) 3": 20900000.0,
+      "Avg Vol (3 month) 3": 18670000.0,
+      "Avg Vol (10 day) 3": 20910000.0,
       "Shares Outstanding 5": 3980000000.0,
       "Implied Shares Outstanding 6": 4000000000.0,
       "Float 8": 3980000000.0,
@@ -72,9 +72,9 @@
     },
     "Dividends & Splits": {
       "Forward Annual Dividend Rate 4": 1.6,
-      "Forward Annual Dividend Yield 4": 0.027000000000000003,
+      "Forward Annual Dividend Yield 4": 0.0271,
       "Trailing Annual Dividend Rate 3": 1.19,
-      "Trailing Annual Dividend Yield 3": 0.020099999999999996,
+      "Trailing Annual Dividend Yield 3": 0.0203,
       "5 Year Average Dividend Yield 4": 3.07,
       "Payout Ratio 4": 0.6823999999999999,
       "Dividend Date 3": "1/22/2025",

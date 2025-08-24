@@ -1,5 +1,6 @@
 import React from 'react';
 import { TradingViewChart } from '../components/TradingViewChart';
+import MarketHeatmap from '../components/MarketHeatmap';
 
 function Home() {
   return (
@@ -21,9 +22,11 @@ function Home() {
           {/* サブチャートグリッド */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* マーケット概況 */}
-            <div className="bg-gray-800 rounded-lg p-4">
+            <div className="bg-gray-800 rounded-lg p-4 lg:col-span-2">
               <h3 className="text-lg font-bold mb-4">マーケット概況</h3>
-              <div className="h-48 bg-gray-700 rounded"></div>
+              <div className="flex items-center justify-center overflow-hidden">
+                <MarketHeatmap className="w-[700px] h-[350px] -mx-4" />
+              </div>
             </div>
 
             {/* 出来高分析 */}

@@ -1,10 +1,10 @@
 {
   "ticker": "BRK-B",
-  "fetched_at": "2025-01-03T04:32:42.475926+00:00",
+  "fetched_at": "2025-01-04T01:57:04.920714+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 978010000000.0,
-      "Enterprise Value": 1070000000000.0001,
+      "Market Cap": 972120000000.0,
+      "Enterprise Value": 1060000000000.0,
       "Trailing P/E": 9.12,
       "Forward P/E": 22.94,
       "PEG Ratio (5yr expected)": "--",
@@ -32,7 +32,7 @@
       "Gross Profit (ttm)": "--",
       "EBITDA": 149550000000.0,
       "Net Income Avi to Common (ttm)": 106880000000.0,
-      "Diluted EPS (ttm)": 49.45,
+      "Diluted EPS (ttm)": 49.76,
       "Quarterly Earnings Growth (yoy)": "--"
     },
     "Balance Sheet": {
@@ -49,18 +49,18 @@
     },
     "Stock Price History": {
       "Beta (5Y Monthly)": 0.87,
-      "52 Week Range 3": 0.2339,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week Range 3": 0.22519999999999998,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 491.67,
       "52 Week Low 3": 357.98,
       "50-Day Moving Average 3": 462.23,
       "200-Day Moving Average 3": 436.78
     },
     "Share Statistics": {
-      "Avg Vol (3 month) 3": 3850000.0,
+      "Avg Vol (3 month) 3": 3860000.0,
       "Avg Vol (10 day) 3": 4290000.0,
       "Shares Outstanding 5": 1330000000.0,
-      "Implied Shares Outstanding 6": 2160000000.0,
+      "Implied Shares Outstanding 6": 2140000000.0000002,
       "Float 8": 1220000.0,
       "% Held by Insiders 1": 0.0039000000000000003,
       "% Held by Institutions 1": 0.6643000000000001,

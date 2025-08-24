@@ -1,0 +1,12 @@
+このプロジェクトは、PythonのFastAPIをバックエンド、React/TypeScriptをフロントエンドとして構築されたWebアプリケーションです。
+
+主な特徴:
+- バックエンドはFastAPIフレームワークを使用しています。
+- フロントエンドはReactとTypeScriptで開発されており、Viteをビルドツールとして利用しています。
+- UIコンポーネントにはshadcn-uiやAnt Designが採用されています。
+- データベースとしてPostgreSQL、Supabase、Google BigQueryなど、複数の技術が利用されています。
+- Webスクレイピング（Selenium, BeautifulSoup）によるデータ収集機能があります。
+- RechartsやTableauなどのライブラリを用いて、高度なデータ可視化機能を提供します。
+- OpenAI APIを統合しており、AIを活用した機能（チャットなど）も含まれています。
+
+全体として、多様なデータソースから金融関連情報を収集・分析し、ユーザーに分かりやすく提示するための高機能なプラットフォームであると考えられます。

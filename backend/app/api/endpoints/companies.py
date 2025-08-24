@@ -9,9 +9,8 @@ from ...services.bigquery_service import BigQueryService
 router = APIRouter()
 company_service = CompanyService()
 
-# BigQueryクライアント取得関数を修正
 def get_bigquery_client():
-    load_dotenv()  # 環境変数の読み込み
+    load_dotenv()
     credentials = service_account.Credentials.from_service_account_file(
         os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
     )
@@ -28,8 +27,7 @@ async def search_companies(
     try:
         client = get_bigquery_client()
         
-        # 検索条件の構築
-        conditions = ["1=1"]  # デフォルトの条件
+        conditions = ["1=1"]
         parameters = []
 
         if query:
@@ -53,15 +51,28 @@ async def search_companies(
                 bigquery.ScalarQueryParameter("country", "STRING", country)
             )
 
-        # ページネーション用のオフセット計算
         offset = (page - 1) * page_size
 
-        # クエリの構築
         bq_query = f"""
-        SELECT *
-        FROM `{os.getenv('GOOGLE_CLOUD_PROJECT')}.{os.getenv('BIGQUERY_DATASET')}.{os.getenv('BIGQUERY_TABLE')}`
+        SELECT
+            ticker,
+            company_name,
+            market,
+            sector,
+            industry,
+            country,
+            website,
+            business_description,
+            market_cap,
+            current_price,
+            per,
+            pbr,
+            roe,
+            roa,
+            dividend_yield
+        FROM `{os.getenv('GOOGLE_CLOUD_PROJECT')}.{os.getenv('BIGQUERY_DATASET')}.companies`
         WHERE {" AND ".join(conditions)}
-        ORDER BY market_cap DESC
+        ORDER BY market_cap DESC NULLS LAST
         LIMIT @page_size
         OFFSET @offset
         """
@@ -71,36 +82,38 @@ async def search_companies(
             bigquery.ScalarQueryParameter("offset", "INT64", offset),
         ])
 
-        # 総件数を取得するクエリ
         count_query = f"""
         SELECT COUNT(*) as total
-        FROM `{os.getenv('GOOGLE_CLOUD_PROJECT')}.{os.getenv('BIGQUERY_DATASET')}.{os.getenv('BIGQUERY_TABLE')}`
+        FROM `{os.getenv('GOOGLE_CLOUD_PROJECT')}.{os.getenv('BIGQUERY_DATASET')}.companies`
         WHERE {" AND ".join(conditions)}
         """
 
         job_config = bigquery.QueryJobConfig(query_parameters=parameters)
 
-        # メインクエリの実行
         query_job = client.query(bq_query, job_config=job_config)
         results = query_job.result()
 
-        # 総件数の取得
         count_job = client.query(count_query, job_config=job_config)
         total = next(count_job.result()).total
 
-        # 結果の整形
         companies = []
         for row in results:
             company = {
-                "company_name": row.company_name,
                 "ticker": row.ticker,
+                "company_name": row.company_name,
+                "market": row.market,
                 "sector": row.sector,
                 "industry": row.industry,
                 "country": row.country,
                 "website": row.website,
-                "description": row.description,
+                "business_description": row.business_description,
                 "market_cap": row.market_cap,
-                "employees": row.employees
+                "current_price": row.current_price,
+                "per": row.per,
+                "pbr": row.pbr,
+                "roe": row.roe,
+                "roa": row.roa,
+                "dividend_yield": row.dividend_yield
             }
             companies.append(company)
 
@@ -119,34 +132,56 @@ async def search_companies(
 @router.get("/{ticker}")
 async def get_company_detail(ticker: str):
     try:
-        print(f"Getting company details for ticker: {ticker}")
         client = get_bigquery_client()
-        print("BigQuery client initialized")
         
-        project_id = os.getenv('GOOGLE_CLOUD_PROJECT')
-        dataset = os.getenv('BIGQUERY_DATASET')
-        table = os.getenv('BIGQUERY_TABLE')
-        
-        print(f"Executing query for ticker: {ticker}")
         query = f"""
         SELECT
             ticker,
             company_name,
-            market_price,
-            market_cap,
-            per,
-            roe,
-            dividend_yield,
             market,
             sector,
+            industry,
+            country,
+            website,
+            business_description,
+            data_source,
+            last_updated,
+            current_price,
+            market_cap,
+            per,
             pbr,
+            eps,
+            bps,
+            roe,
             roa,
+            current_assets,
+            total_assets,
+            current_liabilities,
+            total_liabilities,
+            capital,
+            minority_interests,
+            shareholders_equity,
+            debt_ratio,
+            current_ratio,
+            equity_ratio,
+            operating_cash_flow,
+            investing_cash_flow,
+            financing_cash_flow,
+            cash_and_equivalents,
+            revenue,
+            operating_income,
+            net_income,
+            operating_margin,
             net_margin,
+            dividend_yield,
             dividend_per_share,
             payout_ratio,
             beta,
-            description
-        FROM `{project_id}.{dataset}.{table}`
+            shares_outstanding,
+            market_type,
+            currency,
+            collected_at
+        FROM `{os.getenv('GOOGLE_CLOUD_PROJECT')}.{os.getenv('BIGQUERY_DATASET')}.companies`
         WHERE ticker = @ticker
         """
         
@@ -157,43 +192,17 @@ async def get_company_detail(ticker: str):
         )
         
         query_job = client.query(query, job_config=job_config)
-        print(f"Query job created: {query_job.job_id}")
         results = query_job.result()
-        print("Query completed")
-        
         rows = list(results)
-        print(f"Found {len(rows)} rows")
         
         if not rows:
             raise HTTPException(status_code=404, detail="Company not found")
             
-        for row in rows:
-            return {
-                "ticker": row.ticker,
-                "company_name": row.company_name,
-                "market_price": row.market_price,
-                "market_cap": row.market_cap,
-                "per": row.per,
-                "roe": row.roe,
-                "dividend_yield": row.dividend_yield,
-                "market": row.market,
-                "sector": row.sector,
-                "pbr": row.pbr,
-                "roa": row.roa,
-                "net_margin": row.net_margin,
-                "dividend_per_share": row.dividend_per_share,
-                "payout_ratio": row.payout_ratio,
-                "beta": row.beta,
-                "description": row.description
-            }
-            
-        raise HTTPException(status_code=404, detail="Company not found")
+        row = rows[0]
+        return dict(row)
         
     except Exception as e:
         print(f"Error in get_company_detail: {str(e)}")
-        print(f"Project ID: {project_id}")
-        print(f"Dataset: {dataset}")
-        print(f"Table: {table}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.get("/{ticker}/financial-history")
@@ -202,16 +211,20 @@ async def get_financial_history(ticker: str):
         client = get_bigquery_client()
         query = f"""
         SELECT
-            2023 as year,  # 現在は単年度データのみ
+            collected_at as date,
             revenue,
-            operating_income as operating_profit,
+            operating_income,
             net_income,
-            gross_margin as gross_profit_margin,
             operating_margin,
-            net_margin as net_profit_margin,
-            roe
-        FROM `{os.getenv('GOOGLE_CLOUD_PROJECT')}.{os.getenv('BIGQUERY_DATASET')}.{os.getenv('BIGQUERY_TABLE')}`
+            net_margin,
+            roe,
+            roa,
+            current_ratio,
+            debt_ratio,
+            equity_ratio
+        FROM `{os.getenv('GOOGLE_CLOUD_PROJECT')}.{os.getenv('BIGQUERY_DATASET')}.companies`
         WHERE ticker = @ticker
+        ORDER BY collected_at DESC
         """
         
         job_config = bigquery.QueryJobConfig(

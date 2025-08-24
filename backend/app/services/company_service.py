@@ -1,24 +1,25 @@
 from typing import Optional, List, Dict
-from .bigquery_service import BigQueryService
+# from .bigquery_service import BigQueryService
+from .snowflake_service import SnowflakeService
 import aiohttp
 from bs4 import BeautifulSoup
 import asyncio
 import yfinance as yf  # Yahoo Financeのデータ取得用
+from tradingview_ta import TA_Handler, Interval, Exchange # TradingViewのデータ取得用
 
 class CompanyService:
     def __init__(self):
-        self.bigquery = BigQueryService()
+        # self.bigquery = BigQueryService()
+        self.snowflake = SnowflakeService()
 
     async def collect_all_data(self, ticker: str) -> Dict:
         """個別企業のデータを収集"""
+        company_data = {}
+        # Yahoo Financeからデータを取得
         try:
-            print(f"Collecting data for {ticker}")
-            
-            # Yahoo Financeからデータを取得
+            print(f"Collecting data for {ticker} from yfinance...")
             stock = yf.Ticker(ticker)
             info = stock.info
-            
-            # 基本情報を収集
             company_data = {
                 "ticker": ticker,
                 "name": info.get("longName", ""),
@@ -43,15 +44,33 @@ class CompanyService:
                 "dividend_yield": info.get("dividendYield", 0),
                 "dividend_per_share": info.get("dividendRate", 0),
             }
-            
-            # BigQueryにデータを保存
-            await self.bigquery.upsert_company_data([company_data])
-            
-            return company_data
-            
         except Exception as e:
-            print(f"Error collecting data for {ticker}: {str(e)}")
-            raise
+            print(f"Error collecting data from yfinance for {ticker}: {str(e)}")
+            # yfinanceが失敗しても処理を続ける
+            company_data = {"ticker": ticker, "name": ""} 
+
+        # TradingViewから分析サマリーを取得
+        try:
+            print(f"Collecting summary for {ticker} from TradingView...")
+            tv_ticker = ticker.split('.')[0]
+            handler = TA_Handler(
+                symbol=tv_ticker,
+                screener="japan",
+                exchange="TSE",
+                interval=Interval.INTERVAL_1_DAY
+            )
+            summary = handler.get_analysis().summary
+            company_data['tradingview_summary'] = summary
+        except Exception as e:
+            print(f"Could not get TradingView summary for {ticker}: {e}")
+            company_data['tradingview_summary'] = None
+
+        # Save the collected data to Snowflake
+        if self.snowflake.get_connection():
+            print(f"Saving data for {ticker} to Snowflake...")
+            self.snowflake.upsert_companies([company_data])
+        
+        return company_data
 
     async def collect_company_data(self):
         try:
@@ -101,12 +120,17 @@ class CompanyService:
             raise
 
     async def get_company_details(self, company_id: str):
-        company_data = await self.bigquery.get_company_data(company_id)
+        # company_data = await self.bigquery.get_company_data(company_id)
+        # TODO: Implement get_company_data for Snowflake
+        company_data = {"ticker": "DUMMY"} # Dummy data
         if not company_data:
             return None
 
-        metrics = await self.bigquery.get_company_metrics(company_data.get('ticker'))
-        financials = await self.bigquery.get_financial_history(company_data.get('ticker'))
+        # metrics = await self.bigquery.get_company_metrics(company_data.get('ticker'))
+        # financials = await self.bigquery.get_financial_history(company_data.get('ticker'))
+        # TODO: Implement get_company_metrics and get_financial_history for Snowflake
+        metrics = {}
+        financials = []
 
         return {
             "company": company_data,
@@ -115,36 +139,48 @@ class CompanyService:
         }
 
     async def search_companies(self, query: str) -> List[dict]:
-        return await self.bigquery.search_companies(query)
+        # return await self.bigquery.search_companies(query)
+        # TODO: Implement search_companies for Snowflake
+        return []
 
     async def get_company(self, company_id: str):
-        return await self.bigquery.get_company_data(company_id)
+        # return await self.bigquery.get_company_data(company_id)
+        # TODO: Implement get_company_data for Snowflake
+        return {}
 
     async def get_financial_metrics(self, company_id: str):
-        return await self.bigquery.get_financial_metrics(company_id)
+        # return await self.bigquery.get_financial_metrics(company_id)
+        # TODO: Implement get_financial_metrics for Snowflake
+        return {}
 
     async def get_peer_companies(self, company_id: str):
-        return await self.bigquery.get_peer_companies(company_id)
+        # return await self.bigquery.get_peer_companies(company_id)
+        # TODO: Implement get_peer_companies for Snowflake
+        return []
 
     async def store_company_data(self, data):
         # BigQueryにデータを保存
-        await self.bigquery.insert_companies(data)
+        # await self.bigquery.insert_companies(data)
+        # TODO: Implement insert_companies for Snowflake
+        pass
 
     async def get_company_list(self) -> List[Dict]:
         """全企業のリストを取得"""
-        try:
-            query = f"""
-            SELECT DISTINCT
-                ticker,
-                company_name as name
-            FROM `{self.bigquery.project_id}.{self.bigquery.dataset}.{self.bigquery.table}`
-            """
-            
-            query_job = self.bigquery.client.query(query)
-            results = query_job.result()
-            
-            return [dict(row) for row in results]
-            
-        except Exception as e:
-            print(f"Error getting company list: {str(e)}")
-            raise
+        # try:
+        #     query = f"""
+        #     SELECT DISTINCT
+        #         ticker,
+        #         company_name as name
+        #     FROM `{self.bigquery.project_id}.{self.bigquery.dataset}.{self.bigquery.table}`
+        #     """
+        #     
+        #     query_job = self.bigquery.client.query(query)
+        #     results = query_job.result()
+        #     
+        #     return [dict(row) for row in results]
+        #     
+        # except Exception as e:
+        #     print(f"Error getting company list: {str(e)}")
+        #     raise
+        # TODO: Implement get_company_list for Snowflake
+        return []

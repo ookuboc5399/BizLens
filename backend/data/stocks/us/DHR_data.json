@@ -1,10 +1,10 @@
 {
   "ticker": "DHR",
-  "fetched_at": "2025-01-03T04:36:21.153022+00:00",
+  "fetched_at": "2025-01-04T02:00:47.427046+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 165800000000.0,
-      "Enterprise Value": 180700000000.0,
+      "Market Cap": 165990000000.0,
+      "Enterprise Value": 180880000000.0,
       "Trailing P/E": 43.36,
       "Forward P/E": 27.03,
       "PEG Ratio (5yr expected)": 3.07,
@@ -49,15 +49,15 @@
     },
     "Stock Price History": {
       "Beta (5Y Monthly)": 0.88,
-      "52 Week Range 3": -0.0021,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week Range 3": -0.0215,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 281.7,
       "52 Week Low 3": 222.53,
       "50-Day Moving Average 3": 237.9,
       "200-Day Moving Average 3": 254.11
     },
     "Share Statistics": {
-      "Avg Vol (3 month) 3": 2920000.0,
+      "Avg Vol (3 month) 3": 2950000.0,
       "Avg Vol (10 day) 3": 3110000.0,
       "Shares Outstanding 5": 722280000.0,
       "Implied Shares Outstanding 6": 722280000.0,

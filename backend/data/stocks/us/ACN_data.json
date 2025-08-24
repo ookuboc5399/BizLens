@@ -1,17 +1,17 @@
 {
   "ticker": "ACN",
-  "fetched_at": "2025-01-03T04:35:50.272590+00:00",
+  "fetched_at": "2025-01-04T02:00:15.873318+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 220040000000.0,
-      "Enterprise Value": 219870000000.0,
-      "Trailing P/E": 29.49,
-      "Forward P/E": 27.7,
-      "PEG Ratio (5yr expected)": 2.71,
-      "Price/Sales": 3.37,
-      "Price/Book": 7.54,
-      "Enterprise Value/Revenue": 3.31,
-      "Enterprise Value/EBITDA": 18.99
+      "Market Cap": 218180000000.0,
+      "Enterprise Value": 218020000000.0,
+      "Trailing P/E": 29.24,
+      "Forward P/E": 27.47,
+      "PEG Ratio (5yr expected)": 2.69,
+      "Price/Sales": 3.34,
+      "Price/Book": 7.47,
+      "Enterprise Value/Revenue": 3.29,
+      "Enterprise Value/EBITDA": 18.83
     },
     "Fiscal Year": {
       "Fiscal Year Ends": "8/31/2024",
@@ -49,8 +49,8 @@
     },
     "Stock Price History": {
       "Beta (5Y Monthly)": 1.25,
-      "52 Week Range 3": 0.0362,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week Range 3": 0.024900000000000002,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 387.51,
       "52 Week Low 3": 278.69,
       "50-Day Moving Average 3": 358.35,

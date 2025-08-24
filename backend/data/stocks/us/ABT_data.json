@@ -1,17 +1,17 @@
 {
   "ticker": "ABT",
-  "fetched_at": "2025-01-03T04:36:10.980599+00:00",
+  "fetched_at": "2025-01-04T02:00:37.200566+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 196180000000.0,
-      "Enterprise Value": 203380000000.0,
-      "Trailing P/E": 34.38,
-      "Forward P/E": 21.93,
-      "PEG Ratio (5yr expected)": 2.19,
-      "Price/Sales": 4.8,
-      "Price/Book": 4.93,
-      "Enterprise Value/Revenue": 4.93,
-      "Enterprise Value/EBITDA": 19.22
+      "Market Cap": 196760000000.0,
+      "Enterprise Value": 203950000000.0,
+      "Trailing P/E": 34.48,
+      "Forward P/E": 21.98,
+      "PEG Ratio (5yr expected)": 2.2,
+      "Price/Sales": 4.81,
+      "Price/Book": 4.94,
+      "Enterprise Value/Revenue": 4.95,
+      "Enterprise Value/EBITDA": 19.27
     },
     "Fiscal Year": {
       "Fiscal Year Ends": "12/31/2023",
@@ -32,7 +32,7 @@
       "Gross Profit (ttm)": "--",
       "EBITDA": 10820000000.0,
       "Net Income Avi to Common (ttm)": 5740000000.0,
-      "Diluted EPS (ttm)": 3.29,
+      "Diluted EPS (ttm)": 3.3,
       "Quarterly Earnings Growth (yoy)": 0.146
     },
     "Balance Sheet": {
@@ -49,21 +49,21 @@
     },
     "Stock Price History": {
       "Beta (5Y Monthly)": 0.72,
-      "52 Week Range 3": 0.023799999999999998,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week Range 3": 0.009300000000000001,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 121.64,
       "52 Week Low 3": 99.71,
       "50-Day Moving Average 3": 115.52,
       "200-Day Moving Average 3": 110.52
     },
     "Share Statistics": {
-      "Avg Vol (3 month) 3": 5040000.0,
+      "Avg Vol (3 month) 3": 5050000.0,
       "Avg Vol (10 day) 3": 4840000.0,
       "Shares Outstanding 5": 1730000000.0,
       "Implied Shares Outstanding 6": 1730000000.0,
       "Float 8": 1720000000.0,
       "% Held by Insiders 1": 0.0053,
-      "% Held by Institutions 1": 0.7762,
+      "% Held by Institutions 1": 0.7752,
       "Shares Short (12/13/2024) 4": 12100000.0,
       "Short Ratio (12/13/2024) 4": 2.56,
       "Short % of Float (12/13/2024) 4": 0.006999999999999999,
@@ -72,9 +72,9 @@
     },
     "Dividends & Splits": {
       "Forward Annual Dividend Rate 4": 2.36,
-      "Forward Annual Dividend Yield 4": 0.0209,
+      "Forward Annual Dividend Yield 4": 0.0208,
       "Trailing Annual Dividend Rate 3": 2.2,
-      "Trailing Annual Dividend Yield 3": 0.0195,
+      "Trailing Annual Dividend Yield 3": 0.0194,
       "5 Year Average Dividend Yield 4": 1.66,
       "Payout Ratio 4": 0.6565000000000001,
       "Dividend Date 3": "2/14/2025",

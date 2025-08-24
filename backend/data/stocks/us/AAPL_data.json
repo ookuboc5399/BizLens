@@ -1,10 +1,10 @@
 {
   "ticker": "AAPL",
-  "fetched_at": "2025-01-03T04:31:44.857106+00:00",
+  "fetched_at": "2025-01-04T01:56:14.829137+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 3790000000000.0,
-      "Enterprise Value": 3830000000000.0,
+      "Market Cap": 3690000000000.0,
+      "Enterprise Value": 3730000000000.0,
       "Trailing P/E": 40.11,
       "Forward P/E": 32.79,
       "PEG Ratio (5yr expected)": 2.23,
@@ -32,7 +32,7 @@
       "Gross Profit (ttm)": "--",
       "EBITDA": 134660000000.0,
       "Net Income Avi to Common (ttm)": 93740000000.0,
-      "Diluted EPS (ttm)": 6.09,
+      "Diluted EPS (ttm)": 6.06,
       "Quarterly Earnings Growth (yoy)": -0.358
     },
     "Balance Sheet": {
@@ -49,18 +49,18 @@
     },
     "Stock Price History": {
       "Beta (5Y Monthly)": 1.24,
-      "52 Week Range 3": 0.34590000000000004,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week Range 3": 0.3141,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 260.1,
       "52 Week Low 3": 164.08,
       "50-Day Moving Average 3": 237.75,
       "200-Day Moving Average 3": 213.76
     },
     "Share Statistics": {
-      "Avg Vol (3 month) 3": 43960000.0,
-      "Avg Vol (10 day) 3": 52940000.0,
+      "Avg Vol (3 month) 3": 44080000.0,
+      "Avg Vol (10 day) 3": 52960000.0,
       "Shares Outstanding 5": 15120000000.0,
-      "Implied Shares Outstanding 6": 15120000000.0,
+      "Implied Shares Outstanding 6": 15150000000.0,
       "Float 8": 15090000000.0,
       "% Held by Insiders 1": 0.0206,
       "% Held by Institutions 1": 0.6192,
@@ -72,9 +72,9 @@
     },
     "Dividends & Splits": {
       "Forward Annual Dividend Rate 4": 1.0,
-      "Forward Annual Dividend Yield 4": 0.004,
+      "Forward Annual Dividend Yield 4": 0.0040999999999999995,
       "Trailing Annual Dividend Rate 3": 0.98,
-      "Trailing Annual Dividend Yield 3": 0.0039000000000000003,
+      "Trailing Annual Dividend Yield 3": 0.004,
       "5 Year Average Dividend Yield 4": 0.61,
       "Payout Ratio 4": 0.1612,
       "Dividend Date 3": "11/14/2024",

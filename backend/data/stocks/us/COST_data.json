@@ -1,10 +1,10 @@
 {
   "ticker": "COST",
-  "fetched_at": "2025-01-03T04:34:38.482539+00:00",
+  "fetched_at": "2025-01-04T01:59:13.435789+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 406730000000.0,
-      "Enterprise Value": 402940000000.0,
+      "Market Cap": 403860000000.0,
+      "Enterprise Value": 400070000000.0,
       "Trailing P/E": 53.46,
       "Forward P/E": 50.25,
       "PEG Ratio (5yr expected)": 5.46,
@@ -49,10 +49,10 @@
     },
     "Stock Price History": {
       "Beta (5Y Monthly)": 0.79,
-      "52 Week Range 3": 0.38689999999999997,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week Range 3": 0.375,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 1008.25,
-      "52 Week Low 3": 652.24,
+      "52 Week Low 3": 654.03,
       "50-Day Moving Average 3": 939.81,
       "200-Day Moving Average 3": 854.39
     },

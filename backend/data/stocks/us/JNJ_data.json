@@ -1,10 +1,10 @@
 {
   "ticker": "JNJ",
-  "fetched_at": "2025-01-03T04:33:14.021704+00:00",
+  "fetched_at": "2025-01-04T01:57:35.418019+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 348190000000.0,
-      "Enterprise Value": 363640000000.0,
+      "Market Cap": 346750000000.0,
+      "Enterprise Value": 362200000000.0,
       "Trailing P/E": 23.8,
       "Forward P/E": 13.55,
       "PEG Ratio (5yr expected)": 0.86,
@@ -32,7 +32,7 @@
       "Gross Profit (ttm)": "--",
       "EBITDA": 30050000000.0,
       "Net Income Avi to Common (ttm)": 14770000000.0,
-      "Diluted EPS (ttm)": 6.05,
+      "Diluted EPS (ttm)": 6.06,
       "Quarterly Earnings Growth (yoy)": -0.897
     },
     "Balance Sheet": {
@@ -50,7 +50,7 @@
     "Stock Price History": {
       "Beta (5Y Monthly)": 0.52,
       "52 Week Range 3": -0.10619999999999999,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 168.85,
       "52 Week Low 3": 142.75,
       "50-Day Moving Average 3": 152.67,
@@ -72,13 +72,13 @@
     },
     "Dividends & Splits": {
       "Forward Annual Dividend Rate 4": 4.96,
-      "Forward Annual Dividend Yield 4": 0.034300000000000004,
+      "Forward Annual Dividend Yield 4": 0.0344,
       "Trailing Annual Dividend Rate 3": 4.86,
-      "Trailing Annual Dividend Yield 3": 0.0336,
-      "5 Year Average Dividend Yield 4": 2.73,
+      "Trailing Annual Dividend Yield 3": 0.0337,
+      "5 Year Average Dividend Yield 4": 2.74,
       "Payout Ratio 4": 0.8033,
       "Dividend Date 3": "12/10/2024",
-      "Ex-Dividend Date 4": "11/26/2024",
+      "Ex-Dividend Date 4": "2/18/2025",
       "Last Split Factor 2": "2:1",
       "Last Split Date 3": "6/13/2001"
     }

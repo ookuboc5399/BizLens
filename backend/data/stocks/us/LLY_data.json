@@ -1,10 +1,10 @@
 {
   "ticker": "LLY",
-  "fetched_at": "2025-01-03T04:36:41.954980+00:00",
+  "fetched_at": "2025-01-04T02:01:08.798625+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 694270000000.0,
-      "Enterprise Value": 721870000000.0,
+      "Market Cap": 699730000000.0,
+      "Enterprise Value": 727330000000.0,
       "Trailing P/E": 83.84,
       "Forward P/E": 34.25,
       "PEG Ratio (5yr expected)": 0.73,
@@ -32,7 +32,7 @@
       "Gross Profit (ttm)": "--",
       "EBITDA": 16570000000.0,
       "Net Income Avi to Common (ttm)": 8369999999.999999,
-      "Diluted EPS (ttm)": 9.26,
+      "Diluted EPS (ttm)": 9.31,
       "Quarterly Earnings Growth (yoy)": "--"
     },
     "Balance Sheet": {
@@ -49,15 +49,15 @@
     },
     "Stock Price History": {
       "Beta (5Y Monthly)": 0.43,
-      "52 Week Range 3": 0.2579,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week Range 3": 0.2429,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 972.53,
       "52 Week Low 3": 609.59,
       "50-Day Moving Average 3": 802.94,
       "200-Day Moving Average 3": 839.48
     },
     "Share Statistics": {
-      "Avg Vol (3 month) 3": 3730000.0,
+      "Avg Vol (3 month) 3": 3760000.0,
       "Avg Vol (10 day) 3": 3150000.0,
       "Shares Outstanding 5": 899320000.0,
       "Implied Shares Outstanding 6": 899320000.0,
@@ -72,7 +72,7 @@
     },
     "Dividends & Splits": {
       "Forward Annual Dividend Rate 4": 6.0,
-      "Forward Annual Dividend Yield 4": 0.0078000000000000005,
+      "Forward Annual Dividend Yield 4": 0.0077,
       "Trailing Annual Dividend Rate 3": 5.03,
       "Trailing Annual Dividend Yield 3": 0.006500000000000001,
       "5 Year Average Dividend Yield 4": 1.21,

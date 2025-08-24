@@ -1,10 +1,10 @@
 {
   "ticker": "PEP",
-  "fetched_at": "2025-01-03T04:35:22.955801+00:00",
+  "fetched_at": "2025-01-04T01:59:55.312999+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 208620000000.0,
-      "Enterprise Value": 245590000000.0,
+      "Market Cap": 206090000000.0,
+      "Enterprise Value": 243050000000.0,
       "Trailing P/E": 22.15,
       "Forward P/E": 17.33,
       "PEG Ratio (5yr expected)": 1.79,
@@ -32,7 +32,7 @@
       "Gross Profit (ttm)": "--",
       "EBITDA": 16910000000.0,
       "Net Income Avi to Common (ttm)": 9360000000.0,
-      "Diluted EPS (ttm)": 6.78,
+      "Diluted EPS (ttm)": 6.75,
       "Quarterly Earnings Growth (yoy)": -0.052000000000000005
     },
     "Balance Sheet": {
@@ -49,18 +49,18 @@
     },
     "Stock Price History": {
       "Beta (5Y Monthly)": 0.54,
-      "52 Week Range 3": -0.1109,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week Range 3": -0.1118,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 183.41,
-      "52 Week Low 3": 149.71,
+      "52 Week Low 3": 149.56,
       "50-Day Moving Average 3": 160.99,
       "200-Day Moving Average 3": 169.43
     },
     "Share Statistics": {
-      "Avg Vol (3 month) 3": 5840000.0,
+      "Avg Vol (3 month) 3": 5870000.0,
       "Avg Vol (10 day) 3": 7130000.0,
       "Shares Outstanding 5": 1370000000.0,
-      "Implied Shares Outstanding 6": 1370000000.0,
+      "Implied Shares Outstanding 6": 1380000000.0,
       "Float 8": 1370000000.0,
       "% Held by Insiders 1": 0.0015,
       "% Held by Institutions 1": 0.7761,
@@ -72,9 +72,9 @@
     },
     "Dividends & Splits": {
       "Forward Annual Dividend Rate 4": 5.42,
-      "Forward Annual Dividend Yield 4": 0.0356,
+      "Forward Annual Dividend Yield 4": 0.0361,
       "Trailing Annual Dividend Rate 3": 5.24,
-      "Trailing Annual Dividend Yield 3": 0.0345,
+      "Trailing Annual Dividend Yield 3": 0.0349,
       "5 Year Average Dividend Yield 4": 2.78,
       "Payout Ratio 4": 0.7729,
       "Dividend Date 3": "1/6/2025",

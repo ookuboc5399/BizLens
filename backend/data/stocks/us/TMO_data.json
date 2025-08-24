@@ -1,10 +1,10 @@
 {
   "ticker": "TMO",
-  "fetched_at": "2025-01-03T04:35:33.686462+00:00",
+  "fetched_at": "2025-01-04T02:00:05.692536+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 198990000000.0,
-      "Enterprise Value": 227660000000.0,
+      "Market Cap": 199880000000.0,
+      "Enterprise Value": 228550000000.0,
       "Trailing P/E": 32.76,
       "Forward P/E": 22.12,
       "PEG Ratio (5yr expected)": 1.99,
@@ -49,15 +49,15 @@
     },
     "Stock Price History": {
       "Beta (5Y Monthly)": 0.79,
-      "52 Week Range 3": -0.0163,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week Range 3": -0.0347,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 627.88,
       "52 Week Low 3": 493.3,
       "50-Day Moving Average 3": 534.16,
       "200-Day Moving Average 3": 571.6
     },
     "Share Statistics": {
-      "Avg Vol (3 month) 3": 1750000.0,
+      "Avg Vol (3 month) 3": 1760000.0,
       "Avg Vol (10 day) 3": 1470000.0,
       "Shares Outstanding 5": 382500000.0,
       "Implied Shares Outstanding 6": 382500000.0,

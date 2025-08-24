@@ -1,17 +1,17 @@
 {
   "ticker": "AVGO",
-  "fetched_at": "2025-01-03T04:34:17.421775+00:00",
+  "fetched_at": "2025-01-04T01:58:45.404867+00:00",
   "data": {
     "Valuation Measures": {
       "Market Cap": 1090000000000.0001,
-      "Enterprise Value": 1140000000000.0,
-      "Trailing P/E": 179.72,
+      "Enterprise Value": 1150000000000.0,
+      "Trailing P/E": 179.83,
       "Forward P/E": 36.5,
       "PEG Ratio (5yr expected)": 0.66,
-      "Price/Sales": 21.48,
-      "Price/Book": 16.06,
-      "Enterprise Value/Revenue": 22.2,
-      "Enterprise Value/EBITDA": 47.95
+      "Price/Sales": 21.49,
+      "Price/Book": 16.07,
+      "Enterprise Value/Revenue": 22.21,
+      "Enterprise Value/EBITDA": 47.97
     },
     "Fiscal Year": {
       "Fiscal Year Ends": "10/29/2023",
@@ -50,7 +50,7 @@
     "Stock Price History": {
       "Beta (5Y Monthly)": 1.19,
       "52 Week Range 3": 1.2107999999999999,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 251.88,
       "52 Week Low 3": 104.15,
       "50-Day Moving Average 3": 187.94,

@@ -1,10 +1,10 @@
 {
   "ticker": "NVDA",
-  "fetched_at": "2025-01-03T04:31:24.887244+00:00",
+  "fetched_at": "2025-01-04T01:55:55.604118+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 3290000000000.0,
-      "Enterprise Value": 3260000000000.0,
+      "Market Cap": 3390000000000.0,
+      "Enterprise Value": 3360000000000.0,
       "Trailing P/E": 54.6,
       "Forward P/E": 32.36,
       "PEG Ratio (5yr expected)": 0.99,
@@ -32,7 +32,7 @@
       "Gross Profit (ttm)": "--",
       "EBITDA": 61180000000.0,
       "Net Income Avi to Common (ttm)": 53010000000.0,
-      "Diluted EPS (ttm)": 2.54,
+      "Diluted EPS (ttm)": 2.64,
       "Quarterly Earnings Growth (yoy)": 1.682
     },
     "Balance Sheet": {
@@ -49,16 +49,16 @@
     },
     "Stock Price History": {
       "Beta (5Y Monthly)": 1.66,
-      "52 Week Range 3": 1.8171000000000002,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week Range 3": 1.6469,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 152.89,
-      "52 Week Low 3": 48.31,
+      "52 Week Low 3": 49.48,
       "50-Day Moving Average 3": 139.78,
       "200-Day Moving Average 3": 118.11
     },
     "Share Statistics": {
-      "Avg Vol (3 month) 3": 219490000.0,
-      "Avg Vol (10 day) 3": 188250000.0,
+      "Avg Vol (3 month) 3": 219100000.0,
+      "Avg Vol (10 day) 3": 188330000.0,
       "Shares Outstanding 5": 24490000000.0,
       "Implied Shares Outstanding 6": 25410000000.0,
       "Float 8": 23540000000.0,

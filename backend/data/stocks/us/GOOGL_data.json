@@ -1,9 +1,9 @@
 {
   "ticker": "GOOGL",
-  "fetched_at": "2025-01-03T04:32:11.520376+00:00",
+  "fetched_at": "2025-01-04T01:56:35.101965+00:00",
   "data": {
     "Valuation Measures": {
-      "Market Cap": 2320000000000.0,
+      "Market Cap": 2330000000000.0,
       "Enterprise Value": 2260000000000.0,
       "Trailing P/E": 25.12,
       "Forward P/E": 21.32,
@@ -32,7 +32,7 @@
       "Gross Profit (ttm)": "--",
       "EBITDA": 123470000000.0,
       "Net Income Avi to Common (ttm)": 94270000000.0,
-      "Diluted EPS (ttm)": 7.53,
+      "Diluted EPS (ttm)": 7.63,
       "Quarterly Earnings Growth (yoy)": 0.336
     },
     "Balance Sheet": {
@@ -49,18 +49,18 @@
     },
     "Stock Price History": {
       "Beta (5Y Monthly)": 1.03,
-      "52 Week Range 3": 0.3956,
-      "S&P 500 52-Week Change 3": 0.2494,
+      "52 Week Range 3": 0.3644,
+      "S&P 500 52-Week Change 3": 0.23199999999999998,
       "52 Week High 3": 201.42,
       "52 Week Low 3": 130.67,
       "50-Day Moving Average 3": 178.42,
       "200-Day Moving Average 3": 169.7
     },
     "Share Statistics": {
-      "Avg Vol (3 month) 3": 27490000.0,
+      "Avg Vol (3 month) 3": 27620000.0,
       "Avg Vol (10 day) 3": 24900000.0,
       "Shares Outstanding 5": 5840000000.0,
-      "Implied Shares Outstanding 6": 12270000000.0,
+      "Implied Shares Outstanding 6": 12280000000.0,
       "Float 8": 10920000000.0,
       "% Held by Insiders 1": 0.0025,
       "% Held by Institutions 1": 0.8066,
