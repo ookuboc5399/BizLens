@@ -3,7 +3,7 @@ import asyncio
 from datetime import datetime, timezone
 import logging
 from ..bigquery_service import BigQueryService
-from .financial_report_service_selenium import TDNetScraper
+# from .financial_report_service_selenium import TDNetScraper  # 一時的にコメントアウト
 
 # ロガーの設定
 logger = logging.getLogger(__name__)
@@ -30,12 +30,12 @@ logger.addHandler(ch)
 class FinancialReportService:
     def __init__(self):
         self.bigquery_service = BigQueryService()
-        self.tdnet_scraper = TDNetScraper()
+        # self.tdnet_scraper = TDNetScraper()  # 一時的にコメントアウト
         logger.info("FinancialReportService initialized")
 
     async def close(self):
         """サービスのクローズ"""
-        self.tdnet_scraper.close()
+        # self.tdnet_scraper.close()  # 一時的にコメントアウト
         logger.info("FinancialReportService closed")
 
     async def search_reports(self, company_id=None, company_name=None, fiscal_year=None, quarter=None, sector=None, industry=None):
@@ -182,33 +182,37 @@ class FinancialReportService:
     async def fetch_tdnet_reports(self, start_date=None, end_date=None, progress_callback=None):
         """TDnetから決算資料を取得してBigQueryに保存"""
         try:
-            # TDnetから決算資料を取得
-            result = await self.tdnet_scraper.fetch_reports(start_date, end_date)
+            # TDnetから決算資料を取得（一時的に無効化）
+            # result = await self.tdnet_scraper.fetch_reports(start_date, end_date)
             
-            if result["status"] != "success":
-                return result
+            # 一時的にダミーレスポンスを返す
+            logger.warning("TDnet scraping is temporarily disabled")
+            return {"status": "error", "message": "TDnet scraping is temporarily disabled"}
             
-            reports = result["reports"]
-            total_reports = len(reports)
-            saved_reports = 0
+            # if result["status"] != "success":
+            #     return result
             
-            # 取得した決算資料をBigQueryに保存
-            for i, report in enumerate(reports, 1):
-                try:
-                    await self._save_report(report)
-                    saved_reports += 1
+            # reports = result["reports"]
+            # total_reports = len(reports)
+            # saved_reports = 0
+            
+            # # 取得した決算資料をBigQueryに保存
+            # for i, report in enumerate(reports, 1):
+            #     try:
+            #         await self._save_report(report)
+            #         saved_reports += 1
 
-                    # 進捗状況の更新
-                    if progress_callback:
-                        progress = int(20 + (i / total_reports * 80))  # 20%から100%まで
-                        await progress_callback(progress, f"決算資料を保存中... ({saved_reports}/{total_reports})")
+            #         # 進捗状況の更新
+            #         if progress_callback:
+            #             progress = int(20 + (i / total_reports * 80))  # 20%から100%まで
+            #             await progress_callback(progress, f"決算資料を保存中... ({saved_reports}/{total_reports})")
 
-                except Exception as e:
-                    logger.error("Error saving report: %s", str(e), exc_info=True)
-                    continue
+            #     except Exception as e:
+            #         logger.error("Error saving report: %s", str(e), exc_info=True)
+            #         continue
             
-            logger.info("Successfully saved %d reports", saved_reports)
-            return {"status": "success", "message": f"Processed {saved_reports} reports"}
+            # logger.info("Successfully saved %d reports", saved_reports)
+            # return {"status": "success", "message": f"Processed {saved_reports} reports"}
             
         except Exception as e:
             logger.error("Error in fetch_tdnet_reports: %s", str(e), exc_info=True)

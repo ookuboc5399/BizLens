@@ -1,102 +1,64 @@
-import axios from 'axios'
+import { createClient } from '@supabase/supabase-js';
 
-export interface CompanyMetrics {
-  id: string
-  name: string
-  ticker: string
-  latest_metrics: {
-    revenue: number
-    operating_income: number
-    net_income: number
-    roe: number
-    per: number
-    fiscal_year: number
-    fiscal_quarter: number
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error('Missing Supabase environment variables');
+}
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+// API設定
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+
+export const apiClient = {
+  // 基本設定
+  baseURL: API_BASE_URL,
+  
+  // ヘルスチェック
+  async healthCheck() {
+    const response = await fetch(`${this.baseURL}/health`);
+    return response.json();
+  },
+
+  // 企業関連
+  async getCompanies() {
+    const response = await fetch(`${this.baseURL}/companies`);
+    return response.json();
+  },
+
+  async getCompany(id: string) {
+    const response = await fetch(`${this.baseURL}/companies/${id}`);
+    return response.json();
+  },
+
+  // 決算関連
+  async getEarningsCalendar() {
+    const response = await fetch(`${this.baseURL}/earnings`);
+    return response.json();
+  },
+
+  async getFinancialReports() {
+    const response = await fetch(`${this.baseURL}/financial-reports`);
+    return response.json();
+  },
+
+  // 管理者関連
+  async getAdminData() {
+    const response = await fetch(`${this.baseURL}/admin`);
+    return response.json();
+  },
+
+  // チャット関連
+  async sendChatMessage(message: string) {
+    const response = await fetch(`${this.baseURL}/chat`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ message }),
+    });
+    return response.json();
   }
-}
-
-export interface CompanyComparison {
-  company: CompanyMetrics
-  peer_companies: CompanyMetrics[]
-  industry_averages: {
-    revenue: number
-    operating_income: number
-    net_income: number
-    roe: number
-    per: number
-  }
-}
-
-export interface ChatMessage {
-  message: string
-}
-
-export interface ChatResponse {
-  response: string
-}
-
-const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-})
-
-apiClient.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    console.error('API Error:', error)
-    return Promise.reject(error)
-  }
-)
-
-export const companyApi = {
-  searchCompanies: async (query: string): Promise<CompanyMetrics[]> => {
-    try {
-      const response = await apiClient.get<CompanyMetrics[]>(`/api/companies/search?q=${encodeURIComponent(query)}`)
-      return response.data
-    } catch (error) {
-      console.error('Error searching companies:', error)
-      throw error
-    }
-  },
-  screenCompanies: async (minRevenue: number, minRoe: number, maxPer: number): Promise<CompanyMetrics[]> => {
-    try {
-      console.log('Making API request with params:', {
-        min_revenue: minRevenue,
-        min_roe: minRoe,
-        max_per: maxPer
-      })
-      const response = await apiClient.get<CompanyMetrics[]>('/api/companies/screen', {
-        params: {
-          min_revenue: minRevenue,
-          min_roe: minRoe,
-          max_per: maxPer,
-        },
-      })
-      console.log('API response:', response)
-      return response.data
-    } catch (error) {
-      console.error('Error screening companies:', error)
-      throw error
-    }
-  },
-  getCompanyComparison: async (ticker: string): Promise<CompanyComparison> => {
-    try {
-      const response = await apiClient.get<CompanyComparison>(`/api/companies/${encodeURIComponent(ticker)}/comparison`)
-      return response.data
-    } catch (error) {
-      console.error('Error getting company comparison:', error)
-      throw error
-    }
-  },
-}
-
-export const chatApi = {
-  sendMessage: async (message: string): Promise<ChatResponse> => {
-    const response = await apiClient.post<ChatResponse>('/api/chat', { message })
-    return response.data
-  },
-}
-
-export default apiClient
+};

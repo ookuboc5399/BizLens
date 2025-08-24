@@ -1,135 +1,136 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Input } from '../components/ui/input';
 import { Button } from '../components/ui/button';
 import { Progress } from '../components/ui/progress';
 import { useAuth } from '../hooks/useAuth';
+import { googleDriveService, DriveFolder } from '../services/googleDriveService';
+import { Folder, Search } from 'lucide-react';
 
-interface FinancialReport {
-  date: string;
-  time: string;
-  code: string;
-  company: string;
-  title: string;
-  pdf_url: string;
-  exchange: string;
+interface FinancialReportsProps {
+  supabase: any;
 }
 
-function FinancialReports() {
+function FinancialReports({ supabase }: FinancialReportsProps) {
   const navigate = useNavigate();
-  const { isAdmin } = useAuth();
+  const { isAdmin } = useAuth(supabase);
   const [searchTerm, setSearchTerm] = useState('');
-  const [reports, setReports] = useState<FinancialReport[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [folders, setFolders] = useState<DriveFolder[]>([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const handleSearch = async () => {
-    if (!searchTerm.trim()) return;
+  useEffect(() => {
+    loadFolders();
+  }, []);
 
+  const loadFolders = async () => {
     try {
       setLoading(true);
       setError(null);
-
-      const response = await fetch(`/api/financial-reports/search?company_name=${encodeURIComponent(searchTerm)}`);
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || '検索に失敗しました');
-      }
-
-      const data = await response.json();
-      setReports(data || []);
-
-    } catch (error) {
-      setError(error instanceof Error ? error.message : '検索中にエラーが発生しました');
-      setReports([]);
+      const folderData = await googleDriveService.getFolders();
+      setFolders(folderData);
+    } catch (err) {
+      setError('フォルダの読み込みに失敗しました');
+      console.error('フォルダ読み込みエラー:', err);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      handleSearch();
-    }
+  const handleFolderClick = (folder: DriveFolder) => {
+    // フォルダをクリックした時の処理（必要に応じて実装）
+    console.log('フォルダをクリック:', folder.name);
   };
 
-  const handleReportClick = (code: string) => {
-    navigate(`/financial-reports/${code}`);
+  const handleSearch = () => {
+    // 検索機能の実装（必要に応じて）
+    console.log('検索:', searchTerm);
   };
 
-  if (!isAdmin) {
+  const filteredFolders = folders.filter(folder =>
+    folder.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('ja-JP');
+  };
+
+  if (loading) {
     return (
       <div className="max-w-7xl mx-auto p-4">
-        <Card>
-          <CardContent className="p-6">
-            <p className="text-center text-red-500">この機能を利用するには管理者権限が必要です</p>
-          </CardContent>
-        </Card>
+        <div className="flex items-center justify-center h-64">
+          <div className="space-y-4 text-center">
+            <Progress value={undefined} className="w-64" />
+            <p className="text-sm text-gray-500">読み込み中...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="max-w-7xl mx-auto p-4">
+        <div className="text-center p-8">
+          <p className="text-red-500 mb-4">{error}</p>
+          <Button onClick={loadFolders}>再試行</Button>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-4 space-y-8">
+    <div className="max-w-7xl mx-auto p-4 space-y-8">
       <Card>
         <CardHeader>
-          <CardTitle>決算資料検索</CardTitle>
+          <CardTitle>決算資料</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-6">
+          {/* 検索バー */}
           <div className="flex gap-2">
             <Input
               type="text"
-              placeholder="企業名、証券コードで検索"
+              placeholder="フォルダ名で検索..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyPress={handleKeyPress}
               className="flex-1"
             />
-            <Button onClick={handleSearch} disabled={loading}>
+            <Button onClick={handleSearch}>
+              <Search className="h-4 w-4 mr-2" />
               検索
             </Button>
           </div>
 
-          {loading && (
-            <div className="space-y-2">
-              <Progress value={undefined} className="w-full" />
-              <p className="text-sm text-muted-foreground">検索中...</p>
-            </div>
-          )}
-
-          {error && (
-            <p className="text-red-500">{error}</p>
-          )}
-
-          {reports.length > 0 && (
-            <div className="space-y-4">
-              {reports.map((report) => (
-                <Card
-                  key={`${report.code}-${report.date}-${report.time}`}
-                  className="cursor-pointer hover:bg-gray-50"
-                  onClick={() => handleReportClick(report.code)}
-                >
-                  <CardContent className="pt-6">
+          {/* フォルダ一覧 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {filteredFolders.map((folder) => (
+              <Card
+                key={folder.id}
+                className="cursor-pointer hover:bg-gray-50 transition-colors"
+                onClick={() => handleFolderClick(folder)}
+              >
+                <CardContent className="p-6">
+                  <div className="flex flex-col items-center text-center space-y-3">
+                    <Folder className="h-12 w-12 text-blue-500" />
                     <div>
-                      <h3 className="font-semibold">
-                        {report.company} ({report.code})
+                      <h3 className="font-semibold text-sm truncate w-full" title={folder.name}>
+                        {folder.name}
                       </h3>
-                      <p className="text-sm text-gray-500">
-                        {report.date} {report.time} - {report.title}
-                      </p>
-                      <p className="text-sm text-gray-500">
-                        {report.exchange}
+                      <p className="text-xs text-gray-500 mt-1">
+                        更新日: {formatDate(folder.modifiedTime)}
                       </p>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          )}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
 
-          {!loading && !error && reports.length === 0 && searchTerm && (
-            <p className="text-gray-500">検索結果が見つかりませんでした</p>
+          {filteredFolders.length === 0 && (
+            <div className="text-center py-8 text-gray-500">
+              {searchTerm ? '検索結果が見つかりませんでした' : 'フォルダがありません'}
+            </div>
           )}
         </CardContent>
       </Card>

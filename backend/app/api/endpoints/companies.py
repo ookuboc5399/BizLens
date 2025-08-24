@@ -1,20 +1,12 @@
 from fastapi import APIRouter, HTTPException, Query
-from google.cloud import bigquery
-from google.oauth2 import service_account
 import os
 from dotenv import load_dotenv
 from ...services.company_service import CompanyService
-from ...services.bigquery_service import BigQueryService
+from ...services.snowflake_service import SnowflakeService
 
 router = APIRouter()
 company_service = CompanyService()
-
-def get_bigquery_client():
-    load_dotenv()
-    credentials = service_account.Credentials.from_service_account_file(
-        os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
-    )
-    return bigquery.Client(credentials=credentials, project=os.getenv('GOOGLE_CLOUD_PROJECT'))
+snowflake_service = SnowflakeService()
 
 @router.get("/search")
 async def search_companies(
@@ -25,31 +17,27 @@ async def search_companies(
     country: str = None
 ):
     try:
-        client = get_bigquery_client()
-        
+        db_name = os.getenv("SNOWFLAKE_DATABASE")
+        schema_name = os.getenv("SNOWFLAKE_SCHEMA")
+
         conditions = ["1=1"]
-        parameters = []
+        query_params = []
 
         if query:
             conditions.append("""
-                (LOWER(company_name) LIKE LOWER(@search_term)
-                OR LOWER(ticker) LIKE LOWER(@search_term))
+                (LOWER(company_name) LIKE LOWER(%s)
+                OR LOWER(ticker) LIKE LOWER(%s))
             """)
-            parameters.append(
-                bigquery.ScalarQueryParameter("search_term", "STRING", f"%{query}%")
-            )
+            query_params.append(f"%{query}%")
+            query_params.append(f"%{query}%")
 
         if sector:
-            conditions.append("LOWER(sector) = LOWER(@sector)")
-            parameters.append(
-                bigquery.ScalarQueryParameter("sector", "STRING", sector)
-            )
+            conditions.append("LOWER(sector) = LOWER(%s)")
+            query_params.append(sector)
 
         if country:
-            conditions.append("LOWER(country) = LOWER(@country)")
-            parameters.append(
-                bigquery.ScalarQueryParameter("country", "STRING", country)
-            )
+            conditions.append("LOWER(country) = LOWER(%s)")
+            query_params.append(country)
 
         offset = (page - 1) * page_size
 
@@ -70,50 +58,46 @@ async def search_companies(
             roe,
             roa,
             dividend_yield
-        FROM `{os.getenv('GOOGLE_CLOUD_PROJECT')}.{os.getenv('BIGQUERY_DATASET')}.companies`
+        FROM {db_name}.{schema_name}.companies
         WHERE {" AND ".join(conditions)}
         ORDER BY market_cap DESC NULLS LAST
-        LIMIT @page_size
-        OFFSET @offset
+        LIMIT %s
+        OFFSET %s
         """
 
-        parameters.extend([
-            bigquery.ScalarQueryParameter("page_size", "INT64", page_size),
-            bigquery.ScalarQueryParameter("offset", "INT64", offset),
-        ])
+        # LIMITとOFFSETのパラメータも追加
+        query_params.append(page_size)
+        query_params.append(offset)
+
+        results = snowflake_service.query(bq_query, tuple(query_params))
 
         count_query = f"""
         SELECT COUNT(*) as total
-        FROM `{os.getenv('GOOGLE_CLOUD_PROJECT')}.{os.getenv('BIGQUERY_DATASET')}.companies`
+        FROM {db_name}.{schema_name}.companies
         WHERE {" AND ".join(conditions)}
         """
-
-        job_config = bigquery.QueryJobConfig(query_parameters=parameters)
-
-        query_job = client.query(bq_query, job_config=job_config)
-        results = query_job.result()
-
-        count_job = client.query(count_query, job_config=job_config)
-        total = next(count_job.result()).total
+        # COUNTクエリのパラメータは検索クエリと同じ（LIMIT/OFFSETを除く）
+        count_results = snowflake_service.query(count_query, tuple(query_params[:-2]))
+        total = count_results[0]['TOTAL']
 
         companies = []
         for row in results:
             company = {
-                "ticker": row.ticker,
-                "company_name": row.company_name,
-                "market": row.market,
-                "sector": row.sector,
-                "industry": row.industry,
-                "country": row.country,
-                "website": row.website,
-                "business_description": row.business_description,
-                "market_cap": row.market_cap,
-                "current_price": row.current_price,
-                "per": row.per,
-                "pbr": row.pbr,
-                "roe": row.roe,
-                "roa": row.roa,
-                "dividend_yield": row.dividend_yield
+                "ticker": row['TICKER'],
+                "company_name": row['COMPANY_NAME'],
+                "market": row['MARKET'],
+                "sector": row['SECTOR'],
+                "industry": row['INDUSTRY'],
+                "country": row['COUNTRY'],
+                "website": row['WEBSITE'],
+                "business_description": row['BUSINESS_DESCRIPTION'],
+                "market_cap": row['MARKET_CAP'],
+                "current_price": row['CURRENT_PRICE'],
+                "per": row['PER'],
+                "pbr": row['PBR'],
+                "roe": row['ROE'],
+                "roa": row['ROA'],
+                "dividend_yield": row['DIVIDEND_YIELD']
             }
             companies.append(company)
 
@@ -132,8 +116,9 @@ async def search_companies(
 @router.get("/{ticker}")
 async def get_company_detail(ticker: str):
     try:
-        client = get_bigquery_client()
-        
+        db_name = os.getenv("SNOWFLAKE_DATABASE")
+        schema_name = os.getenv("SNOWFLAKE_SCHEMA")
+
         query = f"""
         SELECT
             ticker,
@@ -181,25 +166,63 @@ async def get_company_detail(ticker: str):
             market_type,
             currency,
             collected_at
-        FROM `{os.getenv('GOOGLE_CLOUD_PROJECT')}.{os.getenv('BIGQUERY_DATASET')}.companies`
-        WHERE ticker = @ticker
+        FROM {db_name}.{schema_name}.companies
+        WHERE ticker = %s
         """
         
-        job_config = bigquery.QueryJobConfig(
-            query_parameters=[
-                bigquery.ScalarQueryParameter("ticker", "STRING", ticker)
-            ]
-        )
+        results = snowflake_service.query(query, (ticker,))
         
-        query_job = client.query(query, job_config=job_config)
-        results = query_job.result()
-        rows = list(results)
-        
-        if not rows:
+        if not results:
             raise HTTPException(status_code=404, detail="Company not found")
             
-        row = rows[0]
-        return dict(row)
+        row = results[0]
+        # Snowflakeの列名は大文字になるため、辞書のキーを修正
+        return {
+            "ticker": row['TICKER'],
+            "company_name": row['COMPANY_NAME'],
+            "market": row['MARKET'],
+            "sector": row['SECTOR'],
+            "industry": row['INDUSTRY'],
+            "country": row['COUNTRY'],
+            "website": row['WEBSITE'],
+            "business_description": row['BUSINESS_DESCRIPTION'],
+            "last_updated": row['LAST_UPDATED'].isoformat() if row['LAST_UPDATED'] else None,
+            "current_price": row['CURRENT_PRICE'],
+            "market_cap": row['MARKET_CAP'],
+            "per": row['PER'],
+            "pbr": row['PBR'],
+            "eps": row['EPS'],
+            "bps": row['BPS'],
+            "roe": row['ROE'],
+            "roa": row['ROA'],
+            "current_assets": row['CURRENT_ASSETS'],
+            "total_assets": row['TOTAL_ASSETS'],
+            "current_liabilities": row['CURRENT_LIABILITIES'],
+            "total_liabilities": row['TOTAL_LIABILITIES'],
+            "capital": row['CAPITAL'],
+            "minority_interests": row['MINORIT_INTERESTS'],
+            "shareholders_equity": row['SHAREHOLDERS_EQUITY'],
+            "debt_ratio": row['DEBT_RATIO'],
+            "current_ratio": row['CURRENT_RATIO'],
+            "equity_ratio": row['EQUITY_RATIO'],
+            "operating_cash_flow": row['OPERATING_CASH_FLOW'],
+            "investing_cash_flow": row['INVESTING_CASH_FLOW'],
+            "financing_cash_flow": row['FINANCING_CASH_FLOW'],
+            "cash_and_equivalents": row['CASH_AND_EQUIVALENTS'],
+            "revenue": row['REVENUE'],
+            "operating_income": row['OPERATING_INCOME'],
+            "net_income": row['NET_INCOME'],
+            "operating_margin": row['OPERATING_MARGIN'],
+            "net_margin": row['NET_MARGIN'],
+            "dividend_yield": row['DIVIDEND_YIELD'],
+            "dividend_per_share": row['DIVIDEND_PER_SHARE'],
+            "payout_ratio": row['PAYOUT_RATIO'],
+            "beta": row['BETA'],
+            "shares_outstanding": row['SHARES_OUTSTANDING'],
+            "market_type": row['MARKET_TYPE'],
+            "currency": row['CURRENCY'],
+            "collected_at": row['COLLECTED_AT'].isoformat() if row['COLLECTED_AT'] else None
+        }
         
     except Exception as e:
         print(f"Error in get_company_detail: {str(e)}")
@@ -208,7 +231,9 @@ async def get_company_detail(ticker: str):
 @router.get("/{ticker}/financial-history")
 async def get_financial_history(ticker: str):
     try:
-        client = get_bigquery_client()
+        db_name = os.getenv("SNOWFLAKE_DATABASE")
+        schema_name = os.getenv("SNOWFLAKE_SCHEMA")
+
         query = f"""
         SELECT
             collected_at as date,
@@ -222,21 +247,27 @@ async def get_financial_history(ticker: str):
             current_ratio,
             debt_ratio,
             equity_ratio
-        FROM `{os.getenv('GOOGLE_CLOUD_PROJECT')}.{os.getenv('BIGQUERY_DATASET')}.companies`
-        WHERE ticker = @ticker
+        FROM {db_name}.{schema_name}.companies
+        WHERE ticker = %s
         ORDER BY collected_at DESC
         """
         
-        job_config = bigquery.QueryJobConfig(
-            query_parameters=[
-                bigquery.ScalarQueryParameter("ticker", "STRING", ticker)
-            ]
-        )
-        
-        results = client.query(query, job_config=job_config).result()
+        results = snowflake_service.query(query, (ticker,))
         
         return {
-            "data": [dict(row) for row in results]
+            "data": [{
+                "date": row['DATE'].isoformat() if row['DATE'] else None,
+                "revenue": row['REVENUE'],
+                "operating_income": row['OPERATING_INCOME'],
+                "net_income": row['NET_INCOME'],
+                "operating_margin": row['OPERATING_MARGIN'],
+                "net_margin": row['NET_MARGIN'],
+                "roe": row['ROE'],
+                "roa": row['ROA'],
+                "current_ratio": row['CURRENT_RATIO'],
+                "debt_ratio": row['DEBT_RATIO'],
+                "equity_ratio": row['EQUITY_RATIO']
+            } for row in results]
         }
         
     except Exception as e:

@@ -1,22 +1,25 @@
 declare global {
   interface Window {
     TradingView: {
-      MediumWidget: new (config: {
-        container_id: string;
-        symbols: string[][];
-        chartOnly?: boolean;
+      widget: new (config: {
         width: string;
         height: string;
-        locale: string;
-        colorTheme: "light" | "dark";
-        gridLineColor?: string;
-        trendLineColor?: string;
-        fontColor?: string;
-        underLineColor?: string;
-        isTransparent?: boolean;
-        autosize?: boolean;
-        container: string;
-        showFloatingTooltip?: boolean;
+        symbol: string;
+        interval?: string;
+        timezone?: string;
+        theme?: "light" | "dark";
+        style?: string;
+        locale?: string;
+        toolbar_bg?: string;
+        enable_publishing?: boolean;
+        hide_top_toolbar?: boolean;
+        hide_legend?: boolean;
+        save_image?: boolean;
+        container_id: string;
+        studies?: string[];
+        show_popup_button?: boolean;
+        popup_width?: string;
+        popup_height?: string;
       }) => any;
     };
   }

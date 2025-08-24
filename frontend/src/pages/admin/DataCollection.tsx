@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 import { Progress } from '../../components/ui/progress';
 import { useAuth } from '../../hooks/useAuth';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
 import { ScrollArea } from '../../components/ui/scroll-area';
+import { SupabaseClient } from '@supabase/supabase-js';
 
 const API_BASE_URL = '/api';
 
-function DataCollectionPage() {
-  const { isAdmin } = useAuth();
+interface DataCollectionPageProps {
+  supabase: SupabaseClient;
+}
+
+function DataCollectionPage({ supabase }: DataCollectionPageProps) {
+  const { isAdmin } = useAuth(supabase);
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [progress, setProgress] = useState(0);
@@ -151,7 +158,16 @@ function DataCollectionPage() {
 
   return (
     <div className="max-w-6xl mx-auto p-4 space-y-8">
-      <h1 className="text-2xl font-bold">データ収集管理</h1>
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">データ収集管理</h1>
+        <Button 
+          variant="outline" 
+          onClick={() => navigate('/')}
+          className="flex items-center gap-2"
+        >
+          ← ホームに戻る
+        </Button>
+      </div>
 
       <Tabs defaultValue="company-data">
         <TabsList>

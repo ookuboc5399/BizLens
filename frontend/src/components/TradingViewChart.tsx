@@ -11,29 +11,48 @@ export const TradingViewChart: React.FC<TradingViewChartProps> = ({ symbol }) =>
     if (!container.current) return;
 
     const script = document.createElement('script');
-    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
+    script.src = 'https://s3.tradingview.com/tv.js';
     script.async = true;
     script.onload = () => {
-      if (container.current) {
-        new window.TradingView.MediumWidget({
-          "container_id": container.current.id,
-          "symbols": [[symbol]],
-          "chartOnly": false,
-          "width": "100%",
-          "height": "100%",
-          "locale": "ja",
-          "colorTheme": "dark",
-          "gridLineColor": "#2A2E39",
-          "trendLineColor": "#1976D2",
-          "fontColor": "#787B86",
-          "underLineColor": "rgba(55, 166, 239, 0.15)",
-          "isTransparent": true,
-          "autosize": true,
-          "container": container.current.id,
-          "showFloatingTooltip": true
-        });
-      }
+      const initializeWidget = () => {
+        if (window.TradingView && window.TradingView.widget) {
+          if (container.current) {
+            new window.TradingView.widget({
+              "width": "100%",
+              "height": "400",
+              "symbol": symbol,
+              "interval": "D",
+              "timezone": "Asia/Tokyo",
+              "theme": "dark",
+              "style": "1",
+              "locale": "ja",
+              "toolbar_bg": "#f1f3f6",
+              "enable_publishing": false,
+              "hide_top_toolbar": false,
+              "hide_legend": false,
+              "save_image": false,
+              "container_id": container.current.id,
+              "studies": [
+                "MASimple@tv-basicstudies",
+                "RSI@tv-basicstudies"
+              ],
+              "show_popup_button": true,
+              "popup_width": "1000",
+              "popup_height": "650"
+            });
+          }
+        } else {
+          // TradingViewオブジェクトがまだ利用可能でない場合、少し待って再試行
+          setTimeout(initializeWidget, 100);
+        }
+      };
+      initializeWidget();
     };
+    
+    script.onerror = () => {
+      console.error('Failed to load TradingView script');
+    };
+    
     document.head.appendChild(script);
 
     return () => {
@@ -45,7 +64,7 @@ export const TradingViewChart: React.FC<TradingViewChartProps> = ({ symbol }) =>
 
   return (
     <div 
-      id={`tradingview_${symbol}`} 
+      id={`tradingview_${symbol.replace(/[^a-zA-Z0-9]/g, '_')}`} 
       ref={container} 
       style={{ height: '400px', width: '100%' }}
     />

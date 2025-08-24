@@ -217,34 +217,34 @@ function CompanySearch() {
           </div>
 
           <div className="flex gap-2">
-            <Select value={selectedMarket} onValueChange={setSelectedMarket}>
+            <Select value={selectedMarket} onValueChange={(value) => setSelectedMarket(value === "all" ? "" : value)}>
               <SelectTrigger className="w-[200px]">
                 <SelectValue placeholder="市場を選択" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">すべての市場</SelectItem>
+                <SelectItem value="all">すべての市場</SelectItem>
                 <SelectItem value="US">米国市場</SelectItem>
                 <SelectItem value="China">中国市場</SelectItem>
               </SelectContent>
             </Select>
 
-            <Select value={selectedCountry} onValueChange={setSelectedCountry}>
+            <Select value={selectedCountry} onValueChange={(value) => setSelectedCountry(value === "all" ? "" : value)}>
               <SelectTrigger className="w-[200px]">
                 <SelectValue placeholder="国を選択" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">すべての国</SelectItem>
+                <SelectItem value="all">すべての国</SelectItem>
                 <SelectItem value="US">アメリカ</SelectItem>
                 <SelectItem value="China">中国</SelectItem>
               </SelectContent>
             </Select>
 
-            <Select value={selectedSector} onValueChange={setSelectedSector}>
+            <Select value={selectedSector} onValueChange={(value) => setSelectedSector(value === "all" ? "" : value)}>
               <SelectTrigger className="w-[200px]">
                 <SelectValue placeholder="業種を選択" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">すべての業種</SelectItem>
+                <SelectItem value="all">すべての業種</SelectItem>
                 <SelectItem value="Technology">テクノロジー</SelectItem>
                 <SelectItem value="Finance">金融</SelectItem>
                 <SelectItem value="Healthcare">ヘルスケア</SelectItem>

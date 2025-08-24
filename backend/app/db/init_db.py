@@ -1,141 +1,713 @@
 import os
 import time
 from dotenv import load_dotenv
-from google.cloud import bigquery
 from datetime import datetime, date
-from app.models.earnings_calendar import earnings_calendar_schema
-from app.models.earnings_companies import earnings_companies_schema
+from app.services.snowflake_service import SnowflakeService # SnowflakeServiceをインポート
 
 # .envファイルを読み込む
 load_dotenv()
 
-def insert_sample_data(client, project_id, dataset):
-    # 現在時刻をISO形式の文字列に変換
+def insert_sample_data(snowflake_service: SnowflakeService):
     current_time = datetime.now().isoformat()
 
-    # earnings_companiesテーブルにサンプルデータを挿入
+    # COMPANIESテーブルにサンプルデータを挿入
     companies_data = [
         {
-            "code": "7203",
+            "ticker": "7203",
             "company_name": "トヨタ自動車",
-            "created_at": current_time,
-            "updated_at": current_time
+            "market": "JP",
+            "sector": "輸送用機器",
+            "industry": "自動車",
+            "country": "JP",
+            "website": "https://global.toyota/",
+            "description": "世界的な自動車メーカー。",
+            "market_cap": 30000000000000, # 例
+            "current_price": 2500, # 例
+            "per": 10.0, "pbr": 1.2, "eps": 250.0, "bps": 2000.0, "roe": 12.0, "roa": 5.0,
+            "revenue": 30000000000000, "operating_profit": 3000000000000, "net_profit": 2000000000000,
+            "total_assets": 60000000000000, "equity": 30000000000000,
+            "operating_margin": 10.0, "net_margin": 6.0,
+            "shares_outstanding": 10000000000, "volume": 10000000,
+            "tradingview_summary": {"summary": "Strong buy"}, # VARIANT型用
         },
         {
-            "code": "9984",
+            "ticker": "9984",
             "company_name": "ソフトバンクグループ",
-            "created_at": current_time,
-            "updated_at": current_time
-        }
+            "market": "JP",
+            "sector": "情報・通信業",
+            "industry": "投資",
+            "country": "JP",
+            "website": "https://group.softbank/",
+            "description": "テクノロジー企業への投資。",
+            "market_cap": 15000000000000, # 例
+            "current_price": 7000, # 例
+            "per": 5.0, "pbr": 0.8, "eps": 1400.0, "bps": 8750.0, "roe": 15.0, "roa": 7.0,
+            "revenue": 6000000000000, "operating_profit": 1000000000000, "net_profit": 500000000000,
+            "total_assets": 30000000000000, "equity": 15000000000000,
+            "operating_margin": 16.0, "net_margin": 8.0,
+            "shares_outstanding": 2000000000, "volume": 5000000,
+            "tradingview_summary": {"summary": "Hold"},
+        },
+        # さらに18社分のデータを追加 (例として一部のみ記載)
+        {
+            "ticker": "6758",
+            "company_name": "ソニーグループ",
+            "market": "JP",
+            "sector": "電気機器",
+            "industry": "家電・AV機器",
+            "country": "JP",
+            "website": "https://www.sony.com/",
+            "description": "エレクトロニクス、エンタテインメント。",
+            "market_cap": 18000000000000,
+            "current_price": 14000,
+            "per": 15.0, "pbr": 2.0, "eps": 933.0, "bps": 7000.0, "roe": 13.0, "roa": 6.0,
+            "revenue": 10000000000000, "operating_profit": 1000000000000, "net_profit": 700000000000,
+            "total_assets": 40000000000000, "equity": 18000000000000,
+            "operating_margin": 10.0, "net_margin": 7.0,
+            "shares_outstanding": 1200000000, "volume": 3000000,
+            "tradingview_summary": {"summary": "Buy"},
+        },
+        {
+            "ticker": "8031",
+            "company_name": "三井物産",
+            "market": "JP",
+            "sector": "卸売業",
+            "industry": "総合商社",
+            "country": "JP",
+            "website": "https://www.mitsui.com/",
+            "description": "多角的な事業を展開する総合商社。",
+            "market_cap": 8000000000000,
+            "current_price": 5000,
+            "per": 8.0, "pbr": 1.0, "eps": 625.0, "bps": 5000.0, "roe": 12.5, "roa": 4.0,
+            "revenue": 15000000000000, "operating_profit": 800000000000, "net_profit": 600000000000,
+            "total_assets": 20000000000000, "equity": 8000000000000,
+            "operating_margin": 5.0, "net_margin": 4.0,
+            "shares_outstanding": 1600000000, "volume": 2000000,
+            "tradingview_summary": {"summary": "Strong buy"},
+        },
+        {
+            "ticker": "4568",
+            "company_name": "第一三共",
+            "market": "JP",
+            "sector": "医薬品",
+            "industry": "医薬品",
+            "country": "JP",
+            "website": "https://www.daiichisankyo.com/",
+            "description": "医薬品の研究開発・製造・販売。",
+            "market_cap": 10000000000000,
+            "current_price": 6000,
+            "per": 20.0, "pbr": 3.0, "eps": 300.0, "bps": 2000.0, "roe": 15.0, "roa": 8.0,
+            "revenue": 1500000000000, "operating_profit": 300000000000, "net_profit": 200000000000,
+            "total_assets": 5000000000000, "equity": 3000000000000,
+            "operating_margin": 20.0, "net_margin": 13.0,
+            "shares_outstanding": 1600000000, "volume": 1500000,
+            "tradingview_summary": {"summary": "Buy"},
+        },
+        {
+            "ticker": "9432",
+            "company_name": "日本電信電話",
+            "market": "JP",
+            "sector": "情報・通信業",
+            "industry": "通信",
+            "country": "JP",
+            "website": "https://group.ntt/",
+            "description": "国内最大手の通信事業者。",
+            "market_cap": 12000000000000,
+            "current_price": 120,
+            "per": 10.0, "pbr": 1.0, "eps": 12.0, "bps": 120.0, "roe": 10.0, "roa": 4.0,
+            "revenue": 12000000000000, "operating_profit": 2000000000000, "net_profit": 1000000000000,
+            "total_assets": 50000000000000, "equity": 12000000000000,
+            "operating_margin": 16.0, "net_margin": 8.0,
+            "shares_outstanding": 100000000000, "volume": 50000000,
+            "tradingview_summary": {"summary": "Hold"},
+        },
+        {
+            "ticker": "8306",
+            "company_name": "三菱UFJフィナンシャル・グループ",
+            "market": "JP",
+            "sector": "銀行業",
+            "industry": "銀行",
+            "country": "JP",
+            "website": "https://www.mufg.jp/",
+            "description": "日本最大の金融グループ。",
+            "market_cap": 10000000000000,
+            "current_price": 1000,
+            "per": 8.0, "pbr": 0.6, "eps": 125.0, "bps": 1666.0, "roe": 7.5, "roa": 0.5,
+            "revenue": 5000000000000, "operating_profit": 1000000000000, "net_profit": 800000000000,
+            "total_assets": 300000000000000, "equity": 10000000000000,
+            "operating_margin": 20.0, "net_margin": 16.0,
+            "shares_outstanding": 10000000000, "volume": 80000000,
+            "tradingview_summary": {"summary": "Buy"},
+        },
+        {
+            "ticker": "6098",
+            "company_name": "リクルートホールディングス",
+            "market": "JP",
+            "sector": "サービス業",
+            "industry": "人材サービス",
+            "country": "JP",
+            "website": "https://www.recruit.co.jp/",
+            "description": "人材、販促、ITソリューション。",
+            "market_cap": 9000000000000,
+            "current_price": 6000,
+            "per": 25.0, "pbr": 5.0, "eps": 240.0, "bps": 1200.0, "roe": 20.0, "roa": 10.0,
+            "revenue": 3000000000000, "operating_profit": 500000000000, "net_profit": 300000000000,
+            "total_assets": 8000000000000, "equity": 3000000000000,
+            "operating_margin": 16.0, "net_margin": 10.0,
+            "shares_outstanding": 1500000000, "volume": 1000000,
+            "tradingview_summary": {"summary": "Strong buy"},
+        },
+        {
+            "ticker": "4063",
+            "company_name": "信越化学工業",
+            "market": "JP",
+            "sector": "化学",
+            "industry": "化学",
+            "country": "JP",
+            "website": "https://www.shinetsu.co.jp/",
+            "description": "塩化ビニル樹脂、半導体シリコンウエハ。",
+            "market_cap": 13000000000000,
+            "current_price": 20000,
+            "per": 18.0, "pbr": 3.5, "eps": 1111.0, "bps": 5714.0, "roe": 19.0, "roa": 10.0,
+            "revenue": 3000000000000, "operating_profit": 1000000000000, "net_profit": 700000000000,
+            "total_assets": 8000000000000, "equity": 4000000000000,
+            "operating_margin": 33.0, "net_margin": 23.0,
+            "shares_outstanding": 650000000, "volume": 500000,
+            "tradingview_summary": {"summary": "Buy"},
+        },
+        {
+            "ticker": "7741",
+            "company_name": "HOYA",
+            "market": "JP",
+            "sector": "精密機器",
+            "industry": "光学機器",
+            "country": "JP",
+            "website": "https://www.hoya.com/",
+            "description": "光学ガラス、コンタクトレンズ。",
+            "market_cap": 6000000000000,
+            "current_price": 17000,
+            "per": 28.0, "pbr": 4.0, "eps": 607.0, "bps": 4250.0, "roe": 14.0, "roa": 8.0,
+            "revenue": 700000000000, "operating_profit": 200000000000, "net_profit": 150000000000,
+            "total_assets": 2000000000000, "equity": 1500000000000,
+            "operating_margin": 28.0, "net_margin": 21.0,
+            "shares_outstanding": 350000000, "volume": 200000,
+            "tradingview_summary": {"summary": "Hold"},
+        },
+        {
+            "ticker": "6954",
+            "company_name": "ファナック",
+            "market": "JP",
+            "sector": "電気機器",
+            "industry": "産業用ロボット",
+            "country": "JP",
+            "website": "https://www.fanuc.co.jp/",
+            "description": "FA、ロボット、ロボマシン。",
+            "market_cap": 7000000000000,
+            "current_price": 30000,
+            "per": 20.0, "pbr": 2.5, "eps": 1500.0, "bps": 12000.0, "roe": 12.5, "roa": 7.0,
+            "revenue": 800000000000, "operating_profit": 250000000000, "net_profit": 180000000000,
+            "total_assets": 3000000000000, "equity": 2000000000000,
+            "operating_margin": 31.0, "net_margin": 22.0,
+            "shares_outstanding": 230000000, "volume": 100000,
+            "tradingview_summary": {"summary": "Sell"},
+        },
+        {
+            "ticker": "8058",
+            "company_name": "三菱商事",
+            "market": "JP",
+            "sector": "卸売業",
+            "industry": "総合商社",
+            "country": "JP",
+            "website": "https://www.mitsubishicorp.com/",
+            "description": "多角的な事業を展開する総合商社。",
+            "market_cap": 9000000000000,
+            "current_price": 6000,
+            "per": 7.0, "pbr": 0.9, "eps": 857.0, "bps": 6666.0, "roe": 13.0, "roa": 5.0,
+            "revenue": 18000000000000, "operating_profit": 900000000000, "net_profit": 700000000000,
+            "total_assets": 25000000000000, "equity": 9000000000000,
+            "operating_margin": 5.0, "net_margin": 4.0,
+            "shares_outstanding": 1500000000, "volume": 2500000,
+            "tradingview_summary": {"summary": "Strong buy"},
+        },
+        {
+            "ticker": "4502",
+            "company_name": "武田薬品工業",
+            "market": "JP",
+            "sector": "医薬品",
+            "industry": "医薬品",
+            "country": "JP",
+            "website": "https://www.takeda.com/",
+            "description": "グローバルな研究開発型製薬企業。",
+            "market_cap": 7000000000000,
+            "current_price": 4000,
+            "per": 12.0, "pbr": 1.5, "eps": 333.0, "bps": 2666.0, "roe": 12.5, "roa": 6.0,
+            "revenue": 3500000000000, "operating_profit": 600000000000, "net_profit": 400000000000,
+            "total_assets": 15000000000000, "equity": 7000000000000,
+            "operating_margin": 17.0, "net_margin": 11.0,
+            "shares_outstanding": 1750000000, "volume": 1800000,
+            "tradingview_summary": {"summary": "Hold"},
+        },
+        {
+            "ticker": "6501",
+            "company_name": "日立製作所",
+            "market": "JP",
+            "sector": "電気機器",
+            "industry": "総合電機",
+            "country": "JP",
+            "website": "https://www.hitachi.co.jp/",
+            "description": "社会インフラ、IT、産業システム。",
+            "market_cap": 8000000000000,
+            "current_price": 8000,
+            "per": 10.0, "pbr": 1.5, "eps": 800.0, "bps": 5333.0, "roe": 15.0, "roa": 7.0,
+            "revenue": 9000000000000, "operating_profit": 700000000000, "net_profit": 500000000000,
+            "total_assets": 25000000000000, "equity": 8000000000000,
+            "operating_margin": 8.0, "net_margin": 5.0,
+            "shares_outstanding": 1000000000, "volume": 2000000,
+            "tradingview_summary": {"summary": "Buy"},
+        },
+        {
+            "ticker": "8411",
+            "company_name": "みずほフィナンシャルグループ",
+            "market": "JP",
+            "sector": "銀行業",
+            "industry": "銀行",
+            "country": "JP",
+            "website": "https://www.mizuho-fg.co.jp/",
+            "description": "三大メガバンクの一角。",
+            "market_cap": 6000000000000,
+            "current_price": 2500,
+            "per": 7.0, "pbr": 0.5, "eps": 357.0, "bps": 5000.0, "roe": 7.0, "roa": 0.4,
+            "revenue": 4000000000000, "operating_profit": 800000000000, "net_profit": 600000000000,
+            "total_assets": 250000000000000, "equity": 6000000000000,
+            "operating_margin": 20.0, "net_margin": 15.0,
+            "shares_outstanding": 2400000000, "volume": 50000000,
+            "tradingview_summary": {"summary": "Buy"},
+        },
+        {
+            "ticker": "9020",
+            "company_name": "東日本旅客鉄道",
+            "market": "JP",
+            "sector": "陸運業",
+            "industry": "鉄道",
+            "country": "JP",
+            "website": "https://www.jreast.co.jp/",
+            "description": "JR東日本グループ。",
+            "market_cap": 5000000000000,
+            "current_price": 7000,
+            "per": 15.0, "pbr": 1.0, "eps": 466.0, "bps": 7000.0, "roe": 6.6, "roa": 3.0,
+            "revenue": 2500000000000, "operating_profit": 400000000000, "net_profit": 250000000000,
+            "total_assets": 15000000000000, "equity": 5000000000000,
+            "operating_margin": 16.0, "net_margin": 10.0,
+            "shares_outstanding": 700000000, "volume": 800000,
+            "tradingview_summary": {"summary": "Hold"},
+        },
+        {
+            "ticker": "6367",
+            "company_name": "ダイキン工業",
+            "market": "JP",
+            "sector": "機械",
+            "industry": "空調機器",
+            "country": "JP",
+            "website": "https://www.daikin.co.jp/",
+            "description": "空調機器、フッ素化学製品。",
+            "market_cap": 10000000000000,
+            "current_price": 20000,
+            "per": 25.0, "pbr": 4.0, "eps": 800.0, "bps": 5000.0, "roe": 16.0, "roa": 9.0,
+            "revenue": 4000000000000, "operating_profit": 500000000000, "net_profit": 350000000000,
+            "total_assets": 12000000000000, "equity": 6000000000000,
+            "operating_margin": 12.5, "net_margin": 8.7,
+            "shares_outstanding": 500000000, "volume": 300000,
+            "tradingview_summary": {"summary": "Buy"},
+        },
+        {
+            "ticker": "7267",
+            "company_name": "ホンダ",
+            "market": "JP",
+            "sector": "輸送用機器",
+            "industry": "自動車",
+            "country": "JP",
+            "website": "https://www.honda.co.jp/",
+            "description": "自動車、二輪車、汎用製品。",
+            "market_cap": 7000000000000,
+            "current_price": 4000,
+            "per": 8.0, "pbr": 0.7, "eps": 500.0, "bps": 5714.0, "roe": 10.0, "roa": 4.0,
+            "revenue": 18000000000000, "operating_profit": 1000000000000, "net_profit": 700000000000,
+            "total_assets": 35000000000000, "equity": 7000000000000,
+            "operating_margin": 5.5, "net_margin": 3.8,
+            "shares_outstanding": 1750000000, "volume": 3000000,
+            "tradingview_summary": {"summary": "Hold"},
+        },
+        {
+            "ticker": "8802",
+            "company_name": "三菱地所",
+            "market": "JP",
+            "sector": "不動産業",
+            "industry": "不動産",
+            "country": "JP",
+            "website": "https://www.mec.co.jp/",
+            "description": "総合不動産デベロッパー。",
+            "market_cap": 4000000000000,
+            "current_price": 2500,
+            "per": 12.0, "pbr": 1.0, "eps": 208.0, "bps": 2500.0, "roe": 8.3, "roa": 3.0,
+            "revenue": 1500000000000, "operating_profit": 200000000000, "net_profit": 150000000000,
+            "total_assets": 10000000000000, "equity": 4000000000000,
+            "operating_margin": 13.0, "net_margin": 10.0,
+            "shares_outstanding": 1600000000, "volume": 500000,
+            "tradingview_summary": {"summary": "Buy"},
+        },
+        {
+            "ticker": "9501",
+            "company_name": "東京電力ホールディングス",
+            "market": "JP",
+            "sector": "電気・ガス業",
+            "industry": "電力",
+            "country": "JP",
+            "website": "https://www.tepco.co.jp/",
+            "description": "電力供給事業。",
+            "market_cap": 2000000000000,
+            "current_price": 500,
+            "per": 5.0, "pbr": 0.3, "eps": 100.0, "bps": 1666.0, "roe": 6.0, "roa": 2.0,
+            "revenue": 6000000000000, "operating_profit": 500000000000, "net_profit": 200000000000,
+            "total_assets": 30000000000000, "equity": 2000000000000,
+            "operating_margin": 8.0, "net_margin": 3.3,
+            "shares_outstanding": 4000000000, "volume": 10000000,
+            "tradingview_summary": {"summary": "Sell"},
+        },
+        {
+            "ticker": "4901",
+            "company_name": "富士フイルムホールディングス",
+            "market": "JP",
+            "sector": "化学",
+            "industry": "化学",
+            "country": "JP",
+            "website": "https://www.fujifilm.com/",
+            "description": "写真、医療、高機能材料。",
+            "market_cap": 3000000000000,
+            "current_price": 10000,
+            "per": 15.0, "pbr": 1.5, "eps": 666.0, "bps": 6666.0, "roe": 10.0, "roa": 5.0,
+            "revenue": 2500000000000, "operating_profit": 250000000000, "net_profit": 180000000000,
+            "total_assets": 8000000000000, "equity": 3000000000000,
+            "operating_margin": 10.0, "net_margin": 7.2,
+            "shares_outstanding": 300000000, "volume": 400000,
+            "tradingview_summary": {"summary": "Buy"},
+        },
+        {
+            "ticker": "6702",
+            "company_name": "富士通",
+            "market": "JP",
+            "sector": "電気機器",
+            "industry": "情報通信機器",
+            "country": "JP",
+            "website": "https://www.fujitsu.com/",
+            "description": "ITサービス、PC、通信機器。",
+            "market_cap": 4000000000000,
+            "current_price": 20000,
+            "per": 20.0, "pbr": 2.0, "eps": 1000.0, "bps": 10000.0, "roe": 10.0, "roa": 4.0,
+            "revenue": 3500000000000, "operating_profit": 200000000000, "net_profit": 150000000000,
+            "total_assets": 10000000000000, "equity": 4000000000000,
+            "operating_margin": 5.7, "net_margin": 4.3,
+            "shares_outstanding": 200000000, "volume": 300000,
+            "tradingview_summary": {"summary": "Hold"},
+        },
+        {
+            "ticker": "8604",
+            "company_name": "野村ホールディングス",
+            "market": "JP",
+            "sector": "証券、商品先物取引業",
+            "industry": "証券",
+            "country": "JP",
+            "website": "https://www.nomura.com/",
+            "description": "日本最大手の証券会社。",
+            "market_cap": 2000000000000,
+            "current_price": 600,
+            "per": 10.0, "pbr": 0.5, "eps": 60.0, "bps": 1200.0, "roe": 5.0, "roa": 0.3,
+            "revenue": 1500000000000, "operating_profit": 200000000000, "net_profit": 100000000000,
+            "total_assets": 50000000000000, "equity": 2000000000000,
+            "operating_margin": 13.0, "net_margin": 6.7,
+            "shares_outstanding": 3300000000, "volume": 10000000,
+            "tradingview_summary": {"summary": "Sell"},
+        },
+        {
+            "ticker": "9022",
+            "company_name": "東海旅客鉄道",
+            "market": "JP",
+            "sector": "陸運業",
+            "industry": "鉄道",
+            "country": "JP",
+            "website": "https://jr-central.co.jp/",
+            "description": "JR東海グループ。",
+            "market_cap": 4000000000000,
+            "current_price": 18000,
+            "per": 18.0, "pbr": 1.2, "eps": 1000.0, "bps": 15000.0, "roe": 8.0, "roa": 4.0,
+            "revenue": 1800000000000, "operating_profit": 300000000000, "net_profit": 200000000000,
+            "total_assets": 10000000000000, "equity": 4000000000000,
+            "operating_margin": 16.0, "net_margin": 11.0,
+            "shares_outstanding": 220000000, "volume": 500000,
+            "tradingview_summary": {"summary": "Hold"},
+        },
+        {
+            "ticker": "6981",
+            "company_name": "村田製作所",
+            "market": "JP",
+            "sector": "電気機器",
+            "industry": "電子部品",
+            "country": "JP",
+            "website": "https://www.murata.com/",
+            "description": "電子部品メーカー。",
+            "market_cap": 5000000000000,
+            "current_price": 8000,
+            "per": 15.0, "pbr": 2.0, "eps": 533.0, "bps": 4000.0, "roe": 13.0, "roa": 7.0,
+            "revenue": 1800000000000, "operating_profit": 250000000000, "net_profit": 180000000000,
+            "total_assets": 5000000000000, "equity": 3000000000000,
+            "operating_margin": 14.0, "net_margin": 10.0,
+            "shares_outstanding": 625000000, "volume": 600000,
+            "tradingview_summary": {"summary": "Buy"},
+        },
+        {
+            "ticker": "7951",
+            "company_name": "ヤマハ",
+            "market": "JP",
+            "sector": "その他製品",
+            "industry": "楽器",
+            "country": "JP",
+            "website": "https://www.yamaha.com/",
+            "description": "楽器、音響機器、半導体。",
+            "market_cap": 1000000000000,
+            "current_price": 6000,
+            "per": 12.0, "pbr": 1.0, "eps": 500.0, "bps": 6000.0, "roe": 8.3, "roa": 4.0,
+            "revenue": 400000000000, "operating_profit": 50000000000, "net_profit": 30000000000,
+            "total_assets": 1500000000000, "equity": 1000000000000,
+            "operating_margin": 12.5, "net_margin": 7.5,
+            "shares_outstanding": 160000000, "volume": 100000,
+            "tradingview_summary": {"summary": "Hold"},
+        },
+        {
+            "ticker": "6723",
+            "company_name": "ルネサスエレクトロニクス",
+            "market": "JP",
+            "sector": "電気機器",
+            "industry": "半導体",
+            "country": "JP",
+            "website": "https://www.renesas.com/",
+            "description": "マイコン、アナログ半導体。",
+            "market_cap": 4000000000000,
+            "current_price": 2000,
+            "per": 10.0, "pbr": 2.0, "eps": 200.0, "bps": 1000.0, "roe": 20.0, "roa": 10.0,
+            "revenue": 1500000000000, "operating_profit": 300000000000, "net_profit": 200000000000,
+            "total_assets": 5000000000000, "equity": 2000000000000,
+            "operating_margin": 20.0, "net_margin": 13.0,
+            "shares_outstanding": 2000000000, "volume": 2000000,
+            "tradingview_summary": {"summary": "Buy"},
+        },
+        {
+            "ticker": "7270",
+            "company_name": "SUBARU",
+            "market": "JP",
+            "sector": "輸送用機器",
+            "industry": "自動車",
+            "country": "JP",
+            "website": "https://www.subaru.co.jp/",
+            "description": "自動車、航空宇宙。",
+            "market_cap": 2000000000000,
+            "current_price": 2500,
+            "per": 8.0, "pbr": 0.8, "eps": 312.0, "bps": 3125.0, "roe": 10.0, "roa": 4.0,
+            "revenue": 3500000000000, "operating_profit": 250000000000, "net_profit": 180000000000,
+            "total_assets": 8000000000000, "equity": 2000000000000,
+            "operating_margin": 7.0, "net_margin": 5.0,
+            "shares_outstanding": 800000000, "volume": 800000,
+            "tradingview_summary": {"summary": "Hold"},
+        },
+        {
+            "ticker": "4503",
+            "company_name": "アステラス製薬",
+            "market": "JP",
+            "sector": "医薬品",
+            "industry": "医薬品",
+            "country": "JP",
+            "website": "https://www.astellas.com/",
+            "description": "医薬品の研究開発・製造・販売。",
+            "market_cap": 3000000000000,
+            "current_price": 1500,
+            "per": 12.0, "pbr": 1.0, "eps": 125.0, "bps": 1500.0, "roe": 8.3, "roa": 4.0,
+            "revenue": 1500000000000, "operating_profit": 200000000000, "net_profit": 150000000000,
+            "total_assets": 5000000000000, "equity": 3000000000000,
+            "operating_margin": 13.0, "net_margin": 10.0,
+            "shares_outstanding": 2000000000, "volume": 1000000,
+            "tradingview_summary": {"summary": "Hold"},
+        },
+        {
+            "ticker": "6178",
+            "company_name": "日本郵政",
+            "market": "JP",
+            "sector": "サービス業",
+            "industry": "郵便・金融",
+            "country": "JP",
+            "website": "https://www.japanpost.jp/",
+            "description": "郵便、貯金、保険。",
+            "market_cap": 5000000000000,
+            "current_price": 1000,
+            "per": 10.0, "pbr": 0.5, "eps": 100.0, "bps": 2000.0, "roe": 5.0, "roa": 0.3,
+            "revenue": 12000000000000, "operating_profit": 500000000000, "net_profit": 300000000000,
+            "total_assets": 300000000000000, "equity": 5000000000000,
+            "operating_margin": 4.0, "net_margin": 2.5,
+            "shares_outstanding": 5000000000, "volume": 5000000,
+            "tradingview_summary": {"summary": "Sell"},
+        },
+        {
+            "ticker": "8766",
+            "company_name": "東京海上ホールディングス",
+            "market": "JP",
+            "sector": "保険業",
+            "industry": "損害保険",
+            "country": "JP",
+            "website": "https://www.tokiomarinehd.com/",
+            "description": "損害保険、生命保険。",
+            "market_cap": 6000000000000,
+            "current_price": 4000,
+            "per": 12.0, "pbr": 1.0, "eps": 333.0, "bps": 4000.0, "roe": 8.3, "roa": 0.5,
+            "revenue": 5000000000000, "operating_profit": 500000000000, "net_profit": 300000000000,
+            "total_assets": 30000000000000, "equity": 6000000000000,
+            "operating_margin": 10.0, "net_margin": 6.0,
+            "shares_outstanding": 1500000000, "volume": 800000,
+            "tradingview_summary": {"summary": "Buy"},
+        },
+        {
+            "ticker": "9201",
+            "company_name": "日本航空",
+            "market": "JP",
+            "sector": "空運業",
+            "industry": "航空",
+            "country": "JP",
+            "website": "https://www.jal.com/",
+            "description": "航空運送事業。",
+            "market_cap": 1000000000000,
+            "current_price": 2500,
+            "per": 15.0, "pbr": 1.2, "eps": 166.0, "bps": 2083.0, "roe": 8.0, "roa": 3.0,
+            "revenue": 1500000000000, "operating_profit": 100000000000, "net_profit": 60000000000,
+            "total_assets": 5000000000000, "equity": 1000000000000,
+            "operating_margin": 6.7, "net_margin": 4.0,
+            "shares_outstanding": 400000000, "volume": 500000,
+            "tradingview_summary": {"summary": "Hold"},
+        },
+        {
+            "ticker": "6902",
+            "company_name": "デンソー",
+            "market": "JP",
+            "sector": "輸送用機器",
+            "industry": "自動車部品",
+            "country": "JP",
+            "website": "https://www.denso.com/",
+            "description": "自動車部品メーカー。",
+            "market_cap": 6000000000000,
+            "current_price": 8000,
+            "per": 10.0, "pbr": 1.5, "eps": 800.0, "bps": 5333.0, "roe": 15.0, "roa": 7.0,
+            "revenue": 6000000000000, "operating_profit": 500000000000, "net_profit": 350000000000,
+            "total_assets": 18000000000000, "equity": 6000000000000,
+            "operating_margin": 8.3, "net_margin": 5.8,
+            "shares_outstanding": 750000000, "volume": 600000,
+            "tradingview_summary": {"summary": "Buy"},
+        },
+        {
+            "ticker": "8001",
+            "company_name": "伊藤忠商事",
+            "market": "JP",
+            "sector": "卸売業",
+            "industry": "総合商社",
+            "country": "JP",
+            "website": "https://www.itochu.co.jp/",
+            "description": "多角的な事業を展開する総合商社。",
+            "market_cap": 7000000000000,
+            "current_price": 4500,
+            "per": 8.0, "pbr": 1.1, "eps": 562.0, "bps": 4090.0, "roe": 13.7, "roa": 5.0,
+            "revenue": 12000000000000, "operating_profit": 700000000000, "net_profit": 550000000000,
+            "total_assets": 20000000000000, "equity": 7000000000000,
+            "operating_margin": 5.8, "net_margin": 4.6,
+            "shares_outstanding": 1550000000, "volume": 1800000,
+            "tradingview_summary": {"summary": "Strong buy"},
+        },
+        {
+            "ticker": "4519",
+            "company_name": "中外製薬",
+            "market": "JP",
+            "sector": "医薬品",
+            "industry": "医薬品",
+            "country": "JP",
+            "website": "https://www.chugai-pharm.co.jp/",
+            "description": "医薬品の研究開発・製造・販売。",
+            "market_cap": 6000000000000,
+            "current_price": 3500,
+            "per": 15.0, "pbr": 2.5, "eps": 233.0, "bps": 1400.0, "roe": 16.6, "roa": 8.0,
+            "revenue": 1000000000000, "operating_profit": 250000000000, "net_profit": 180000000000,
+            "total_assets": 3000000000000, "equity": 2000000000000,
+            "operating_margin": 25.0, "net_margin": 18.0,
+            "shares_outstanding": 1700000000, "volume": 500000,
+            "tradingview_summary": {"summary": "Buy"},
+        },
+        {
+            "ticker": "9613",
+            "company_name": "NTTデータグループ",
+            "market": "JP",
+            "sector": "情報・通信業",
+            "industry": "情報サービス",
+            "country": "JP",
+            "website": "https://www.nttdata.com/",
+            "description": "システムインテグレーション。",
+            "market_cap": 5000000000000,
+            "current_price": 2500,
+            "per": 20.0, "pbr": 2.0, "eps": 125.0, "bps": 1250.0, "roe": 10.0, "roa": 5.0,
+            "revenue": 3000000000000, "operating_profit": 200000000000, "net_profit": 150000000000,
+            "total_assets": 8000000000000, "equity": 5000000000000,
+            "operating_margin": 6.7, "net_margin": 5.0,
+            "shares_outstanding": 2000000000, "volume": 800000,
+            "tradingview_summary": {"summary": "Hold"},
+        },
     ]
+
+    try:
+        snowflake_service.upsert_companies(companies_data)
+        print("Successfully inserted sample companies data.")
+    except Exception as e:
+        print(f"Error inserting sample companies data: {str(e)}")
 
     # earnings_calendarテーブルにサンプルデータを挿入
     calendar_data = [
         {
-            "code": "7203",
+            "ticker": "7203",
             "company_name": "トヨタ自動車",
-            "fiscal_year": 2024,
+            "fiscal_year": 2025,
             "fiscal_quarter": 3,
-            "announcement_date": date(2024, 2, 15).isoformat(),  # dateオブジェクトも文字列に変換
+            "announcement_date": date(2025, 8, 25).isoformat(),
             "created_at": current_time,
             "updated_at": current_time
         },
         {
-            "code": "9984",
+            "ticker": "9984",
             "company_name": "ソフトバンクグループ",
-            "fiscal_year": 2024,
+            "fiscal_year": 2025,
             "fiscal_quarter": 3,
-            "announcement_date": date(2024, 2, 8).isoformat(),   # dateオブジェクトも文字列に変換
+            "announcement_date": date(2025, 8, 26).isoformat(),
             "created_at": current_time,
             "updated_at": current_time
         }
     ]
 
-    # データの挿入
     try:
-        table_ref = f"{project_id}.{dataset}.earnings_companies"
-        errors = client.insert_rows_json(table_ref, companies_data)
-        if errors == []:
-            print("Successfully inserted rows into earnings_companies")
-        else:
-            print("Errors occurred while inserting into earnings_companies:", errors)
-
-        table_ref = f"{project_id}.{dataset}.earnings_calendar"
-        errors = client.insert_rows_json(table_ref, calendar_data)
-        if errors == []:
-            print("Successfully inserted rows into earnings_calendar")
-        else:
-            print("Errors occurred while inserting into earnings_calendar:", errors)
-
+        snowflake_service.upsert_earnings_calendar(calendar_data)
+        print("Successfully inserted sample earnings calendar data.")
     except Exception as e:
-        print(f"Error inserting data: {str(e)}")
+        print(f"Error inserting sample earnings calendar data: {str(e)}")
 
 def init_db():
-    client = bigquery.Client()
-    project_id = os.getenv('GOOGLE_CLOUD_PROJECT')
-    dataset = "BuffetCodeClone"
-    
+    snowflake_service = SnowflakeService() # SnowflakeServiceのインスタンスを作成
     try:
-        # データセットの存在確認、なければ作成
-        dataset_ref = f"{project_id}.{dataset}"
-        try:
-            client.get_dataset(dataset_ref)
-            print(f"Dataset {dataset_ref} already exists")
-        except Exception:
-            dataset = bigquery.Dataset(dataset_ref)
-            dataset.location = "US"
-            client.create_dataset(dataset)
-            print(f"Created dataset {dataset_ref}")
-
-        # 既存のテーブルを削除
-        try:
-            client.delete_table(f"{project_id}.{dataset}.earnings_calendar")
-            print("Deleted existing earnings_calendar table")
-        except Exception:
-            print("earnings_calendar table does not exist")
-
-        try:
-            client.delete_table(f"{project_id}.{dataset}.earnings_companies")
-            print("Deleted existing earnings_companies table")
-        except Exception:
-            print("earnings_companies table does not exist")
-
-        # テーブルの作成（earnings_calendar）
-        earnings_calendar_table = bigquery.Table(
-            f"{project_id}.{dataset}.earnings_calendar",
-            schema=earnings_calendar_schema
-        )
-        earnings_calendar_table = client.create_table(earnings_calendar_table)
-        print(f"Created earnings_calendar table {earnings_calendar_table.table_id}")
-
-        # テーブルの作成（earnings_companies）
-        earnings_companies_table = bigquery.Table(
-            f"{project_id}.{dataset}.earnings_companies",
-            schema=earnings_companies_schema
-        )
-        earnings_companies_table = client.create_table(earnings_companies_table)
-        print(f"Created earnings_companies table {earnings_companies_table.table_id}")
-
-        # テーブルが利用可能になるまで少し待つ
-        print("Waiting for tables to be ready...")
-        time.sleep(5)  # 5秒待機
-
+        snowflake_service.initialize_database() # SnowflakeServiceの初期化メソッドを呼び出す
+        print("Snowflake database initialized successfully.")
+        
         # サンプルデータの挿入
-        insert_sample_data(client, project_id, dataset)
-
-        # データ確認のためのクエリ実行
-        for table_name in ["earnings_calendar", "earnings_companies"]:
-            query = f"""
-            SELECT COUNT(*) as count
-            FROM `{project_id}.{dataset}.{table_name}`
-            """
-            query_job = client.query(query)
-            results = query_job.result()
-            for row in results:
-                print(f"Number of rows in {table_name}: {row.count}")
-
+        insert_sample_data(snowflake_service)
+        
     except Exception as e:
-        print(f"An error occurred: {str(e)}")
+        print(f"An error occurred during Snowflake DB initialization: {str(e)}")
 
 if __name__ == "__main__":
     init_db() 

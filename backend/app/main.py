@@ -1,36 +1,39 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .api.endpoints import companies, earnings_calendar, financial_reports, admin
+from fastapi.staticfiles import StaticFiles
+import os
 
-app = FastAPI()
+from app.routers import admin, companies, chat
+from app.api.endpoints import admin as admin_endpoints, companies as companies_endpoints, earnings_calendar, financial_reports
+
+app = FastAPI(title="BizLens API", version="1.0.0")
 
 # CORS設定
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # フロントエンドのオリジン
+    allow_origins=["*"],  # 本番環境では適切なドメインを指定
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# 開発環境用の認証スキップ
-@app.middleware("http")
-async def add_dev_user(request: Request, call_next):
-    # 開発環境では常に管理者権限を持つように
-    request.state.user = {
-        "id": "1",
-        "email": "admin@example.com",
-        "role": "admin"
-    }
-    response = await call_next(request)
-    return response
-
-# ルーターの追加
-app.include_router(companies.router, prefix="/api/companies", tags=["companies"])
-app.include_router(earnings_calendar.router, prefix="/api/earnings", tags=["earnings-calendar"])
-app.include_router(financial_reports.router, prefix="/api/financial-reports", tags=["financial-reports"])
+# APIルーター
 app.include_router(admin.router, prefix="/api/admin", tags=["admin"])
+app.include_router(companies.router, prefix="/api/companies", tags=["companies"])
+app.include_router(chat.router, prefix="/api/chat", tags=["chat"])
 
-@app.get("/")
-async def root():
-    return {"message": "Welcome to BuffetCode API"}
+# APIエンドポイント
+app.include_router(admin_endpoints.router, prefix="/api/admin", tags=["admin"])
+app.include_router(companies_endpoints.router, prefix="/api/companies", tags=["companies"])
+app.include_router(earnings_calendar.router, prefix="/api/earnings", tags=["earnings"])
+app.include_router(financial_reports.router, prefix="/api/financial-reports", tags=["financial-reports"])
+
+# ヘルスチェック
+@app.get("/api/health")
+async def health_check():
+    return {"status": "healthy"}
+
+# Vercel用のハンドラー
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))

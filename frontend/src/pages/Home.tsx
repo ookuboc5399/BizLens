@@ -1,6 +1,8 @@
 import React from 'react';
 import { TradingViewChart } from '../components/TradingViewChart';
-import MarketHeatmap from '../components/MarketHeatmap';
+import { MarketDataDisplay } from '../components/MarketDataDisplay';
+import { NewsDisplay } from '../components/NewsDisplay';
+
 
 function Home() {
   return (
@@ -14,8 +16,9 @@ function Home() {
           
           {/* メインチャートエリア */}
           <div className="bg-gray-800 rounded-lg p-6 mb-8">
-            <div className="w-full">
-              <TradingViewChart symbol="^N225" />
+            <h2 className="text-xl font-bold mb-4">日経平均株価</h2>
+            <div className="w-full h-[400px]">
+              <TradingViewChart symbol="NIKKEI" />
             </div>
           </div>
 
@@ -24,51 +27,40 @@ function Home() {
             {/* マーケット概況 */}
             <div className="bg-gray-800 rounded-lg p-4 lg:col-span-2">
               <h3 className="text-lg font-bold mb-4">マーケット概況</h3>
-              <div className="flex items-center justify-center overflow-hidden">
-                <MarketHeatmap className="w-[700px] h-[350px] -mx-4" />
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <h4 className="text-sm font-semibold mb-2">主要指数</h4>
+                  <MarketDataDisplay type="market-data" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-semibold mb-2">業種別パフォーマンス</h4>
+                  <MarketDataDisplay type="sector-performance" />
+                </div>
               </div>
             </div>
 
             {/* 出来高分析 */}
             <div className="bg-gray-800 rounded-lg p-4">
               <h3 className="text-lg font-bold mb-4">出来高分析</h3>
-              <div className="h-48 bg-gray-700 rounded"></div>
+              <MarketDataDisplay type="volume-analysis" />
             </div>
 
             {/* 業種別パフォーマンス */}
             <div className="bg-gray-800 rounded-lg p-4">
               <h3 className="text-lg font-bold mb-4">業種別パフォーマンス</h3>
-              <div className="h-48 bg-gray-700 rounded"></div>
+              <MarketDataDisplay type="sector-performance" />
             </div>
 
             {/* 市場データ */}
             <div className="bg-gray-800 rounded-lg p-4">
               <h3 className="text-lg font-bold mb-4">市場データ</h3>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span>日経平均</span>
-                  <span className="text-red-500">35,000.00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>TOPIX</span>
-                  <span className="text-red-500">2,500.00</span>
-                </div>
-              </div>
+              <MarketDataDisplay type="market-data" />
             </div>
 
             {/* ニュースフィード */}
             <div className="bg-gray-800 rounded-lg p-4">
               <h3 className="text-lg font-bold mb-4">最新ニュース</h3>
-              <div className="space-y-2">
-                <div className="text-sm">
-                  <div className="text-gray-400">10:00</div>
-                  <div>市場動向ニュース...</div>
-                </div>
-                <div className="text-sm">
-                  <div className="text-gray-400">09:30</div>
-                  <div>経済指標の発表...</div>
-                </div>
-              </div>
+              <NewsDisplay />
             </div>
 
             {/* 市場カレンダー */}

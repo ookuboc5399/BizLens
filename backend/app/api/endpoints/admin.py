@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, status
 from typing import List, AsyncGenerator
 from fastapi.responses import StreamingResponse
 import json
@@ -7,10 +7,62 @@ import logging
 from ...services.companies.data_collector import CompanyDataCollector
 from ...services.financial_reports.financial_report_service import FinancialReportService
 from ...models.admin import CompanyUpdate
+from pydantic import BaseModel
+from supabase import Client
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
+
+from ...main import supabase
+
+class UserLogin(BaseModel):
+    email: str
+    password: str
+
+@router.post("/login")
+async def login_for_access_token(user_login: UserLogin):
+    try:
+        supabase_client = request.app.state.supabase
+        response = supabase_client.auth.sign_in_with_password({
+            "email": user_login.email,
+            "password": user_login.password,
+        })
+        
+        if response.user and response.session:
+            user_role = response.user.user_metadata.get("role")
+            
+            if user_role != "admin":
+                raise HTTPException(
+                    status_code=status.HTTP_403_FORBIDDEN,
+                    detail="Not authorized to access admin panel"
+                )
+
+            return {
+                "access_token": response.session.access_token,
+                "token_type": "bearer",
+                "user": {
+                    "id": response.user.id,
+                    "email": response.user.email,
+                    "role": user_role
+                }
+            }
+        else:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Incorrect email or password"
+            )
+    except Exception as e:
+        if hasattr(e, 'message') and "Invalid login credentials" in e.message:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Incorrect email or password"
+            )
+        logger.error(f"Login error: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="An error occurred during login"
+        )
 
 @router.get("/companies")
 async def list_companies():
@@ -94,7 +146,7 @@ async def collect_company_data():
         media_type="text/event-stream"
     )
 
-@router.post("/financial-reports/fetch")
+@router.post("/financial-reports/fetch", dependencies=[Depends(get_current_admin_user)])
 async def fetch_financial_reports():
     """決算資料の取得を開始"""
     async def event_generator():
