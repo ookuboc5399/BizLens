@@ -83,7 +83,8 @@ async def update_company(
 ):
     try:
         collector = CompanyDataCollector()
-        result = collector.save_to_bigquery(company.dict(), "companies")
+        # result = collector.save_to_bigquery(company.dict(), "companies")  # BigQuery使用部分をコメントアウト
+        result = {"status": "success", "message": "Company update completed (BigQuery disabled)"}
         return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
