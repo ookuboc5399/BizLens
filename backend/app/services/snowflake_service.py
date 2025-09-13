@@ -36,36 +36,44 @@ class SnowflakeService:
         # and the order of values in the params tuple.
         columns = [
             'company_name', 'ticker', 'sector', 'industry', 'country', 'website',
-            'description', 'market_cap', 'employees', 'market', 'current_price',
+            'description', 'business_description', 'market_cap', 'employees', 'market', 'current_price',
             'shares_outstanding', 'volume', 'per', 'pbr', 'eps', 'bps', 'roe',
             'roa', 'revenue', 'operating_profit', 'net_profit', 'total_assets',
-            'equity', 'operating_margin', 'net_margin', 'tradingview_summary'
+            'equity', 'operating_margin', 'net_margin', 'dividend_yield', 'company_type', 'ceo'
         ]
         
-        merge_sql = f"""
-        MERGE INTO companies AS target
-        USING (SELECT %s AS ticker) AS source
-        ON target.ticker = source.ticker
-        WHEN NOT MATCHED THEN
-            INSERT ({', '.join(columns)})
-            VALUES ({', '.join(['%s'] * len(columns))});
-        """
-
         try:
             for company in companies_data:
+                # 国に基づいてテーブル名を決定
+                country = company.get('country', 'JP')
+                if country == 'JP':
+                    table_name = 'companies_jp'
+                elif country == 'CN':
+                    table_name = 'companies_cn'
+                else:
+                    table_name = 'companies_us'
+                
+                db_name = os.getenv("SNOWFLAKE_DATABASE")
+                schema_name = os.getenv("SNOWFLAKE_SCHEMA")
+                full_table_name = f"{db_name}.{schema_name}.{table_name}"
+                
+                merge_sql = f"""
+                MERGE INTO {full_table_name} AS target
+                USING (SELECT %s AS ticker) AS source
+                ON target.ticker = source.ticker
+                WHEN NOT MATCHED THEN
+                    INSERT ({', '.join(columns)})
+                    VALUES ({', '.join(['%s'] * len(columns))});
+                """
+
                 # Ensure all columns are present in the dictionary, with None as default
                 # Also, ensure the order of values matches the `columns` list.
                 params = [company.get(col) for col in columns]
                 # The ticker is used twice in the MERGE statement
                 final_params = [company.get('ticker')] + params
                 
-                # Convert tradingview_summary dict to JSON string for VARIANT type
-                summary_index = columns.index('tradingview_summary')
-                if final_params[summary_index + 1] is not None:
-                    final_params[summary_index + 1] = json.dumps(final_params[summary_index + 1])
-
                 cursor.execute(merge_sql, tuple(final_params))
-                print(f"Successfully merged data for ticker: {company.get('ticker')}")
+                print(f"Successfully merged data for ticker: {company.get('ticker')} to {table_name}")
             
             self.conn.commit()
             print("Upsert operation committed.")
@@ -102,7 +110,7 @@ class SnowflakeService:
             columns = [col[0] for col in cursor.description]
             results = []
             for row in cursor:
-                results.append(dict(zip(columns, row)))
+                results.append({col.lower(): val for col, val in zip(columns, row)})
             return results
         except Exception as e:
             print(f"Error executing query: {str(e)}")

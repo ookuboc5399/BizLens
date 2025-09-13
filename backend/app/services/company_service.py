@@ -119,29 +119,100 @@ class CompanyService:
             print(f"Error in collect_company_data: {str(e)}")
             raise
 
-    async def get_company_details(self, company_id: str):
-        # company_data = await self.bigquery.get_company_data(company_id)
-        # TODO: Implement get_company_data for Snowflake
-        company_data = {"ticker": "DUMMY"} # Dummy data
-        if not company_data:
+    async def get_company_details(self, ticker: str) -> Optional[Dict]:
+        """企業の詳細情報を取得"""
+        query = f"""
+        SELECT * FROM companies WHERE ticker = %s
+        """
+        try:
+            result = self.snowflake.query(query, (ticker,))
+            if not result:
+                print(f"No company data found for ticker: {ticker} in Snowflake.") # 追加
+                return None
+            
+            company_data = result[0]
+            print(f"Found company data for {ticker}: {company_data}") # 追加
+
+            # TODO: financial_reportsテーブルから時系列データを取得する
+            # とりあえずダミーデータを返す
+            financials = {
+                "revenue": [{"year": 2022, "value": 1000}, {"year": 2023, "value": 1200}],
+                "netIncome": [{"year": 2022, "value": 100}, {"year": 2023, "value": 150}],
+                "roe": [{"year": 2022, "value": 0.1}, {"year": 2023, "value": 0.12}],
+                "per": [{"year": 2022, "value": 15}, {"year": 2023, "value": 18}],
+                "assets": [{"type": "Current", "value": 500}, {"type": "Fixed", "value": 1000}],
+                "liabilities": [{"type": "Current", "value": 300}, {"type": "Long-term", "value": 400}],
+                "equity": 800
+            }
+
+            return_data = {
+                "company": company_data,
+                "financials": financials
+            }
+            print(f"Returning data for {ticker}: {return_data}") # 追加
+            return return_data
+
+        except Exception as e:
+            print(f"Error getting company details for {ticker}: {e}")
             return None
 
-        # metrics = await self.bigquery.get_company_metrics(company_data.get('ticker'))
-        # financials = await self.bigquery.get_financial_history(company_data.get('ticker'))
-        # TODO: Implement get_company_metrics and get_financial_history for Snowflake
-        metrics = {}
-        financials = []
-
-        return {
-            "company": company_data,
-            "metrics": metrics,
-            "financials": financials
-        }
-
-    async def search_companies(self, query: str) -> List[dict]:
-        # return await self.bigquery.search_companies(query)
-        # TODO: Implement search_companies for Snowflake
-        return []
+    async def search_companies(self, query: str, page: int = 1, page_size: int = 10) -> Dict:
+        """
+        企業名またはティッカーで企業を検索し、ページネーションを適用します。
+        """
+        offset = (page - 1) * page_size
+        
+        # 検索クエリ
+        search_sql = f"""
+        SELECT 
+            ticker,
+            company_name,
+            market,
+            sector,
+            industry,
+            country,
+            market_cap,
+            current_price
+        FROM companies
+        WHERE company_name ILIKE %s OR ticker ILIKE %s
+        ORDER BY market_cap DESC
+        LIMIT %s OFFSET %s
+        """
+        
+        # 総件数を取得するクエリ
+        count_sql = f"""
+        SELECT COUNT(*) as total
+        FROM companies
+        WHERE company_name ILIKE %s OR ticker ILIKE %s
+        """
+        
+        like_query = f"%{query}%"
+        
+        try:
+            # 企業リストの取得
+            companies = self.snowflake.query(search_sql, (like_query, like_query, page_size, offset))
+            
+            # 総件数の取得
+            total_result = self.snowflake.query(count_sql, (like_query, like_query))
+            total = total_result[0]['total'] if total_result and len(total_result) > 0 and 'total' in total_result[0] else 0
+            
+            return {
+                "companies": companies,
+                "total": total,
+                "page": page,
+                "page_size": page_size,
+                "total_pages": (total + page_size - 1) // page_size
+            }
+        except Exception as e:
+            print(f"Error searching companies in Snowflake: {e}")
+            # エラーが発生した場合は空の結果を返すか、例外を再発生させる
+            return {
+                "companies": [],
+                "total": 0,
+                "page": page,
+                "page_size": page_size,
+                "total_pages": 0
+            }
 
     async def get_company(self, company_id: str):
         # return await self.bigquery.get_company_data(company_id)

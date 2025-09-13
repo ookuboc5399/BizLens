@@ -1,0 +1,86 @@
+API Response status: 200
+googleDriveService.ts:75 API Response ok: true
+googleDriveService.ts:76 API Response headers: {cache-control: 'no-cache, no-store, max-age=0, must-revalidate', content-encoding: 'gzip', content-length: '38', content-type: 'application/json; charset=UTF-8', date: 'Sat, 30 Aug 2025 05:45:55 GMT', …}
+googleDriveService.ts:96 API Response data: {files: Array(0)}
+googleDriveService.ts:99 取得されたフォルダ数: 0
+googleDriveService.ts:102 フォルダが見つかりませんでした。以下を確認してください:
+overrideMethod @ hook.js:608
+getFolders @ googleDriveService.ts:102
+await in getFolders
+loadFolders @ FinancialReports.tsx:26
+(anonymous) @ FinancialReports.tsx:19
+commitHookEffectListMount @ chunk-IHIMGCD5.js?v=634ecdf5:16915
+invokePassiveEffectMountInDEV @ chunk-IHIMGCD5.js?v=634ecdf5:18324
+invokeEffectsInDev @ chunk-IHIMGCD5.js?v=634ecdf5:19701
+commitDoubleInvokeEffectsInDEV @ chunk-IHIMGCD5.js?v=634ecdf5:19686
+flushPassiveEffectsImpl @ chunk-IHIMGCD5.js?v=634ecdf5:19503
+flushPassiveEffects @ chunk-IHIMGCD5.js?v=634ecdf5:19447
+(anonymous) @ chunk-IHIMGCD5.js?v=634ecdf5:19328
+workLoop @ chunk-IHIMGCD5.js?v=634ecdf5:197
+flushWork @ chunk-IHIMGCD5.js?v=634ecdf5:176
+performWorkUntilDeadline @ chunk-IHIMGCD5.js?v=634ecdf5:384Understand this warning
+googleDriveService.ts:103 1. フォルダIDが正しいか
+overrideMethod @ hook.js:608
+getFolders @ googleDriveService.ts:103
+await in getFolders
+loadFolders @ FinancialReports.tsx:26
+(anonymous) @ FinancialReports.tsx:19
+commitHookEffectListMount @ chunk-IHIMGCD5.js?v=634ecdf5:16915
+invokePassiveEffectMountInDEV @ chunk-IHIMGCD5.js?v=634ecdf5:18324
+invokeEffectsInDev @ chunk-IHIMGCD5.js?v=634ecdf5:19701
+commitDoubleInvokeEffectsInDEV @ chunk-IHIMGCD5.js?v=634ecdf5:19686
+flushPassiveEffectsImpl @ chunk-IHIMGCD5.js?v=634ecdf5:19503
+flushPassiveEffects @ chunk-IHIMGCD5.js?v=634ecdf5:19447
+(anonymous) @ chunk-IHIMGCD5.js?v=634ecdf5:19328
+workLoop @ chunk-IHIMGCD5.js?v=634ecdf5:197
+flushWork @ chunk-IHIMGCD5.js?v=634ecdf5:176
+performWorkUntilDeadline @ chunk-IHIMGCD5.js?v=634ecdf5:384Understand this warning
+googleDriveService.ts:104 2. フォルダが共有設定されているか
+overrideMethod @ hook.js:608
+getFolders @ googleDriveService.ts:104
+await in getFolders
+loadFolders @ FinancialReports.tsx:26
+(anonymous) @ FinancialReports.tsx:19
+commitHookEffectListMount @ chunk-IHIMGCD5.js?v=634ecdf5:16915
+invokePassiveEffectMountInDEV @ chunk-IHIMGCD5.js?v=634ecdf5:18324
+invokeEffectsInDev @ chunk-IHIMGCD5.js?v=634ecdf5:19701
+commitDoubleInvokeEffectsInDEV @ chunk-IHIMGCD5.js?v=634ecdf5:19686
+flushPassiveEffectsImpl @ chunk-IHIMGCD5.js?v=634ecdf5:19503
+flushPassiveEffects @ chunk-IHIMGCD5.js?v=634ecdf5:19447
+(anonymous) @ chunk-IHIMGCD5.js?v=634ecdf5:19328
+workLoop @ chunk-IHIMGCD5.js?v=634ecdf5:197
+flushWork @ chunk-IHIMGCD5.js?v=634ecdf5:176
+performWorkUntilDeadline @ chunk-IHIMGCD5.js?v=634ecdf5:384Understand this warning
+googleDriveService.ts:105 3. APIキーに適切な権限があるか
+overrideMethod @ hook.js:608
+getFolders @ googleDriveService.ts:105
+await in getFolders
+loadFolders @ FinancialReports.tsx:26
+(anonymous) @ FinancialReports.tsx:19
+commitHookEffectListMount @ chunk-IHIMGCD5.js?v=634ecdf5:16915
+invokePassiveEffectMountInDEV @ chunk-IHIMGCD5.js?v=634ecdf5:18324
+invokeEffectsInDev @ chunk-IHIMGCD5.js?v=634ecdf5:19701
+commitDoubleInvokeEffectsInDEV @ chunk-IHIMGCD5.js?v=634ecdf5:19686
+flushPassiveEffectsImpl @ chunk-IHIMGCD5.js?v=634ecdf5:19503
+flushPassiveEffects @ chunk-IHIMGCD5.js?v=634ecdf5:19447
+(anonymous) @ chunk-IHIMGCD5.js?v=634ecdf5:19328
+workLoop @ chunk-IHIMGCD5.js?v=634ecdf5:197
+flushWork @ chunk-IHIMGCD5.js?v=634ecdf5:176
+performWorkUntilDeadline @ chunk-IHIMGCD5.js?v=634ecdf5:384Understand this warning
+googleDriveService.ts:106 4. 共有ドライブの場合は、OAuth認証が必要な場合があります
+overrideMethod @ hook.js:608
+getFolders @ googleDriveService.ts:106
+await in getFolders
+loadFolders @ FinancialReports.tsx:26
+(anonymous) @ FinancialReports.tsx:19
+commitHookEffectListMount @ chunk-IHIMGCD5.js?v=634ecdf5:16915
+invokePassiveEffectMountInDEV @ chunk-IHIMGCD5.js?v=634ecdf5:18324
+invokeEffectsInDev @ chunk-IHIMGCD5.js?v=634ecdf5:19701
+commitDoubleInvokeEffectsInDEV @ chunk-IHIMGCD5.js?v=634ecdf5:19686
+flushPassiveEffectsImpl @ chunk-IHIMGCD5.js?v=634ecdf5:19503
+flushPassiveEffects @ chunk-IHIMGCD5.js?v=634ecdf5:19447
+(anonymous) @ chunk-IHIMGCD5.js?v=634ecdf5:19328
+workLoop @ chunk-IHIMGCD5.js?v=634ecdf5:197
+flushWork @ chunk-IHIMGCD5.js?v=634ecdf5:176
+performWorkUntilDeadline @ chunk-IHIMGCD5.js?v=634ecdf5:384Understand this warning
+googleDriveService.ts:107 5. マイドライブにフォルダを移動してみてください

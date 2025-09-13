@@ -33,29 +33,12 @@ function Home() {
                   <MarketDataDisplay type="market-data" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold mb-2">業種別パフォーマンス</h4>
-                  <MarketDataDisplay type="sector-performance" />
+                  <h4 className="text-sm font-semibold mb-2">出来高分析</h4>
+                  <MarketDataDisplay type="volume-analysis" />
                 </div>
               </div>
             </div>
 
-            {/* 出来高分析 */}
-            <div className="bg-gray-800 rounded-lg p-4">
-              <h3 className="text-lg font-bold mb-4">出来高分析</h3>
-              <MarketDataDisplay type="volume-analysis" />
-            </div>
-
-            {/* 業種別パフォーマンス */}
-            <div className="bg-gray-800 rounded-lg p-4">
-              <h3 className="text-lg font-bold mb-4">業種別パフォーマンス</h3>
-              <MarketDataDisplay type="sector-performance" />
-            </div>
-
-            {/* 市場データ */}
-            <div className="bg-gray-800 rounded-lg p-4">
-              <h3 className="text-lg font-bold mb-4">市場データ</h3>
-              <MarketDataDisplay type="market-data" />
-            </div>
 
             {/* ニュースフィード */}
             <div className="bg-gray-800 rounded-lg p-4">

@@ -1,2 +1,14 @@
 2025-01-02 17:28:45,658 - app.services.financial_reports.financial_report_service_selenium - INFO - TDNetScraper initialized
 2025-01-02 17:28:45,658 - app.services.financial_reports.financial_report_service - INFO - FinancialReportService initialized
+2025-09-12 23:30:33,422 - app.services.financial_reports.financial_report_service - INFO - FinancialReportService initialized
+2025-09-12 23:30:33,423 - app.services.financial_reports.financial_report_service - INFO - get_company_reports method called for company_id: 7203 (BigQuery functionality disabled)
+2025-09-12 23:30:33,429 - app.services.financial_reports.financial_report_service - INFO - FinancialReportService initialized
+2025-09-12 23:30:33,429 - app.services.financial_reports.financial_report_service - INFO - get_company_reports method called for company_id: 7203 (BigQuery functionality disabled)
+2025-09-12 23:43:18,091 - app.services.financial_reports.financial_report_service - INFO - FinancialReportService initialized
+2025-09-12 23:43:18,091 - app.services.financial_reports.financial_report_service - INFO - get_company_reports method called for company_id: 7203 (BigQuery functionality disabled)
+2025-09-12 23:43:19,305 - app.services.financial_reports.financial_report_service - INFO - FinancialReportService initialized
+2025-09-12 23:43:19,305 - app.services.financial_reports.financial_report_service - INFO - get_company_reports method called for company_id: 7203 (BigQuery functionality disabled)
+2025-09-12 23:45:23,621 - app.services.financial_reports.financial_report_service - INFO - FinancialReportService initialized
+2025-09-12 23:45:23,621 - app.services.financial_reports.financial_report_service - INFO - get_company_reports method called for company_id: 7203 (BigQuery functionality disabled)
+2025-09-12 23:45:24,837 - app.services.financial_reports.financial_report_service - INFO - FinancialReportService initialized
+2025-09-12 23:45:24,837 - app.services.financial_reports.financial_report_service - INFO - get_company_reports method called for company_id: 7203 (BigQuery functionality disabled)

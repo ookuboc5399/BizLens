@@ -4,6 +4,7 @@ import { Input } from '../components/ui/input';
 import { Progress } from '../components/ui/progress';
 import { Button } from '../components/ui/button';
 import { Search, Loader2 } from 'lucide-react';
+import { formatCurrency } from '../utils/format';
 import {
   Select,
   SelectContent,
@@ -30,6 +31,8 @@ interface Company {
   market_cap: number;
   current_price: number;
   currency: string;
+  company_type: string | null;
+  ceo: string | null;
 }
 
 function CompanySearch() {
@@ -49,6 +52,9 @@ function CompanySearch() {
   const [selectedMarket, setSelectedMarket] = useState<string>("");
   const [selectedCountry, setSelectedCountry] = useState<string>("");
   const [selectedSector, setSelectedSector] = useState<string>("");
+  const [sectors, setSectors] = useState<string[]>([]);
+  const [countries, setCountries] = useState<string[]>([]);
+  const [loadingOptions, setLoadingOptions] = useState(true);
 
   const handleSearch = async (query: string) => {
     if (!query.trim()) {
@@ -95,6 +101,35 @@ function CompanySearch() {
       setLoading(false);
     }
   };
+
+  // SECTORとCOUNTRYの一覧を取得
+  useEffect(() => {
+    const fetchOptions = async () => {
+      try {
+        setLoadingOptions(true);
+        
+        // SECTORの一覧を取得
+        const sectorsResponse = await fetch('/api/companies/sectors');
+        if (sectorsResponse.ok) {
+          const sectorsData = await sectorsResponse.json();
+          setSectors(sectorsData.sectors);
+        }
+        
+        // COUNTRYの一覧を取得
+        const countriesResponse = await fetch('/api/companies/countries');
+        if (countriesResponse.ok) {
+          const countriesData = await countriesResponse.json();
+          setCountries(countriesData.countries);
+        }
+      } catch (error) {
+        console.error('オプション取得エラー:', error);
+      } finally {
+        setLoadingOptions(false);
+      }
+    };
+
+    fetchOptions();
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -182,6 +217,26 @@ function CompanySearch() {
     };
   }, [searchTimer]);
 
+  // 国コードを日本語名に変換
+  const getCountryName = (countryCode: string): string => {
+    const countryMap: { [key: string]: string } = {
+      'JP': '日本',
+      'US': 'アメリカ',
+      'CN': '中国',
+      'KR': '韓国',
+      'TW': '台湾',
+      'HK': '香港',
+      'SG': 'シンガポール',
+      'IN': 'インド',
+      'GB': 'イギリス',
+      'DE': 'ドイツ',
+      'FR': 'フランス',
+      'CA': 'カナダ',
+      'AU': 'オーストラリア',
+    };
+    return countryMap[countryCode] || countryCode;
+  };
+
   return (
     <div className="max-w-2xl mx-auto p-4">
       <div className="relative">
@@ -224,7 +279,8 @@ function CompanySearch() {
               <SelectContent>
                 <SelectItem value="all">すべての市場</SelectItem>
                 <SelectItem value="US">米国市場</SelectItem>
-                <SelectItem value="China">中国市場</SelectItem>
+                <SelectItem value="JP">日本市場</SelectItem>
+                <SelectItem value="CN">中国市場</SelectItem>
               </SelectContent>
             </Select>
 
@@ -234,8 +290,11 @@ function CompanySearch() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">すべての国</SelectItem>
-                <SelectItem value="US">アメリカ</SelectItem>
-                <SelectItem value="China">中国</SelectItem>
+                {countries.map((country) => (
+                  <SelectItem key={country} value={country}>
+                    {getCountryName(country)}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
 
@@ -245,11 +304,11 @@ function CompanySearch() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">すべての業種</SelectItem>
-                <SelectItem value="Technology">テクノロジー</SelectItem>
-                <SelectItem value="Finance">金融</SelectItem>
-                <SelectItem value="Healthcare">ヘルスケア</SelectItem>
-                <SelectItem value="Consumer">消費財</SelectItem>
-                <SelectItem value="Industrial">工業</SelectItem>
+                {sectors.map((sector) => (
+                  <SelectItem key={sector} value={sector}>
+                    {sector}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
@@ -301,11 +360,11 @@ function CompanySearch() {
               >
                 <div className="flex items-center">
                   <div className="flex-1">
-                    <div className="text-base">
+                    <div className="text-base font-semibold text-gray-800">
                       {company.company_name}
                     </div>
                     <div className="text-sm text-gray-500 flex flex-wrap items-center gap-2">
-                      <span className="font-medium">{company.ticker}</span>
+                      <span className="font-bold text-gray-800">{company.ticker}</span>
                       <span className="text-gray-300">|</span>
                       <span className="bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full text-xs">
                         {company.market}
@@ -314,12 +373,31 @@ function CompanySearch() {
                       <span className="bg-gray-50 text-gray-600 px-2 py-0.5 rounded-full text-xs">
                         {company.sector}
                       </span>
+                      <span className="text-gray-300">|</span>
+                      <span className={`px-2 py-0.5 rounded-full text-xs ${
+                        company.company_type === 'LISTED' 
+                          ? 'bg-blue-50 text-blue-700' 
+                          : company.company_type === 'STARTUP'
+                          ? 'bg-green-50 text-green-700'
+                          : 'bg-orange-50 text-orange-700'
+                      }`}>
+                        {company.company_type === 'LISTED' ? '上場' : 
+                         company.company_type === 'STARTUP' ? 'スタートアップ' : 
+                         company.company_type === 'PRIVATE' ? '非上場' : 'N/A'}
+                      </span>
+                      {company.ceo && (
+                        <>
+                          <span className="text-gray-300">|</span>
+                          <span className="text-gray-600 text-xs">
+                            CEO: {company.ceo}
+                          </span>
+                        </>
+                      )}
                       {company.market_cap && (
                         <>
                           <span className="text-gray-300">|</span>
                           <span className="bg-green-50 text-green-700 px-2 py-0.5 rounded-full text-xs">
-                            {company.currency === 'USD' ? '$' : '¥'}
-                            {(company.market_cap / 1000000).toFixed(0)}M
+                            {formatCurrency(company.market_cap, company.currency)}
                           </span>
                         </>
                       )}

@@ -13,6 +13,26 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 // 型定義
+export interface Company {
+  ticker: string;
+  company_name: string;
+  market: string;
+  sector: string;
+  industry: string;
+  country: string;
+  website: string;
+  business_description: string;
+  market_cap: number | null;
+  current_price: number | null;
+  per: number | null;
+  pbr: number | null;
+  roe: number | null;
+  roa: number | null;
+  dividend_yield: number | null;
+  company_type: string | null;
+  ceo: string | null;
+}
+
 export interface CompanyMetrics {
   // 企業メトリクスの型定義
 }

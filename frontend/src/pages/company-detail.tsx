@@ -6,56 +6,75 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { Button } from "@/components/ui/button"
 import { Chart } from "react-google-charts"
 import { apiClient } from "@/api/client"
+import { formatNumber } from "@/utils/format";
 
-interface CompanyData {
-  id: string;
-  name: string;
-  code: string;
-  description?: string;
-  financials: {
-    revenue: { year: number; value: number }[];
-    netIncome: { year: number; value: number }[];
-    roe: { year: number; value: number }[];
-    per: { year: number; value: number }[];
-    assets: { type: string; value: number }[];
-    liabilities: { type: string; value: number }[];
-    equity: number;
-  };
+interface Company {
+  ticker: string;
+  company_name: string;
+  sector: string;
+  industry: string;
+  country: string;
+  website: string;
+  description: string;
+  market_cap: number;
+  employees: number;
+  market: string;
+  current_price: number;
+}
+
+interface Financials {
+  revenue: { year: number; value: number }[];
+  netIncome: { year: number; value: number }[];
+  roe: { year: number; value: number }[];
+  per: { year: number; value: number }[];
+  assets: { type: string; value: number }[];
+  liabilities: { type: string; value: number }[];
+  equity: number;
+}
+
+interface CompanyDetailsData {
+  company: Company;
+  financials: Financials;
 }
 
 export function CompanyDetailPage() {
-  const { id } = useParams();
-  const [company, setCompany] = useState<CompanyData | null>(null);
+  const { id: ticker } = useParams<{ id: string }>();
+  const [details, setDetails] = useState<CompanyDetailsData | null>(null);
   const [activeTab, setActiveTab] = useState("overview");
   const [isLoading, setIsLoading] = useState(true);
 
+  console.log("Ticker:", ticker); // 追加
+
   useEffect(() => {
-    const fetchCompany = async () => {
+    const fetchDetails = async () => {
+      if (!ticker) return;
       try {
         setIsLoading(true);
-        if (id) {
-          const response = await apiClient.getCompany(id);
-          setCompany(response);
+        const response = await fetch(`/api/companies/${ticker}/details`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch company details");
         }
+        const data: CompanyDetailsData = await response.json();
+        console.log("Received data from API:", data); // 追加
+        setDetails(data);
       } catch (error) {
-        console.error("Error fetching company:", error);
+        console.error("Error fetching company details:", error);
       } finally {
         setIsLoading(false);
       }
     };
 
-    if (id) {
-      fetchCompany();
-    }
-  }, [id]);
+    fetchDetails();
+  }, [ticker]);
 
   useEffect(() => {
-    if (!company || isLoading) return;
+    if (!details || isLoading) return;
     // Google Charts will automatically handle the rendering
-  }, [company, activeTab, isLoading]);
+  }, [details, activeTab, isLoading]);
 
   const getChartData = () => {
-    if (!company) return null;
+    if (!details) return null;
+    const { company, financials } = details;
 
     switch (activeTab) {
       case "overview":
@@ -63,11 +82,11 @@ export function CompanyDetailPage() {
           title: "主要財務指標の推移",
           data: [
             ["年度", "売上高", "純利益", "ROE"],
-            ...company.financials.revenue.map((item, index) => [
+            ...financials.revenue.map((item, index) => [
               item.year.toString(),
               item.value,
-              company.financials.netIncome[index].value,
-              company.financials.roe[index].value,
+              financials.netIncome[index].value,
+              financials.roe[index].value,
             ]),
           ],
         };
@@ -76,7 +95,7 @@ export function CompanyDetailPage() {
           title: "PER推移",
           data: [
             ["年度", "PER"],
-            ...company.financials.per.map((item) => [
+            ...financials.per.map((item) => [
               item.year.toString(),
               item.value,
             ]),
@@ -87,7 +106,7 @@ export function CompanyDetailPage() {
           title: "純利益推移",
           data: [
             ["年度", "純利益"],
-            ...company.financials.netIncome.map((item) => [
+            ...financials.netIncome.map((item) => [
               item.year.toString(),
               item.value,
             ]),
@@ -98,9 +117,9 @@ export function CompanyDetailPage() {
           title: "バランスシート",
           data: [
             ["項目", "金額"],
-            ...company.financials.assets.map((item) => [item.type, item.value]),
-            ...company.financials.liabilities.map((item) => [item.type, item.value]),
-            ["純資産", company.financials.equity],
+            ...financials.assets.map((item) => [item.type, item.value]),
+            ...financials.liabilities.map((item) => [item.type, item.value]),
+            ["純資産", financials.equity],
           ],
         };
       default:
@@ -118,7 +137,7 @@ export function CompanyDetailPage() {
     );
   }
 
-  if (!company) {
+  if (!details) {
     return (
       <div className="max-w-7xl mx-auto p-4">
         <p className="text-lg text-red-600">企業情報が見つかりませんでした。</p>
@@ -126,16 +145,24 @@ export function CompanyDetailPage() {
     );
   }
 
+  const { company, financials } = details;
+
   return (
     <div className="max-w-7xl mx-auto p-4">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold">{company.name}</h1>
-        <p className="text-lg text-gray-600">{company.code}</p>
-        {company.description && (
-          <p className="mt-4 text-gray-700">{company.description}</p>
+        <h1 className="text-3xl font-bold">{company.company_name}</h1>
+        <p className="text-lg text-gray-600">{company.ticker}</p>
+        {company.business_description && (
+          <p className="mt-4 text-gray-700">{company.business_description}</p>
+        )}
+        {company.market_cap && (
+          <p className="text-lg text-gray-600">時価総額: {formatNumber(company.market_cap)}</p>
+        )}
+        {company.current_price && (
+          <p className="text-lg text-gray-600">現在価格: {formatNumber(company.current_price)}</p>
         )}
         <div className="mt-4">
-          <Link to={`/companies/${company.code}/comparison`}>
+          <Link to={`/companies/${company.ticker}/comparison`}>
             <Button variant="outline">企業比較</Button>
           </Link>
         </div>

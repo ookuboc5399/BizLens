@@ -7,6 +7,7 @@ import CompanyComparison from './pages/CompanyComparison';
 import EarningsCalendar from './pages/EarningsCalendar';
 import FinancialReports from './pages/FinancialReports';
 import FinancialReportDetail from './pages/FinancialReportDetail';
+import AuthCallback from './pages/AuthCallback';
 import { AdminRoute } from './components/AdminRoute';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import Login from './pages/Login';
@@ -72,6 +73,10 @@ function App({ supabase }: AppProps) {
           <Route
             path="/financial-reports"
             element={<FinancialReports />}
+          />
+          <Route
+            path="/auth/callback"
+            element={<AuthCallback />}
           />
           <Route
             path="/financial-reports/:companyId"

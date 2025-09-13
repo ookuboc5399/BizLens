@@ -6,6 +6,8 @@ interface TradingViewChartProps {
 
 export const TradingViewChart: React.FC<TradingViewChartProps> = ({ symbol }) => {
   const container = useRef<HTMLDivElement>(null);
+  
+  console.log('TradingViewChart: Loading symbol:', symbol);
 
   useEffect(() => {
     if (!container.current) return;
@@ -17,6 +19,7 @@ export const TradingViewChart: React.FC<TradingViewChartProps> = ({ symbol }) =>
       const initializeWidget = () => {
         if (window.TradingView && window.TradingView.widget) {
           if (container.current) {
+            console.log('TradingViewChart: Initializing widget for symbol:', symbol);
             new window.TradingView.widget({
               "width": "100%",
               "height": "400",

@@ -29,7 +29,7 @@ export const FinancialCharts: React.FC<FinancialChartsProps> = ({ data }) => {
     ],
     ...data.map(item => [
       item.year,
-      item.revenue,
+      item.revenue / 100, // 百万円から億円に変換
       item.grossProfitMargin,
       item.operatingMargin,
       item.netProfitMargin,
@@ -42,9 +42,9 @@ export const FinancialCharts: React.FC<FinancialChartsProps> = ({ data }) => {
     ['年度', '売上高営業利益', '営業利益', '当期純利益'],
     ...data.map(item => [
       item.year,
-      item.operatingProfit,
-      item.operatingProfit,
-      item.netIncome,
+      item.operatingProfit / 100, // 百万円から億円に変換
+      item.operatingProfit / 100, // 百万円から億円に変換
+      item.netIncome / 100, // 百万円から億円に変換
     ]),
   ];
 
@@ -68,7 +68,7 @@ export const FinancialCharts: React.FC<FinancialChartsProps> = ({ data }) => {
             4: { type: 'line', targetAxisIndex: 1 },
           },
           vAxes: {
-            0: { title: '売上高（百万円）', format: 'short' },
+            0: { title: '売上高（億円）', format: 'short' },
             1: { title: '比率（%）', format: '#.#%' },
           },
           bars: { groupWidth: '70%' },
@@ -85,7 +85,7 @@ export const FinancialCharts: React.FC<FinancialChartsProps> = ({ data }) => {
         data={profitData}
         options={{
           title: '利益推移',
-          vAxis: { title: '金額（百万円）', format: 'short' },
+          vAxis: { title: '金額（億円）', format: 'short' },
           hAxis: { title: '年度' },
           legend: { position: 'bottom' },
           isStacked: false,

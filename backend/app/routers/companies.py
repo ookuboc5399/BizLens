@@ -10,9 +10,11 @@ company_service = CompanyService()
 
 @router.get("/search")
 async def search_companies(
-    q: str = Query(..., description="Company name or stock code to search for"),
+    query: str = Query(..., description="Company name or stock code to search for"),
+    page: int = Query(1, ge=1),
+    page_size: int = Query(10, ge=1, le=100)
 ):
-    companies = await company_service.search_companies(q)
+    companies = await company_service.search_companies(query, page, page_size)
     return companies
 
 @router.get("/{company_id}")
@@ -22,11 +24,11 @@ async def get_company(company_id: str):
         raise HTTPException(status_code=404, detail="Company not found")
     return company
 
-@router.get("/{company_id}/details")
-async def get_company_details(company_id: str):
-    details = await company_service.get_company_details(company_id)
+@router.get("/{ticker}/details")
+async def get_company_details(ticker: str):
+    details = await company_service.get_company_details(ticker)
     if not details:
-        raise HTTPException(status_code=404, detail="Company not found")
+        raise HTTPException(status_code=404, detail="Company details not found")
     return details
 
 @router.get("/{company_id}/metrics")

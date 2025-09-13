@@ -1,4 +1,6 @@
 // Google Drive API サービス
+import { googleAuthService } from './googleAuthService';
+
 const GOOGLE_DRIVE_API_KEY = import.meta.env.VITE_GOOGLE_DRIVE_API_KEY || '';
 const GOOGLE_DRIVE_FOLDER_ID = import.meta.env.VITE_GOOGLE_DRIVE_FOLDER_ID || '';
 
@@ -54,13 +56,13 @@ export const googleDriveService = {
         return this.getMockFolders();
       }
 
-      // 共有ドライブ対応のクエリ
+      // APIキーを使用したクエリ（最新12個のフォルダを取得）
       const url = `https://www.googleapis.com/drive/v3/files?` +
         `q='${GOOGLE_DRIVE_FOLDER_ID}'+in+parents+and+mimeType='application/vnd.google-apps.folder'&` +
         `key=${GOOGLE_DRIVE_API_KEY}&` +
         `fields=files(id,name,mimeType,createdTime,modifiedTime)&` +
-        `supportsAllDrives=true&` +
-        `includeItemsFromAllDrives=true`;
+        `orderBy=modifiedTime desc&` +
+        `pageSize=12`;
       
       console.log('API URL:', url);
 
@@ -117,6 +119,54 @@ export const googleDriveService = {
       }
       
       return this.getMockFolders();
+    }
+  },
+
+  // フォルダを検索
+  async searchFolders(query: string): Promise<DriveFolder[]> {
+    try {
+      console.log('searchFolders開始 - 検索クエリ:', query);
+      
+      if (!GOOGLE_DRIVE_API_KEY || !GOOGLE_DRIVE_FOLDER_ID) {
+        console.warn('Google Drive API設定が不完全です');
+        return [];
+      }
+
+      // 検索クエリを使用したAPIリクエスト
+      const url = `https://www.googleapis.com/drive/v3/files?` +
+        `q='${GOOGLE_DRIVE_FOLDER_ID}'+in+parents+and+mimeType='application/vnd.google-apps.folder'and+name+contains+'${query}'&` +
+        `key=${GOOGLE_DRIVE_API_KEY}&` +
+        `fields=files(id,name,mimeType,createdTime,modifiedTime)&` +
+        `orderBy=modifiedTime desc`;
+      
+      console.log('検索API URL:', url);
+
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+        },
+      });
+      
+      console.log('検索API Response status:', response.status);
+      console.log('検索API Response ok:', response.ok);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Google Drive API error response:', errorText);
+        throw new Error(`Google Drive API error: ${response.status} - ${errorText}`);
+      }
+
+      const data = await response.json();
+      console.log('検索API Response data:', data);
+      
+      const files = data.files || [];
+      console.log('検索で見つかったフォルダ数:', files.length);
+      
+      return files;
+    } catch (error) {
+      console.error('フォルダ検索エラー:', error);
+      return [];
     }
   },
 

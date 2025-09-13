@@ -11,7 +11,7 @@ interface EarningsData {
 
 interface CompanyEarnings {
   code: string;
-  name: string;
+  company_name: string;
   market: string;
   fiscal_year: string;
   quarter: string;
@@ -206,7 +206,7 @@ function EarningsCalendar() {
                       <div className="flex justify-between items-center">
                         <div>
                           <h4 className="font-semibold">
-                            {company.name} ({company.code})
+                            {company.company_name} ({company.code})
                           </h4>
                           <p className="text-sm text-gray-500">
                             {company.market} - {company.fiscal_year}年度{company.quarter}

@@ -6,6 +6,7 @@ import { TradingViewChart } from '../components/TradingViewChart';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { Skeleton } from '../components/ui/skeleton';
 import { useAuth } from '../hooks/useAuth';
+import { formatNumber, formatFinancialData } from '../utils/format';
 
 interface CompanyData {
   ticker: string;
@@ -75,7 +76,7 @@ interface CompanyDetailProps {
 
 export default function CompanyDetail({ supabase }: CompanyDetailProps) {
   const { companyId } = useParams<{ companyId: string }>();
-  const { isAdmin } = useAuth(supabase);
+  const { user, isAdmin } = useAuth();
   const [company, setCompany] = useState<CompanyData | null>(null);
   const [financialHistory, setFinancialHistory] = useState<FinancialHistory[]>([]);
   const [loading, setLoading] = useState(true);
@@ -85,22 +86,23 @@ export default function CompanyDetail({ supabase }: CompanyDetailProps) {
       try {
         setLoading(true);
         console.log('Fetching company data for ticker:', companyId);
-        const response = await fetch(`/api/companies/${companyId}`);
-        if (!response.ok) {
+        
+        // 企業データを取得
+        const companyResponse = await fetch(`/api/companies/${companyId}`);
+        if (!companyResponse.ok) {
           throw new Error('Failed to fetch company data');
         }
-        const data = await response.json();
-        console.log('Company data:', data);
-        setCompany(data);
-
-        // 財務データの取得
-        const historyResponse = await fetch(`/api/companies/${companyId}/financial-history`);
-        if (!historyResponse.ok) {
-          throw new Error('Failed to fetch financial history');
+        const companyData = await companyResponse.json();
+        console.log('Company data:', companyData);
+        setCompany(companyData);
+        
+        // 財務履歴データを取得
+        const financialResponse = await fetch(`/api/companies/${companyId}/financial-history`);
+        if (financialResponse.ok) {
+          const financialData = await financialResponse.json();
+          console.log('Financial history data:', financialData);
+          setFinancialHistory(financialData.data || []);
         }
-        const historyData = await historyResponse.json();
-        console.log('Financial history:', historyData);
-        setFinancialHistory(historyData.data || []);
       } catch (error) {
         console.error('Error fetching company data:', error);
       } finally {
@@ -127,8 +129,14 @@ export default function CompanyDetail({ supabase }: CompanyDetailProps) {
     return <div className="p-4">企業情報が見つかりませんでした。</div>;
   }
 
-  const formatNumber = (num: number) => {
-    return new Intl.NumberFormat('ja-JP').format(num);
+  // TradingView用のシンボルを生成
+  const getTradingViewSymbol = (ticker: string, market: string) => {
+    if (market === 'JP') {
+      return `${ticker}.T`;
+    } else if (market === 'US') {
+      return ticker;
+    }
+    return ticker;
   };
 
   return (
@@ -182,7 +190,7 @@ export default function CompanyDetail({ supabase }: CompanyDetailProps) {
             <CardTitle>株価チャート</CardTitle>
           </CardHeader>
           <CardContent>
-            <TradingViewChart symbol={`${companyId}.T`} />
+            <TradingViewChart symbol={getTradingViewSymbol(company.ticker, company.market)} />
           </CardContent>
         </Card>
       </div>
@@ -197,7 +205,7 @@ export default function CompanyDetail({ supabase }: CompanyDetailProps) {
         <TabsContent value="financial">
           <Card>
           <CardHeader>
-            <CardTitle>財務情報（{new Date(financialHistory[0]?.date).toLocaleDateString()}）</CardTitle>
+            <CardTitle>財務情報{financialHistory.length > 0 && financialHistory[0]?.date ? `（${new Date(financialHistory[0].date).toLocaleDateString()}）` : ''}</CardTitle>
           </CardHeader>
             <CardContent>
               <div className="overflow-x-auto">
@@ -206,19 +214,19 @@ export default function CompanyDetail({ supabase }: CompanyDetailProps) {
                     <div>
                       <div className="text-sm text-gray-600">売上高</div>
                       <div className="text-xl font-bold">
-                        ¥{financialHistory[0].revenue ? formatNumber(financialHistory[0].revenue / 1000000) + 'M' : '-'}
+                        {formatFinancialData(financialHistory[0].revenue, company.currency)}
                       </div>
                     </div>
                     <div>
                       <div className="text-sm text-gray-600">営業利益</div>
                       <div className="text-xl font-bold">
-                        {company.currency === 'USD' ? '$' : '¥'}{financialHistory[0].operating_income ? formatNumber(financialHistory[0].operating_income / 1000000) + 'M' : '-'}
+                        {formatFinancialData(financialHistory[0].operating_income, company.currency)}
                       </div>
                     </div>
                     <div>
                       <div className="text-sm text-gray-600">純利益</div>
                       <div className="text-xl font-bold">
-                        ¥{financialHistory[0].net_income ? formatNumber(financialHistory[0].net_income / 1000000) + 'M' : '-'}
+                        {formatFinancialData(financialHistory[0].net_income, company.currency)}
                       </div>
                     </div>
                     <div>
@@ -267,10 +275,6 @@ export default function CompanyDetail({ supabase }: CompanyDetailProps) {
                   <h3 className="font-semibold mb-2">事業概要</h3>
                   <p className="whitespace-pre-wrap">{company.business_description || '-'}</p>
                 </div>
-                <div>
-                  <h3 className="font-semibold mb-2">データソース</h3>
-                  <p>{company.data_source} (最終更新: {new Date(company.last_updated).toLocaleString()})</p>
-                </div>
               </div>
             </CardContent>
           </Card>
@@ -282,16 +286,12 @@ export default function CompanyDetail({ supabase }: CompanyDetailProps) {
               <CardTitle>決算資料</CardTitle>
             </CardHeader>
             <CardContent>
-              {isAdmin ? (
-                <Link 
-                  to={`/financial-reports/${company.ticker}`}
-                  className="text-blue-500 hover:text-blue-700"
-                >
-                  決算資料を閲覧する →
-                </Link>
-              ) : (
-                <p className="text-gray-500">この機能を利用するには管理者権限が必要です</p>
-              )}
+              <Link 
+                to={`/financial-reports?company=${encodeURIComponent(company.company_name)}&ticker=${encodeURIComponent(company.ticker)}`}
+                className="text-blue-500 hover:text-blue-700"
+              >
+                決算資料を閲覧する →
+              </Link>
             </CardContent>
           </Card>
         </TabsContent>
