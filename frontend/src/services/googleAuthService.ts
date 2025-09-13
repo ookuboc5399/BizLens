@@ -1,6 +1,5 @@
 // Google OAuth認証サービス
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
-const GOOGLE_CLIENT_SECRET = import.meta.env.VITE_GOOGLE_CLIENT_SECRET || '';
 
 export interface GoogleAuthConfig {
   clientId: string;

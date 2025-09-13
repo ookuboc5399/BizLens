@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { SupabaseClient } from '@supabase/supabase-js';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { TradingViewChart } from '../components/TradingViewChart';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { Skeleton } from '../components/ui/skeleton';
-import { useAuth } from '../hooks/useAuth';
 import { formatNumber, formatFinancialData } from '../utils/format';
 
 interface CompanyData {
@@ -70,13 +68,8 @@ interface FinancialHistory {
   equity_ratio: number;
 }
 
-interface CompanyDetailProps {
-  supabase: SupabaseClient;
-}
-
-export default function CompanyDetail({ supabase }: CompanyDetailProps) {
+export default function CompanyDetail() {
   const { companyId } = useParams<{ companyId: string }>();
-  const { user, isAdmin } = useAuth();
   const [company, setCompany] = useState<CompanyData | null>(null);
   const [financialHistory, setFinancialHistory] = useState<FinancialHistory[]>([]);
   const [loading, setLoading] = useState(true);

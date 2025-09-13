@@ -1,5 +1,4 @@
 // Google Drive API サービス
-import { googleAuthService } from './googleAuthService';
 
 const GOOGLE_DRIVE_API_KEY = import.meta.env.VITE_GOOGLE_DRIVE_API_KEY || '';
 const GOOGLE_DRIVE_FOLDER_ID = import.meta.env.VITE_GOOGLE_DRIVE_FOLDER_ID || '';

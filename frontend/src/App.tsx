@@ -50,7 +50,7 @@ function App({ supabase }: AppProps) {
             path="/company/:companyId"
             element={
               <ProtectedRoute supabase={supabase}>
-                <CompanyDetail supabase={supabase} />
+                <CompanyDetail />
               </ProtectedRoute>
             }
           />

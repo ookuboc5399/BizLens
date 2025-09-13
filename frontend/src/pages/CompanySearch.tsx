@@ -54,7 +54,6 @@ function CompanySearch() {
   const [selectedSector, setSelectedSector] = useState<string>("");
   const [sectors, setSectors] = useState<string[]>([]);
   const [countries, setCountries] = useState<string[]>([]);
-  const [loadingOptions, setLoadingOptions] = useState(true);
 
   const handleSearch = async (query: string) => {
     if (!query.trim()) {
@@ -106,8 +105,6 @@ function CompanySearch() {
   useEffect(() => {
     const fetchOptions = async () => {
       try {
-        setLoadingOptions(true);
-        
         // SECTORの一覧を取得
         const sectorsResponse = await fetch('/api/companies/sectors');
         if (sectorsResponse.ok) {
@@ -123,8 +120,6 @@ function CompanySearch() {
         }
       } catch (error) {
         console.error('オプション取得エラー:', error);
-      } finally {
-        setLoadingOptions(false);
       }
     };
 
