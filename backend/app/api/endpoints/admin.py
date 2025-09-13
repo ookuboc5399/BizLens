@@ -319,3 +319,28 @@ async def collect_company_with_ai(request_data: Dict[str, Any]):
 async def collect_data():
     """データ収集のエンドポイント（既存の実装）"""
     pass
+
+@router.get("/env-check")
+async def check_environment():
+    """環境変数の設定状況を確認"""
+    import os
+    env_vars = {
+        "SNOWFLAKE_ACCOUNT": bool(os.getenv("SNOWFLAKE_ACCOUNT")),
+        "SNOWFLAKE_USER": bool(os.getenv("SNOWFLAKE_USER")),
+        "SNOWFLAKE_PASSWORD": bool(os.getenv("SNOWFLAKE_PASSWORD")),
+        "SNOWFLAKE_WAREHOUSE": bool(os.getenv("SNOWFLAKE_WAREHOUSE")),
+        "SNOWFLAKE_DATABASE": bool(os.getenv("SNOWFLAKE_DATABASE")),
+        "SNOWFLAKE_SCHEMA": bool(os.getenv("SNOWFLAKE_SCHEMA")),
+        "OPENAI_API_KEY": bool(os.getenv("OPENAI_API_KEY")),
+        "OPENAI_MODEL": os.getenv("OPENAI_MODEL", "gpt-4"),
+        "GOOGLE_DRIVE_FOLDER_ID": bool(os.getenv("GOOGLE_DRIVE_FOLDER_ID")),
+        "GOOGLE_DRIVE_CREDENTIALS": bool(os.getenv("GOOGLE_DRIVE_CREDENTIALS")),
+    }
+    
+    missing_vars = [var for var, exists in env_vars.items() if not exists and var != "OPENAI_MODEL"]
+    
+    return {
+        "environment_variables": env_vars,
+        "missing_variables": missing_vars,
+        "all_configured": len(missing_vars) == 0
+    }

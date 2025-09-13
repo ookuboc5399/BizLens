@@ -389,60 +389,69 @@ class AICompanyCollector:
                 f"{self.openai_base_url}/chat/completions",
                 headers=headers,
                 json=data,
-                timeout=60  # タイムアウトを延長
+                timeout=120  # タイムアウトをさらに延長
             )
             
+            print(f"OpenAI API response status: {response.status_code}")
+            print(f"OpenAI API response headers: {dict(response.headers)}")
+            
             if response.status_code == 200:
-                result = response.json()
-                ai_response = result['choices'][0]['message']['content']
-                print(f"AI Response received: {ai_response[:200]}...")  # 最初の200文字を表示
-                
-                # JSONレスポンスを解析
                 try:
-                    # JSONブロックを抽出（```json ... ```の形式の場合）
-                    if '```json' in ai_response:
-                        json_start = ai_response.find('```json') + 7
-                        json_end = ai_response.find('```', json_start)
-                        if json_end != -1:
-                            ai_response = ai_response[json_start:json_end].strip()
-                    
-                    # 通常のJSON解析
-                    ai_data = json.loads(ai_response)
-                    print(f"Successfully parsed AI response with {len(ai_data)} fields")
-                    
-                    # 企業名の処理
-                    if 'company_name' in ai_data and ai_data['company_name']:
-                        print(f"AI collected company name: {ai_data['company_name']}")
-                    else:
-                        print("No company name collected by AI")
-                    
-                    # 数値フィールドの型変換
-                    numeric_fields = [
-                        'estimated_employees', 'estimated_market_cap', 'estimated_revenue',
-                        'estimated_operating_profit', 'estimated_net_profit', 'estimated_total_assets', 'estimated_equity',
-                        'founded_year', 'total_funding', 'latest_funding'
-                    ]
-                    
-                    for field in numeric_fields:
-                        if field in ai_data and ai_data[field] is not None:
-                            try:
-                                if isinstance(ai_data[field], str):
-                                    # 文字列から数値に変換
-                                    ai_data[field] = int(ai_data[field])
-                            except (ValueError, TypeError):
-                                ai_data[field] = None
-                    
-                    return ai_data
-                    
-                except json.JSONDecodeError as e:
-                    print(f"Failed to parse AI response: {ai_response}")
-                    print(f"JSON decode error: {str(e)}")
-                    return {}
-                except Exception as e:
-                    print(f"Error processing AI response: {str(e)}")
+                    result = response.json()
+                    ai_response = result['choices'][0]['message']['content']
+                    print(f"AI Response received: {ai_response[:200]}...")  # 最初の200文字を表示
+                except Exception as json_error:
+                    print(f"Error parsing OpenAI response JSON: {str(json_error)}")
+                    print(f"Raw response text: {response.text[:500]}...")
                     return {}
             else:
-                print(f"OpenAI API error: {response.status_code} - {response.text}")
+                print(f"OpenAI API error: {response.status_code}")
+                print(f"Response text: {response.text[:500]}...")
+                return {}
+            
+            # JSONレスポンスを解析
+            try:
+                # JSONブロックを抽出（```json ... ```の形式の場合）
+                if '```json' in ai_response:
+                    json_start = ai_response.find('```json') + 7
+                    json_end = ai_response.find('```', json_start)
+                    if json_end != -1:
+                        ai_response = ai_response[json_start:json_end].strip()
+                
+                # 通常のJSON解析
+                ai_data = json.loads(ai_response)
+                print(f"Successfully parsed AI response with {len(ai_data)} fields")
+                
+                # 企業名の処理
+                if 'company_name' in ai_data and ai_data['company_name']:
+                    print(f"AI collected company name: {ai_data['company_name']}")
+                else:
+                    print("No company name collected by AI")
+                
+                # 数値フィールドの型変換
+                numeric_fields = [
+                    'estimated_employees', 'estimated_market_cap', 'estimated_revenue',
+                    'estimated_operating_profit', 'estimated_net_profit', 'estimated_total_assets', 'estimated_equity',
+                    'founded_year', 'total_funding', 'latest_funding'
+                ]
+                
+                for field in numeric_fields:
+                    if field in ai_data and ai_data[field] is not None:
+                        try:
+                            if isinstance(ai_data[field], str):
+                                # 文字列から数値に変換
+                                ai_data[field] = int(ai_data[field])
+                        except (ValueError, TypeError):
+                            ai_data[field] = None
+                
+                return ai_data
+                
+            except json.JSONDecodeError as e:
+                print(f"Failed to parse AI response: {ai_response}")
+                print(f"JSON decode error: {str(e)}")
+                return {}
+            except Exception as e:
+                print(f"Error processing AI response: {str(e)}")
                 return {}
                 
         except Exception as e:
