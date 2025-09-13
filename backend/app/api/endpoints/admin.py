@@ -344,3 +344,79 @@ async def check_environment():
         "missing_variables": missing_vars,
         "all_configured": len(missing_vars) == 0
     }
+
+@router.get("/debug/ai-collect")
+async def debug_ai_collect():
+    """AI企業情報収集のデバッグ用エンドポイント"""
+    return {
+        "message": "AI企業情報収集エンドポイントは正常に動作しています",
+        "endpoint": "/api/admin/ai/collect-company",
+        "method": "POST",
+        "required_fields": ["company_name", "website_url", "country", "ticker"]
+    }
+
+@router.post("/debug/ai-collect")
+async def debug_ai_collect_post():
+    """AI企業情報収集のデバッグ用POSTエンドポイント"""
+    return {
+        "message": "POSTメソッドでAI企業情報収集エンドポイントにアクセスできました",
+        "status": "success"
+    }
+
+@router.put("/companies/{ticker}/business-description")
+async def update_business_description(ticker: str, request_data: Dict[str, Any]):
+    """企業の事業内容を手動で更新"""
+    try:
+        business_description = request_data.get('business_description')
+        description = request_data.get('description')
+        
+        if not business_description and not description:
+            raise HTTPException(status_code=400, detail="事業内容または詳細説明が必要です")
+        
+        # 国を特定してテーブルを決定
+        country = request_data.get('country', 'JP')
+        if country == 'JP':
+            table_name = 'COMPANIES_JP'
+        elif country == 'CN':
+            table_name = 'COMPANIES_CN'
+        else:
+            table_name = 'COMPANIES_US'
+        
+        # Snowflakeで更新
+        snowflake_service = SnowflakeService()
+        
+        update_fields = []
+        params = []
+        
+        if business_description:
+            update_fields.append("BUSINESS_DESCRIPTION = %s")
+            params.append(business_description)
+        
+        if description:
+            update_fields.append("DESCRIPTION = %s")
+            params.append(description)
+        
+        params.append(ticker)
+        
+        query = f"""
+        UPDATE {os.getenv('SNOWFLAKE_DATABASE')}.{os.getenv('SNOWFLAKE_SCHEMA')}.{table_name}
+        SET {', '.join(update_fields)}
+        WHERE TICKER = %s
+        """
+        
+        cursor = snowflake_service.conn.cursor()
+        cursor.execute(query, params)
+        cursor.close()
+        
+        return {
+            "success": True,
+            "message": f"企業 {ticker} の事業内容を更新しました",
+            "updated_fields": {
+                "business_description": business_description,
+                "description": description
+            }
+        }
+        
+    except Exception as e:
+        print(f"Error updating business description: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"事業内容の更新に失敗しました: {str(e)}")
