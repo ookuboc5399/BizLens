@@ -406,6 +406,52 @@ class AICompanyCollector:
                     result = response.json()
                     ai_response = result['choices'][0]['message']['content']
                     print(f"AI Response received: {ai_response[:200]}...")  # 最初の200文字を表示
+                    
+                    # JSONレスポンスを解析
+                    try:
+                        # JSONブロックを抽出（```json ... ```の形式の場合）
+                        if '```json' in ai_response:
+                            json_start = ai_response.find('```json') + 7
+                            json_end = ai_response.find('```', json_start)
+                            if json_end != -1:
+                                ai_response = ai_response[json_start:json_end].strip()
+                        
+                        # 通常のJSON解析
+                        ai_data = json.loads(ai_response)
+                        print(f"Successfully parsed AI response with {len(ai_data)} fields")
+                        
+                        # 企業名の処理
+                        if 'company_name' in ai_data and ai_data['company_name']:
+                            print(f"AI collected company name: {ai_data['company_name']}")
+                        else:
+                            print("No company name collected by AI")
+                        
+                        # 数値フィールドの型変換
+                        numeric_fields = [
+                            'estimated_employees', 'estimated_market_cap', 'estimated_revenue',
+                            'estimated_operating_profit', 'estimated_net_profit', 'estimated_total_assets', 'estimated_equity',
+                            'founded_year', 'total_funding', 'latest_funding'
+                        ]
+                        
+                        for field in numeric_fields:
+                            if field in ai_data and ai_data[field] is not None:
+                                try:
+                                    if isinstance(ai_data[field], str):
+                                        # 文字列から数値に変換
+                                        ai_data[field] = int(ai_data[field])
+                                except (ValueError, TypeError):
+                                    ai_data[field] = None
+                        
+                        return ai_data
+                        
+                    except json.JSONDecodeError as e:
+                        print(f"Failed to parse AI response: {ai_response}")
+                        print(f"JSON decode error: {str(e)}")
+                        return {}
+                    except Exception as e:
+                        print(f"Error processing AI response: {str(e)}")
+                        return {}
+                        
                 except Exception as json_error:
                     print(f"Error parsing OpenAI response JSON: {str(json_error)}")
                     print(f"Raw response text: {response.text[:500]}...")
@@ -413,51 +459,6 @@ class AICompanyCollector:
             else:
                 print(f"OpenAI API error: {response.status_code}")
                 print(f"Response text: {response.text[:500]}...")
-                return {}
-            
-            # JSONレスポンスを解析
-            try:
-                # JSONブロックを抽出（```json ... ```の形式の場合）
-                if '```json' in ai_response:
-                    json_start = ai_response.find('```json') + 7
-                    json_end = ai_response.find('```', json_start)
-                    if json_end != -1:
-                        ai_response = ai_response[json_start:json_end].strip()
-                
-                # 通常のJSON解析
-                ai_data = json.loads(ai_response)
-                print(f"Successfully parsed AI response with {len(ai_data)} fields")
-                
-                # 企業名の処理
-                if 'company_name' in ai_data and ai_data['company_name']:
-                    print(f"AI collected company name: {ai_data['company_name']}")
-                else:
-                    print("No company name collected by AI")
-                
-                # 数値フィールドの型変換
-                numeric_fields = [
-                    'estimated_employees', 'estimated_market_cap', 'estimated_revenue',
-                    'estimated_operating_profit', 'estimated_net_profit', 'estimated_total_assets', 'estimated_equity',
-                    'founded_year', 'total_funding', 'latest_funding'
-                ]
-                
-                for field in numeric_fields:
-                    if field in ai_data and ai_data[field] is not None:
-                        try:
-                            if isinstance(ai_data[field], str):
-                                # 文字列から数値に変換
-                                ai_data[field] = int(ai_data[field])
-                        except (ValueError, TypeError):
-                            ai_data[field] = None
-                
-                return ai_data
-                
-            except json.JSONDecodeError as e:
-                print(f"Failed to parse AI response: {ai_response}")
-                print(f"JSON decode error: {str(e)}")
-                return {}
-            except Exception as e:
-                print(f"Error processing AI response: {str(e)}")
                 return {}
                 
         except Exception as e:
@@ -502,11 +503,11 @@ class AICompanyCollector:
             
             # テーブル名を決定
             if country == 'JP':
-                table_name = 'companies_jp'
+                table_name = 'COMPANIES_JP'
             elif country == 'CN':
-                table_name = 'companies_cn'
+                table_name = 'COMPANIES_CN'
             else:
-                table_name = 'companies_us'
+                table_name = 'COMPANIES_US'
             
             # 企業名とTICKERの両方で検索
             if ticker and ticker.strip():
@@ -552,11 +553,11 @@ class AICompanyCollector:
             
             # テーブル名を決定
             if country == 'JP':
-                table_name = 'companies_jp'
+                table_name = 'COMPANIES_JP'
             elif country == 'CN':
-                table_name = 'companies_cn'
+                table_name = 'COMPANIES_CN'
             else:
-                table_name = 'companies_us'
+                table_name = 'COMPANIES_US'
             
             # Snowflakeに保存
             self.snowflake_service.upsert_companies([company_info])
@@ -579,14 +580,21 @@ class AICompanyCollector:
     def collect_and_save_with_ticker(self, company_name: str, website_url: str, ticker: str, country: str = "JP") -> Dict[str, Any]:
         """企業情報を収集してデータベースに保存（TICKER指定）"""
         try:
+            print(f"Starting collection for {company_name} with ticker {ticker}")
+            
             # 情報を収集
+            print("Collecting company info...")
             company_info = self.collect_company_info(company_name, website_url, country)
+            print(f"Collected info: {list(company_info.keys())}")
             
             # TICKERを設定
             company_info['ticker'] = ticker
+            print(f"Set ticker to: {ticker}")
             
             # データベースに保存
+            print("Saving to database...")
             success = self.save_to_database(company_info)
+            print(f"Save result: {success}")
             
             return {
                 "success": success,
@@ -595,6 +603,10 @@ class AICompanyCollector:
             }
             
         except Exception as e:
+            import traceback
+            error_details = traceback.format_exc()
+            print(f"Error in collect_and_save_with_ticker: {str(e)}")
+            print(f"Traceback: {error_details}")
             return {
                 "success": False,
                 "company_info": {},

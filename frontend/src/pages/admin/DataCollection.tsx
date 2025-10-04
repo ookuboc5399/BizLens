@@ -74,6 +74,19 @@ function DataCollectionPage() {
   });
   const [isAiCollecting, setIsAiCollecting] = useState(false);
   const [aiResult, setAiResult] = useState<any>(null);
+  
+  // 日経報スクレイピング用の状態
+  const [nikihouTicker, setNikihouTicker] = useState('');
+  const [nikihouMarket, setNikihouMarket] = useState('HKM');
+  const [nikihouTickers, setNikihouTickers] = useState('');
+  const [isNikihouScraping, setIsNikihouScraping] = useState(false);
+  const [nikihouResult, setNikihouResult] = useState<any>(null);
+  
+  // CSVアップロード用の状態
+  const [csvFile, setCsvFile] = useState<File | null>(null);
+  const [csvCountry, setCsvCountry] = useState('JP');
+  const [isCsvUploading, setIsCsvUploading] = useState(false);
+  const [csvResult, setCsvResult] = useState<any>(null);
 
   const handleCollectData = async () => {
     setIsLoading(true);
@@ -269,6 +282,197 @@ function DataCollectionPage() {
     }
   };
 
+  // 日経報スクレイピング用のハンドラー
+  const handleNikihouScrape = async () => {
+    setIsNikihouScraping(true);
+    setNikihouResult(null);
+    setError(null);
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/admin/nikihou/scrape-company`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ticker: nikihouTicker,
+          market: nikihouMarket
+        }),
+      });
+
+      const responseText = await response.text();
+      
+      if (!response.ok) {
+        let errorMessage = '日経報スクレイピングに失敗しました';
+        try {
+          const errorData = JSON.parse(responseText);
+          errorMessage = errorData.detail || errorMessage;
+        } catch (jsonError) {
+          errorMessage = `HTTP ${response.status}: ${responseText}`;
+        }
+        throw new Error(errorMessage);
+      }
+
+      let result;
+      try {
+        result = JSON.parse(responseText);
+      } catch (jsonError) {
+        throw new Error(`レスポンスの解析に失敗しました: ${responseText}`);
+      }
+      
+      setNikihouResult(result);
+      setSubmitMessage(`日経報から企業情報を取得しました: ${result.company_info?.company_name || nikihouTicker}`);
+      
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : '日経報スクレイピング中にエラーが発生しました';
+      setError(errorMessage);
+    } finally {
+      setIsNikihouScraping(false);
+    }
+  };
+
+  const handleBatchNikihouScrape = async () => {
+    setIsNikihouScraping(true);
+    setNikihouResult(null);
+    setError(null);
+
+    try {
+      const tickers = nikihouTickers.split(',').map(t => t.trim()).filter(t => t);
+      
+      if (tickers.length === 0) {
+        throw new Error('ティッカーコードを入力してください');
+      }
+
+      const response = await fetch(`${API_BASE_URL}/admin/nikihou/batch-scrape`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          tickers: tickers,
+          market: nikihouMarket
+        }),
+      });
+
+      const responseText = await response.text();
+      
+      if (!response.ok) {
+        let errorMessage = '一括スクレイピングに失敗しました';
+        try {
+          const errorData = JSON.parse(responseText);
+          errorMessage = errorData.detail || errorMessage;
+        } catch (jsonError) {
+          errorMessage = `HTTP ${response.status}: ${responseText}`;
+        }
+        throw new Error(errorMessage);
+      }
+
+      let result;
+      try {
+        result = JSON.parse(responseText);
+      } catch (jsonError) {
+        throw new Error(`レスポンスの解析に失敗しました: ${responseText}`);
+      }
+      
+      setNikihouResult(result);
+      setSubmitMessage(`一括スクレイピング完了: 成功 ${result.successful_companies?.length || 0}件, 失敗 ${result.failed_companies?.length || 0}件`);
+      
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : '一括スクレイピング中にエラーが発生しました';
+      setError(errorMessage);
+    } finally {
+      setIsNikihouScraping(false);
+    }
+  };
+
+  // CSVアップロード用のハンドラー
+  const handleCsvUpload = async () => {
+    if (!csvFile) {
+      setError('CSVファイルを選択してください');
+      return;
+    }
+
+    setIsCsvUploading(true);
+    setCsvResult(null);
+    setError(null);
+
+    try {
+      const formData = new FormData();
+      formData.append('file', csvFile);
+      formData.append('country', csvCountry);
+
+      const response = await fetch(`${API_BASE_URL}/admin/companies/upload-csv`, {
+        method: 'POST',
+        body: formData,
+      });
+
+      const responseText = await response.text();
+      
+      if (!response.ok) {
+        let errorMessage = 'CSVアップロードに失敗しました';
+        try {
+          const errorData = JSON.parse(responseText);
+          errorMessage = errorData.detail || errorMessage;
+        } catch (jsonError) {
+          errorMessage = `HTTP ${response.status}: ${responseText}`;
+        }
+        throw new Error(errorMessage);
+      }
+
+      let result;
+      try {
+        result = JSON.parse(responseText);
+      } catch (jsonError) {
+        throw new Error(`レスポンスの解析に失敗しました: ${responseText}`);
+      }
+      
+      setCsvResult(result);
+      setSubmitMessage(`CSVアップロードが完了しました: ${result.uploaded_count}件の企業情報を${csvCountry}テーブルに保存しました`);
+      
+      // ファイルをリセット
+      setCsvFile(null);
+      
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'CSVアップロード中にエラーが発生しました';
+      setError(errorMessage);
+    } finally {
+      setIsCsvUploading(false);
+    }
+  };
+
+  const handleCsvFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      if (file.type === 'text/csv' || file.name.endsWith('.csv')) {
+        setCsvFile(file);
+        setError(null);
+      } else {
+        setError('CSVファイルを選択してください');
+        setCsvFile(null);
+      }
+    }
+  };
+
+  const handleDownloadTemplate = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/admin/companies/csv-template`);
+      const data = await response.json();
+      
+      // CSVファイルをダウンロード
+      const blob = new Blob([data.csv_content], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      const url = URL.createObjectURL(blob);
+      link.setAttribute('href', url);
+      link.setAttribute('download', data.filename);
+      link.style.visibility = 'hidden';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      setError('テンプレートのダウンロードに失敗しました');
+    }
+  };
+
   const handleSubmitCompany = async () => {
     if (!companyForm.company_name.trim()) {
       setError('企業名は必須です');
@@ -451,6 +655,8 @@ function DataCollectionPage() {
           <TabsTrigger value="company-data">企業データ</TabsTrigger>
           <TabsTrigger value="company-input">企業情報入力</TabsTrigger>
           <TabsTrigger value="ai-collect">AI企業情報収集</TabsTrigger>
+          <TabsTrigger value="nikihou-scrape">日経報スクレイピング</TabsTrigger>
+          <TabsTrigger value="csv-upload">CSV一括アップロード</TabsTrigger>
           <TabsTrigger value="financial-reports">決算資料</TabsTrigger>
         </TabsList>
 
@@ -1082,6 +1288,218 @@ function DataCollectionPage() {
                   <p className="text-red-800">{error}</p>
                 </div>
               )}
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="nikihou-scrape">
+          <Card>
+            <CardHeader>
+              <CardTitle>日経報スクレイピング</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="text-sm text-gray-500 mb-4">
+                日経報から企業情報を自動取得します。企業概要、財務、業績データを一括で収集できます。
+              </div>
+
+              {/* 単一企業スクレイピング */}
+              <div className="space-y-4 p-4 border rounded-lg">
+                <h4 className="font-semibold">単一企業スクレイピング</h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div>
+                    <Label htmlFor="nikihou-ticker">ティッカーコード</Label>
+                    <Input
+                      id="nikihou-ticker"
+                      placeholder="例: 02617"
+                      value={nikihouTicker}
+                      onChange={(e) => setNikihouTicker(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="nikihou-market">市場</Label>
+                    <Select value={nikihouMarket} onValueChange={setNikihouMarket}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="HKM">香港市場</SelectItem>
+                        <SelectItem value="TSE">東証</SelectItem>
+                        <SelectItem value="NASDAQ">NASDAQ</SelectItem>
+                        <SelectItem value="NYSE">NYSE</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="flex items-end">
+                    <Button
+                      onClick={handleNikihouScrape}
+                      disabled={isNikihouScraping || !nikihouTicker.trim()}
+                      className="w-full"
+                    >
+                      {isNikihouScraping ? '取得中...' : '企業情報取得'}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+
+              {/* 一括スクレイピング */}
+              <div className="space-y-4 p-4 border rounded-lg">
+                <h4 className="font-semibold">一括スクレイピング</h4>
+                <div className="space-y-4">
+                  <div>
+                    <Label htmlFor="nikihou-tickers">ティッカーコード（カンマ区切り）</Label>
+                    <Textarea
+                      id="nikihou-tickers"
+                      placeholder="例: 02617,09988,00700"
+                      value={nikihouTickers}
+                      onChange={(e) => setNikihouTickers(e.target.value)}
+                      rows={3}
+                    />
+                  </div>
+                  <div className="flex space-x-4">
+                    <div className="flex-1">
+                      <Label htmlFor="batch-market">市場</Label>
+                      <Select value={nikihouMarket} onValueChange={setNikihouMarket}>
+                        <SelectTrigger>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="HKM">香港市場</SelectItem>
+                          <SelectItem value="TSE">東証</SelectItem>
+                          <SelectItem value="NASDAQ">NASDAQ</SelectItem>
+                          <SelectItem value="NYSE">NYSE</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="flex items-end">
+                      <Button
+                        onClick={handleBatchNikihouScrape}
+                        disabled={isNikihouScraping || !nikihouTickers.trim()}
+                        className="w-full"
+                      >
+                        {isNikihouScraping ? '一括取得中...' : '一括取得'}
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 結果表示 */}
+              {nikihouResult && (
+                <div className="space-y-4 p-4 border rounded-lg bg-green-50">
+                  <h4 className="font-semibold text-green-800">取得結果</h4>
+                  <div className="text-sm">
+                    <p><strong>ステータス:</strong> {nikihouResult.success ? '成功' : '失敗'}</p>
+                    <p><strong>メッセージ:</strong> {nikihouResult.message}</p>
+                    {nikihouResult.company_info && (
+                      <div className="mt-2">
+                        <p><strong>企業名:</strong> {nikihouResult.company_info.company_name}</p>
+                        <p><strong>ティッカー:</strong> {nikihouResult.company_info.ticker}</p>
+                        <p><strong>市場:</strong> {nikihouResult.company_info.market}</p>
+                      </div>
+                    )}
+                    {nikihouResult.successful_companies && (
+                      <div className="mt-2">
+                        <p><strong>成功した企業:</strong> {nikihouResult.successful_companies.join(', ')}</p>
+                      </div>
+                    )}
+                    {nikihouResult.failed_companies && (
+                      <div className="mt-2">
+                        <p><strong>失敗した企業:</strong> {nikihouResult.failed_companies.join(', ')}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="csv-upload">
+          <Card>
+            <CardHeader>
+              <CardTitle>CSV一括アップロード</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="text-sm text-gray-500 mb-4">
+                CSVファイルから企業情報を一括でアップロードできます。スプレッドシートでデータを整理してからCSV形式でエクスポートしてください。
+              </div>
+
+              {/* テンプレートダウンロード */}
+              <div className="space-y-4 p-4 border rounded-lg">
+                <h4 className="font-semibold">1. テンプレートのダウンロード</h4>
+                <p className="text-sm text-gray-600">
+                  まず、CSVテンプレートをダウンロードして、企業情報を入力してください。
+                </p>
+                <Button onClick={handleDownloadTemplate} variant="outline">
+                  テンプレートをダウンロード
+                </Button>
+              </div>
+
+              {/* ファイルアップロード */}
+              <div className="space-y-4 p-4 border rounded-lg">
+                <h4 className="font-semibold">2. CSVファイルのアップロード</h4>
+                <div className="space-y-4">
+                  <div>
+                    <Label htmlFor="csv-file">CSVファイル</Label>
+                    <Input
+                      id="csv-file"
+                      type="file"
+                      accept=".csv"
+                      onChange={handleCsvFileChange}
+                    />
+                    {csvFile && (
+                      <p className="text-sm text-green-600 mt-1">
+                        選択されたファイル: {csvFile.name}
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <Label htmlFor="csv-country">国</Label>
+                    <Select value={csvCountry} onValueChange={setCsvCountry}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="JP">日本</SelectItem>
+                        <SelectItem value="CN">中国</SelectItem>
+                        <SelectItem value="US">アメリカ</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <Button
+                    onClick={handleCsvUpload}
+                    disabled={isCsvUploading || !csvFile}
+                    className="w-full"
+                  >
+                    {isCsvUploading ? 'アップロード中...' : 'CSVファイルをアップロード'}
+                  </Button>
+                </div>
+              </div>
+
+              {/* 結果表示 */}
+              {csvResult && (
+                <div className="space-y-4 p-4 border rounded-lg bg-green-50">
+                  <h4 className="font-semibold text-green-800">アップロード結果</h4>
+                  <div className="text-sm">
+                    <p><strong>ステータス:</strong> {csvResult.success ? '成功' : '失敗'}</p>
+                    <p><strong>メッセージ:</strong> {csvResult.message}</p>
+                    <p><strong>アップロード件数:</strong> {csvResult.uploaded_count}件</p>
+                    <p><strong>保存先テーブル:</strong> {csvResult.country === 'JP' ? 'COMPANIES_JP' : csvResult.country === 'CN' ? 'COMPANIES_CN' : 'COMPANIES_US'}</p>
+                  </div>
+                </div>
+              )}
+
+              {/* 使用方法の説明 */}
+              <div className="space-y-4 p-4 border rounded-lg bg-blue-50">
+                <h4 className="font-semibold text-blue-800">使用方法</h4>
+                <div className="text-sm text-blue-700 space-y-2">
+                  <p>1. 「テンプレートをダウンロード」ボタンでCSVテンプレートをダウンロード</p>
+                  <p>2. テンプレートに企業情報を入力（必須項目: ticker, company_name）</p>
+                  <p>3. スプレッドシートからCSV形式でエクスポート</p>
+                  <p>4. 国を選択してCSVファイルをアップロード</p>
+                  <p>5. 既存の企業は更新、新規企業は追加されます</p>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </TabsContent>

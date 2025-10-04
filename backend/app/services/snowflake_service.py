@@ -42,16 +42,28 @@ class SnowflakeService:
             'equity', 'operating_margin', 'net_margin', 'dividend_yield', 'company_type', 'ceo'
         ]
         
+        # COMPANIES_CNテーブル用のカラムマッピング（実際のテーブル構造に合わせる）
+        cn_columns = [
+            'COMPANY_NAME', 'TICKER', 'SECTOR', 'INDUSTRY', 'COUNTRY', 'WEBSITE',
+            'DESCRIPTION', 'BUSINESS_DESCRIPTION', 'MARKET_CAP', 'EMPLOYEES', 'MARKET', 'CURRENT_PRICE',
+            'SHARES_OUTSTANDING', 'VOLUME', 'PER', 'PBR', 'EPS', 'BPS', 'ROE',
+            'ROA', 'REVENUE', 'OPERATING_INCOME', 'NET_INCOME', 'TOTAL_ASSETS',
+            'SHAREHOLDERS_EQUITY', 'OPERATING_MARGIN', 'NET_MARGIN', 'DIVIDEND_YIELD', 'COMPANY_TYPE', 'CEO'
+        ]
+        
         try:
             for company in companies_data:
-                # 国に基づいてテーブル名を決定
+                # 国に基づいてテーブル名とカラムを決定
                 country = company.get('country', 'JP')
                 if country == 'JP':
-                    table_name = 'companies_jp'
+                    table_name = 'COMPANIES_JP'
+                    use_columns = columns
                 elif country == 'CN':
-                    table_name = 'companies_cn'
+                    table_name = 'COMPANIES_CN'
+                    use_columns = cn_columns
                 else:
-                    table_name = 'companies_us'
+                    table_name = 'COMPANIES_US'
+                    use_columns = columns
                 
                 db_name = os.getenv("SNOWFLAKE_DATABASE")
                 schema_name = os.getenv("SNOWFLAKE_SCHEMA")
@@ -62,15 +74,54 @@ class SnowflakeService:
                 USING (SELECT %s AS ticker) AS source
                 ON target.ticker = source.ticker
                 WHEN NOT MATCHED THEN
-                    INSERT ({', '.join(columns)})
-                    VALUES ({', '.join(['%s'] * len(columns))});
+                    INSERT ({', '.join(use_columns)})
+                    VALUES ({', '.join(['%s'] * len(use_columns))})
+                WHEN MATCHED THEN
+                    UPDATE SET {', '.join([f"{col} = %s" for col in use_columns])};
                 """
 
                 # Ensure all columns are present in the dictionary, with None as default
                 # Also, ensure the order of values matches the `columns` list.
-                params = [company.get(col) for col in columns]
-                # The ticker is used twice in the MERGE statement
-                final_params = [company.get('ticker')] + params
+                if country == 'CN':
+                    # COMPANIES_CN用のデータマッピング
+                    cn_data = {
+                        'company_name': company.get('company_name'),
+                        'ticker': company.get('ticker'),
+                        'sector': company.get('sector'),
+                        'industry': company.get('industry'),
+                        'country': company.get('country'),
+                        'website': company.get('website'),
+                        'description': company.get('description'),
+                        'business_description': company.get('business_description'),
+                        'market_cap': company.get('market_cap'),
+                        'employees': company.get('employees'),
+                        'market': company.get('market'),
+                        'current_price': company.get('current_price'),
+                        'shares_outstanding': company.get('shares_outstanding'),
+                        'volume': company.get('volume'),
+                        'per': company.get('per'),
+                        'pbr': company.get('pbr'),
+                        'eps': company.get('eps'),
+                        'bps': company.get('bps'),
+                        'roe': company.get('roe'),
+                        'roa': company.get('roa'),
+                        'revenue': company.get('revenue'),
+                        'operating_profit': company.get('operating_profit'),  # OPERATING_INCOMEにマッピング
+                        'net_profit': company.get('net_profit'),  # NET_INCOMEにマッピング
+                        'total_assets': company.get('total_assets'),
+                        'equity': company.get('equity'),  # SHAREHOLDERS_EQUITYにマッピング
+                        'operating_margin': company.get('operating_margin'),
+                        'net_margin': company.get('net_margin'),
+                        'dividend_yield': company.get('dividend_yield'),
+                        'company_type': company.get('company_type'),
+                        'ceo': company.get('ceo')
+                    }
+                    params = [cn_data.get(col) for col in columns]
+                else:
+                    params = [company.get(col) for col in columns]
+                
+                # The ticker is used once for the USING clause, then params for INSERT/UPDATE
+                final_params = [company.get('ticker')] + params + params
                 
                 cursor.execute(merge_sql, tuple(final_params))
                 print(f"Successfully merged data for ticker: {company.get('ticker')} to {table_name}")
