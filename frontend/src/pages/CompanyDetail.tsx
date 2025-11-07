@@ -183,7 +183,11 @@ export default function CompanyDetail() {
             <CardTitle>株価チャート</CardTitle>
           </CardHeader>
           <CardContent>
-            <TradingViewChart symbol={getTradingViewSymbol(company.ticker, company.market)} />
+            <TradingViewChart 
+              symbol={getTradingViewSymbol(company.ticker, company.market)} 
+              market={company.market || 'US'}
+              companyName={company.company_name}
+            />
           </CardContent>
         </Card>
       </div>

@@ -201,7 +201,7 @@ export const googleDriveService = {
       
       const files = data.files || [];
       console.log('取得されたファイル数:', files.length);
-      console.log('取得されたファイル一覧:', files.map(f => ({ name: f.name, mimeType: f.mimeType })));
+      console.log('取得されたファイル一覧:', files.map((f: any) => ({ name: f.name, mimeType: f.mimeType })));
       
       return files;
     } catch (error) {

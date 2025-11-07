@@ -11,7 +11,7 @@ import { Textarea } from '../../components/ui/textarea';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
 import { ScrollArea } from '../../components/ui/scroll-area';
 import { googleDriveService } from '../../services/googleDriveService';
-import { Search, Loader2, FileSpreadsheet, Download, FileText, FileCode } from 'lucide-react';
+import { Search, Loader2, FileSpreadsheet } from 'lucide-react';
 
 
 const API_BASE_URL = '/api';

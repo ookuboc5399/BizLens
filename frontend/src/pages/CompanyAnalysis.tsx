@@ -421,8 +421,8 @@ const CompanyAnalysis: React.FC = () => {
     return financialData;
   };
 
-  const extractRiskFactors = (companyInfo: { [key: string]: string }) => {
-    const risks = [];
+  const extractRiskFactors = (companyInfo: { [key: string]: string }): string[] => {
+    const risks: string[] = [];
     
     // 企業概要からリスク要因を抽出
     Object.entries(companyInfo).forEach(([key, value]) => {
@@ -435,8 +435,8 @@ const CompanyAnalysis: React.FC = () => {
     return risks.slice(0, 5); // 最大5つまで
   };
 
-  const extractOpportunities = (companyInfo: { [key: string]: string }) => {
-    const opportunities = [];
+  const extractOpportunities = (companyInfo: { [key: string]: string }): string[] => {
+    const opportunities: string[] = [];
     
     // 企業概要から成長機会を抽出
     Object.entries(companyInfo).forEach(([key, value]) => {
@@ -450,7 +450,7 @@ const CompanyAnalysis: React.FC = () => {
     return opportunities.slice(0, 5); // 最大5つまで
   };
 
-  const generateKeyInsights = (companyInfo: { [key: string]: string }, financialMetrics: any[], financialData: any[]) => {
+  const generateKeyInsights = (companyInfo: { [key: string]: string }, financialMetrics: any[]) => {
     const insights = [];
     
     // 企業概要からインサイトを生成
@@ -484,24 +484,6 @@ const CompanyAnalysis: React.FC = () => {
     }
     
     return insights.slice(0, 5); // 最大5つまで
-  };
-
-  const calculateTrend = (values: string[]) => {
-    if (values.length < 2) return 'stable';
-    
-    // 数値に変換可能な値のみを対象
-    const numericValues = values
-      .map(val => parseFloat(val.replace(/[^\d.-]/g, '')))
-      .filter(val => !isNaN(val));
-    
-    if (numericValues.length < 2) return 'stable';
-    
-    const first = numericValues[0];
-    const last = numericValues[numericValues.length - 1];
-    
-    if (last > first * 1.1) return 'up';
-    if (last < first * 0.9) return 'down';
-    return 'stable';
   };
 
   const handleDownload = () => {

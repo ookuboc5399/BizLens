@@ -152,7 +152,6 @@ function FinancialReports() {
         
         if (isSecEdgarFile) {
           // SEC EDGARファイルの場合はバックエンドから取得
-          const companyName = file.name.split('_')[0];
           const response = await fetch(`http://localhost:8000/api/admin/sec-edgar/view-file/${file.name}`);
           
           if (response.ok) {
