@@ -37,6 +37,7 @@ python-jose = "^3.5.0"
 google-auth = "^2.35.0"
 google-api-python-client = "^2.150.0"
 google-auth-httplib2 = "^0.2.0"
+playwright = "^1.48.0"
 
 
 [build-system]

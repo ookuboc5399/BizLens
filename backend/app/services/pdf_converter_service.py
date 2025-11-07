@@ -10,17 +10,29 @@ import tempfile
 import os
 from typing import Optional
 from datetime import datetime
-from playwright.sync_api import sync_playwright
 from bs4 import BeautifulSoup
 
 logger = logging.getLogger(__name__)
 
+# Playwrightのインポートをオプショナルにする
+try:
+    from playwright.sync_api import sync_playwright
+    PLAYWRIGHT_AVAILABLE = True
+except ImportError:
+    PLAYWRIGHT_AVAILABLE = False
+    logger.warning("Playwright is not installed. PDF conversion will not be available.")
+
 class PDFConverterService:
     def __init__(self):
-        pass
+        if not PLAYWRIGHT_AVAILABLE:
+            logger.warning("PDFConverterService initialized but Playwright is not available.")
     
     def html_to_pdf(self, html_content: str, filename: str = "document.pdf") -> Optional[bytes]:
         """HTMLコンテンツをPDFに変換（Playwright使用）"""
+        if not PLAYWRIGHT_AVAILABLE:
+            logger.error("Playwright is not available. Cannot convert HTML to PDF.")
+            raise RuntimeError("Playwright is not installed. Please install it with: poetry add playwright && poetry run playwright install")
+        
         try:
             logger.info(f"Converting HTML to PDF using Playwright: {filename}")
             
