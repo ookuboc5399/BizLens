@@ -1,5 +1,5 @@
-
 import { Link } from 'react-router-dom';
+import { BackendStatus } from './BackendStatus';
 
 function Navigation() {
   return (
@@ -7,11 +7,12 @@ function Navigation() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="font-bold text-xl">BizLens</Link>
-          <div className="flex space-x-4">
+          <div className="flex items-center space-x-4">
             <Link to="/company-search" className="hover:text-red-500">企業検索</Link>
             <Link to="/company-comparison" className="hover:text-red-500">企業比較</Link>
             <Link to="/financial-reports" className="hover:text-red-500">決算説明資料</Link>
             <Link to="/earnings-calendar" className="hover:text-red-500">決算予定カレンダー</Link>
+            <BackendStatus />
           </div>
         </div>
       </div>

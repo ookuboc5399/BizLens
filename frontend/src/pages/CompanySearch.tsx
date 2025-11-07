@@ -79,10 +79,21 @@ function CompanySearch() {
         ...(selectedSector && { sector: selectedSector }),
       });
 
-      const response = await fetch(`/api/companies/search?${params}`);
+      // API_BASE_URLを使用（環境変数から取得、デフォルトは'/api'）
+      const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+      const response = await fetch(`${API_BASE_URL}/companies/search?${params}`);
       
       // レスポンスのテキストを取得
       const responseText = await response.text();
+      
+      // HTMLレスポンスをチェック（APIエンドポイントが存在しない場合）
+      if (responseText.trim().toLowerCase().startsWith('<!doctype') || 
+          responseText.trim().toLowerCase().startsWith('<html')) {
+        console.error('Received HTML instead of JSON. API endpoint may not be configured correctly.');
+        console.error('Response URL:', response.url);
+        console.error('API_BASE_URL:', import.meta.env.VITE_API_URL || '/api');
+        throw new Error('APIエンドポイントに接続できません。バックエンドサーバーが起動しているか、環境変数VITE_API_URLが正しく設定されているか確認してください。');
+      }
       
       if (!response.ok) {
         // エラーレスポンスの場合
@@ -104,8 +115,8 @@ function CompanySearch() {
       try {
         data = JSON.parse(responseText);
       } catch (parseError) {
-        console.error('JSON parse error:', parseError, 'Response text:', responseText);
-        throw new Error('サーバーからのレスポンスの解析に失敗しました');
+        console.error('JSON parse error:', parseError, 'Response text:', responseText.substring(0, 200));
+        throw new Error('サーバーからのレスポンスの解析に失敗しました。HTMLが返されている可能性があります。');
       }
 
       setSearchResult(data);

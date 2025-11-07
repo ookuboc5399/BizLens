@@ -39,7 +39,8 @@ function FinancialReportDetail({ supabase }: FinancialReportDetailProps) {
   useEffect(() => {
     const fetchCompanyInfo = async () => {
       try {
-        const response = await fetch(`/api/companies/${companyId}`);
+        const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+        const response = await fetch(`${API_BASE_URL}/companies/${companyId}`);
         if (!response.ok) {
           throw new Error('企業情報の取得に失敗しました');
         }
@@ -63,7 +64,8 @@ function FinancialReportDetail({ supabase }: FinancialReportDetailProps) {
         setLoading(true);
         setError(null);
 
-        const response = await fetch(`/api/financial-reports/${companyId}`);
+        const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+        const response = await fetch(`${API_BASE_URL}/financial-reports/${companyId}`);
         if (!response.ok) {
           throw new Error('決算資料の取得に失敗しました');
         }

@@ -80,8 +80,11 @@ export default function CompanyDetail() {
         setLoading(true);
         console.log('Fetching company data for ticker:', companyId);
         
+        // API_BASE_URLを使用
+        const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+        
         // 企業データを取得
-        const companyResponse = await fetch(`/api/companies/${companyId}`);
+        const companyResponse = await fetch(`${API_BASE_URL}/companies/${companyId}`);
         if (!companyResponse.ok) {
           throw new Error('Failed to fetch company data');
         }
@@ -90,7 +93,7 @@ export default function CompanyDetail() {
         setCompany(companyData);
         
         // 財務履歴データを取得
-        const financialResponse = await fetch(`/api/companies/${companyId}/financial-history`);
+        const financialResponse = await fetch(`${API_BASE_URL}/companies/${companyId}/financial-history`);
         if (financialResponse.ok) {
           const financialData = await financialResponse.json();
           console.log('Financial history data:', financialData);

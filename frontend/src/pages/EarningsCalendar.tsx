@@ -40,7 +40,8 @@ function EarningsCalendar() {
       setLoading(true);
       setError(null);
 
-      const response = await fetch(`/api/earnings/monthly/${year}/${month}`);
+      const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+      const response = await fetch(`${API_BASE_URL}/earnings/monthly/${year}/${month}`);
       if (!response.ok) {
         throw new Error('決算データの取得に失敗しました');
       }
@@ -60,7 +61,8 @@ function EarningsCalendar() {
       setLoading(true);
       setError(null);
 
-      const response = await fetch(`/api/earnings/daily/${date}`);
+      const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+      const response = await fetch(`${API_BASE_URL}/earnings/daily/${date}`);
       if (!response.ok) {
         throw new Error('企業データの取得に失敗しました');
       }
