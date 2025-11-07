@@ -7,7 +7,6 @@ import { Loader2, ArrowLeft, Download, ExternalLink, BarChart3, Table } from 'lu
 import { CompanyAnalysisCharts } from '../components/CompanyAnalysisCharts';
 import { CompanyScore } from '../components/CompanyScore';
 import { TradingViewChart } from '../components/TradingViewChart';
-import { TradingViewAdvancedChart } from '../components/TradingViewAdvancedChart';
 
 interface SpreadsheetData {
   title: string;
@@ -342,7 +341,7 @@ const CompanyAnalysis: React.FC = () => {
     const financialData = financialSheet ? extractFinancialData(financialSheet) : [];
     
     // キーインサイトを生成
-    const keyInsights = generateKeyInsights(companyInfo, financialMetrics, financialData);
+    const keyInsights = generateKeyInsights(companyInfo, financialMetrics);
     
     // リスク要因を抽出
     const riskFactors = extractRiskFactors(companyInfo);
@@ -354,6 +353,7 @@ const CompanyAnalysis: React.FC = () => {
       companyInfo,
       financialMetrics,
       financialData,
+      businessDescription: companyInfo['企業概要'] || companyInfo['事業内容'] || '',
       keyInsights,
       riskFactors,
       opportunities
@@ -382,7 +382,7 @@ const CompanyAnalysis: React.FC = () => {
   const extractFinancialMetricsFromPerformance = (sheet: any) => {
     if (!sheet || !sheet.data) return [];
     
-    const metrics = [];
+    const metrics: Array<{ name: string; value: string; trend: string }> = [];
     const financialKeywords = ['売上', '収益', '利益', '資産', '負債', '資本', 'ROE', 'ROA', 'PER', 'PBR', '配当', 'EPS'];
     
     sheet.data.forEach((row: string[]) => {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Progress } from './ui/progress';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, Legend } from 'recharts';
 
 interface CompanyScoreProps {
@@ -14,7 +13,7 @@ interface CompanyScoreProps {
   };
 }
 
-export const CompanyScore: React.FC<CompanyScoreProps> = ({ companyName, scores }) => {
+export const CompanyScore: React.FC<CompanyScoreProps> = ({ scores }) => {
   // スコアを1-5の範囲に変換
   const convertToFivePointScale = (score: number) => {
     if (score >= 80) return 5;
@@ -58,26 +57,6 @@ export const CompanyScore: React.FC<CompanyScoreProps> = ({ companyName, scores 
     }
   ];
 
-  const getScoreColor = (score: number) => {
-    if (score >= 80) return 'text-green-600';
-    if (score >= 60) return 'text-yellow-600';
-    if (score >= 40) return 'text-orange-600';
-    return 'text-red-600';
-  };
-
-  const getScoreLabel = (score: number) => {
-    if (score >= 80) return '優秀';
-    if (score >= 60) return '良好';
-    if (score >= 40) return '普通';
-    return '要改善';
-  };
-
-  const getProgressColor = (score: number) => {
-    if (score >= 80) return 'bg-green-500';
-    if (score >= 60) return 'bg-yellow-500';
-    if (score >= 40) return 'bg-orange-500';
-    return 'bg-red-500';
-  };
 
   return (
     <Card className="w-full h-full">

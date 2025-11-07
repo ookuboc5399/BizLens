@@ -149,7 +149,7 @@ export const CompanyAnalysisCharts: React.FC<CompanyAnalysisChartsProps> = ({ sh
             height={'400px'}
             chartType="LineChart"
             loader={<div>グラフを読み込み中...</div>}
-            data={getPerformanceChartData(sheetsData['業績'])}
+            data={getPerformanceChartData(sheetsData['業績']) || []}
             options={{
               title: '業績推移',
               hAxis: { 
@@ -181,7 +181,7 @@ export const CompanyAnalysisCharts: React.FC<CompanyAnalysisChartsProps> = ({ sh
             height={'400px'}
             chartType="ColumnChart"
             loader={<div>グラフを読み込み中...</div>}
-            data={getFinancialChartData(sheetsData['財務'])}
+            data={getFinancialChartData(sheetsData['財務']) || []}
             options={{
               title: '財務状況',
               hAxis: { title: '項目' },
@@ -202,7 +202,7 @@ export const CompanyAnalysisCharts: React.FC<CompanyAnalysisChartsProps> = ({ sh
             height={'400px'}
             chartType="PieChart"
             loader={<div>グラフを読み込み中...</div>}
-            data={getRegionalSalesChartData(sheetsData['地域別売上'])}
+            data={getRegionalSalesChartData(sheetsData['地域別売上']) || []}
             options={{
               title: '地域別売上構成',
               pieHole: 0.4,
@@ -223,7 +223,7 @@ export const CompanyAnalysisCharts: React.FC<CompanyAnalysisChartsProps> = ({ sh
             height={'400px'}
             chartType="BarChart"
             loader={<div>グラフを読み込み中...</div>}
-            data={getFinancialChartData(sheetsData['指標等'])}
+            data={getFinancialChartData(sheetsData['指標等']) || []}
             options={{
               title: '財務指標',
               hAxis: { title: '項目' },
@@ -243,7 +243,7 @@ export const CompanyAnalysisCharts: React.FC<CompanyAnalysisChartsProps> = ({ sh
             height={'400px'}
             chartType="ColumnChart"
             loader={<div>グラフを読み込み中...</div>}
-            data={getFinancialChartData(sheetsData['キャッシュフロー'])}
+            data={getFinancialChartData(sheetsData['キャッシュフロー']) || []}
             options={{
               title: 'キャッシュフロー',
               hAxis: { title: '項目' },
