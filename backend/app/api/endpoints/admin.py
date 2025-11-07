@@ -6,6 +6,10 @@ import io
 from app.services.snowflake_service import SnowflakeService
 from app.services.ai_company_collector import AICompanyCollector
 from app.services.nikihou_scraper import NikihouScraper
+from app.services.sec_edgar_service import SECEdgarService
+from app.services.google_drive_service import GoogleDriveService
+from app.services.pdf_converter_service import PDFConverterService
+from app.services.shikiho_scraper import ShikihoScraper
 
 router = APIRouter()
 
@@ -723,3 +727,753 @@ async def get_csv_template():
         print(f"Error generating CSV template: {str(e)}")
         print(f"Traceback: {error_details}")
         raise HTTPException(status_code=500, detail=f"CSVテンプレートの生成に失敗しました: {str(e)}")
+
+@router.post("/sec-edgar/collect-reports")
+async def collect_sec_reports(request_data: Dict[str, Any]):
+    """SEC EDGAR APIを使用してアメリカ企業の決算資料を収集"""
+    try:
+        company_name = request_data.get('company_name')
+        if not company_name:
+            raise HTTPException(status_code=400, detail="企業名は必須です")
+        
+        print(f"SEC EDGAR collection request for: {company_name}")
+        
+        # SEC EDGAR サービスを初期化
+        sec_service = SECEdgarService()
+        
+        # 企業の財務データを取得
+        financial_data = sec_service.get_company_financial_data(company_name)
+        
+        if "error" in financial_data:
+            raise HTTPException(status_code=404, detail=financial_data["error"])
+        
+        # 最新の10-Kレポートをダウンロード
+        latest_10k = sec_service.download_latest_10k(company_name)
+        
+        if "error" in latest_10k:
+            raise HTTPException(status_code=404, detail=latest_10k["error"])
+        
+        return {
+            "success": True,
+            "message": f"{company_name}の決算資料を収集しました",
+            "company_name": company_name,
+            "cik": latest_10k.get("cik"),
+            "filing_date": latest_10k.get("filing_date"),
+            "report_date": latest_10k.get("report_date"),
+            "document_name": latest_10k.get("document_name"),
+            "document_size": latest_10k.get("document_size"),
+            "financial_data": financial_data
+        }
+        
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"Error in SEC EDGAR collection: {str(e)}")
+        print(f"Traceback: {error_details}")
+        raise HTTPException(status_code=500, detail=f"SEC EDGAR決算資料収集に失敗しました: {str(e)}")
+
+@router.post("/sec-edgar/batch-collect")
+async def batch_collect_sec_reports(request_data: Dict[str, Any]):
+    """複数のアメリカ企業の決算資料を一括収集"""
+    try:
+        company_names = request_data.get('company_names', [])
+        if not company_names:
+            raise HTTPException(status_code=400, detail="企業名のリストは必須です")
+        
+        print(f"Batch SEC EDGAR collection for {len(company_names)} companies")
+        
+        sec_service = SECEdgarService()
+        results = []
+        successful_companies = []
+        failed_companies = []
+        
+        for company_name in company_names:
+            try:
+                # 企業の財務データを取得
+                financial_data = sec_service.get_company_financial_data(company_name)
+                
+                if "error" in financial_data:
+                    failed_companies.append({
+                        "company_name": company_name,
+                        "error": financial_data["error"]
+                    })
+                    continue
+                
+                # 最新の10-Kレポートをダウンロード
+                latest_10k = sec_service.download_latest_10k(company_name)
+                
+                if "error" in latest_10k:
+                    failed_companies.append({
+                        "company_name": company_name,
+                        "error": latest_10k["error"]
+                    })
+                    continue
+                
+                successful_companies.append({
+                    "company_name": company_name,
+                    "cik": latest_10k.get("cik"),
+                    "filing_date": latest_10k.get("filing_date"),
+                    "report_date": latest_10k.get("report_date"),
+                    "document_name": latest_10k.get("document_name"),
+                    "document_size": latest_10k.get("document_size")
+                })
+                
+            except Exception as e:
+                failed_companies.append({
+                    "company_name": company_name,
+                    "error": str(e)
+                })
+        
+        return {
+            "success": True,
+            "message": f"一括収集完了: 成功 {len(successful_companies)}件, 失敗 {len(failed_companies)}件",
+            "successful_companies": successful_companies,
+            "failed_companies": failed_companies,
+            "total_processed": len(company_names)
+        }
+        
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"Error in batch SEC EDGAR collection: {str(e)}")
+        print(f"Traceback: {error_details}")
+        raise HTTPException(status_code=500, detail=f"SEC EDGAR一括決算資料収集に失敗しました: {str(e)}")
+
+@router.get("/sec-edgar/search-company")
+async def search_sec_company(company_name: str):
+    """SEC EDGARで企業を検索"""
+    try:
+        if not company_name:
+            raise HTTPException(status_code=400, detail="企業名は必須です")
+        
+        sec_service = SECEdgarService()
+        companies = sec_service.search_company(company_name)
+        
+        return {
+            "success": True,
+            "companies": companies,
+            "search_query": company_name
+        }
+        
+    except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"Error in SEC EDGAR company search: {str(e)}")
+        print(f"Traceback: {error_details}")
+        raise HTTPException(status_code=500, detail=f"SEC EDGAR企業検索に失敗しました: {str(e)}")
+
+@router.post("/sec-edgar/collect-and-upload")
+async def collect_sec_reports_and_upload(request_data: Dict[str, Any]):
+    """SEC EDGAR APIを使用してアメリカ企業の決算資料を収集し、Google Driveにアップロード"""
+    try:
+        company_name = request_data.get('company_name')
+        if not company_name:
+            raise HTTPException(status_code=400, detail="企業名は必須です")
+        
+        print(f"SEC EDGAR collection and upload request for: {company_name}")
+        
+        # SEC EDGAR サービスを初期化
+        sec_service = SECEdgarService()
+        
+        # 企業の財務データを取得
+        financial_data = sec_service.get_company_financial_data(company_name)
+        
+        if "error" in financial_data:
+            raise HTTPException(status_code=404, detail=financial_data["error"])
+        
+        # 最新の10-Kレポートをダウンロード
+        latest_10k = sec_service.download_latest_10k(company_name)
+        
+        if "error" in latest_10k:
+            raise HTTPException(status_code=404, detail=latest_10k["error"])
+        
+        # Google Driveサービスを初期化
+        drive_service = GoogleDriveService()
+        
+        # ドキュメント内容を文字列に変換
+        document_content = None
+        if latest_10k.get("document_content"):
+            if isinstance(latest_10k["document_content"], bytes):
+                document_content = latest_10k["document_content"].decode('utf-8')
+            else:
+                document_content = str(latest_10k["document_content"])
+        
+        # Google Driveにアップロード
+        file_id = None
+        if document_content:
+            file_id = drive_service.upload_file_to_company_folder(
+                company_name=company_name,
+                file_name=latest_10k.get("document_name", f"{company_name}_10K.html"),
+                file_content=document_content,
+                mime_type='text/html'
+            )
+        
+        return {
+            "success": True,
+            "message": f"{company_name}の決算資料を収集し、Google Driveにアップロードしました。",
+            "company_name": company_name,
+            "cik": latest_10k.get("cik"),
+            "filing_date": latest_10k.get("filing_date"),
+            "report_date": latest_10k.get("report_date"),
+            "document_name": latest_10k.get("document_name"),
+            "document_size": latest_10k.get("document_size"),
+            "document_content": document_content,
+            "file_id": file_id,
+            "folder_name": drive_service.normalize_company_name(company_name),
+            "financial_data": financial_data
+        }
+        
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"Error in SEC EDGAR collection and upload: {str(e)}")
+        print(f"Traceback: {error_details}")
+        raise HTTPException(status_code=500, detail=f"SEC EDGAR決算資料収集・アップロードに失敗しました: {str(e)}")
+
+@router.post("/google-drive/upload-sec-report")
+async def upload_sec_report_to_drive(request_data: Dict[str, Any]):
+    """SEC EDGARで収集した決算資料をGoogle Driveにアップロード"""
+    try:
+        company_name = request_data.get('company_name')
+        document_name = request_data.get('document_name')
+        document_content = request_data.get('document_content')
+        
+        if not all([company_name, document_name, document_content]):
+            raise HTTPException(status_code=400, detail="企業名、ドキュメント名、ドキュメント内容は必須です")
+        
+        # フロントエンドのGoogle Driveサービスを呼び出すためのレスポンス
+        return {
+            "success": True,
+            "message": f"{company_name}の決算資料をGoogle Driveにアップロードする準備ができました",
+            "company_name": company_name,
+            "document_name": document_name,
+            "document_content": document_content,
+            "instructions": "フロントエンドでGoogle Drive APIを使用してアップロードを実行してください"
+        }
+        
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"Error in Google Drive upload: {str(e)}")
+        print(f"Traceback: {error_details}")
+        raise HTTPException(status_code=500, detail=f"Google Driveアップロードに失敗しました: {str(e)}")
+
+@router.post("/sec-edgar/download-report")
+async def download_sec_report(request_data: Dict[str, Any]):
+    """SEC EDGARで収集した決算資料をダウンロード用に準備"""
+    try:
+        company_name = request_data.get('company_name')
+        if not company_name:
+            raise HTTPException(status_code=400, detail="企業名は必須です")
+        
+        print(f"SEC EDGAR download request for: {company_name}")
+        
+        # SEC EDGAR サービスを初期化
+        sec_service = SECEdgarService()
+        
+        # 最新の10-Kレポートをダウンロード
+        latest_10k = sec_service.download_latest_10k(company_name)
+        
+        if "error" in latest_10k:
+            raise HTTPException(status_code=404, detail=latest_10k["error"])
+        
+        # ドキュメント内容を文字列に変換
+        document_content = None
+        if latest_10k.get("document_content"):
+            if isinstance(latest_10k["document_content"], bytes):
+                document_content = latest_10k["document_content"].decode('utf-8')
+            else:
+                document_content = str(latest_10k["document_content"])
+        
+        return {
+            "success": True,
+            "message": f"{company_name}の決算資料をダウンロード用に準備しました",
+            "company_name": company_name,
+            "cik": latest_10k.get("cik"),
+            "filing_date": latest_10k.get("filing_date"),
+            "report_date": latest_10k.get("report_date"),
+            "document_name": latest_10k.get("document_name"),
+            "document_size": latest_10k.get("document_size"),
+            "document_content": document_content,
+            "download_url": f"/api/admin/sec-edgar/download-file/{company_name.replace(' ', '_')}_{latest_10k.get('document_name', 'report.html')}"
+        }
+        
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"Error in SEC EDGAR download preparation: {str(e)}")
+        print(f"Traceback: {error_details}")
+        raise HTTPException(status_code=500, detail=f"SEC EDGAR決算資料ダウンロード準備に失敗しました: {str(e)}")
+
+@router.get("/sec-edgar/download-file/{filename}")
+async def download_sec_file(filename: str, company_name: str = None):
+    """SEC EDGAR決算資料ファイルをダウンロード"""
+    try:
+        if not company_name:
+            # ファイル名から企業名を推測
+            company_name = filename.split('_')[0].replace('_', ' ')
+        
+        print(f"Download request for: {filename} (Company: {company_name})")
+        
+        # SEC EDGAR サービスを初期化
+        sec_service = SECEdgarService()
+        
+        # 最新の10-Kレポートをダウンロード
+        latest_10k = sec_service.download_latest_10k(company_name)
+        
+        if "error" in latest_10k:
+            raise HTTPException(status_code=404, detail=latest_10k["error"])
+        
+        # ドキュメント内容を取得
+        document_content = None
+        if latest_10k.get("document_content"):
+            if isinstance(latest_10k["document_content"], bytes):
+                document_content = latest_10k["document_content"]
+            else:
+                document_content = str(latest_10k["document_content"]).encode('utf-8')
+        
+        if not document_content:
+            raise HTTPException(status_code=404, detail="ドキュメント内容が見つかりません")
+        
+        # ファイル名を設定
+        actual_filename = latest_10k.get("document_name", f"{company_name}_10K.html")
+        
+        # レスポンスを返す
+        from fastapi.responses import Response
+        return Response(
+            content=document_content,
+            media_type="text/html",
+            headers={
+                "Content-Disposition": f"attachment; filename={actual_filename}",
+                "Content-Type": "text/html; charset=utf-8"
+            }
+        )
+        
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"Error in SEC EDGAR file download: {str(e)}")
+        print(f"Traceback: {error_details}")
+        raise HTTPException(status_code=500, detail=f"SEC EDGAR決算資料ダウンロードに失敗しました: {str(e)}")
+
+@router.get("/sec-edgar/view-file/{filename}")
+async def view_sec_file(filename: str, company_name: str = None):
+    """SEC EDGAR決算資料ファイルを表示用に取得"""
+    try:
+        if not company_name:
+            # ファイル名から企業名を推測
+            company_name = filename.split('_')[0].replace('_', ' ')
+
+        print(f"View request for: {filename} (Company: {company_name})")
+
+        # SEC EDGAR サービスを初期化
+        sec_service = SECEdgarService()
+
+        # 最新の10-Kレポートをダウンロード
+        latest_10k = sec_service.download_latest_10k(company_name)
+
+        if "error" in latest_10k:
+            raise HTTPException(status_code=404, detail=latest_10k["error"])
+
+        # ドキュメント内容を取得
+        document_content = None
+        if latest_10k.get("document_content"):
+            if isinstance(latest_10k["document_content"], bytes):
+                document_content = latest_10k["document_content"].decode('utf-8')
+            else:
+                document_content = str(latest_10k["document_content"])
+
+        if not document_content:
+            raise HTTPException(status_code=404, detail="ドキュメント内容が見つかりません")
+
+        # レスポンスを返す（表示用）
+        from fastapi.responses import Response
+        return Response(
+            content=document_content,
+            media_type="text/html",
+            headers={
+                "Content-Type": "text/html; charset=utf-8",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type"
+            }
+        )
+
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"Error in SEC EDGAR file view: {str(e)}")
+        print(f"Traceback: {error_details}")
+        raise HTTPException(status_code=500, detail=f"SEC EDGAR決算資料表示に失敗しました: {str(e)}")
+
+
+@router.get("/google-drive/get-file-content/{file_id}")
+async def get_google_drive_file_content(file_id: str):
+    """Google DriveからHTMLファイルの内容を取得"""
+    try:
+        from app.services.google_drive_service import GoogleDriveService
+        
+        # Google Drive サービスを初期化
+        drive_service = GoogleDriveService()
+        
+        # ファイルの内容を取得
+        file_content = drive_service.get_file_content(file_id)
+        
+        if not file_content:
+            raise HTTPException(status_code=404, detail="ファイル内容が見つかりません")
+        
+        # レスポンスを返す（表示用）
+        from fastapi.responses import Response
+        return Response(
+            content=file_content,
+            media_type="text/html",
+            headers={
+                "Content-Type": "text/html; charset=utf-8",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type"
+            }
+        )
+
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"Error in Google Drive file content retrieval: {str(e)}")
+        print(f"Traceback: {error_details}")
+        raise HTTPException(status_code=500, detail=f"Google Driveファイル内容取得に失敗しました: {str(e)}")
+
+@router.post("/shikiho/scrape-company")
+async def scrape_shikiho_company(request: Dict[str, str]):
+    """四季報オンラインから単一企業の情報を取得"""
+    try:
+        ticker = request.get("ticker")
+        if not ticker:
+            raise HTTPException(status_code=400, detail="ティッカーシンボルが必要です")
+        
+        scraper = ShikihoScraper()
+        company_info = scraper.get_company_info(ticker)
+        
+        if not company_info:
+            raise HTTPException(status_code=404, detail=f"企業情報の取得に失敗しました: {ticker}")
+        
+        return {
+            "status": "success",
+            "message": f"{ticker}の企業情報を取得しました",
+            "data": company_info
+        }
+        
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"Error in Shikiho scraping: {str(e)}")
+        print(f"Traceback: {error_details}")
+        raise HTTPException(status_code=500, detail=f"四季報オンライン情報取得に失敗しました: {str(e)}")
+
+@router.post("/shikiho/batch-scrape")
+async def batch_scrape_shikiho_companies(request: Dict[str, Any]):
+    """四季報オンラインから複数企業の情報を一括取得"""
+    try:
+        tickers = request.get("tickers", [])
+        if not tickers:
+            raise HTTPException(status_code=400, detail="ティッカーシンボルのリストが必要です")
+        
+        delay = request.get("delay", 1.0)
+        
+        scraper = ShikihoScraper()
+        results = scraper.batch_scrape_companies(tickers, delay)
+        
+        return {
+            "status": "success",
+            "message": f"{len(results)}件の企業情報を取得しました",
+            "data": results,
+            "total_requested": len(tickers),
+            "total_successful": len(results)
+        }
+        
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"Error in batch Shikiho scraping: {str(e)}")
+        print(f"Traceback: {error_details}")
+        raise HTTPException(status_code=500, detail=f"四季報オンライン一括情報取得に失敗しました: {str(e)}")
+
+@router.post("/shikiho/create-spreadsheet")
+async def create_shikiho_spreadsheet(request: Dict[str, Any]):
+    """四季報オンラインのデータをスプレッドシートに保存"""
+    try:
+        companies_data = request.get("companies_data", [])
+        if not companies_data:
+            raise HTTPException(status_code=400, detail="企業データが必要です")
+        
+        # Google Driveサービスを初期化
+        drive_service = GoogleDriveService()
+        
+        # スプレッドシートを作成
+        spreadsheet_data = create_spreadsheet_from_shikiho_data(companies_data)
+        
+        # Google Sheetsにアップロード
+        # 注意: 実際のGoogle Sheets APIの実装が必要
+        # ここでは構造化されたデータを返す
+        
+        return {
+            "status": "success",
+            "message": "スプレッドシートデータを作成しました",
+            "spreadsheet_data": spreadsheet_data
+        }
+        
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"Error creating Shikiho spreadsheet: {str(e)}")
+        print(f"Traceback: {error_details}")
+        raise HTTPException(status_code=500, detail=f"スプレッドシート作成に失敗しました: {str(e)}")
+
+def create_spreadsheet_from_shikiho_data(companies_data: List[Dict]) -> Dict:
+    """四季報オンラインのデータからスプレッドシート構造を作成"""
+    
+    # 企業概要シート
+    company_overview_data = []
+    company_overview_headers = [
+        "ティッカー", "会社名", "英文名", "業種", "セクター", "時価総額", 
+        "発行済み株式数", "上場日", "本社", "ウェブサイト", "企業説明"
+    ]
+    company_overview_data.append(company_overview_headers)
+    
+    # 財務シート
+    financial_data = []
+    financial_headers = [
+        "ティッカー", "売上高", "営業利益", "純利益", "総資産", "総負債", 
+        "自己資本", "ROE", "ROA", "PER", "PBR", "配当利回り", "EPS"
+    ]
+    financial_data.append(financial_headers)
+    
+    # 業績シート
+    performance_data = []
+    performance_headers = [
+        "ティッカー", "最新売上高", "最新営業利益", "最新純利益", "売上成長率", 
+        "利益成長率", "四半期売上", "四半期利益", "予想売上", "予想利益"
+    ]
+    performance_data.append(performance_headers)
+    
+    # データを追加
+    for company in companies_data:
+        ticker = company.get('ticker', '')
+        
+        # 企業概要データ
+        company_overview_data.append([
+            ticker,
+            company.get('company_name', ''),
+            company.get('english_name', ''),
+            company.get('industry', ''),
+            company.get('sector', ''),
+            company.get('market_cap', ''),
+            company.get('shares_outstanding', ''),
+            company.get('listing_date', ''),
+            company.get('headquarters', ''),
+            company.get('website', ''),
+            company.get('description', '')
+        ])
+        
+        # 財務データ
+        financial_data.append([
+            ticker,
+            company.get('revenue', ''),
+            company.get('operating_income', ''),
+            company.get('net_income', ''),
+            company.get('total_assets', ''),
+            company.get('total_liabilities', ''),
+            company.get('shareholders_equity', ''),
+            company.get('roe', ''),
+            company.get('roa', ''),
+            company.get('per', ''),
+            company.get('pbr', ''),
+            company.get('dividend_yield', ''),
+            company.get('eps', '')
+        ])
+        
+        # 業績データ
+        performance_data.append([
+            ticker,
+            company.get('latest_revenue', ''),
+            company.get('latest_operating_income', ''),
+            company.get('latest_net_income', ''),
+            company.get('revenue_growth', ''),
+            company.get('profit_growth', ''),
+            company.get('quarterly_revenue', ''),
+            company.get('quarterly_profit', ''),
+            company.get('forecast_revenue', ''),
+            company.get('forecast_profit', '')
+        ])
+    
+    return {
+        "企業概要": {
+            "headers": company_overview_headers,
+            "data": company_overview_data
+        },
+        "財務": {
+            "headers": financial_headers,
+            "data": financial_data
+        },
+        "業績": {
+            "headers": performance_headers,
+            "data": performance_data
+        }
+    }
+
+@router.post("/sec-edgar/download-pdf")
+async def download_sec_report_pdf(request_data: Dict[str, Any]):
+    """SEC EDGARで収集した決算資料をPDFでダウンロード"""
+    try:
+        company_name = request_data.get('company_name')
+        if not company_name:
+            raise HTTPException(status_code=400, detail="企業名は必須です")
+        
+        print(f"SEC EDGAR PDF download request for: {company_name}")
+        
+        # SEC EDGAR サービスを初期化
+        sec_service = SECEdgarService()
+        
+        # 最新の10-Kレポートをダウンロード
+        latest_10k = sec_service.download_latest_10k(company_name)
+        
+        if "error" in latest_10k:
+            raise HTTPException(status_code=404, detail=latest_10k["error"])
+        
+        # ドキュメント内容を取得
+        document_content = None
+        if latest_10k.get("document_content"):
+            if isinstance(latest_10k["document_content"], bytes):
+                document_content = latest_10k["document_content"].decode('utf-8')
+            else:
+                document_content = str(latest_10k["document_content"])
+        
+        if not document_content:
+            raise HTTPException(status_code=404, detail="ドキュメント内容が見つかりません")
+        
+        # PDF変換サービスを初期化
+        pdf_service = PDFConverterService()
+        
+        # PDFに変換
+        pdf_content = pdf_service.create_pdf_with_metadata(
+            html_content=document_content,
+            company_name=company_name,
+            document_name=latest_10k.get("document_name", "10-K Report"),
+            filing_date=latest_10k.get("filing_date"),
+            report_date=latest_10k.get("report_date")
+        )
+        
+        if not pdf_content:
+            raise HTTPException(status_code=500, detail="PDF変換に失敗しました")
+        
+        # ファイル名を設定
+        pdf_filename = f"{company_name.replace(' ', '_')}_{latest_10k.get('document_name', '10K_Report').replace('.htm', '')}.pdf"
+        
+        # レスポンスを返す
+        from fastapi.responses import Response
+        return Response(
+            content=pdf_content,
+            media_type="application/pdf",
+            headers={
+                "Content-Disposition": f"attachment; filename={pdf_filename}",
+                "Content-Type": "application/pdf"
+            }
+        )
+        
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"Error in SEC EDGAR PDF download: {str(e)}")
+        print(f"Traceback: {error_details}")
+        raise HTTPException(status_code=500, detail=f"SEC EDGAR決算資料PDFダウンロードに失敗しました: {str(e)}")
+
+@router.get("/sec-edgar/download-pdf/{filename}")
+async def download_sec_pdf_file(filename: str, company_name: str = None):
+    """SEC EDGAR決算資料PDFファイルをダウンロード"""
+    try:
+        if not company_name:
+            # ファイル名から企業名を推測
+            company_name = filename.split('_')[0].replace('_', ' ')
+        
+        print(f"PDF download request for: {filename} (Company: {company_name})")
+        
+        # SEC EDGAR サービスを初期化
+        sec_service = SECEdgarService()
+        
+        # 最新の10-Kレポートをダウンロード
+        latest_10k = sec_service.download_latest_10k(company_name)
+        
+        if "error" in latest_10k:
+            raise HTTPException(status_code=404, detail=latest_10k["error"])
+        
+        # ドキュメント内容を取得
+        document_content = None
+        if latest_10k.get("document_content"):
+            if isinstance(latest_10k["document_content"], bytes):
+                document_content = latest_10k["document_content"].decode('utf-8')
+            else:
+                document_content = str(latest_10k["document_content"])
+        
+        if not document_content:
+            raise HTTPException(status_code=404, detail="ドキュメント内容が見つかりません")
+        
+        # PDF変換サービスを初期化
+        pdf_service = PDFConverterService()
+        
+        # PDFに変換
+        pdf_content = pdf_service.create_pdf_with_metadata(
+            html_content=document_content,
+            company_name=company_name,
+            document_name=latest_10k.get("document_name", "10-K Report"),
+            filing_date=latest_10k.get("filing_date"),
+            report_date=latest_10k.get("report_date")
+        )
+        
+        if not pdf_content:
+            raise HTTPException(status_code=500, detail="PDF変換に失敗しました")
+        
+        # ファイル名を設定
+        pdf_filename = f"{company_name.replace(' ', '_')}_{latest_10k.get('document_name', '10K_Report').replace('.htm', '')}.pdf"
+        
+        # レスポンスを返す
+        from fastapi.responses import Response
+        return Response(
+            content=pdf_content,
+            media_type="application/pdf",
+            headers={
+                "Content-Disposition": f"attachment; filename={pdf_filename}",
+                "Content-Type": "application/pdf"
+            }
+        )
+        
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"Error in SEC EDGAR PDF file download: {str(e)}")
+        print(f"Traceback: {error_details}")
+        raise HTTPException(status_code=500, detail=f"SEC EDGAR決算資料PDFダウンロードに失敗しました: {str(e)}")

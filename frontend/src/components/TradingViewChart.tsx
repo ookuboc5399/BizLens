@@ -1,75 +1,106 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, memo } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
 interface TradingViewChartProps {
   symbol: string;
+  market: string;
+  companyName: string;
 }
 
-export const TradingViewChart: React.FC<TradingViewChartProps> = ({ symbol }) => {
+export const TradingViewChart: React.FC<TradingViewChartProps> = memo(({ 
+  symbol, 
+  market, 
+  companyName 
+}) => {
   const container = useRef<HTMLDivElement>(null);
-  
-  console.log('TradingViewChart: Loading symbol:', symbol);
 
   useEffect(() => {
     if (!container.current) return;
 
-    const script = document.createElement('script');
-    script.src = 'https://s3.tradingview.com/tv.js';
+    // 既存のウィジェットをクリア
+    container.current.innerHTML = '';
+
+    // 市場に応じてシンボルを調整
+    let tradingViewSymbol = symbol;
+    
+    // 日本市場の場合、.Tを追加
+    if (market === 'JP') {
+      tradingViewSymbol = `${symbol}.T`;
+    }
+    // 米国市場の場合、NASDAQ:プレフィックスを追加
+    else if (market === 'US') {
+      tradingViewSymbol = `NASDAQ:${symbol}`;
+    }
+    // 中国市場の場合、.HKを追加（香港市場として）
+    else if (market === 'CN') {
+      tradingViewSymbol = `${symbol}.HK`;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+    script.type = "text/javascript";
     script.async = true;
-    script.onload = () => {
-      const initializeWidget = () => {
-        if (window.TradingView && window.TradingView.widget) {
-          if (container.current) {
-            console.log('TradingViewChart: Initializing widget for symbol:', symbol);
-            new window.TradingView.widget({
-              "width": "100%",
-              "height": "400",
-              "symbol": symbol,
-              "interval": "D",
-              "timezone": "Asia/Tokyo",
-              "theme": "dark",
-              "style": "1",
-              "locale": "ja",
-              "toolbar_bg": "#f1f3f6",
-              "enable_publishing": false,
-              "hide_top_toolbar": false,
-              "hide_legend": false,
-              "save_image": false,
-              "container_id": container.current.id,
-              "studies": [
-                "MASimple@tv-basicstudies",
-                "RSI@tv-basicstudies"
-              ],
-              "show_popup_button": true,
-              "popup_width": "1000",
-              "popup_height": "650"
-            });
-          }
-        } else {
-          // TradingViewオブジェクトがまだ利用可能でない場合、少し待って再試行
-          setTimeout(initializeWidget, 100);
-        }
-      };
-      initializeWidget();
-    };
-    
-    script.onerror = () => {
-      console.error('Failed to load TradingView script');
-    };
-    
-    document.head.appendChild(script);
+    script.innerHTML = `
+      {
+        "allow_symbol_change": true,
+        "calendar": false,
+        "details": false,
+        "hide_side_toolbar": true,
+        "hide_top_toolbar": false,
+        "hide_legend": false,
+        "hide_volume": false,
+        "hotlist": false,
+        "interval": "D",
+        "locale": "ja",
+        "save_image": true,
+        "style": "1",
+        "symbol": "${tradingViewSymbol}",
+        "theme": "light",
+        "timezone": "Asia/Tokyo",
+        "backgroundColor": "#ffffff",
+        "gridColor": "rgba(46, 46, 46, 0.06)",
+        "watchlist": [],
+        "withdateranges": false,
+        "compareSymbols": [],
+        "studies": [],
+        "width": "100%",
+        "height": 600
+      }`;
+    container.current.appendChild(script);
 
     return () => {
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
+      if (container.current) {
+        container.current.innerHTML = '';
       }
     };
-  }, [symbol]);
+  }, [symbol, market]);
 
   return (
-    <div 
-      id={`tradingview_${symbol.replace(/[^a-zA-Z0-9]/g, '_')}`} 
-      ref={container} 
-      style={{ height: '400px', width: '100%' }}
-    />
+    <Card className="w-full">
+      <CardHeader>
+        <CardTitle className="text-lg font-semibold text-gray-800">
+          {companyName} 株価チャート
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div 
+          className="tradingview-widget-container" 
+          ref={container}
+          style={{ height: "600px", width: "100%", overflow: "hidden" }}
+        >
+          <div className="tradingview-widget-container__widget"></div>
+          <div className="tradingview-widget-copyright">
+            <a 
+              href={`https://www.tradingview.com/symbols/${symbol}/`} 
+              rel="noopener nofollow" 
+              target="_blank"
+            >
+              <span className="blue-text">{symbol} stock chart</span>
+            </a>
+            <span className="trademark"> by TradingView</span>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
   );
-}
+});

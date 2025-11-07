@@ -7,7 +7,8 @@ import { Input } from '../components/ui/input';
 import { Button } from '../components/ui/button';
 import { Progress } from '../components/ui/progress';
 import { googleDriveService, DriveFolder, DriveFile } from '../services/googleDriveService';
-import { Folder, Search, FileText, ArrowLeft } from 'lucide-react';
+import { Folder, Search, FileText, ArrowLeft, Eye, FileCode } from 'lucide-react';
+import HTMLViewer from '../components/HTMLViewer';
 
 function FinancialReports() {
   const [searchParams] = useSearchParams();
@@ -22,6 +23,15 @@ function FinancialReports() {
   const [currentFolder, setCurrentFolder] = useState<DriveFolder | null>(null);
   const [files, setFiles] = useState<DriveFile[]>([]);
   const [loadingFiles, setLoadingFiles] = useState(false);
+  const [htmlViewer, setHtmlViewer] = useState<{
+    isOpen: boolean;
+    htmlContent: string;
+    fileName: string;
+  }>({
+    isOpen: false,
+    htmlContent: '',
+    fileName: ''
+  });
 
   useEffect(() => {
     // 企業名またはティッカーが指定されている場合は自動検索
@@ -56,7 +66,10 @@ function FinancialReports() {
       setError(null);
       
       console.log('フォルダをクリック:', folder.name);
+      console.log('フォルダID:', folder.id);
+      
       const folderFiles = await googleDriveService.getFilesInFolder(folder.id);
+      console.log('取得したファイル:', folderFiles);
       setFiles(folderFiles);
       
       console.log('フォルダ内ファイル数:', folderFiles.length);
@@ -121,6 +134,70 @@ function FinancialReports() {
     if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
     if (bytes < 1024 * 1024 * 1024) return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
     return `${(bytes / (1024 * 1024 * 1024)).toFixed(1)} GB`;
+  };
+
+  const isHtmlFile = (fileName: string): boolean => {
+    return fileName.toLowerCase().endsWith('.html') || fileName.toLowerCase().endsWith('.htm');
+  };
+
+  const isPdfFile = (fileName: string): boolean => {
+    return fileName.toLowerCase().endsWith('.pdf');
+  };
+
+  const handleFileClick = async (file: DriveFile) => {
+    if (isHtmlFile(file.name)) {
+      try {
+        // SEC EDGARファイルかどうかを判定
+        const isSecEdgarFile = file.name.includes('_10K') || file.name.includes('_10-Q') || file.name.includes('_8-K');
+        
+        if (isSecEdgarFile) {
+          // SEC EDGARファイルの場合はバックエンドから取得
+          const companyName = file.name.split('_')[0];
+          const response = await fetch(`http://localhost:8000/api/admin/sec-edgar/view-file/${file.name}`);
+          
+          if (response.ok) {
+            const htmlContent = await response.text();
+            setHtmlViewer({
+              isOpen: true,
+              htmlContent,
+              fileName: file.name
+            });
+          } else {
+            throw new Error('Failed to fetch SEC EDGAR file');
+          }
+        } else {
+          // 通常のHTMLファイルの場合はバックエンド経由で取得
+          // Google Driveから直接取得するとCORSエラーが発生する可能性があるため
+          const response = await fetch(`http://localhost:8000/api/admin/google-drive/get-file-content/${file.id}`);
+          
+          if (response.ok) {
+            const htmlContent = await response.text();
+            setHtmlViewer({
+              isOpen: true,
+              htmlContent,
+              fileName: file.name
+            });
+          } else {
+            throw new Error('Failed to fetch HTML file content');
+          }
+        }
+      } catch (error) {
+        console.error('HTMLファイルの読み込みに失敗:', error);
+        // エラーの場合はアラートを表示して、Google Driveのビューは開かない
+        alert('HTMLファイルの読み込みに失敗しました。ファイルが正しくアップロードされているか確認してください。');
+      }
+    } else {
+      // PDFやその他のファイルは通常通り開く
+      window.open(file.webViewLink, '_blank');
+    }
+  };
+
+  const closeHtmlViewer = () => {
+    setHtmlViewer({
+      isOpen: false,
+      htmlContent: '',
+      fileName: ''
+    });
   };
 
   if (loading) {
@@ -271,11 +348,17 @@ function FinancialReports() {
                       <Card
                         key={file.id}
                         className="cursor-pointer hover:bg-gray-50 transition-colors"
-                        onClick={() => window.open(file.webViewLink, '_blank')}
+                        onClick={() => handleFileClick(file)}
                       >
                         <CardContent className="p-6">
                           <div className="flex flex-col items-center text-center space-y-3">
-                            <FileText className="h-12 w-12 text-red-500" />
+                            {isHtmlFile(file.name) ? (
+                              <FileCode className="h-12 w-12 text-green-500" />
+                            ) : isPdfFile(file.name) ? (
+                              <FileText className="h-12 w-12 text-red-500" />
+                            ) : (
+                              <FileText className="h-12 w-12 text-gray-500" />
+                            )}
                             <div>
                               <h3
                                 className="font-semibold text-sm truncate w-full"
@@ -289,6 +372,16 @@ function FinancialReports() {
                               <p className="text-xs text-gray-500">
                                 更新日: {formatDate(file.modifiedTime)}
                               </p>
+                              {isHtmlFile(file.name) && (
+                                <div className="flex items-center justify-center mt-2">
+                                  <Eye className="h-3 w-3 text-green-500 mr-1" />
+                                  <span className="text-xs text-green-600">
+                                    {(file.name.includes('_10K') || file.name.includes('_10-Q') || file.name.includes('_8-K')) 
+                                      ? 'SEC EDGAR表示可能' 
+                                      : 'HTML表示可能'}
+                                  </span>
+                                </div>
+                              )}
                             </div>
                           </div>
                         </CardContent>
@@ -308,6 +401,15 @@ function FinancialReports() {
 
         </CardContent>
       </Card>
+
+      {/* HTML Viewer Modal */}
+      {htmlViewer.isOpen && (
+        <HTMLViewer
+          htmlContent={htmlViewer.htmlContent}
+          fileName={htmlViewer.fileName}
+          onClose={closeHtmlViewer}
+        />
+      )}
     </div>
   );
 }

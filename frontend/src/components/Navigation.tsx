@@ -6,7 +6,7 @@ function Navigation() {
     <nav className="bg-gray-800 text-white">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="font-bold text-xl">Market Analysis</Link>
+          <Link to="/" className="font-bold text-xl">BizLens</Link>
           <div className="flex space-x-4">
             <Link to="/company-search" className="hover:text-red-500">企業検索</Link>
             <Link to="/company-comparison" className="hover:text-red-500">企業比較</Link>

@@ -4,6 +4,7 @@ import yfinance as yf
 from dotenv import load_dotenv
 from ...services.company_service import CompanyService
 from ...services.snowflake_service import SnowflakeService
+from ...services.google_drive_service import GoogleDriveService
 
 router = APIRouter()
 company_service = CompanyService()
@@ -14,10 +15,113 @@ async def search_companies(
     query: str = "",
     page: int = Query(1, ge=1),
     page_size: int = Query(10, ge=1, le=100),
+    market: str = None,
     sector: str = None,
     country: str = None
 ):
     try:
+        # デバッグ: パラメータをログ出力
+        print(f"Search parameters - query: '{query}', market: '{market}', sector: '{sector}', country: '{country}'")
+        
+        # 中国市場、米国市場、または日本市場が選択されている場合はGoogle Driveから検索
+        if market and (market.upper() == "CN" or market.upper() == "US" or market.upper() == "JP"):
+            market = market.upper()  # 大文字に統一
+            try:
+                print(f"Searching Google Drive for {market} companies with query: '{query}'")
+                
+                drive_service = GoogleDriveService()
+                
+                # Google Driveサービスが初期化されているか確認
+                if not drive_service.service:
+                    print("Google Drive service not initialized")
+                    raise HTTPException(
+                        status_code=500,
+                        detail="Google Driveサービスが初期化されていません。設定を確認してください。"
+                    )
+                
+                # 市場に応じてフォルダIDを設定
+                if market == "CN":
+                    folder_id = "1uragZmOuCVZYJ_9Wcyxe6R9-dnyI8-fi"  # 中国企業用フォルダ
+                    market_label = "中国企業"
+                    currency = "CNY"
+                elif market == "US":
+                    folder_id = "1JDah1KWIgrGwktuxnF0yGz3WyBR6yDb2"  # 米国企業用フォルダ
+                    market_label = "米国企業"
+                    currency = "USD"
+                else:  # JP
+                    folder_id = "1UCVDgNvrei0HPuWmM_BJaaHYAUNg3gO9"  # 日本企業用フォルダ
+                    market_label = "日本企業"
+                    currency = "JPY"
+                
+                folders = drive_service.search_company_folders(query, folder_id)
+                
+                print(f"Google Drive search returned {len(folders)} items")
+                print(f"Folders/items: {folders}")
+                
+                # Google Driveの結果をCompany形式に変換
+                companies = []
+                for item in folders:
+                    try:
+                        if item['type'] == 'folder':
+                            # フォルダの場合
+                            files = drive_service.get_company_folder_files(item['id'])
+                            file_count = len(files)
+                        else:
+                            # スプレッドシートファイルの場合
+                            file_count = 1
+                        
+                        company = {
+                            "ticker": item['name'],  # アイテム名をtickerとして使用
+                            "company_name": item['name'],
+                            "market": market,
+                            "sector": market_label,
+                            "industry": market_label,
+                            "country": market,
+                            "market_cap": 0,  # Google Driveには市場価値情報がない
+                            "current_price": 0,  # Google Driveには価格情報がない
+                            "currency": currency,
+                            "company_type": market_label,
+                            "ceo": None,
+                            "folder_id": item['id'],
+                            "file_count": file_count,
+                            "web_view_link": item.get('webViewLink', ''),
+                            "created_time": item.get('createdTime', ''),
+                            "modified_time": item.get('modifiedTime', ''),
+                            "item_type": item['type']  # 'folder' または 'spreadsheet'
+                        }
+                        companies.append(company)
+                    except Exception as e:
+                        print(f"Error processing item {item}: {str(e)}")
+                        continue
+                
+                # ページネーション処理
+                start_idx = (page - 1) * page_size
+                end_idx = start_idx + page_size
+                paginated_companies = companies[start_idx:end_idx]
+                
+                print(f"Final result: {len(companies)} total companies, returning {len(paginated_companies)} for page {page}")
+                print(f"Companies: {[c['company_name'] for c in paginated_companies]}")
+                
+                return {
+                    "companies": paginated_companies,
+                    "total": len(companies),
+                    "page": page,
+                    "page_size": page_size,
+                    "total_pages": (len(companies) + page_size - 1) // page_size if companies else 0
+                }
+            except HTTPException:
+                raise
+            except Exception as e:
+                print(f"Error searching Google Drive: {str(e)}")
+                import traceback
+                print(f"Traceback: {traceback.format_exc()}")
+                raise HTTPException(
+                    status_code=500,
+                    detail=f"Google Drive検索中にエラーが発生しました: {str(e)}"
+                )
+        
+        # その他の市場は従来通りSnowflakeから検索
+        print(f"Searching Snowflake for market: '{market}' (not CN/US/JP)")
         db_name = os.getenv("SNOWFLAKE_DATABASE")
         schema_name = os.getenv("SNOWFLAKE_SCHEMA")
 
@@ -159,7 +263,12 @@ async def search_companies(
         us_count_results = snowflake_service.query(us_count_query, tuple(query_params))
         cn_count_results = snowflake_service.query(cn_count_query, tuple(query_params))
         
-        total = jp_count_results[0]['total'] + us_count_results[0]['total'] + cn_count_results[0]['total']
+        # カウント結果が空でないことを確認
+        jp_total = jp_count_results[0]['total'] if jp_count_results and len(jp_count_results) > 0 else 0
+        us_total = us_count_results[0]['total'] if us_count_results and len(us_count_results) > 0 else 0
+        cn_total = cn_count_results[0]['total'] if cn_count_results and len(cn_count_results) > 0 else 0
+        
+        total = jp_total + us_total + cn_total
 
         companies = []
         for row in results:
@@ -564,3 +673,20 @@ async def get_financial_history(ticker: str):
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@router.get("/spreadsheet/{spreadsheet_id}")
+async def get_spreadsheet_data(spreadsheet_id: str):
+    """Google Sheetsからデータを取得"""
+    try:
+        drive_service = GoogleDriveService()
+        data = drive_service.get_all_sheets_data(spreadsheet_id)
+        
+        if not data:
+            raise HTTPException(status_code=404, detail="スプレッドシートが見つからないか、アクセスできません")
+        
+        return data
+        
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"スプレッドシートデータの取得に失敗しました: {str(e)}")

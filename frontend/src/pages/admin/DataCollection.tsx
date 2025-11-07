@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 import { Progress } from '../../components/ui/progress';
 import { Input } from '../../components/ui/input';
@@ -10,6 +10,8 @@ import { Textarea } from '../../components/ui/textarea';
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
 import { ScrollArea } from '../../components/ui/scroll-area';
+import { googleDriveService } from '../../services/googleDriveService';
+import { Search, Loader2, FileSpreadsheet, Download, FileText, FileCode } from 'lucide-react';
 
 
 const API_BASE_URL = '/api';
@@ -87,6 +89,26 @@ function DataCollectionPage() {
   const [csvCountry, setCsvCountry] = useState('JP');
   const [isCsvUploading, setIsCsvUploading] = useState(false);
   const [csvResult, setCsvResult] = useState<any>(null);
+  
+  // SEC EDGAR用の状態
+  const [secCompanyName, setSecCompanyName] = useState('');
+  const [secCompanyNames, setSecCompanyNames] = useState('');
+  const [isSecCollecting, setIsSecCollecting] = useState(false);
+  const [secResult, setSecResult] = useState<any>(null);
+  const [isUploadingToDrive, setIsUploadingToDrive] = useState(false);
+  const [driveUploadResult, setDriveUploadResult] = useState<any>(null);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [downloadResult, setDownloadResult] = useState<any>(null);
+  const [isDownloadingPdf, setIsDownloadingPdf] = useState(false);
+  const [pdfDownloadResult, setPdfDownloadResult] = useState<any>(null);
+
+  // 四季報オンライン関連の状態
+  const [shikihoTicker, setShikihoTicker] = useState('');
+  const [shikihoTickers, setShikihoTickers] = useState('');
+  const [isShikihoScraping, setIsShikihoScraping] = useState(false);
+  const [shikihoResult, setShikihoResult] = useState<any>(null);
+  const [isCreatingSpreadsheet, setIsCreatingSpreadsheet] = useState(false);
+  const [spreadsheetResult, setSpreadsheetResult] = useState<any>(null);
 
   const handleCollectData = async () => {
     setIsLoading(true);
@@ -473,6 +495,494 @@ function DataCollectionPage() {
     }
   };
 
+  // SEC EDGAR用のハンドラー
+  const handleSecCollect = async () => {
+    if (!secCompanyName.trim()) {
+      setError('企業名を入力してください');
+      return;
+    }
+
+    setIsSecCollecting(true);
+    setSecResult(null);
+    setError(null);
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/admin/sec-edgar/collect-reports`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          company_name: secCompanyName
+        }),
+      });
+
+      const responseText = await response.text();
+      
+      if (!response.ok) {
+        let errorMessage = 'SEC EDGAR決算資料収集に失敗しました';
+        try {
+          const errorData = JSON.parse(responseText);
+          errorMessage = errorData.detail || errorMessage;
+        } catch (jsonError) {
+          errorMessage = `HTTP ${response.status}: ${responseText}`;
+        }
+        throw new Error(errorMessage);
+      }
+
+      let result;
+      try {
+        result = JSON.parse(responseText);
+      } catch (jsonError) {
+        throw new Error(`レスポンスの解析に失敗しました: ${responseText}`);
+      }
+      
+      setSecResult(result);
+      setSubmitMessage(`SEC EDGAR決算資料収集が完了しました: ${result.company_name}の資料を収集しました`);
+      
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'SEC EDGAR決算資料収集中にエラーが発生しました';
+      setError(errorMessage);
+    } finally {
+      setIsSecCollecting(false);
+    }
+  };
+
+  const handleBatchSecCollect = async () => {
+    if (!secCompanyNames.trim()) {
+      setError('企業名を入力してください（改行区切り）');
+      return;
+    }
+
+    setIsSecCollecting(true);
+    setSecResult(null);
+    setError(null);
+
+    try {
+      const companyNames = secCompanyNames.split('\n').map(name => name.trim()).filter(name => name);
+      
+      if (companyNames.length === 0) {
+        setError('有効な企業名を入力してください');
+        return;
+      }
+
+      const response = await fetch(`${API_BASE_URL}/admin/sec-edgar/batch-collect`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          company_names: companyNames
+        }),
+      });
+
+      const responseText = await response.text();
+      
+      if (!response.ok) {
+        let errorMessage = 'SEC EDGAR一括決算資料収集に失敗しました';
+        try {
+          const errorData = JSON.parse(responseText);
+          errorMessage = errorData.detail || errorMessage;
+        } catch (jsonError) {
+          errorMessage = `HTTP ${response.status}: ${responseText}`;
+        }
+        throw new Error(errorMessage);
+      }
+
+      let result;
+      try {
+        result = JSON.parse(responseText);
+      } catch (jsonError) {
+        throw new Error(`レスポンスの解析に失敗しました: ${responseText}`);
+      }
+      
+      setSecResult(result);
+      setSubmitMessage(`SEC EDGAR一括決算資料収集が完了しました: 成功 ${result.successful_companies?.length || 0}件, 失敗 ${result.failed_companies?.length || 0}件`);
+      
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'SEC EDGAR一括決算資料収集中にエラーが発生しました';
+      setError(errorMessage);
+    } finally {
+      setIsSecCollecting(false);
+    }
+  };
+
+  // Google Driveにアップロードするハンドラー
+  const handleUploadToDrive = async () => {
+    if (!secResult || !secResult.document_content) {
+      setError('アップロードするドキュメントがありません。まず決算資料を収集してください。');
+      return;
+    }
+
+    setIsUploadingToDrive(true);
+    setDriveUploadResult(null);
+    setError(null);
+
+    try {
+      const companyName = secResult.company_name;
+      const documentName = secResult.document_name;
+      const documentContent = secResult.document_content;
+
+      console.log(`Uploading to Google Drive: ${companyName} - ${documentName}`);
+
+      // Google Driveサービスを使用してアップロード
+      const fileId = await googleDriveService.uploadFileToCompanyFolder(
+        companyName,
+        documentName,
+        documentContent,
+        'text/html'
+      );
+
+      setDriveUploadResult({
+        success: true,
+        message: `${companyName}の決算資料をGoogle Driveにアップロードしました`,
+        company_name: companyName,
+        document_name: documentName,
+        file_id: fileId,
+        folder_name: googleDriveService.normalizeCompanyName(companyName)
+      });
+
+      setSubmitMessage(`${companyName}の決算資料をGoogle Driveの「${googleDriveService.normalizeCompanyName(companyName)}」フォルダにアップロードしました`);
+
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Google Driveアップロード中にエラーが発生しました';
+      setError(errorMessage);
+      setDriveUploadResult({
+        success: false,
+        message: errorMessage
+      });
+    } finally {
+      setIsUploadingToDrive(false);
+    }
+  };
+
+  // SEC EDGAR収集とGoogle Driveアップロードを一括実行
+  const handleSecCollectAndUpload = async () => {
+    if (!secCompanyName.trim()) {
+      setError('企業名を入力してください');
+      return;
+    }
+
+    setIsSecCollecting(true);
+    setSecResult(null);
+    setDriveUploadResult(null);
+    setError(null);
+
+    try {
+      // SEC EDGARから決算資料を収集し、Google Driveにアップロード（バックエンドで一括処理）
+      const response = await fetch(`${API_BASE_URL}/admin/sec-edgar/collect-and-upload`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          company_name: secCompanyName
+        }),
+      });
+
+      const responseText = await response.text();
+      
+      if (!response.ok) {
+        let errorMessage = 'SEC EDGAR決算資料収集・アップロードに失敗しました';
+        try {
+          const errorData = JSON.parse(responseText);
+          errorMessage = errorData.detail || errorMessage;
+        } catch (jsonError) {
+          errorMessage = `HTTP ${response.status}: ${responseText}`;
+        }
+        throw new Error(errorMessage);
+      }
+
+      let result;
+      try {
+        result = JSON.parse(responseText);
+      } catch (jsonError) {
+        throw new Error(`レスポンスの解析に失敗しました: ${responseText}`);
+      }
+      
+      setSecResult(result);
+
+      // Google Driveアップロード結果を設定
+      if (result.file_id) {
+        setDriveUploadResult({
+          success: true,
+          message: result.message,
+          company_name: result.company_name,
+          document_name: result.document_name,
+          file_id: result.file_id,
+          folder_name: result.folder_name
+        });
+
+        setSubmitMessage(result.message);
+      } else {
+        setDriveUploadResult({
+          success: false,
+          message: 'Google Driveアップロードに失敗しました'
+        });
+      }
+      
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : '決算資料収集・アップロード中にエラーが発生しました';
+      setError(errorMessage);
+      setDriveUploadResult({
+        success: false,
+        message: errorMessage
+      });
+    } finally {
+      setIsSecCollecting(false);
+    }
+  };
+
+  // SEC EDGAR決算資料ダウンロード機能
+  const handleDownloadSecReport = async () => {
+    if (!secCompanyName.trim()) {
+      setError('企業名を入力してください');
+      return;
+    }
+
+    setIsDownloading(true);
+    setDownloadResult(null);
+    setError(null);
+
+    try {
+      // SEC EDGARから決算資料をダウンロード用に準備
+      const response = await fetch(`${API_BASE_URL}/admin/sec-edgar/download-report`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          company_name: secCompanyName
+        }),
+      });
+
+      const responseText = await response.text();
+      
+      if (!response.ok) {
+        let errorMessage = 'SEC EDGAR決算資料ダウンロード準備に失敗しました';
+        try {
+          const errorData = JSON.parse(responseText);
+          errorMessage = errorData.detail || errorMessage;
+        } catch (jsonError) {
+          errorMessage = `HTTP ${response.status}: ${responseText}`;
+        }
+        throw new Error(errorMessage);
+      }
+
+      let result;
+      try {
+        result = JSON.parse(responseText);
+      } catch (jsonError) {
+        throw new Error(`レスポンスの解析に失敗しました: ${responseText}`);
+      }
+      
+      setDownloadResult(result);
+      setSubmitMessage(`${result.company_name}の決算資料をダウンロード用に準備しました`);
+
+      // ファイルをダウンロード
+      if (result.download_url) {
+        // download_urlには既に/apiが含まれているので、API_BASE_URLは使わない
+        const downloadUrl = `http://localhost:8000${result.download_url}`;
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.download = result.document_name || `${result.company_name}_10K.html`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+      
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : '決算資料ダウンロード中にエラーが発生しました';
+      setError(errorMessage);
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
+  // SEC EDGAR決算資料PDFダウンロード機能
+  const handleDownloadSecReportPdf = async () => {
+    if (!secCompanyName.trim()) {
+      setError('企業名を入力してください');
+      return;
+    }
+
+    setIsDownloadingPdf(true);
+    setPdfDownloadResult(null);
+    setError(null);
+
+    try {
+      // SEC EDGARから決算資料をPDFでダウンロード
+      const response = await fetch(`${API_BASE_URL}/admin/sec-edgar/download-pdf`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          company_name: secCompanyName
+        }),
+      });
+
+      if (!response.ok) {
+        let errorMessage = 'SEC EDGAR決算資料PDFダウンロードに失敗しました';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.detail || errorMessage;
+        } catch (jsonError) {
+          errorMessage = `HTTP ${response.status}: ${await response.text()}`;
+        }
+        throw new Error(errorMessage);
+      }
+
+      // PDFファイルをダウンロード
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      
+      // ファイル名を取得（Content-Dispositionヘッダーから）
+      const contentDisposition = response.headers.get('Content-Disposition');
+      let filename = `${secCompanyName.replace(' ', '_')}_10K_Report.pdf`;
+      if (contentDisposition) {
+        const filenameMatch = contentDisposition.match(/filename="(.+)"/);
+        if (filenameMatch) {
+          filename = filenameMatch[1];
+        }
+      }
+      
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+
+      setPdfDownloadResult({
+        success: true,
+        message: `${secCompanyName}の決算資料をPDFでダウンロードしました`,
+        company_name: secCompanyName,
+        filename: filename
+      });
+
+      setSubmitMessage(`${secCompanyName}の決算資料をPDFでダウンロードしました`);
+      
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : '決算資料PDFダウンロード中にエラーが発生しました';
+      setError(errorMessage);
+      setPdfDownloadResult({
+        success: false,
+        message: errorMessage
+      });
+    } finally {
+      setIsDownloadingPdf(false);
+    }
+  };
+
+  // 四季報オンライン関連のハンドラー
+  const handleShikihoScrape = async () => {
+    if (!shikihoTicker.trim()) {
+      alert('ティッカーシンボルを入力してください');
+      return;
+    }
+
+    setIsShikihoScraping(true);
+    setShikihoResult(null);
+
+    try {
+      const response = await fetch('http://localhost:8000/api/admin/shikiho/scrape-company', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ticker: shikihoTicker.trim()
+        }),
+      });
+
+      const result = await response.json();
+      setShikihoResult(result);
+    } catch (error) {
+      console.error('四季報オンライン情報取得エラー:', error);
+      setShikihoResult({
+        status: 'error',
+        message: '四季報オンライン情報取得に失敗しました'
+      });
+    } finally {
+      setIsShikihoScraping(false);
+    }
+  };
+
+  const handleBatchShikihoScrape = async () => {
+    if (!shikihoTickers.trim()) {
+      alert('ティッカーシンボルを入力してください（カンマ区切り）');
+      return;
+    }
+
+    const tickers = shikihoTickers.split(',').map(t => t.trim()).filter(t => t);
+    if (tickers.length === 0) {
+      alert('有効なティッカーシンボルを入力してください');
+      return;
+    }
+
+    setIsShikihoScraping(true);
+    setShikihoResult(null);
+
+    try {
+      const response = await fetch('http://localhost:8000/api/admin/shikiho/batch-scrape', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          tickers: tickers,
+          delay: 1.0
+        }),
+      });
+
+      const result = await response.json();
+      setShikihoResult(result);
+    } catch (error) {
+      console.error('四季報オンライン一括情報取得エラー:', error);
+      setShikihoResult({
+        status: 'error',
+        message: '四季報オンライン一括情報取得に失敗しました'
+      });
+    } finally {
+      setIsShikihoScraping(false);
+    }
+  };
+
+  const handleCreateSpreadsheet = async () => {
+    if (!shikihoResult || !shikihoResult.data) {
+      alert('まず企業情報を取得してください');
+      return;
+    }
+
+    setIsCreatingSpreadsheet(true);
+    setSpreadsheetResult(null);
+
+    try {
+      const response = await fetch('http://localhost:8000/api/admin/shikiho/create-spreadsheet', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          companies_data: Array.isArray(shikihoResult.data) ? shikihoResult.data : [shikihoResult.data]
+        }),
+      });
+
+      const result = await response.json();
+      setSpreadsheetResult(result);
+    } catch (error) {
+      console.error('スプレッドシート作成エラー:', error);
+      setSpreadsheetResult({
+        status: 'error',
+        message: 'スプレッドシート作成に失敗しました'
+      });
+    } finally {
+      setIsCreatingSpreadsheet(false);
+    }
+  };
+
   const handleSubmitCompany = async () => {
     if (!companyForm.company_name.trim()) {
       setError('企業名は必須です');
@@ -656,7 +1166,9 @@ function DataCollectionPage() {
           <TabsTrigger value="company-input">企業情報入力</TabsTrigger>
           <TabsTrigger value="ai-collect">AI企業情報収集</TabsTrigger>
           <TabsTrigger value="nikihou-scrape">日経報スクレイピング</TabsTrigger>
+          <TabsTrigger value="shikiho-online">四季報オンライン</TabsTrigger>
           <TabsTrigger value="csv-upload">CSV一括アップロード</TabsTrigger>
+          <TabsTrigger value="sec-edgar">SEC EDGAR決算資料</TabsTrigger>
           <TabsTrigger value="financial-reports">決算資料</TabsTrigger>
         </TabsList>
 
@@ -1414,6 +1926,146 @@ function DataCollectionPage() {
           </Card>
         </TabsContent>
 
+        <TabsContent value="shikiho-online">
+          <Card>
+            <CardHeader>
+              <CardTitle>四季報オンライン企業情報収集</CardTitle>
+              <CardDescription>
+                四季報オンラインから米国企業の情報を取得し、スプレッドシートにまとめます
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* 単一企業情報取得 */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold">単一企業情報取得</h3>
+                <div className="flex gap-4">
+                  <Input
+                    placeholder="ティッカーシンボル (例: NVDA)"
+                    value={shikihoTicker}
+                    onChange={(e) => setShikihoTicker(e.target.value)}
+                    className="flex-1"
+                  />
+                  <Button
+                    onClick={handleShikihoScrape}
+                    disabled={isShikihoScraping}
+                    className="flex items-center gap-2"
+                  >
+                    {isShikihoScraping ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : (
+                      <Search className="h-4 w-4" />
+                    )}
+                    企業情報取得
+                  </Button>
+                </div>
+              </div>
+
+              {/* 一括企業情報取得 */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold">一括企業情報取得</h3>
+                <div className="space-y-2">
+                  <Textarea
+                    placeholder="ティッカーシンボルをカンマ区切りで入力 (例: NVDA, AAPL, MSFT)"
+                    value={shikihoTickers}
+                    onChange={(e) => setShikihoTickers(e.target.value)}
+                    rows={3}
+                  />
+                  <Button
+                    onClick={handleBatchShikihoScrape}
+                    disabled={isShikihoScraping}
+                    className="flex items-center gap-2"
+                  >
+                    {isShikihoScraping ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : (
+                      <Search className="h-4 w-4" />
+                    )}
+                    一括企業情報取得
+                  </Button>
+                </div>
+              </div>
+
+              {/* スプレッドシート作成 */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold">スプレッドシート作成</h3>
+                <Button
+                  onClick={handleCreateSpreadsheet}
+                  disabled={isCreatingSpreadsheet || !shikihoResult}
+                  className="flex items-center gap-2"
+                >
+                  {isCreatingSpreadsheet ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <FileSpreadsheet className="h-4 w-4" />
+                  )}
+                  スプレッドシート作成
+                </Button>
+              </div>
+
+              {/* 結果表示 */}
+              {shikihoResult && (
+                <div className="space-y-4 p-4 border rounded-lg bg-blue-50">
+                  <h4 className="font-semibold text-blue-800">四季報オンライン情報取得結果</h4>
+                  <div className="text-sm">
+                    <p><strong>ステータス:</strong> {shikihoResult.status}</p>
+                    <p><strong>メッセージ:</strong> {shikihoResult.message}</p>
+                    
+                    {shikihoResult.data && (
+                      <div className="mt-4">
+                        <h5 className="font-medium mb-2">取得データ:</h5>
+                        <pre className="bg-white p-3 rounded border text-xs overflow-auto max-h-60">
+                          {JSON.stringify(shikihoResult.data, null, 2)}
+                        </pre>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* スプレッドシート結果表示 */}
+              {spreadsheetResult && (
+                <div className="space-y-4 p-4 border rounded-lg bg-green-50">
+                  <h4 className="font-semibold text-green-800">スプレッドシート作成結果</h4>
+                  <div className="text-sm">
+                    <p><strong>ステータス:</strong> {spreadsheetResult.status}</p>
+                    <p><strong>メッセージ:</strong> {spreadsheetResult.message}</p>
+                    
+                    {spreadsheetResult.spreadsheet_data && (
+                      <div className="mt-4">
+                        <h5 className="font-medium mb-2">スプレッドシート構造:</h5>
+                        <div className="space-y-2">
+                          {Object.entries(spreadsheetResult.spreadsheet_data).map(([sheetName, sheetData]: [string, any]) => (
+                            <div key={sheetName} className="bg-white p-3 rounded border">
+                              <h6 className="font-medium">{sheetName}</h6>
+                              <p className="text-xs text-gray-600">
+                                ヘッダー: {sheetData.headers?.join(', ')}
+                              </p>
+                              <p className="text-xs text-gray-600">
+                                データ行数: {sheetData.data?.length - 1}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* 使用説明 */}
+              <div className="space-y-2 p-4 bg-gray-50 rounded-lg">
+                <h4 className="font-semibold">使用方法</h4>
+                <ul className="text-sm space-y-1 list-disc list-inside">
+                  <li>ティッカーシンボルを入力して企業情報を取得します</li>
+                  <li>一括取得の場合は、カンマ区切りで複数のティッカーを入力してください</li>
+                  <li>取得したデータからスプレッドシート形式のデータを作成できます</li>
+                  <li>企業概要、財務、業績の3つのシートに分けて整理されます</li>
+                </ul>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
         <TabsContent value="csv-upload">
           <Card>
             <CardHeader>
@@ -1498,6 +2150,262 @@ function DataCollectionPage() {
                   <p>3. スプレッドシートからCSV形式でエクスポート</p>
                   <p>4. 国を選択してCSVファイルをアップロード</p>
                   <p>5. 既存の企業は更新、新規企業は追加されます</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="sec-edgar">
+          <Card>
+            <CardHeader>
+              <CardTitle>SEC EDGAR決算資料収集</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="text-sm text-gray-500 mb-4">
+                SEC EDGAR APIを使用してアメリカ企業の決算資料（10-Kレポート）を収集し、Google Driveの指定フォルダに格納します。
+              </div>
+
+              {/* 単一企業の決算資料収集 */}
+              <div className="space-y-4 p-4 border rounded-lg">
+                <h4 className="font-semibold">1. 単一企業の決算資料収集</h4>
+                <p className="text-sm text-gray-600">
+                  アメリカ企業名を入力して、最新の10-Kレポートを収集します。
+                </p>
+                <div className="space-y-4">
+                  <div>
+                    <Label htmlFor="sec-company-name">企業名</Label>
+                    <Input
+                      id="sec-company-name"
+                      placeholder="例: Apple Inc."
+                      value={secCompanyName}
+                      onChange={(e) => setSecCompanyName(e.target.value)}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Button
+                      onClick={handleSecCollect}
+                      disabled={isSecCollecting || !secCompanyName.trim()}
+                      className="w-full"
+                    >
+                      {isSecCollecting ? '収集中...' : '決算資料を収集'}
+                    </Button>
+                    <Button
+                      onClick={handleDownloadSecReport}
+                      disabled={isDownloading || !secCompanyName.trim()}
+                      className="w-full bg-blue-600 hover:bg-blue-700"
+                    >
+                      {isDownloading ? 'ダウンロード準備中...' : '決算資料をダウンロード（HTML）'}
+                    </Button>
+                    <Button
+                      onClick={handleDownloadSecReportPdf}
+                      disabled={isDownloadingPdf || !secCompanyName.trim()}
+                      className="w-full bg-red-600 hover:bg-red-700"
+                    >
+                      {isDownloadingPdf ? 'PDF変換中...' : '決算資料をダウンロード（PDF）'}
+                    </Button>
+                    <Button
+                      onClick={handleSecCollectAndUpload}
+                      disabled={isSecCollecting || !secCompanyName.trim()}
+                      className="w-full bg-green-600 hover:bg-green-700"
+                    >
+                      {isSecCollecting ? '収集・アップロード中...' : '決算資料を収集してGoogle Driveにアップロード'}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+
+              {/* 一括決算資料収集 */}
+              <div className="space-y-4 p-4 border rounded-lg">
+                <h4 className="font-semibold">2. 一括決算資料収集</h4>
+                <p className="text-sm text-gray-600">
+                  複数のアメリカ企業名を改行区切りで入力して、一括で決算資料を収集します。
+                </p>
+                <div className="space-y-4">
+                  <div>
+                    <Label htmlFor="sec-company-names">企業名（改行区切り）</Label>
+                    <Textarea
+                      id="sec-company-names"
+                      placeholder="例:&#10;Apple Inc.&#10;Microsoft Corporation&#10;Amazon.com Inc."
+                      value={secCompanyNames}
+                      onChange={(e) => setSecCompanyNames(e.target.value)}
+                      rows={6}
+                    />
+                  </div>
+                  <Button
+                    onClick={handleBatchSecCollect}
+                    disabled={isSecCollecting || !secCompanyNames.trim()}
+                    className="w-full"
+                  >
+                    {isSecCollecting ? '一括収集中...' : '一括決算資料収集'}
+                  </Button>
+                </div>
+              </div>
+
+              {/* 結果表示 */}
+              {secResult && (
+                <div className="space-y-4 p-4 border rounded-lg bg-green-50">
+                  <h4 className="font-semibold text-green-800">収集結果</h4>
+                  <div className="text-sm">
+                    <p><strong>ステータス:</strong> {secResult.success ? '成功' : '失敗'}</p>
+                    <p><strong>メッセージ:</strong> {secResult.message}</p>
+                    
+                    {secResult.company_name && (
+                      <div className="mt-2">
+                        <p><strong>企業名:</strong> {secResult.company_name}</p>
+                        <p><strong>CIK:</strong> {secResult.cik}</p>
+                        <p><strong>提出日:</strong> {secResult.filing_date}</p>
+                        <p><strong>報告日:</strong> {secResult.report_date}</p>
+                        <p><strong>ドキュメント名:</strong> {secResult.document_name}</p>
+                        <p><strong>ファイルサイズ:</strong> {secResult.document_size ? `${(secResult.document_size / 1024 / 1024).toFixed(2)} MB` : 'N/A'}</p>
+                        
+                        {/* Google Driveアップロードボタン */}
+                        {secResult.document_content && (
+                          <div className="mt-3">
+                            <Button
+                              onClick={handleUploadToDrive}
+                              disabled={isUploadingToDrive}
+                              className="bg-blue-600 hover:bg-blue-700"
+                            >
+                              {isUploadingToDrive ? 'アップロード中...' : 'Google Driveにアップロード'}
+                            </Button>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                    
+                    {secResult.successful_companies && (
+                      <div className="mt-2">
+                        <p><strong>成功した企業:</strong> {secResult.successful_companies.length}件</p>
+                        <ul className="list-disc list-inside ml-4">
+                          {secResult.successful_companies.map((company: any, index: number) => (
+                            <li key={index}>{company.company_name} - {company.document_name}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    
+                    {secResult.failed_companies && (
+                      <div className="mt-2">
+                        <p><strong>失敗した企業:</strong> {secResult.failed_companies.length}件</p>
+                        <ul className="list-disc list-inside ml-4">
+                          {secResult.failed_companies.map((company: any, index: number) => (
+                            <li key={index}>{company.company_name} - {company.error}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* HTMLダウンロード結果表示 */}
+              {downloadResult && (
+                <div className="space-y-4 p-4 border rounded-lg bg-purple-50">
+                  <h4 className="font-semibold text-purple-800">HTMLダウンロード結果</h4>
+                  <div className="text-sm">
+                    <p><strong>ステータス:</strong> {downloadResult.success ? '成功' : '失敗'}</p>
+                    <p><strong>メッセージ:</strong> {downloadResult.message}</p>
+                    
+                    {downloadResult.success && (
+                      <div className="mt-2">
+                        <p><strong>企業名:</strong> {downloadResult.company_name}</p>
+                        <p><strong>CIK:</strong> {downloadResult.cik}</p>
+                        <p><strong>提出日:</strong> {downloadResult.filing_date}</p>
+                        <p><strong>報告日:</strong> {downloadResult.report_date}</p>
+                        <p><strong>ドキュメント名:</strong> {downloadResult.document_name}</p>
+                        <p><strong>ファイルサイズ:</strong> {downloadResult.document_size ? `${(downloadResult.document_size / 1024 / 1024).toFixed(2)} MB` : 'N/A'}</p>
+                        <p className="text-purple-600 mt-2">
+                          <strong>✅ HTMLファイルが自動的にダウンロードされました</strong>
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* PDFダウンロード結果表示 */}
+              {pdfDownloadResult && (
+                <div className="space-y-4 p-4 border rounded-lg bg-red-50">
+                  <h4 className="font-semibold text-red-800">PDFダウンロード結果</h4>
+                  <div className="text-sm">
+                    <p><strong>ステータス:</strong> {pdfDownloadResult.success ? '成功' : '失敗'}</p>
+                    <p><strong>メッセージ:</strong> {pdfDownloadResult.message}</p>
+                    
+                    {pdfDownloadResult.success && (
+                      <div className="mt-2">
+                        <p><strong>企業名:</strong> {pdfDownloadResult.company_name}</p>
+                        <p><strong>ファイル名:</strong> {pdfDownloadResult.filename}</p>
+                        <p className="text-red-600 mt-2">
+                          <strong>✅ PDFファイルが自動的にダウンロードされました</strong>
+                        </p>
+                        <p className="text-sm text-gray-600 mt-1">
+                          PDFには企業情報、提出日、報告日などのメタデータが含まれています。
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Google Driveアップロード結果表示 */}
+              {driveUploadResult && (
+                <div className="space-y-4 p-4 border rounded-lg bg-blue-50">
+                  <h4 className="font-semibold text-blue-800">Google Driveアップロード結果</h4>
+                  <div className="text-sm">
+                    <p><strong>ステータス:</strong> {driveUploadResult.success ? '成功' : '失敗'}</p>
+                    <p><strong>メッセージ:</strong> {driveUploadResult.message}</p>
+                    
+                    {driveUploadResult.success && (
+                      <div className="mt-2">
+                        <p><strong>企業名:</strong> {driveUploadResult.company_name}</p>
+                        <p><strong>フォルダ名:</strong> {driveUploadResult.folder_name}</p>
+                        <p><strong>ドキュメント名:</strong> {driveUploadResult.document_name}</p>
+                        <p><strong>ファイルID:</strong> {driveUploadResult.file_id}</p>
+                        <p className="text-blue-600 mt-2">
+                          <a 
+                            href={`https://drive.google.com/drive/folders/1qH-kGP8Hn2setbwAHWcRXNEr2pd-hvMg`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline"
+                          >
+                            Google Driveフォルダを開く
+                          </a>
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* 対応企業リスト */}
+              <div className="space-y-4 p-4 border rounded-lg bg-blue-50">
+                <h4 className="font-semibold text-blue-800">対応企業例</h4>
+                <div className="text-sm text-blue-700">
+                  <p>以下の企業名で決算資料を収集できます：</p>
+                  <ul className="list-disc list-inside ml-4 mt-2">
+                    <li>Apple Inc.</li>
+                    <li>Microsoft Corporation</li>
+                    <li>Amazon.com Inc.</li>
+                    <li>Alphabet Inc.</li>
+                    <li>Tesla Inc.</li>
+                    <li>Meta Platforms Inc.</li>
+                    <li>NVIDIA Corporation</li>
+                    <li>Netflix Inc.</li>
+                    <li>Salesforce Inc.</li>
+                    <li>Adobe Inc.</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* 使用方法の説明 */}
+              <div className="space-y-4 p-4 border rounded-lg bg-yellow-50">
+                <h4 className="font-semibold text-yellow-800">使用方法</h4>
+                <div className="text-sm text-yellow-700 space-y-2">
+                  <p>1. 企業名を正確に入力してください（英語名）</p>
+                  <p>2. SEC EDGARから最新の10-Kレポートを自動取得します</p>
+                  <p>3. 収集した資料はGoogle Driveの指定フォルダに格納されます</p>
+                  <p>4. レート制限により、連続リクエストには時間がかかる場合があります</p>
                 </div>
               </div>
             </CardContent>

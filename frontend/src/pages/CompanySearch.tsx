@@ -33,6 +33,13 @@ interface Company {
   currency: string;
   company_type: string | null;
   ceo: string | null;
+  // Google Drive関連のフィールド（中国企業の場合）
+  folder_id?: string;
+  file_count?: number;
+  web_view_link?: string;
+  created_time?: string;
+  modified_time?: string;
+  item_type?: string; // 'folder' または 'spreadsheet'
 }
 
 function CompanySearch() {
@@ -50,10 +57,8 @@ function CompanySearch() {
   const suggestionsRef = useRef<HTMLDivElement>(null);
   const [searchTimer, setSearchTimer] = useState<NodeJS.Timeout | null>(null);
   const [selectedMarket, setSelectedMarket] = useState<string>("");
-  const [selectedCountry, setSelectedCountry] = useState<string>("");
   const [selectedSector, setSelectedSector] = useState<string>("");
   const [sectors, setSectors] = useState<string[]>([]);
-  const [countries, setCountries] = useState<string[]>([]);
 
   const handleSearch = async (query: string) => {
     if (!query.trim()) {
@@ -71,17 +76,38 @@ function CompanySearch() {
         page: page.toString(),
         page_size: PAGE_SIZE.toString(),
         ...(selectedMarket && { market: selectedMarket }),
-        ...(selectedCountry && { country: selectedCountry }),
         ...(selectedSector && { sector: selectedSector }),
       });
 
       const response = await fetch(`/api/companies/search?${params}`);
+      
+      // レスポンスのテキストを取得
+      const responseText = await response.text();
+      
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || '検索に失敗しました');
+        // エラーレスポンスの場合
+        try {
+          const errorData = JSON.parse(responseText);
+          throw new Error(errorData.detail || '検索に失敗しました');
+        } catch (parseError) {
+          throw new Error(responseText || '検索に失敗しました');
+        }
       }
 
-      const data = await response.json();
+      // 空のレスポンスをチェック
+      if (!responseText || responseText.trim() === '') {
+        throw new Error('サーバーからのレスポンスが空です');
+      }
+
+      // JSONパース
+      let data;
+      try {
+        data = JSON.parse(responseText);
+      } catch (parseError) {
+        console.error('JSON parse error:', parseError, 'Response text:', responseText);
+        throw new Error('サーバーからのレスポンスの解析に失敗しました');
+      }
+
       setSearchResult(data);
       setTotalResults(data.total);
       setShowSuggestions(true);
@@ -112,12 +138,6 @@ function CompanySearch() {
           setSectors(sectorsData.sectors);
         }
         
-        // COUNTRYの一覧を取得
-        const countriesResponse = await fetch('/api/companies/countries');
-        if (countriesResponse.ok) {
-          const countriesData = await countriesResponse.json();
-          setCountries(countriesData.countries);
-        }
       } catch (error) {
         console.error('オプション取得エラー:', error);
       }
@@ -171,10 +191,17 @@ function CompanySearch() {
   };
 
   const handleCompanySelect = (company: Company) => {
-    navigate(`/company/${company.ticker}`);
+    // 中国企業、米国企業、または日本企業でGoogle Driveのデータがある場合は企業分析ページに遷移
+    if ((company.market === 'CN' || company.market === 'US' || company.market === 'JP') && company.folder_id) {
+      navigate(`/company-analysis/${company.folder_id}`);
+    } else {
+      // その他の企業は従来通り企業詳細ページに遷移
+      navigate(`/company/${company.ticker}`);
+    }
     setShowSuggestions(false);
     setSearchTerm('');
   };
+
 
   // フィルター変更時に検索を実行
   useEffect(() => {
@@ -183,7 +210,7 @@ function CompanySearch() {
       setPage(1);
       handleSearch(searchTerm);
     }
-  }, [selectedMarket, selectedCountry, selectedSector]);
+  }, [selectedMarket, selectedSector]);
 
   // ページ変更時に検索を実行
   useEffect(() => {
@@ -212,25 +239,6 @@ function CompanySearch() {
     };
   }, [searchTimer]);
 
-  // 国コードを日本語名に変換
-  const getCountryName = (countryCode: string): string => {
-    const countryMap: { [key: string]: string } = {
-      'JP': '日本',
-      'US': 'アメリカ',
-      'CN': '中国',
-      'KR': '韓国',
-      'TW': '台湾',
-      'HK': '香港',
-      'SG': 'シンガポール',
-      'IN': 'インド',
-      'GB': 'イギリス',
-      'DE': 'ドイツ',
-      'FR': 'フランス',
-      'CA': 'カナダ',
-      'AU': 'オーストラリア',
-    };
-    return countryMap[countryCode] || countryCode;
-  };
 
   return (
     <div className="max-w-2xl mx-auto p-4">
@@ -279,19 +287,6 @@ function CompanySearch() {
               </SelectContent>
             </Select>
 
-            <Select value={selectedCountry} onValueChange={(value) => setSelectedCountry(value === "all" ? "" : value)}>
-              <SelectTrigger className="w-[200px]">
-                <SelectValue placeholder="国を選択" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">すべての国</SelectItem>
-                {countries.map((country) => (
-                  <SelectItem key={country} value={country}>
-                    {getCountryName(country)}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
 
             <Select value={selectedSector} onValueChange={(value) => setSelectedSector(value === "all" ? "" : value)}>
               <SelectTrigger className="w-[200px]">
@@ -374,11 +369,22 @@ function CompanySearch() {
                           ? 'bg-blue-50 text-blue-700' 
                           : company.company_type === 'STARTUP'
                           ? 'bg-green-50 text-green-700'
-                          : 'bg-orange-50 text-orange-700'
+                          : company.company_type === 'PRIVATE'
+                          ? 'bg-orange-50 text-orange-700'
+                          : company.market === 'CN'
+                          ? 'bg-red-50 text-red-700'
+                          : company.market === 'US'
+                          ? 'bg-blue-50 text-blue-700'
+                          : company.market === 'JP'
+                          ? 'bg-purple-50 text-purple-700'
+                          : 'bg-gray-50 text-gray-700'
                       }`}>
                         {company.company_type === 'LISTED' ? '上場' : 
                          company.company_type === 'STARTUP' ? 'スタートアップ' : 
-                         company.company_type === 'PRIVATE' ? '非上場' : 'N/A'}
+                         company.company_type === 'PRIVATE' ? '非上場' : 
+                         company.market === 'CN' ? '中国企業' : 
+                         company.market === 'US' ? '米国企業' : 
+                         company.market === 'JP' ? '日本企業' : 'N/A'}
                       </span>
                       {company.ceo && (
                         <>
@@ -457,6 +463,7 @@ function CompanySearch() {
           </div>
         )}
       </div>
+
     </div>
   );
 }

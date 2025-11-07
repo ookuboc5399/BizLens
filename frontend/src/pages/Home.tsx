@@ -1,7 +1,8 @@
 
-import { TradingViewChart } from '../components/TradingViewChart';
+import { HomeTradingViewChart } from '../components/HomeTradingViewChart';
 import { MarketDataDisplay } from '../components/MarketDataDisplay';
 import { NewsDisplay } from '../components/NewsDisplay';
+import TradingViewTickerTape from '../components/TradingViewTickerTape';
 
 
 function Home() {
@@ -9,16 +10,16 @@ function Home() {
     <div className="text-white">
       <div className="container mx-auto px-4 py-8">
         <div className="relative">
-          {/* メインビジュアル */}
-          <div className="text-red-500 text-4xl font-bold mb-8">
-            Market Analysis Dashboard
+          {/* ティッカーテープ */}
+          <div className="mb-8">
+            <TradingViewTickerTape />
           </div>
           
           {/* メインチャートエリア */}
           <div className="bg-gray-800 rounded-lg p-6 mb-8">
             <h2 className="text-xl font-bold mb-4">日経平均株価</h2>
             <div className="w-full h-[400px]">
-              <TradingViewChart symbol="NIKKEI" />
+              <HomeTradingViewChart symbol="NIKKEI" />
             </div>
           </div>
 

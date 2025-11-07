@@ -3,6 +3,7 @@ import { Layout } from './components/layout/layout';
 import Home from './pages/Home';
 import CompanySearch from './pages/CompanySearch';
 import CompanyDetail from './pages/CompanyDetail';
+import CompanyAnalysis from './pages/CompanyAnalysis';
 import CompanyComparison from './pages/CompanyComparison';
 import EarningsCalendar from './pages/EarningsCalendar';
 import FinancialReports from './pages/FinancialReports';
@@ -51,6 +52,14 @@ function App({ supabase }: AppProps) {
             element={
               <ProtectedRoute supabase={supabase}>
                 <CompanyDetail />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/company-analysis/:companyId"
+            element={
+              <ProtectedRoute supabase={supabase}>
+                <CompanyAnalysis />
               </ProtectedRoute>
             }
           />
